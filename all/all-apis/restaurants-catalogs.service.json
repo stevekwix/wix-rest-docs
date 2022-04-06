@@ -1200,16 +1200,10 @@
       "methodName": "GetDiscount",
       "serviceName": "DiscountsApi",
       "tag": "Discounts",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1269,16 +1263,10 @@
       "methodName": "GetItem",
       "serviceName": "CatalogsApi",
       "tag": "Items",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1354,16 +1342,10 @@
       "methodName": "GetMenu",
       "serviceName": "CatalogsApi",
       "tag": "Menus",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1423,16 +1405,10 @@
       "methodName": "GetSection",
       "serviceName": "CatalogsApi",
       "tag": "Sections",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1500,16 +1476,10 @@
       "methodName": "ListCatalogs",
       "serviceName": "CatalogsApi",
       "tag": "Catalogs",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1596,16 +1566,10 @@
       "methodName": "ListDiscounts",
       "serviceName": "DiscountsApi",
       "tag": "Discounts",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1672,16 +1636,10 @@
       "methodName": "ListItems",
       "serviceName": "CatalogsApi",
       "tag": "Items",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1748,16 +1706,10 @@
       "methodName": "ListMenus",
       "serviceName": "CatalogsApi",
       "tag": "Menus",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1824,16 +1776,10 @@
       "methodName": "ListSections",
       "serviceName": "CatalogsApi",
       "tag": "Sections",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -2308,16 +2254,10 @@
       },
       "topic": "domain_events_wix.restaurants.catalogs.v3.catalog",
       "tag": "Catalogs",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.restaurants.catalogs.v3.catalog_created",
       "extra": {"isDomainEvent": true}
@@ -2331,16 +2271,10 @@
       },
       "topic": "domain_events_wix.restaurants.catalogs.v3.catalog",
       "tag": "Catalogs",
-      "permissions":       [
-                {
-          "name": "Manage Restaurant Catalogs",
-          "description": "Request permission to manage the site's restaurant catalogs."
-        },
-                {
-          "name": "Read Restaurant Catalogs",
-          "description": "Request permission to read the site's restaurant catalogs."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Restaurant Catalogs",
+        "description": "Request permission to read the site's restaurant catalogs."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.restaurants.catalogs.v3.catalog_catalog_changed",
       "extra": {"isDomainEvent": true}
@@ -4310,6 +4244,11 @@
           "doc": ""
         },
                 {
+          "name": "archived",
+          "type": "boolean",
+          "doc": ""
+        },
+                {
           "name": "catalogItems",
           "type":           {
             "name": "array",
@@ -4369,6 +4308,11 @@
                 {
           "name": "catalogId",
           "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "archived",
+          "type": "boolean",
           "doc": ""
         }
       ],
