@@ -35,16 +35,10 @@
       "methodName": "GetConversation",
       "serviceName": "ConversationsService",
       "tag": "Conversations",
-      "permissions":       [
-                {
-          "name": "Manage Inbox Messages",
-          "description": "Request permissions to read and send chat messages on behalf of the site and visitors."
-        },
-                {
-          "name": "Read Inbox Messages",
-          "description": "Request permission to read chat messages."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Inbox Messages",
+        "description": "Request permission to read chat messages."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -147,16 +141,10 @@
     },
     "topic": "domain_events_wix.crm.inbox.v2.conversation",
     "tag": "Conversations",
-    "permissions":     [
-            {
-        "name": "Manage Inbox Messages",
-        "description": "Request permissions to read and send chat messages on behalf of the site and visitors."
-      },
-            {
-        "name": "Read Inbox Messages",
-        "description": "Request permission to read chat messages."
-      }
-    ],
+    "permissions": [    {
+      "name": "Read Inbox Messages",
+      "description": "Request permission to read chat messages."
+    }],
     "customLabels": [{"id": "maturity-beta"}],
     "eventType": "wix.crm.inbox.v2.conversation_conversations_merged",
     "extra": {"isDomainEvent": true}
