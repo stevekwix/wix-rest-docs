@@ -5672,5 +5672,5 @@
       "labels": []
     }
   ],
-  "extra": {}
+  "extra": {"artifactId": "com.wixpress.restaurants.restaurants-catalogs-webapp"}
 }
