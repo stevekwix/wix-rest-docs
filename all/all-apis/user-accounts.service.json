@@ -35,7 +35,10 @@
     "methodName": "createAccount",
     "serviceName": "AccountService",
     "tag": "Accounts",
-    "permissions": [],
+    "permissions": [    {
+      "name": "Create Accounts",
+      "description": "Allows certified partners to create Wix accounts."
+    }],
     "events": [],
     "labels": [],
     "nameParams": [],
