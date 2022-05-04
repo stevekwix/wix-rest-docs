@@ -1674,6 +1674,38 @@
       "labels": []
     },
         {
+      "name": "_wix_payment_api_pay_v2_EnableSubscriptionRequest",
+      "displayName": "Enable Subscription Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Describing `EnableSubscription` request.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "orderId",
+        "type": "string",
+        "doc": " unique identifier of an order which subscription should be enabled\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_EnableSubscriptionResponse",
+      "displayName": "Enable Subscription Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Describing `EnableSubscription` response.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_wix_payment_api_pay_v2_UpdateIncludedCharges",
       "displayName": "Update Included Charges Object",
       "locations": [],
