@@ -1180,7 +1180,8 @@
       "members": [      {
         "name": "referenceOrderId",
         "type": "string",
-        "doc": " a reference to the initial order\n"
+        "doc": " deprecated, please use payment agreements instead\n",
+        "deprecated": true
       }],
       "enum": null,
       "extra": {},
@@ -1198,7 +1199,8 @@
       "members": [      {
         "name": "referenceOrderId",
         "type": "string",
-        "doc": " a reference to the initial order\n"
+        "doc": " deprecated, please use payment agreements instead\n",
+        "deprecated": true
       }],
       "enum": null,
       "extra": {},
@@ -1216,7 +1218,8 @@
       "members": [      {
         "name": "referenceOrderId",
         "type": "string",
-        "doc": " a reference to the initial order\n"
+        "doc": " deprecated, please use payment agreements instead\n",
+        "deprecated": true
       }],
       "enum": null,
       "extra": {},
@@ -1268,6 +1271,49 @@
       "locations": [],
       "docs":       {
         "summary": " Describing `Create` order response.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "order",
+        "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_Order",
+        "doc": " newly created order\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_SetupRequest",
+      "displayName": "Setup Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "currency",
+          "type": "string",
+          "doc": " Currency of the order (required). Supported values are: AFN, USD, EUR, BMD, BGN, BIF, CVE, KMF, CDF, DJF, ERN, FKP, GHS, GNF, LAK, LSL, LYD, MWK, MRO, MZN, PAB, RON, RUB, SHP, RSD, SLL, SBD, SOS, SZL, TJS, TOP, TMT, YER, ZMW, GIP, ZAR, XPF, XOF, XCD, XAF, WST, VUV, VND, VEF, UZS, UYU, UGX, UAH, TZS, TWD, TTD, TRY, TND, THB, STD, SGD, SEK, SCR, SAR, RWF, QAR, PYG, PLN, PKR, PHP, PGK, PEN, OMR, NZD, NPR, NOK, NIO, NGN, MYR, MXN, MVR, MUR, MOP, MNT, MMK, MKD, MDL, MAD, LRD, LKR, LBP, KZT, KYD, KWD, KRW, KHR, KGS, KES, JPY, JOD, JMD, ISK, INR, ILS, IDR, HUF, HTG, HRK, HNL, HKD, GYD, GTQ, GMD, GEL, GBP, FJD, ETB, EGP, DZD, DOP, DKK, CZK, CRC, COP, CNY, CLP, CHF, CAD, BZD, BYN, BWP, BTN, BSD, BRL, BOB, BND, BHD, BDT, BBD, BAM, AZN, AWG, AUD, ARS, AOA, ANG, AMD, ALL, AED, MGA, MZN, NAD, RON, GHS, SRD, TMT, ZMW, IQD\n"
+        },
+                {
+          "name": "buyerInfo",
+          "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_OrderBuyerInfo",
+          "doc": " Buyer information which can use to provide better service (optional)\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_SetupResponse",
+      "displayName": "Setup Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
         "links": [],
         "examples": []
       },
@@ -1596,6 +1642,38 @@
       "labels": []
     },
         {
+      "name": "_wix_payment_api_pay_v2_DisableSubscriptionRequest",
+      "displayName": "Disable Subscription Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Describing `DisableSubscription` request.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "orderId",
+        "type": "string",
+        "doc": " unique identifier of an order which subscription should be disabled\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_DisableSubscriptionResponse",
+      "displayName": "Disable Subscription Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Describing `DisableSubscription` response.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_wix_payment_api_pay_v2_UpdateIncludedCharges",
       "displayName": "Update Included Charges Object",
       "locations": [],
@@ -1722,6 +1800,42 @@
         "examples": []
       },
       "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_FindAgreementIdByOrderIdRequest",
+      "displayName": "Find Agreement Id By Order Id Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "orderId",
+        "type": "string",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_FindAgreementIdByOrderIdResponse",
+      "displayName": "Find Agreement Id By Order Id Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "paymentAgreementId",
+        "type": "string",
+        "doc": ""
+      }],
       "enum": null,
       "extra": {},
       "labels": []
@@ -1863,6 +1977,11 @@
           "doc": "Used for saved credit card\n"
         },
                 {
+          "name": "paymentAgreementId",
+          "type": "string",
+          "doc": ""
+        },
+                {
           "name": "paymentMethodDetails",
           "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_PaymentDetails_PaymentMethodDetails",
           "doc": ""
@@ -1908,14 +2027,9 @@
           "doc": ""
         },
                 {
-          "name": "persistedMethod",
-          "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_PersistedMethodPayment",
-          "doc": " method was persisted on payment before\n"
-        },
-                {
-          "name": "tokenized",
-          "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_TokenizedPayment",
-          "doc": " payment method tokenized by caller and it's token is passed instead\n"
+          "name": "savedCardPayment",
+          "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_SavedCardPayment",
+          "doc": " payment with a card using saved card\n"
         }
       ],
       "enum": null,
@@ -2020,24 +2134,6 @@
           "doc": " the CVV/CVC/CID token\n"
         }
       ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_payment_api_pay_v2_TokenizedPayment",
-      "displayName": "Tokenized Payment Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "tokens",
-        "type": "struct",
-        "doc": " provider-specific tokens:\n * Stripe - `paymentMethodId`\n"
-      }],
       "enum": null,
       "extra": {},
       "labels": []
@@ -2149,19 +2245,26 @@
       "labels": []
     },
         {
-      "name": "_wix_payment_api_pay_v2_PersistedMethodPayment",
-      "displayName": "Persisted Method Payment Object",
+      "name": "_wix_payment_api_pay_v2_SavedCardPayment",
+      "displayName": "Saved Card Payment Object",
       "locations": [],
       "docs":       {
         "summary": "",
         "links": [],
         "examples": []
       },
-      "members": [      {
-        "name": "paymentMethodId",
-        "type": "string",
-        "doc": " id of previously saved Payment Method\n"
-      }],
+      "members":       [
+                {
+          "name": "paymentMethodId",
+          "type": "string",
+          "doc": " id of previously saved Payment Method\n"
+        },
+                {
+          "name": "securityCodeToken",
+          "type": "string",
+          "doc": " the CVV/CVC/CID token\n"
+        }
+      ],
       "enum": null,
       "extra": {},
       "labels": []
@@ -2718,7 +2821,7 @@
       "displayName": "Payment Method Object",
       "locations": [],
       "docs":       {
-        "summary": " Describing payment method: it's id, provider name, mandatory fields, charget intents and any other additional info.\n",
+        "summary": "",
         "links": [],
         "examples": []
       },
@@ -2813,6 +2916,85 @@
           "name": "providerTokenization",
           "type": "boolean",
           "doc": ""
+        },
+                {
+          "name": "savedPaymentMethodId",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "paymentAgreementId",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "primary",
+          "type": "boolean",
+          "doc": " is saved method primary for this UoU\n"
+        },
+                {
+          "name": "savedPaymentMethodDetails",
+          "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_PaymentMethod_SavedPaymentMethodDetails",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_PaymentMethod_SavedPaymentMethodDetails",
+      "displayName": "Saved Payment Method Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "savedCreditCardDetails",
+        "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_SavedCreditCardDetails",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_SavedCreditCardDetails",
+      "displayName": "Saved Credit Card Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "network",
+          "type": "string",
+          "doc": " credit card network (visa, mastercard, amex, jcb)\n"
+        },
+                {
+          "name": "lastFourDigits",
+          "type": "string",
+          "doc": " last 4 digits of credit card number\n"
+        },
+                {
+          "name": "expiryMonth",
+          "type": "integer",
+          "doc": " the month of the card expiration date\n"
+        },
+                {
+          "name": "expiryYear",
+          "type": "integer",
+          "doc": " the full year of the card expiration date\n"
+        },
+                {
+          "name": "holderName",
+          "type": "string",
+          "doc": " credit card holder's name\n"
         }
       ],
       "enum": null,
@@ -3191,6 +3373,11 @@
           "name": "merchantInitiated",
           "type": "boolean",
           "doc": " filter methods which support merchant initiated transactions (optional)\n"
+        },
+                {
+          "name": "returnSavedMethods",
+          "type": "boolean",
+          "doc": " return saved methods\n"
         }
       ],
       "enum": null,
@@ -3462,11 +3649,19 @@
         "links": [],
         "examples": []
       },
-      "members": [      {
-        "name": "available",
-        "type": "boolean",
-        "doc": ""
-      }],
+      "members":       [
+                {
+          "name": "available",
+          "type": "boolean",
+          "doc": " credit card available\n",
+          "deprecated": true
+        },
+                {
+          "name": "paypalAvailable",
+          "type": "boolean",
+          "doc": " payPal available\n"
+        }
+      ],
       "enum": null,
       "extra": {},
       "labels": []
