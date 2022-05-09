@@ -3120,6 +3120,11 @@
           "name": "bnplModalPage",
           "type": "All APIs.Cashier Pay._wix_payment_api_pay_v2_ModalPage",
           "doc": " payment method modal page with more BNPL info:\n terms & conditions, detailed plans, etc\n"
+        },
+                {
+          "name": "providerImpressionUrl",
+          "type": "string",
+          "doc": " payment provider impression URL to notify when provider BNPL is shown to UoU\n"
         }
       ],
       "enum": null,
