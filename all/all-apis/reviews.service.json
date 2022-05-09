@@ -1126,7 +1126,7 @@
                 {
           "name": "hasMoreChanges",
           "type": "boolean",
-          "doc": " Indicates that more fields changed, this indicator goes along with _has_more_data.\n These other fields are not visible to you in current_entity_as_json\n"
+          "doc": " Indicates that more fields changed\n The extended fields updated event, contains only fields which are public for everyone to read\n In case where a non public field changes, this event will be sent, but the data about the changed field won't be included.\n To indicate that, this field will be set to true\n Given that you have permissions, you can then perform a read call to get the non public fields\n"
         }
       ],
       "enum": null,
