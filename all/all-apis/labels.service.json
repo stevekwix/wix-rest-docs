@@ -43,16 +43,10 @@
       "methodName": "DeleteLabel",
       "serviceName": "ContactLabelsServiceV4",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -100,16 +94,10 @@
       "methodName": "FindOrCreateLabel",
       "serviceName": "ContactLabelsServiceV4",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -166,16 +154,10 @@
       "methodName": "GetLabel",
       "serviceName": "ContactLabelsServiceV4",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -232,16 +214,10 @@
       "methodName": "ListLabels",
       "serviceName": "ContactLabelsServiceV4",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -362,16 +338,10 @@
       "methodName": "QueryLabels",
       "serviceName": "ContactLabelsServiceV4",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -443,16 +413,10 @@
       "methodName": "UpdateLabel",
       "serviceName": "ContactLabelsServiceV4",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -525,16 +489,10 @@
       },
       "topic": "domain_events_wix.contacts.v4.label",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.contacts.v4.label_deleted",
       "extra": {"isDomainEvent": true}
@@ -548,16 +506,10 @@
       },
       "topic": "domain_events_wix.contacts.v4.label",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.contacts.v4.label_created",
       "extra": {"isDomainEvent": true}
@@ -571,16 +523,10 @@
       },
       "topic": "domain_events_wix.contacts.v4.label",
       "tag": "Contact Labels Service (v4)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contact Labels",
-          "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.contacts.v4.label_updated",
       "extra": {"isDomainEvent": true}
@@ -1317,11 +1263,21 @@
         "links": [],
         "examples": []
       },
-      "members": [      {
-        "name": "instanceId",
-        "type": "string",
-        "doc": ""
-      }],
+      "members":       [
+                {
+          "name": "instanceId",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "exludingLabelKeys",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": ""
+        }
+      ],
       "enum": null,
       "extra": {},
       "labels": []
