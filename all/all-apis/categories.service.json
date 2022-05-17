@@ -870,7 +870,7 @@
                 {
           "name": "imageInfo",
           "type": "All APIs.Categories._upstream_wix_common_Image",
-          "doc": "\nImage info - can include Wix Media or an external link.\n"
+          "doc": "\nImage info - can include Wix Media or an external link. Required.\n"
         },
                 {
           "name": "focalPoint",
