@@ -1933,6 +1933,24 @@
       "labels": []
     },
         {
+      "name": "paramsMapEntry",
+      "displayName": "params Map Entry Object",
+      "locations": [],
+      "docs":       {
+        "summary": "Set of key-value pairs. Error params\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "key:value",
+        "type": "string",
+        "doc": "`key` of type string, `value` of type string"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_restaurants_orders_v3_PosInfo_Error",
       "displayName": "Error Object",
       "locations": [],
@@ -1951,6 +1969,11 @@
           "name": "message",
           "type": "string",
           "doc": " Error message\n"
+        },
+                {
+          "name": "params",
+          "type": "All APIs.Restaurants Orders.paramsMapEntry",
+          "doc": "Set of key-value pairs. Error params\n"
         }
       ],
       "enum": null,
