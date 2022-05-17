@@ -2159,7 +2159,7 @@
                 {
           "name": "paging",
           "type": "All APIs.ProjectItems._wix_common_Paging",
-          "doc": " limit and offset for ProjectItems\n"
+          "doc": " limit and offset for ProjectItems - maximum limit is 200 per request, default is 50\n"
         }
       ],
       "enum": null,
