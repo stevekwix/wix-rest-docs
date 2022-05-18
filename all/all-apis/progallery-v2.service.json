@@ -99,7 +99,10 @@
       "nameParams": [],
       "requiredFields":       [
         "galleryId",
-        "item"
+        "item",
+        "item.metadata.image.imageInfo",
+        "item.metadata.video.videoInfo",
+        "item.metadata.text.html"
       ],
       "params":       [
                 {
