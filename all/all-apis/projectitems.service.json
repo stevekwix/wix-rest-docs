@@ -1775,24 +1775,6 @@
       "labels": []
     },
         {
-      "name": "changedNamespacesMapEntry",
-      "displayName": "changed Namespaces Map Entry Object",
-      "locations": [],
-      "docs":       {
-        "summary": "Set of key-value pairs. Changes per namespaces\n",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "key:value",
-        "type": "All APIs.ProjectItems._wix_common_domainevents_ChangedNamespace",
-        "doc": "`key` of type string, `value` of type object"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
       "name": "_wix_common_domainevents_ExtendedFieldsUpdatedEvent",
       "displayName": "Extended Fields Updated Event Object",
       "locations": [],
@@ -1801,46 +1783,11 @@
         "links": [],
         "examples": []
       },
-      "members":       [
-                {
-          "name": "currentEntityAsJson",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "changedNamespaces",
-          "type": "All APIs.ProjectItems.changedNamespacesMapEntry",
-          "doc": "Set of key-value pairs. Changes per namespaces\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_common_domainevents_ChangedNamespace",
-      "displayName": "Changed Namespace Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "fields",
-          "type":           {
-            "name": "array",
-            "typeParams": ["string"]
-          },
-          "doc": " List of changed field paths\n"
-        },
-                {
-          "name": "hasMoreChanges",
-          "type": "boolean",
-          "doc": " Indicates that more fields changed\n The extended fields updated event, contains only fields which are public for everyone to read\n In case where a non public field changes, this event will be sent, but the data about the changed field won't be included.\n To indicate that, this field will be set to true\n Given that you have permissions, you can then perform a read call to get the non public fields\n"
-        }
-      ],
+      "members": [      {
+        "name": "currentEntityAsJson",
+        "type": "string",
+        "doc": ""
+      }],
       "enum": null,
       "extra": {},
       "labels": []
