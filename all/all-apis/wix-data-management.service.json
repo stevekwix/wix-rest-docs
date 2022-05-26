@@ -18,12 +18,22 @@
         {
       "name": "Index Service",
       "entity": null
+    },
+        {
+      "name": "Backup Service",
+      "entity": null
     }
   ],
-  "relatedGuides": [  {
-    "path": "../guides/wix-data-management/wixpress/dstore/docs/Indexing.md",
-    "name": "Indexing"
-  }],
+  "relatedGuides":   [
+        {
+      "path": "../guides/wix-data-management/wixpress/dstore/docs/UseCases.md",
+      "name": "Use Cases"
+    },
+        {
+      "path": "../guides/wix-data-management/wixpress/dstore/docs/Indexing.md",
+      "name": "Indexing"
+    }
+  ],
   "operations":   [
         {
       "name": "Get Sandbox Mode",
@@ -117,6 +127,364 @@
   "events": [],
   "callbacks": [],
   "messages":   [
+        {
+      "name": "_com_wixpress_dstore_api_backup_Backup",
+      "displayName": "Backup Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segment",
+          "type": "All APIs.Wix Data Management._com_wixpress_dstore_api_Segment",
+          "doc": " Segment on which the backup is taken.\n"
+        },
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Backup ID.\n"
+        },
+                {
+          "name": "instanceId",
+          "type": "string",
+          "doc": " The ID of the Wix site making the request.\n"
+        },
+                {
+          "name": "requested",
+          "type": "string",
+          "doc": " Time at which backup was requested, gets populated immediately.\n"
+        },
+                {
+          "name": "started",
+          "type": "string",
+          "doc": " Time at which backup was started to be taken, empty until backup task is\n started in the background.\n"
+        },
+                {
+          "name": "finished",
+          "type": "string",
+          "doc": " Time at which backup was finished to be taken, empty until backup task is\n completed in the background.\n"
+        },
+                {
+          "name": "deleted",
+          "type": "string",
+          "doc": " Time at which backup was deleted.\n"
+        },
+                {
+          "name": "size",
+          "type": "string",
+          "doc": " Backup size in bytes.\n"
+        },
+                {
+          "name": "status",
+          "type": "All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Backup_Status",
+          "doc": " Backup status.\n"
+        },
+                {
+          "name": "schedule",
+          "type": "All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Backup_Schedule",
+          "doc": " Backup schedule.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_Restoration",
+      "displayName": "Restoration Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segment",
+          "type": "All APIs.Wix Data Management._com_wixpress_dstore_api_Segment",
+          "doc": " Segment in which this restoration is performed.\n"
+        },
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Restoration ID\n"
+        },
+                {
+          "name": "requested",
+          "type": "string",
+          "doc": " Time at which restoration was requested, gets populated immediately.\n"
+        },
+                {
+          "name": "started",
+          "type": "string",
+          "doc": " Time at which restoration was started, stays empty until restoration task is\n started in the background.\n"
+        },
+                {
+          "name": "finished",
+          "type": "string",
+          "doc": " Completion time of the background task, stays empty until restoration task is\n finished in the background.\n"
+        },
+                {
+          "name": "backup",
+          "type": "All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Backup",
+          "doc": " Backup used in this restoration.\n"
+        },
+                {
+          "name": "status",
+          "type": "All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Restoration_Status",
+          "doc": " Status of restoration.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_TakeRequest",
+      "displayName": "Take Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segment",
+          "type": "All APIs.Wix Data Management._com_wixpress_dstore_api_Segment",
+          "doc": " Segment to take the backup for.\n"
+        },
+                {
+          "name": "schedule",
+          "type": "All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Backup_Schedule",
+          "doc": " Schedule of the backup. Backup with a *MANUAL* schedule will be taken once,\n while *AUTO* schedule backup will be taken repeatedly with a regular interval.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_RestoreRequest",
+      "displayName": "Restore Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "backupId",
+        "type": "string",
+        "doc": " ID of backup to be restored.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_RestoreResponse",
+      "displayName": "Restore Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "restorationId",
+        "type": "string",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_ListBackupsRequest",
+      "displayName": "List Backups Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segment",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Wix Data Management._com_wixpress_dstore_api_Segment"]
+          },
+          "doc": " List of segments to filter by. If empty - no filtering will be applied.\n"
+        },
+                {
+          "name": "schedule",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Backup_Schedule"]
+          },
+          "doc": " List of schedules to filter by. If empty - no filtering will be applied.\n"
+        },
+                {
+          "name": "status",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Backup_Status"]
+          },
+          "doc": " List of statuses to filter by. If empty - no filtering will be applied.\n"
+        },
+                {
+          "name": "skip",
+          "type": "integer",
+          "doc": " The number of items to skip from the first item.\n"
+        },
+                {
+          "name": "limit",
+          "type": "integer",
+          "doc": " The maximum number of items to retrieve.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_ListBackupsResponse",
+      "displayName": "List Backups Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "backups",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Backup"]
+        },
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_ListRestorationsRequest",
+      "displayName": "List Restorations Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segment",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Wix Data Management._com_wixpress_dstore_api_Segment"]
+          },
+          "doc": " List of segments to filter by. If empty - no filtering will be applied.\n"
+        },
+                {
+          "name": "status",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Restoration_Status"]
+          },
+          "doc": " List of statuses to filter by. If empty - no filtering will be applied.\n"
+        },
+                {
+          "name": "skip",
+          "type": "integer",
+          "doc": " The number of items to skip from the first item.\n"
+        },
+                {
+          "name": "limit",
+          "type": "integer",
+          "doc": " The maximum number of items to retrieve.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_ListRestorationsResponse",
+      "displayName": "List Restorations Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "restorations",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Wix Data Management._com_wixpress_dstore_api_backup_Restoration"]
+        },
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_DeleteRequest",
+      "displayName": "Delete Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "backupId",
+        "type": "string",
+        "doc": " ID of backup to be deleted.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_CancelRequest",
+      "displayName": "Cancel Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "backupId",
+        "type": "string",
+        "doc": " ID of backup to be cancelled.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_CancelResponse",
+      "displayName": "Cancel Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
         {
       "name": "_com_wixpress_dstore_api_index_Index_Field",
       "displayName": "Field Object",
@@ -445,6 +813,61 @@
       "enum":       [
         "PUBLIC",
         "DEV"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_Backup_Status",
+      "displayName": "Status Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> PENDING -  Backup creation is in progress.\n <\/code><\/li><li><code> READY -  Backup has been created successfully and is ready for usage.\n <\/code><\/li><li><code> FAILED -  Backup creation has failed.\n <\/code><\/li><li><code> DELETED -  Backup has been deleted.\n <\/code><\/li><li><code> CANCELED -  Backup has been canceled.\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "PENDING",
+        "READY",
+        "FAILED",
+        "DELETED",
+        "CANCELED"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_Backup_Schedule",
+      "displayName": "Schedule Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> MANUAL -  Backup taken only once (ad-hoc).\n <\/code><\/li><li><code> AUTO -  Backup is taken repeatedly on a regular interval.\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "MANUAL",
+        "AUTO"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_dstore_api_backup_Restoration_Status",
+      "displayName": "Status Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> PENDING -  Restoration from a backup is in progress.\n <\/code><\/li><li><code> SUCCESSFUL -  Restoration from a backup has been successful.\n <\/code><\/li><li><code> FAILED -  Restoration from a backup has failed.\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "PENDING",
+        "SUCCESSFUL",
+        "FAILED"
       ],
       "extra": {},
       "labels": []
