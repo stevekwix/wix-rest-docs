@@ -2572,6 +2572,11 @@
           "name": "resolveStepsInOrder",
           "type": "boolean",
           "doc": "allow participants complete steps in a certain order.\n"
+        },
+                {
+          "name": "shareActivity",
+          "type": "boolean",
+          "doc": ""
         }
       ],
       "enum": null,
