@@ -175,6 +175,13 @@
         },
                 {
           "in": "QUERY",
+          "name": "existingSubscriptionId",
+          "type": "string",
+          "doc": " ID of an existing subscription. Allows for upgrading / downgrading a specific subscription.\n If not specified the existing subscription will be determined according to the supplied meta-site\n",
+          "required": false
+        },
+                {
+          "in": "QUERY",
           "name": "eventAggregator",
           "type": "string",
           "doc": "  ID required to aggregate BI events for purchase flow, if not supplied an ID will be generated\n",
@@ -876,6 +883,11 @@
           "name": "taxDetails",
           "type": "All APIs.Premium Store._com_wixpress_premium_store_checkout_v1_GetUserOfferingRequest_TaxDetails",
           "doc": " If provided the prices would be calculated according to the details here and not via country cookie\n"
+        },
+                {
+          "name": "existingSubscriptionId",
+          "type": "string",
+          "doc": " ID of an existing subscription. Allows for upgrading / downgrading a specific subscription.\n If not specified the existing subscription will be determined according to the supplied meta-site\n"
         }
       ],
       "enum": null,
