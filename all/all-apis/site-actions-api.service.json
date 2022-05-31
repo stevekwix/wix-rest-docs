@@ -1,0 +1,324 @@
+{
+  "name": "Site Actions API",
+  "client_id": "https://github.com/wix-private/npm-proto-bazel/tree/master/com_wixpress_proto_site-actions-api/src/main/proto#public",
+  "memberOf": "All APIs",
+  "category": "core",
+  "mixes": [],
+  "labels": [],
+  "docs":   {
+    "summary": "API for managing site-actions",
+    "description": []
+  },
+  "properties": [],
+  "tags": [  {
+    "name": "Site Actions",
+    "entity": null
+  }],
+  "relatedGuides": [  {
+    "path": "../guides/site-actions-api/docs/README-External.md",
+    "name": "Introduction"
+  }],
+  "operations":   [
+        {
+      "name": "Bulk Move Sites To Trash",
+      "methodName": "BulkMoveSitesToTrash",
+      "serviceName": "SiteActionsService",
+      "tag": "Site Actions",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "params": [      {
+        "in": "BODY",
+        "name": "siteIds",
+        "type":         {
+          "name": "array",
+          "typeParams": ["string"]
+        },
+        "doc": " Site ids\n",
+        "required": false
+      }],
+      "ret":       {
+        "type":         {
+          "name": "BulkMoveSitesToTrash",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Site Actions API._com_wix_site_actions_BulkMoveSitesToTrashResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": "Bulk move site to trash.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/site-actions/v1/bulk/sites/move-to-trash",
+        "links": [],
+        "examples": [        {
+          "title": "DuplicateSite",
+          "body": ["curl 'https://www.wixapis.com/site-actions/v1/bulk/sites/move-to-trash' \\\n  -H 'accept: application/json, text/plain, */*' \\\n  -H 'authorization: <AUTH>' \\\n  -H 'content-type: application/json' \\\n  -d '{\"siteIds\":[\"9f023696-c821-4e09-b1d0-55357272ff2a\", \"da0c7663-e375-48a9-b273-f0bd45c933a9\"]}' \\\n  --compressed"],
+          "response": ["{\"results\": [\n    {\n    \"siteId\": \"9f023696-c821-4e09-b1d0-55357272ff2a\",\n    \"movedToTrash\": true,\n    \"failureReason\": \"\"\n  },\n    {\n    \"siteId\": \"da0c7663-e375-48a9-b273-f0bd45c933a9\",\n    \"movedToTrash\": false,\n    \"failureReason\": \"No Permission To Perform Action\"\n  }\n]} "],
+          "type": "curl",
+          "extra": {}
+        }],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "BulkMoveSitesToTrashRequest",
+        "rpcResponseName": "BulkMoveSitesToTrashResponse"
+      },
+      "customLabels": [{"id": "maturity-alpha"}]
+    },
+        {
+      "name": "Duplicate Site",
+      "methodName": "DuplicateSite",
+      "serviceName": "SiteActionsService",
+      "tag": "Site Actions",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["newSiteName"],
+      "params": [      {
+        "in": "BODY",
+        "name": "newSiteName",
+        "type": "string",
+        "doc": " Site name for the new site. between 1 to 20 characters\n",
+        "required": true
+      }],
+      "ret":       {
+        "type":         {
+          "name": "DuplicateSite",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Site Actions API._com_wix_site_actions_DuplicateSiteResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Duplicate site with new site name. The current site id should be passed implicitly as part of the Authorization Header.\n\n Note: When you duplicate a site, some business-related content such as store orders, contacts, invoices and third party app settings will not be included.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/site-actions/v1/sites/duplicate",
+        "links": [],
+        "examples": [        {
+          "title": "DuplicateSite",
+          "body": ["curl 'https://www.wixapis.com/site-actions/v1/sites/duplicate' \\\n  -H 'accept: application/json, text/plain, */*' \\\n  -H 'authorization: <AUTH>' \\\n  -H 'content-type: application/json' \\\n  -d '{\"newSiteName\":\"<NEW SITE NAME>\"}' \\\n  --compressed"],
+          "response": ["{\"newSiteId\": \"f161fc0f-cae0-4202-8f75-2d4f2469fe0a\"} "],
+          "type": "curl",
+          "extra": {}
+        }],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "DuplicateSiteRequest",
+        "rpcResponseName": "DuplicateSiteResponse"
+      },
+      "customLabels": [{"id": "maturity-alpha"}]
+    }
+  ],
+  "events": [],
+  "callbacks": [],
+  "messages":   [
+        {
+      "name": "_wix_api_ApplicationError",
+      "displayName": "Application Error Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "code",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "description",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "data",
+          "type": "struct",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_BulkActionMetadata",
+      "displayName": "Bulk Action Metadata Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "totalSuccesses",
+          "type": "integer",
+          "doc": " For how many items the requested action was successful \n"
+        },
+                {
+          "name": "totalFailures",
+          "type": "integer",
+          "doc": " For how many items the requested action was not successful \n"
+        },
+                {
+          "name": "undetailedFailures",
+          "type": "integer",
+          "doc": " total number of failures without details because detailed-failure-threshold exceeded\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_ItemMetadata",
+      "displayName": "Item Metadata Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Item id. Should always be provided, unless it's impossible (e.g when failing to create an item)\n"
+        },
+                {
+          "name": "originalIndex",
+          "type": "integer",
+          "doc": " The index of the item within the request array to allow the caller to correlate the request and response items\n"
+        },
+                {
+          "name": "success",
+          "type": "boolean",
+          "doc": " Whether the action requested was successful for this item. When this value is false, error should be populated\n"
+        },
+                {
+          "name": "error",
+          "type": "All APIs.Site Actions API._wix_api_ApplicationError",
+          "doc": " In case of failure, details about the error\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_site_actions_DuplicateSiteRequest",
+      "displayName": "Duplicate Site Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "newSiteName",
+        "type": "string",
+        "doc": " Site name for the new site. between 1 to 20 characters\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_site_actions_DuplicateSiteResponse",
+      "displayName": "Duplicate Site Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "newSiteId",
+        "type": "string",
+        "doc": " New site id\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_site_actions_BulkMoveSitesToTrashRequest",
+      "displayName": "Bulk Move Sites To Trash Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "siteIds",
+        "type":         {
+          "name": "array",
+          "typeParams": ["string"]
+        },
+        "doc": " Site ids\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_site_actions_BulkMoveSitesToTrashResponse",
+      "displayName": "Bulk Move Sites To Trash Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "results",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Site Actions API._com_wix_site_actions_MoveToTrashItemResult"]
+          },
+          "doc": " An array of results of move to trash success or failure for each site\n"
+        },
+                {
+          "name": "bulkActionMetadata",
+          "type": "All APIs.Site Actions API._wix_common_BulkActionMetadata",
+          "doc": " Summary of move to trash\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_site_actions_MoveToTrashItemResult",
+      "displayName": "Move To Trash Item Result Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "itemMetadata",
+        "type": "All APIs.Site Actions API._wix_common_ItemMetadata",
+        "doc": " An item with relevant info of success or failure of a site\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    }
+  ],
+  "extra": {"artifactId": "com.wixpress.site-actions.site-actions-server"}
+}
