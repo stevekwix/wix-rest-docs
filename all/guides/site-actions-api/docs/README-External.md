@@ -1,7 +1,7 @@
 SortOrder: 0
 # About Site Actions API
 
-![Site Folders](../docs/site-actions.jpg)
+![Site Folders](https://s3.amazonaws.com/wixplorer-readme-images/site-actions-api%2Fsite-actions.jpg)
 
 Sites Actions API enables management of Wix sites, by performing actions that are accessible to the site's owner, such as duplicating a site and moving it to trash.
 
