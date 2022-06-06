@@ -671,6 +671,11 @@
           "readOnly": true
         },
                 {
+          "name": "shippingAddress",
+          "type": "All APIs.Wix Banking Cards._wix_banking_cards_v1_Address",
+          "doc": " Address where card should be shipped\n"
+        },
+                {
           "name": "cardHolderDetails",
           "type": "All APIs.Wix Banking Cards._wix_banking_cards_v1_CardHolderDetails",
           "doc": "Card holder details\n"
@@ -723,11 +728,6 @@
         "examples": []
       },
       "members":       [
-                {
-          "name": "shippingAddress",
-          "type": "All APIs.Wix Banking Cards._wix_banking_cards_v1_Address",
-          "doc": " Address where card should be shipped\n"
-        },
                 {
           "name": "address",
           "type": "All APIs.Wix Banking Cards._wix_banking_cards_v1_Address",
