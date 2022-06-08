@@ -180,7 +180,7 @@
         "hasRest": true,
         "rpcRequestName": "ConnectAccountRequest",
         "rpcResponseName": "ConnectAccountResponse",
-        "artifactId": "com.wixpress.payments.providers.providers-spi-gateway"
+        "artifactId": "com.wixpress.psp.psp-gateway"
       },
       "customLabels": [{"id": "maturity-beta"}]
     },
