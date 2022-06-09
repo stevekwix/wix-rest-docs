@@ -257,7 +257,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Cancels an order. Recurring orders can be canceled either immediately or at the next payment date.\n One time orders can only be canceled immediately.\n \n",
+        "summary": " Cancels an existing order.\n\nRecurring orders can be canceled either immediately or at the next payment date. \nOne-time orders can only be canceled immediately.\n \n",
         "description": [],
         "request": "POST",
         "url": "https://www.wixapis.com/pricing-plans/v2/orders/{id}/cancel",
@@ -350,28 +350,28 @@
           "in": "BODY",
           "name": "memberId",
           "type": "string",
-          "doc": " MemberID.\n",
+          "doc": " Member ID.\n",
           "required": true
         },
                 {
           "in": "BODY",
           "name": "startDate",
           "type": "string",
-          "doc": " Date from which the plan is valid. Defaults to current date.\n",
+          "doc": " Start date for the ordered plan.\n\nDefault: Current date\n",
           "required": false
         },
                 {
           "in": "BODY",
           "name": "paid",
           "type": "boolean",
-          "doc": " Whether the order is paid. Defaults to false.\n",
+          "doc": " Whether or not the order is paid.\n\nDefault: `false`\n",
           "required": false
         },
                 {
           "in": "BODY",
           "name": "couponCode",
           "type": "string",
-          "doc": " Optional. Coupon code to apply for plan\n",
+          "doc": " Coupon code to apply.\n",
           "required": false
         }
       ],
@@ -392,16 +392,16 @@
         "links": [],
         "examples":         [
                     {
-            "title": "Create a Paid Offline Order With a Future Start Date",
-            "body": ["curl -X POST \\\n    'https://www.wixapis.com/pricing-plans/v2/checkout/orders/offline' \\\n    -H 'Authorization: <AUTH>' \\\n    -H 'Content-Type: application/json' \\\n    --data-raw '{\n        \"plan_id\": \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n        \"member_id\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n        \"start_date\": \"2022-11-26T13:45:53.129Z\",\n        \"paid\": true\n    }'"],
-            "response": ["{\"order\": {\n  \"id\": \"cad91401-af2d-4938-8f24-0b25fe456bdc\",\n  \"planId\": \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n  \"subscriptionId\": \"6ebf99aa-85f8-4860-acd2-72a1dbe9f9d9\",\n  \"wixPayOrderId\": \"e2dda1d0-81fc-4697-84d2-083d58d3d743\",\n  \"buyer\":   {\n    \"memberId\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n    \"contactId\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\"\n  },\n  \"priceDetails\":   {\n    \"subtotal\": \"3\",\n    \"total\": \"3\",\n    \"planPrice\": \"3\",\n    \"currency\": \"EUR\",\n    \"subscription\":     {\n      \"cycleDuration\":       {\n        \"count\": 1,\n        \"unit\": \"WEEK\"\n      },\n      \"cycleCount\": 0\n    }\n  },\n  \"type\": \"OFFLINE\",\n  \"status\": \"ACTIVE\",\n  \"autoRenewCanceled\": false,\n  \"lastPaymentStatus\": \"PAID\",\n  \"startDate\": \"2022-11-26T13:45:53.129Z\",\n  \"pausePeriods\": [],\n  \"planName\": \"Test plan\",\n  \"planDescription\": \"\",\n  \"createdDate\": \"2021-11-24T11:22:14.742768Z\",\n  \"updatedDate\": \"2021-11-24T11:22:14.742768Z\"\n}} "],
+            "title": "Create a Paid Offline Order With a Future Start Date and Coupon",
+            "body": ["curl -X POST \\\n    'https://www.wixapis.com/pricing-plans/v2/checkout/orders/offline' \\\n    -H 'Authorization: <AUTH>' \\\n    -H 'Content-Type: application/json' \\\n    --data-raw '{\n        \"memberId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\",\n        \"planId\": \"b90475cd-0000-4cb0-93dd-c81ee100e350\",\n        \"startDate\": \"2022-06-25T16:23:00Z\",\n        \"paid\": true,\n        \"couponCode\": \"HalfOff\"\n    }'"],
+            "response": ["{\"order\": {\n  \"id\": \"519f5e34-f11d-483b-8add-58a6aa04b636\",\n  \"planId\": \"b90475cd-0000-4cb0-93dd-c81ee100e350\",\n  \"subscriptionId\": \"9d6881e5-36e7-47c5-bc0d-7df1079e405c\",\n  \"wixPayOrderId\": \"14b2b144-2b61-43df-af63-563390a41fc0\",\n  \"buyer\":   {\n    \"memberId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\",\n    \"contactId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\"\n  },\n  \"pricing\":   {\n    \"subscription\":     {\n      \"cycleDuration\":       {\n        \"count\": 1,\n        \"unit\": \"DAY\"\n      },\n      \"cycleCount\": 3\n    },\n    \"prices\": [    {\n      \"duration\":       {\n        \"cycleFrom\": 1,\n        \"numberOfCycles\": 3\n      },\n      \"price\":       {\n        \"subtotal\": \"100.0\",\n        \"coupon\":         {\n          \"code\": \"HalfOff\",\n          \"amount\": \"50.0\",\n          \"id\": \"00f5600a-dc3c-4067-8c6d-b5552a168aa1\"\n        },\n        \"discount\": \"50.0\",\n        \"tax\":         {\n          \"name\": \"Tax\",\n          \"rate\": \"21\",\n          \"amount\": \"10.50\"\n        },\n        \"total\": \"60.50\",\n        \"currency\": \"EUR\"\n      }\n    }]\n  },\n  \"type\": \"OFFLINE\",\n  \"status\": \"ACTIVE\",\n  \"autoRenewCanceled\": false,\n  \"lastPaymentStatus\": \"PAID\",\n  \"startDate\": \"2022-06-25T16:23:00Z\",\n  \"endDate\": \"2022-06-28T16:23:00Z\",\n  \"earliestEndDate\": \"2022-06-28T16:23:00Z\",\n  \"planName\": \"ExpensiveDay\",\n  \"planPrice\": \"100\",\n  \"createdDate\": \"2022-06-02T07:47:13.469959Z\",\n  \"updatedDate\": \"2022-06-02T07:47:13.469959Z\"\n}} "],
             "type": "curl",
             "extra": {}
           },
                     {
             "title": "Create an Unpaid Offline Order",
-            "body": ["curl -X POST \\\n    'https://www.wixapis.com/pricing-plans/v2/checkout/orders/offline' \\\n    -H 'Authorization: <AUTH>>' \\\n    -H 'Content-Type: application/json' \\\n    --data-raw '{\n        \"plan_id\": \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n        \"member_id\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n        \"paid\": false\n    }'"],
-            "response": ["{\"order\": {\n  \"id\": \"d5ce1234-c0a9-476c-abd3-c78aa8589a78\",\n  \"planId\": \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n  \"subscriptionId\": \"a0e5d71d-aaf6-48a2-b57f-f9444cdd08fd\",\n  \"wixPayOrderId\": \"c9e84359-a55d-4533-b9dd-16e9b5d4916e\",\n  \"buyer\":   {\n    \"memberId\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n    \"contactId\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\"\n  },\n  \"priceDetails\":   {\n    \"subtotal\": \"3\",\n    \"total\": \"3\",\n    \"planPrice\": \"3\",\n    \"currency\": \"EUR\",\n    \"subscription\":     {\n      \"cycleDuration\":       {\n        \"count\": 1,\n        \"unit\": \"WEEK\"\n      },\n      \"cycleCount\": 0\n    }\n  },\n  \"type\": \"OFFLINE\",\n  \"status\": \"ACTIVE\",\n  \"autoRenewCanceled\": false,\n  \"lastPaymentStatus\": \"UNPAID\",\n  \"startDate\": \"2022-11-26T13:45:53.129Z\",\n  \"pausePeriods\": [],\n  \"planName\": \"Test plan\",\n  \"planDescription\": \"\",\n  \"createdDate\": \"2021-11-24T11:34:13.632849Z\",\n  \"updatedDate\": \"2021-11-24T11:34:13.632849Z\"\n}} "],
+            "body": ["curl -X POST \\\n    'https://www.wixapis.com/pricing-plans/v2/checkout/orders/offline' \\\n    -H 'Authorization: <AUTH>>' \\\n    -H 'Content-Type: application/json' \\\n    --data-raw '{\n        \"plan_id\": \"b90475cd-9000-4cb0-93dd-c81ee100e350\",\n        \"member_id\": \"805ce40a-0000-464e-85ed-5bb052d8beb7\",\n        \"paid\": false\n    }'"],
+            "response": ["{\"order\": {\n  \"id\": \"333fbc19-319b-4d1f-8e8f-cf68c6e7b30d\",\n  \"planId\": \"b90475cd-94d0-4cb0-93dd-c81ee100e350\",\n  \"subscriptionId\": \"485ccbfe-e880-492a-b221-a55ec4449937\",\n  \"wixPayOrderId\": \"7494d9cf-3004-4101-b923-ffd07fbcf504\",\n  \"buyer\":   {\n    \"memberId\": \"805ce40a-0000-464e-85ed-5bb052d8beb7\",\n    \"contactId\": \"805ce40a-0000-464e-85ed-5bb052d8beb7\"\n  },\n  \"pricing\":   {\n    \"subscription\":     {\n      \"cycleDuration\":       {\n        \"count\": 1,\n        \"unit\": \"DAY\"\n      },\n      \"cycleCount\": 3\n    },\n    \"prices\": [    {\n      \"duration\":       {\n        \"cycleFrom\": 1,\n        \"numberOfCycles\": 3\n      },\n      \"price\":       {\n        \"subtotal\": \"100.00\",\n        \"discount\": \"0\",\n        \"tax\":         {\n          \"name\": \"Tax\",\n          \"rate\": \"21\",\n          \"amount\": \"21.00\"\n        },\n        \"total\": \"121.00\",\n        \"currency\": \"EUR\"\n      }\n    }]\n  },\n  \"type\": \"OFFLINE\",\n  \"status\": \"ACTIVE\",\n  \"autoRenewCanceled\": false,\n  \"lastPaymentStatus\": \"UNPAID\",\n  \"startDate\": \"2022-06-02T07:52:51.237281Z\",\n  \"endDate\": \"2022-06-05T07:52:51.237281Z\",\n  \"earliestEndDate\": \"2022-06-05T07:52:51.237281Z\",\n  \"currentCycle\":   {\n    \"index\": 1,\n    \"startedDate\": \"2022-06-02T07:52:51.237281Z\",\n    \"endedDate\": \"2022-06-03T07:52:51.237281Z\"\n  },\n  \"planName\": \"ExpensiveDay\",\n  \"planPrice\": \"100\",\n  \"createdDate\": \"2022-06-02T07:52:51.237281Z\",\n  \"updatedDate\": \"2022-06-02T07:52:51.237281Z\"\n}} "],
             "type": "curl",
             "extra": {}
           }
@@ -461,7 +461,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["curl -X POST \\\n  https://www.wixapis.com/pricing-plans/v2/plans\n  --data-binary '{\n        \"plan\": {\n            \"name\": {\n                \"value\": \"VIP monthly\"\n            },\n            \"pricing\": {\n                \"subscription\": {\n                    \"cycleDuration\": {\n                        \"count\": 1,\n                        \"unit\": \"MONTH\"\n                    }\n                },\n                \"cycleCount\": 3,\n                \"price\": {\n                    \"value\": \"23\",\n                    \"currency\": \"USD\"\n                }\n            }\n        }\n  }'\n  -H 'Authorization: <AUTH>'"],
+          "body": ["curl -X POST \\\n  https://www.wixapis.com/pricing-plans/v2/plans\n  --data-binary '{\n        \"plan\": {\n            \"name\": \"VIP monthly\",\n            \"pricing\": {\n                \"subscription\": {\n                    \"cycleDuration\": {\n                        \"count\": 1,\n                        \"unit\": \"MONTH\"\n                    }\n                \"cycleCount\": 3                    \n                },\n                \"price\": {\n                    \"value\": \"23\",\n                    \"currency\": \"USD\"\n                }\n            }\n        }\n  }'\n  -H 'Authorization: <AUTH>'"],
           "response": ["{\"plan\": {\n  \"id\": \"31e40c78-...-0bf8436307fb\",\n  \"name\": \"VIP monthly\",\n  \"description\": \"\",\n  \"perks\": {\"values\":   [\n    \"Free consulting\",\n    \"Multi-user\"\n  ]},\n  \"pricing\":   {\n    \"subscription\":     {\n      \"cycleDuration\":       {\n        \"count\": 1,\n        \"unit\": \"MONTH\"\n      },\n      \"cycleCount\": 3\n    },\n    \"price\":     {\n      \"value\": \"23\",\n      \"currency\": \"USD\"\n    }\n  },\n  \"public\": true,\n  \"archived\": false,\n  \"primary\": false,\n  \"hasOrders\": true,\n  \"createdDate\": \"2021-01-10T09:05:20.063Z\",\n  \"updatedDate\": \"2021-01-10T09:05:20.063Z\",\n  \"slug\": \"vip-monthly\",\n  \"maxPurchasesPerBuyer\": 1,\n  \"allowFutureStartDate\": true,\n  \"buyerCanCancel\": true,\n  \"termsAndConditions\": \"No sharing please.\"\n}} "],
           "type": "curl",
           "extra": {}
@@ -597,21 +597,21 @@
           "in": "BODY",
           "name": "memberId",
           "type": "string",
-          "doc": " MemberID.\n",
+          "doc": " Member ID.\n",
           "required": true
         },
                 {
           "in": "BODY",
           "name": "startDate",
           "type": "string",
-          "doc": " Date from which the plan will be valid. Defaults to current time.\n",
+          "doc": " Start date for the ordered plan.\n\nDefault: Current date\n",
           "required": false
         },
                 {
           "in": "BODY",
           "name": "couponCode",
           "type": "string",
-          "doc": " Optional. Coupon code to apply for plan\n",
+          "doc": " Coupon code to apply.\n",
           "required": false
         }
       ],
@@ -625,15 +625,15 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Retrieves an order preview using same logic as purchasing, except that it is not persisted anywhere.\n Purchase limitations are not applied.\n [Tax is applied](https://support.wix.com/en/article/pricing-plans-setting-up-tax-collection) only if the site has it configured.\n \n",
+        "summary": " Retrieves an order preview using the same logic as purchasing, except that it is not persisted anywhere.\n Purchase limitations are not applied.\n Tax is only applied if the site [has it configured](https://support.wix.com/en/article/pricing-plans-setting-up-tax-collection).\n \n",
         "description": [],
         "request": "POST",
         "url": "https://www.wixapis.com/pricing-plans/v2/checkout/orders/preview-offline",
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["curl -X POST \\\n    'https://www.wixapis.com/pricing-plans/v2/checkout/orders/preview-offline' \\\n    -H 'Authorization: <AUTH>' \\\n    -H 'Content-Type: application/json' \\\n    --data-raw '{\n        \"plan_id\": \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n        \"member_id\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n        \"start_date\": \"2022-11-26T13:45:53.129Z\"\n    }'"],
-          "response": ["{\n  \"order\":   {\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"planId\": \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n    \"subscriptionId\": \"00000000-0000-0000-0000-000000000000\",\n    \"buyer\":     {\n      \"memberId\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n      \"contactId\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\"\n    },\n    \"priceDetails\":     {\n      \"subtotal\": \"3\",\n      \"total\": \"3\",\n      \"planPrice\": \"3\",\n      \"currency\": \"EUR\",\n      \"subscription\":       {\n        \"cycleDuration\":         {\n          \"count\": 1,\n          \"unit\": \"WEEK\"\n        },\n        \"cycleCount\": 0\n      }\n    },\n    \"type\": \"OFFLINE\",\n    \"status\": \"ACTIVE\",\n    \"autoRenewCanceled\": false,\n    \"lastPaymentStatus\": \"PAID\",\n    \"startDate\": \"2022-11-26T13:45:53.129Z\",\n    \"pausePeriods\": [],\n    \"planName\": \"Test Plan\",\n    \"planDescription\": \"\",\n    \"createdDate\": \"2021-11-24T11:39:45.513277Z\",\n    \"updatedDate\": \"2021-11-24T11:39:45.513277Z\"\n  },\n  \"purchaseLimitExceeded\": false\n} "],
+          "body": ["curl -X POST \\\n    'https://www.wixapis.com/pricing-plans/v2/checkout/orders/preview-offline' \\\n    -H 'Authorization: <AUTH>' \\\n    -H 'Content-Type: application/json' \\\n    --data-raw '{\n        \"plan_id\": \"5779edd3-2994-4bf4-acfe-d739ad2d95bd\",\n        \"member_id\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\",\n        \"start_date\": \"2022-07-08T00:00:00Z\"\n    }'"],
+          "response": ["{\n  \"order\":   {\n    \"id\": \"00000000-0000-0000-0000-000000000000\",\n    \"planId\": \"5779edd3-2994-4bf4-acfe-d739ad2d95bd\",\n    \"subscriptionId\": \"00000000-0000-0000-0000-000000000000\",\n    \"buyer\":     {\n      \"memberId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\",\n      \"contactId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\"\n    },\n    \"pricing\":     {\n      \"subscription\":       {\n        \"cycleDuration\":         {\n          \"count\": 1,\n          \"unit\": \"MONTH\"\n        },\n        \"cycleCount\": 0\n      },\n      \"prices\":       [\n                {\n          \"duration\":           {\n            \"cycleFrom\": 1,\n            \"numberOfCycles\": 1\n          },\n          \"price\":           {\n            \"subtotal\": \"15.0\",\n            \"coupon\":             {\n              \"code\": \"FirstHalfOff\",\n              \"amount\": \"7.5\",\n              \"id\": \"f841bd4a-a053-43e5-b855-204ea6c06188\"\n            },\n            \"discount\": \"7.5\",\n            \"tax\":             {\n              \"name\": \"Tax\",\n              \"rate\": \"21\",\n              \"amount\": \"1.58\"\n            },\n            \"total\": \"9.08\",\n            \"currency\": \"EUR\"\n          }\n        },\n                {\n          \"duration\": {\"cycleFrom\": 2},\n          \"price\":           {\n            \"subtotal\": \"15.00\",\n            \"discount\": \"0\",\n            \"tax\":             {\n              \"name\": \"Tax\",\n              \"rate\": \"21\",\n              \"amount\": \"3.15\"\n            },\n            \"total\": \"18.15\",\n            \"currency\": \"EUR\"\n          }\n        }\n      ]\n    },\n    \"type\": \"OFFLINE\",\n    \"status\": \"ACTIVE\",\n    \"autoRenewCanceled\": false,\n    \"lastPaymentStatus\": \"PAID\",\n    \"startDate\": \"2022-07-08T00:00:00Z\",\n    \"planName\": \"Gym membership\",\n    \"planDescription\": \"Get fit fast\",\n    \"planPrice\": \"15\",\n    \"createdDate\": \"2022-06-02T11:29:30.052417Z\",\n    \"updatedDate\": \"2022-06-02T11:29:30.052417Z\"\n  },\n  \"purchaseLimitExceeded\": false\n} "],
           "type": "curl",
           "extra": {}
         }],
@@ -693,16 +693,10 @@
       "methodName": "GetOrder",
       "serviceName": "OrderManagementService",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -731,8 +725,8 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["curl -X GET \\\n    'https://www.wixapis.com/pricing-plans/v2/orders/4e83ff91-3382-422a-ab7d-cb37ac6f8aa1' \\\n    -H 'Authorization: <AUTH>'"],
-          "response": ["{\"order\": {\n  \"id\": \"4e83ff91-3382-422a-ab7d-cb37ac6f8aa1\",\n  \"planId\": \"5213c422-f2ff-4056-bcc4-27ee25aa6d10\",\n  \"subscriptionId\": \"dbefea88-38a3-4db7-97e3-ad2dc76d51b0\",\n  \"wixPayOrderId\": \"ac4c09dc-4d0d-4648-948b-ce65f9bf0140\",\n  \"buyer\":   {\n    \"memberId\": \"031f6a32-41e8-a9c5-bc55-09bedaad78d8\",\n    \"contactId\": \"031f6a32-41e8-a9c5-bc55-09bedaad78d8\"\n  },\n  \"priceDetails\":   {\n    \"subtotal\": \"5\",\n    \"total\": \"5\",\n    \"planPrice\": \"5\",\n    \"currency\": \"EUR\",\n    \"subscription\":     {\n      \"cycleDuration\":       {\n        \"count\": 1,\n        \"unit\": \"MONTH\"\n      },\n      \"cycleCount\": 0\n    }\n  },\n  \"type\": \"OFFLINE\",\n  \"status\": \"PENDING\",\n  \"autoRenewCanceled\": false,\n  \"lastPaymentStatus\": \"PAID\",\n  \"startDate\": \"2021-11-30T12:20:55.349Z\",\n  \"pausePeriods\": [],\n  \"planName\": \"Test Plan\",\n  \"planDescription\": \"\",\n  \"createdDate\": \"2021-11-19T12:21:08.567Z\",\n  \"updatedDate\": \"2021-11-19T12:21:09.242Z\"\n}} "],
+          "body": ["curl -X GET \\\n    'https://www.wixapis.com/pricing-plans/v2/orders/333fbc19-319b-4d1f-8e8f-cf68c6e7b30d' \\\n    -H 'Authorization: <AUTH>'"],
+          "response": ["{\"order\": {\n  \"id\": \"333fbc19-319b-4d1f-8e8f-cf68c6e7b30d\",\n  \"planId\": \"b90475cd-94d0-4cb0-93dd-c81ee100e350\",\n  \"subscriptionId\": \"485ccbfe-e880-492a-b221-a55ec4449937\",\n  \"wixPayOrderId\": \"7494d9cf-3004-4101-b923-ffd07fbcf504\",\n  \"buyer\":   {\n    \"memberId\": \"805ce40a-0000-464e-85ed-5bb052d8beb7\",\n    \"contactId\": \"805ce40a-0000-464e-85ed-5bb052d8beb7\"\n  },\n  \"pricing\":   {\n    \"subscription\":     {\n      \"cycleDuration\":       {\n        \"count\": 1,\n        \"unit\": \"DAY\"\n      },\n      \"cycleCount\": 3\n    },\n    \"prices\": [    {\n      \"duration\":       {\n        \"cycleFrom\": 1,\n        \"numberOfCycles\": 3\n      },\n      \"price\":       {\n        \"subtotal\": \"100.00\",\n        \"discount\": \"0\",\n        \"tax\":         {\n          \"name\": \"Tax\",\n          \"rate\": \"21\",\n          \"amount\": \"21.00\"\n        },\n        \"total\": \"121.00\",\n        \"currency\": \"EUR\"\n      }\n    }]\n  },\n  \"type\": \"OFFLINE\",\n  \"status\": \"ACTIVE\",\n  \"autoRenewCanceled\": false,\n  \"lastPaymentStatus\": \"UNPAID\",\n  \"startDate\": \"2022-06-02T07:52:51.237281Z\",\n  \"endDate\": \"2022-06-05T07:52:51.237281Z\",\n  \"earliestEndDate\": \"2022-06-05T07:52:51.237281Z\",\n  \"currentCycle\":   {\n    \"index\": 1,\n    \"startedDate\": \"2022-06-02T07:52:51.237281Z\",\n    \"endedDate\": \"2022-06-03T07:52:51.237281Z\"\n  },\n  \"planName\": \"ExpensiveDay\",\n  \"planPrice\": \"100\",\n  \"createdDate\": \"2022-06-02T07:52:51.237281Z\",\n  \"updatedDate\": \"2022-06-02T07:52:51.237281Z\"\n}} "],
           "type": "curl",
           "extra": {}
         }],
@@ -785,16 +779,10 @@
       "methodName": "GetPlan",
       "serviceName": "PlansServiceV2",
       "tag": "Plan V2",
-      "permissions":       [
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
-                {
-          "name": "Read Pricing Plans",
-          "description": "Request permission to read the site's pricing plans"
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Pricing Plans",
+        "description": "Request permission to read the site's pricing plans"
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -842,16 +830,10 @@
       "methodName": "GetPlanStats",
       "serviceName": "PlansServiceV2",
       "tag": "Plan V2",
-      "permissions":       [
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
-                {
-          "name": "Read Pricing Plans",
-          "description": "Request permission to read the site's pricing plans"
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Pricing Plans",
+        "description": "Request permission to read the site's pricing plans"
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -936,14 +918,6 @@
       "tag": "Order V2",
       "permissions":       [
                 {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
-                {
           "name": "Read Orders",
           "description": "Request permission to read the site's public pricing plans and all orders."
         },
@@ -968,7 +942,7 @@
           "in": "BODY",
           "name": "couponCode",
           "type": "string",
-          "doc": " Optional. Coupon code to apply for plan\n",
+          "doc": " Coupon code to apply.\n",
           "required": false
         }
       ],
@@ -982,15 +956,15 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Returns a plan's pricing. [Tax is applied](https://support.wix.com/en/article/pricing-plans-setting-up-tax-collection) only if the site has it configured.\n \n",
+        "summary": " Retrieves a plan's pricing.\n\nTax is only applied if the site [has it configured](https://support.wix.com/en/article/pricing-plans-setting-up-tax-collection).\n \n",
         "description": [],
         "request": "POST",
         "url": "https://www.wixapis.com/pricing-plans/v2/checkout/orders/price-preview",
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["curl -X POST \\\n    'https://www.wixapis.com/pricing-plans/v2/checkout/orders/price-preview' \\\n    -H 'Authorization: <AUTH>' \\\n    -H 'Content-Type: application/json' \\\n    --data-raw '{\n        \"plan_id\": \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\"\n    }'"],
-          "response": ["{\"price\": {\n  \"subtotal\": \"3\",\n  \"total\": \"3\",\n  \"planPrice\": \"3\",\n  \"currency\": \"EUR\",\n  \"subscription\":   {\n    \"cycleDuration\":     {\n      \"count\": 1,\n      \"unit\": \"WEEK\"\n    },\n    \"cycleCount\": 0\n  },\n  \"freeTrialDays\": 7\n}} "],
+          "body": ["curl -X POST \\\n    'https://www.wixapis.com/pricing-plans/v2/checkout/orders/price-preview' \\\n    -H 'Authorization: <AUTH>' \\\n    -H 'Content-Type: application/json' \\\n    --data-raw '{\n        \"plan_id\": \"5779edd3-2994-4bf4-acfe-d739ad2d95ad\",\n        \"couponCode\": \"FirstHalfOff\"\n    }'"],
+          "response": ["{\"prices\": [\n    {\n    \"duration\":     {\n      \"cycleFrom\": 1,\n      \"numberOfCycles\": 1\n    },\n    \"price\":     {\n      \"subtotal\": \"13.70\",\n      \"coupon\":       {\n        \"code\": \"FirstHalfOff\",\n        \"amount\": \"7.5\",\n        \"id\": \"f841bd4a-a053-43e5-b855-204ea6c06188\"\n      },\n      \"discount\": \"7.5\",\n      \"tax\":       {\n        \"name\": \"Tax\",\n        \"includedInPrice\": true,\n        \"rate\": \"21\",\n        \"amount\": \"1.30\"\n      },\n      \"total\": \"7.50\",\n      \"currency\": \"EUR\"\n    }\n  },\n    {\n    \"duration\": {\"cycleFrom\": 2},\n    \"price\":     {\n      \"subtotal\": \"12.40\",\n      \"discount\": \"0\",\n      \"tax\":       {\n        \"name\": \"Tax\",\n        \"includedInPrice\": true,\n        \"rate\": \"21\",\n        \"amount\": \"2.60\"\n      },\n      \"total\": \"15.00\",\n      \"currency\": \"EUR\"\n    }\n  }\n]} "],
           "type": "curl",
           "extra": {}
         }],
@@ -1219,16 +1193,10 @@
       "methodName": "ListOrders",
       "serviceName": "OrderManagementService",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1305,7 +1273,7 @@
           "in": "QUERY",
           "name": "sorting.order",
           "type": "All APIs.Pricing Plans._wix_common_SortOrder",
-          "doc": " Sort order.\n\n Defaults to `ASC`.\n",
+          "doc": " Sort order.\n",
           "required": false
         }
       ],
@@ -1328,14 +1296,14 @@
                     {
             "title": "List all orders",
             "body": ["curl -X GET \\\n    'https://www.wixapis.com/pricing-plans/v2/orders' \\\n    -H 'Authorization: <AUTH>'"],
-            "response": ["{\"orders\": [\n    {\n    \"id\": \"d5ce1234-c0a9-476c-abd3-c781bd589a78\",\n    \"planId\": \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n    \"subscriptionId\": \"987ddd71-5f9d-4759-a8ae-9105dd353929\",\n    \"buyer\":     {\n      \"id\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n      \"identityType\": \"MEMBER\"\n    },\n    \"priceDetails\":     {\n      \"subtotal\": \"0\",\n      \"total\": \"0\",\n      \"planPrice\": \"0\",\n      \"currency\": \"EUR\",\n      \"singlePaymentUnlimited\": true\n    },\n    \"type\": \"ONLINE\",\n    \"status\": \"ACTIVE\",\n    \"lastPaymentStatus\": \"NOT_APPLICABLE\",\n    \"startDate\": \"2021-10-28T08:34:57.655Z\",\n    \"pausePeriods\": [],\n    \"planName\": \"Test plan\",\n    \"planDescription\": \"\",\n    \"createdDate\": \"2021-10-28T08:34:57.655Z\",\n    \"updatedDate\": \"2021-10-28T08:34:57.855Z\"\n  },\n  \"...\"\n]} "],
+            "response": ["{\"orders\": [\n    {\n    \"id\": \"757de76f-3961-48fe-a907-f17188e0dfbf\",\n    \"planId\": \"8182ba9f-1528-4c6a-9f0c-751bc64ef629\",\n    \"subscriptionId\": \"3bd036d6-5eed-472a-a74f-013f00a1e4dc\",\n    \"wixPayOrderId\": \"d96b920d-87fa-4e50-95a1-bb21d46719ec\",\n    \"buyer\":     {\n      \"memberId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\",\n      \"contactId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\"\n    },\n    \"priceDetails\":     {\n      \"subtotal\": \"0.99\",\n      \"discount\": \"0\",\n      \"total\": \"0.99\",\n      \"planPrice\": \"0.99\",\n      \"currency\": \"EUR\",\n      \"singlePaymentForDuration\":       {\n        \"count\": 3,\n        \"unit\": \"MONTH\"\n      }\n    },\n    \"pricing\":     {\n      \"singlePaymentForDuration\":       {\n        \"count\": 3,\n        \"unit\": \"MONTH\"\n      },\n      \"prices\": [      {\n        \"duration\":         {\n          \"cycleFrom\": 1,\n          \"numberOfCycles\": 1\n        },\n        \"price\":         {\n          \"subtotal\": \"0.99\",\n          \"discount\": \"0\",\n          \"total\": \"0.99\",\n          \"currency\": \"EUR\"\n        }\n      }]\n    },\n    \"type\": \"ONLINE\",\n    \"status\": \"ACTIVE\",\n    \"lastPaymentStatus\": \"PAID\",\n    \"startDate\": \"2022-04-27T11:10:05.773Z\",\n    \"endDate\": \"2022-07-27T11:10:05.773Z\",\n    \"earliestEndDate\": \"2022-07-27T11:10:05.773Z\",\n    \"currentCycle\":     {\n      \"index\": 1,\n      \"startedDate\": \"2022-04-27T11:10:05.773Z\",\n      \"endedDate\": \"2022-07-27T11:10:05.773Z\"\n    },\n    \"planName\": \"0,99\",\n    \"planPrice\": \"0.99\",\n    \"createdDate\": \"2022-04-27T11:10:05.773Z\",\n    \"updatedDate\": \"2022-04-27T11:10:23.243Z\"\n  },\n  \"...\"\n]} "],
             "type": "curl",
             "extra": {}
           },
                     {
             "title": "List CANCELED or ENDED orders",
             "body": ["curl -X GET \\\n    'https://www.wixapis.com/pricing-plans/v2/orders?orderStatuses=CANCELED&orderStatuses=ENDED' \\\n    -H 'Authorization: <AUTH>'"],
-            "response": ["{\"orders\": [\n    {\n    \"id\": \"d5ce1234-c0a9-476c-abd3-c781bd589a78\",\n    \"planId\": \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n    \"subscriptionId\": \"987ddd71-5f9d-4759-a8ae-9105dd353929\",\n    \"buyer\":     {\n      \"id\": \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n      \"identityType\": \"MEMBER\"\n    },\n    \"priceDetails\":     {\n      \"subtotal\": \"0\",\n      \"total\": \"0\",\n      \"planPrice\": \"0\",\n      \"currency\": \"EUR\",\n      \"singlePaymentUnlimited\": true\n    },\n    \"type\": \"ONLINE\",\n    \"status\": \"CANCELED\",\n    \"cancellation\":     {\n      \"cause\": \"OWNER_ACTION\",\n      \"effectiveAt\": \"IMMEDIATELY\"\n    },\n    \"lastPaymentStatus\": \"NOT_APPLICABLE\",\n    \"startDate\": \"2021-10-26T15:12:03.493Z\",\n    \"endDate\": \"2021-10-27T14:26:44.588Z\",\n    \"pausePeriods\": [],\n    \"planName\": \"Test plan\",\n    \"planDescription\": \"\",\n    \"createdDate\": \"2021-10-26T15:12:03.493Z\",\n    \"updatedDate\": \"2021-10-27T14:26:44.637Z\"\n  },\n  \"...\"\n]} "],
+            "response": ["{\"orders\": [\n    {\n    \"id\": \"982184d9-fd86-43e2-a1e1-37f5b96d2d1c\",\n    \"planId\": \"ab4547ad-b584-4f71-aaba-3e951ef45f2b\",\n    \"subscriptionId\": \"e4424ef6-c256-4bc0-a6e0-c0289faaf4c6\",\n    \"buyer\":     {\n      \"memberId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\",\n      \"contactId\": \"805ce40a-9000-464e-85ed-5bb052d8beb7\"\n    },\n    \"priceDetails\":     {\n      \"subtotal\": \"0\",\n      \"discount\": \"0\",\n      \"total\": \"0\",\n      \"planPrice\": \"0\",\n      \"currency\": \"EUR\",\n      \"singlePaymentUnlimited\": true\n    },\n    \"pricing\":     {\n      \"singlePaymentUnlimited\": true,\n      \"prices\": [      {\n        \"duration\": {\"cycleFrom\": 1},\n        \"price\":         {\n          \"subtotal\": \"0\",\n          \"discount\": \"0\",\n          \"total\": \"0\",\n          \"currency\": \"EUR\"\n        }\n      }]\n    },\n    \"type\": \"ONLINE\",\n    \"status\": \"CANCELED\",\n    \"cancellation\":     {\n      \"cause\": \"MEMBER_ACTION\",\n      \"effectiveAt\": \"IMMEDIATELY\"\n    },\n    \"lastPaymentStatus\": \"NOT_APPLICABLE\",\n    \"startDate\": \"2022-02-03T11:48:30.792Z\",\n    \"endDate\": \"2022-02-07T12:16:04.139Z\",\n    \"planName\": \"Chess course+\",\n    \"planDescription\": \"Beginner\",\n    \"planPrice\": \"0\",\n    \"createdDate\": \"2022-02-03T11:48:30.792Z\",\n    \"updatedDate\": \"2022-02-07T12:16:04.218Z\"\n  },\n  \"...\"\n]} "],
             "type": "curl",
             "extra": {}
           }
@@ -1354,16 +1322,10 @@
       "methodName": "ListPlans",
       "serviceName": "PlansServiceV2",
       "tag": "Plan V2",
-      "permissions":       [
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
-                {
-          "name": "Read Pricing Plans",
-          "description": "Request permission to read the site's pricing plans"
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Pricing Plans",
+        "description": "Request permission to read the site's pricing plans"
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1444,14 +1406,6 @@
       "serviceName": "PlansServiceV2",
       "tag": "Plan V2",
       "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
                 {
           "name": "Read Orders",
           "description": "Request permission to read the site's public pricing plans and all orders."
@@ -1602,7 +1556,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Marks an offline order as paid. \n > **Note**: Marking separate payment cycles as paid not yet supported, the entire order will be marked as paid.\n \n",
+        "summary": " Marks an offline order as paid. \n > **Note**: Marking separate payment cycles as paid is not yet supported, the entire order will be marked as paid.\n \n",
         "description": [],
         "request": "POST",
         "url": "https://www.wixapis.com/pricing-plans/v2/orders/{id}/mark-as-paid",
@@ -1695,7 +1649,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Pauses an order and it's payment schedule (for recurring orders).\n \n",
+        "summary": " Pauses an order and its payment schedule, for recurring orders.\n \n",
         "description": [],
         "request": "POST",
         "url": "https://www.wixapis.com/pricing-plans/v2/orders/{id}/pause",
@@ -1741,7 +1695,7 @@
           "in": "BODY",
           "name": "endDate",
           "type": "string",
-          "doc": " New expiration date (timestamp). Cannot be sooner than original expiration date.\n",
+          "doc": " New end date. \n\nCannot be earlier than the original end date.\n",
           "required": false
         }
       ],
@@ -1755,7 +1709,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Changes the order duration by moving expiration date further in to the future.\n \n",
+        "summary": " Updates the order duration by postponing the order's end date.\n \n",
         "description": [],
         "request": "PATCH",
         "url": "https://www.wixapis.com/pricing-plans/v2/orders/{id}",
@@ -1903,14 +1857,6 @@
       "serviceName": "PlansServiceV2",
       "tag": "Plan V2",
       "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
                 {
           "name": "Read Orders",
           "description": "Request permission to read the site's public pricing plans and all orders."
@@ -2327,20 +2273,14 @@
         "summary": "\nAn event that is triggered when a pricing plan is updated.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/plans/plans_service.proto"
       },
-      "topic": "domain_events_wix.pricing_plans.plan",
+      "topic": "domain_events_wix.pricing_plans.v2.plan",
       "tag": "Plan V2",
-      "permissions":       [
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
-                {
-          "name": "Read Pricing Plans",
-          "description": "Request permission to read the site's pricing plans"
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Pricing Plans",
+        "description": "Request permission to read the site's pricing plans"
+      }],
       "customLabels": [{"id": "maturity-alpha"}],
-      "eventType": "wix.pricing_plans.plan_updated",
+      "eventType": "wix.pricing_plans.v2.plan_updated",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -2352,16 +2292,10 @@
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_updated",
       "extra": {"isDomainEvent": true}
@@ -2375,16 +2309,10 @@
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_purchased",
       "extra": {"isDomainEvent": true}
@@ -2398,62 +2326,44 @@
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_started",
       "extra": {"isDomainEvent": true}
     },
         {
-      "type": "_com_wixpress_membership_v2_orders_OrderBillingCycleTriggeredDomainEvent",
-      "name": "Order Billing Cycle Triggered Webhook",
+      "type": "_com_wixpress_membership_v2_orders_OrderCycleStartedDomainEvent",
+      "name": "Order Cycle Started Webhook",
       "docs":       {
         "summary": " Triggered at the start of each cycle of an order with recurring payments.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/orders/order_management_service.proto"
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.pricing_plans.v2.order_billing_cycle_triggered",
+      "eventType": "wix.pricing_plans.v2.order_cycle_started",
       "extra": {"isDomainEvent": true}
     },
         {
       "type": "_com_wixpress_membership_v2_orders_OrderAutoRenewCanceledDomainEvent",
       "name": "Order Auto Renew Canceled Webhook",
       "docs":       {
-        "summary": " Triggered when a recurring order is canceled for next payment cycle.\n",
+        "summary": " Triggered when a recurring order is canceled for the next payment cycle.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/orders/order_management_service.proto"
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_auto_renew_canceled",
       "extra": {"isDomainEvent": true}
@@ -2462,21 +2372,15 @@
       "type": "_com_wixpress_membership_v2_orders_OrderEndedDomainEvent",
       "name": "Order Ended Webhook",
       "docs":       {
-        "summary": " Triggered when an order has ended/expired.\n",
+        "summary": " Triggered when an order period has ended.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/orders/order_management_service.proto"
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_ended",
       "extra": {"isDomainEvent": true}
@@ -2488,20 +2392,14 @@
         "summary": "\nAn event that is triggered when a pricing plan is created.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/plans/plans_service.proto"
       },
-      "topic": "domain_events_wix.pricing_plans.plan",
+      "topic": "domain_events_wix.pricing_plans.v2.plan",
       "tag": "Plan V2",
-      "permissions":       [
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
-                {
-          "name": "Read Pricing Plans",
-          "description": "Request permission to read the site's pricing plans"
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Pricing Plans",
+        "description": "Request permission to read the site's pricing plans"
+      }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.pricing_plans.plan_created",
+      "eventType": "wix.pricing_plans.v2.plan_created",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -2511,41 +2409,29 @@
         "summary": "\nAn event that is triggered when a pricing plan is archived.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/plans/plans_service.proto"
       },
-      "topic": "domain_events_wix.pricing_plans.plan",
+      "topic": "domain_events_wix.pricing_plans.v2.plan",
       "tag": "Plan V2",
-      "permissions":       [
-                {
-          "name": "Manage Pricing Plans",
-          "description": "Request permission to read and manage the site's pricing plans"
-        },
-                {
-          "name": "Read Pricing Plans",
-          "description": "Request permission to read the site's pricing plans"
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Pricing Plans",
+        "description": "Request permission to read the site's pricing plans"
+      }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.pricing_plans.plan_plan_archived",
+      "eventType": "wix.pricing_plans.v2.plan_plan_archived",
       "extra": {"isDomainEvent": true}
     },
         {
       "type": "_com_wixpress_membership_v2_orders_OrderCreatedDomainEvent",
       "name": "Order Created Webhook",
       "docs":       {
-        "summary": "",
+        "summary": " Triggered when an order is created.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/orders/checkout_service.proto"
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_created",
       "extra": {"isDomainEvent": true}
@@ -2559,16 +2445,10 @@
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_start_date_changed",
       "extra": {"isDomainEvent": true}
@@ -2582,16 +2462,10 @@
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_canceled",
       "extra": {"isDomainEvent": true}
@@ -2605,41 +2479,12 @@
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_paused",
-      "extra": {"isDomainEvent": true}
-    },
-        {
-      "type": "_com_wixpress_membership_v2_orders_OrderMarkedAsPaidDomainEvent",
-      "name": "Order Marked As Paid Webhook",
-      "docs":       {
-        "summary": " Triggered when an order is marked as paid.\n",
-        "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/orders/order_management_service.proto"
-      },
-      "topic": "domain_events_wix.pricing_plans.v2.order",
-      "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
-      "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.pricing_plans.v2.order_marked_as_paid",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -2651,39 +2496,44 @@
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_resumed",
+      "extra": {"isDomainEvent": true}
+    },
+        {
+      "type": "_com_wixpress_membership_v2_orders_OrderMarkedAsPaidDomainEvent",
+      "name": "Order Marked As Paid Webhook",
+      "docs":       {
+        "summary": " Triggered when an order is marked as paid.\n",
+        "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/orders/order_management_service.proto"
+      },
+      "topic": "domain_events_wix.pricing_plans.v2.order",
+      "tag": "Order V2",
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
+      "customLabels": [{"id": "maturity-beta"}],
+      "eventType": "wix.pricing_plans.v2.order_marked_as_paid",
       "extra": {"isDomainEvent": true}
     },
         {
       "type": "_com_wixpress_membership_v2_orders_OrderEndDatePostponedDomainEvent",
       "name": "Order End Date Postponed Webhook",
       "docs":       {
-        "summary": " Triggered when an order's expiration date is moved further in to the future.\n",
+        "summary": " Triggered when an order's end date is postponed.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/membership/membership-proto/com/wixpress/membership/v2/orders/order_management_service.proto"
       },
       "topic": "domain_events_wix.pricing_plans.v2.order",
       "tag": "Order V2",
-      "permissions":       [
-                {
-          "name": "Manage Orders",
-          "description": "Request permission to manage the site's pricing plan orders."
-        },
-                {
-          "name": "Read Orders",
-          "description": "Request permission to read the site's public pricing plans and all orders."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's public pricing plans and all orders."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.pricing_plans.v2.order_end_date_postponed",
       "extra": {"isDomainEvent": true}
@@ -2691,79 +2541,6 @@
   ],
   "callbacks": [],
   "messages":   [
-        {
-      "name": "_com_wixpress_membership_v2_plans_PlanCreatedDomainEvent",
-      "displayName": "Plan Created Domain Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"pricing\" : {\n    \"singlePaymentUnlimited\" : true,\n    \"price\" : {\n      \"value\" : \"47\",\n      \"currency\" : \"USD\"\n    }\n  }\n} "],
-          "type": "json",
-          "extra": {}
-        }]
-      },
-      "members":       [
-                {
-          "name": "id",
-          "type": "string",
-          "doc": "Unique event ID."
-        },
-                {
-          "name": "entityFqdn",
-          "type": "string",
-          "doc": "Expected `wix.pricing_plans.plan`.\nFully Qualified Domain Name."
-        },
-                {
-          "name": "slug",
-          "type": "string",
-          "doc": "Expected `created`.\nEvent name."
-        },
-                {
-          "name": "createdEvent",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_plans_PlanEntityCreatedEvent",
-          "doc": "Event Info"
-        },
-                {
-          "name": "entityId",
-          "type": "string",
-          "doc": "Plan ID associated with this event."
-        },
-                {
-          "name": "eventTime",
-          "type": "string",
-          "doc": "Event timestamp."
-        },
-                {
-          "name": "triggeredByAnonymizeRequest",
-          "type": "boolean",
-          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_v2_plans_PlanEntityCreatedEvent",
-      "displayName": "Plan Entity Created Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "entity",
-        "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_plans_Plan",
-        "doc": "Event body"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
         {
       "name": "_com_wixpress_membership_v2_plans_PlanArchivedDomainEvent",
       "displayName": "Plan Archived Domain Event Object",
@@ -2787,7 +2564,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.pricing_plans.plan`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.pricing_plans.v2.plan`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -2813,6 +2590,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2831,6 +2613,84 @@
       "members": [      {
         "name": "body",
         "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_plans_PlanArchived",
+        "doc": "Event body"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_plans_PlanCreatedDomainEvent",
+      "displayName": "Plan Created Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"pricing\" : {\n    \"singlePaymentUnlimited\" : true,\n    \"price\" : {\n      \"value\" : \"47\",\n      \"currency\" : \"USD\"\n    }\n  }\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.pricing_plans.v2.plan`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `created`.\nEvent name."
+        },
+                {
+          "name": "createdEvent",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_plans_PlanEntityCreatedEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "Plan ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_plans_PlanEntityCreatedEvent",
+      "displayName": "Plan Entity Created Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "entity",
+        "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_plans_Plan",
         "doc": "Event body"
       }],
       "enum": null,
@@ -2860,7 +2720,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.pricing_plans.plan`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.pricing_plans.v2.plan`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -2886,6 +2746,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2928,7 +2793,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.pricing_plans.plan`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.pricing_plans.v2.plan`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -2954,6 +2819,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2987,7 +2857,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"51d0cc51-c9d3-406c-a5c8-a8d54cf6707e\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"updated\",\n  \"entityId\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n  \"updatedEvent\" : {\n    \"currentEntity\" : {\n      \"endDate\" : \"2022-02-20T10:25:10.816Z\",\n      \"subscriptionId\" : \"92c27aa1-e037-4a0e-99f4-3a6104d078bf\",\n      \"pausePeriods\" : [ ],\n      \"planName\" : \"Test Plan\",\n      \"id\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n      \"buyer\" : {\n        \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n        \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n      },\n      \"lastPaymentStatus\" : \"PENDING\",\n      \"status\" : \"ACTIVE\",\n      \"planDescription\" : \"\",\n      \"wixPayOrderId\" : \"289c289a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n      \"autoRenewCanceled\" : false,\n      \"type\" : \"ONLINE\",\n      \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n      \"startDate\" : \"2021-11-19T10:25:10.816Z\",\n      \"updatedDate\" : \"2021-11-19T10:25:10.816Z\",\n      \"priceDetails\" : {\n        \"planPrice\" : \"1\",\n        \"subscription\" : {\n          \"cycleDuration\" : {\n            \"count\" : 1,\n            \"unit\" : \"MONTH\"\n          },\n          \"cycleCount\" : 3\n        },\n        \"total\" : \"1\",\n        \"currency\" : \"EUR\",\n        \"subtotal\" : \"1\",\n        \"freeTrialDays\" : 1\n      },\n      \"createdDate\" : \"2021-11-19T10:25:10.816Z\"\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:27:29.183090Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"51d0cc51-c9d3-406c-a5c8-a8d54cf6707e\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"updated\",\n  \"entityId\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n  \"updatedEvent\" : {\n    \"currentEntity\" : {\n      \"endDate\" : \"2022-02-20T10:25:10.816Z\",\n      \"subscriptionId\" : \"92c27aa1-e037-4a0e-99f4-3a6104d078bf\",\n      \"pausePeriods\" : [ ],\n      \"planName\" : \"Test Plan\",\n      \"id\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n      \"buyer\" : {\n        \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n        \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n      },\n      \"lastPaymentStatus\" : \"PENDING\",\n      \"status\" : \"ACTIVE\",\n      \"planDescription\" : \"\",\n      \"wixPayOrderId\" : \"289c289a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n      \"autoRenewCanceled\" : false,\n      \"type\" : \"ONLINE\",\n      \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n      \"startDate\" : \"2021-11-19T10:25:10.816Z\",\n      \"updatedDate\" : \"2021-11-19T10:25:10.816Z\",\n      \"pricing\" : {\n        \"subscription\" : {\n          \"cycleDuration\" : {\n            \"count\" : 1,\n            \"unit\" : \"MONTH\"\n          },\n          \"cycleCount\" : 0\n        },\n        \"prices\" : [ {\n          \"duration\" : {\n            \"cycleFrom\" : 1,\n            \"numberOfCycles\" : 1\n          },\n          \"price\" : {\n            \"subtotal\" : \"15.0\",\n            \"coupon\" : {\n              \"code\" : \"FirstHalfOff\",\n              \"amount\" : \"7.5\",\n              \"id\" : \"f841bd4a-a053-43e5-b855-204ea6c06188\"\n            },\n            \"discount\" : \"7.5\",\n            \"tax\" : {\n              \"name\" : \"Tax\",\n              \"rate\" : \"21\",\n              \"amount\" : \"1.58\"\n            },\n            \"total\" : \"9.08\",\n            \"currency\" : \"EUR\"\n          }\n        }, {\n          \"duration\" : {\n            \"cycleFrom\" : 2\n          },\n          \"price\" : {\n            \"subtotal\" : \"15.00\",\n            \"discount\" : \"0\",\n            \"tax\" : {\n              \"name\" : \"Tax\",\n              \"rate\" : \"21\",\n              \"amount\" : \"3.15\"\n            },\n            \"total\" : \"18.15\",\n            \"currency\" : \"EUR\"\n          }\n        } ]\n      },\n      \"currentCycle\" : {\n        \"index\" : 1,\n        \"startedDate\" : \"2021-11-19T10:25:10.816Z\",\n        \"endedDate\" : \"2021-12-20T10:25:10.816Z\"\n      },\n      \"planPrice\" : \"15\",\n      \"createdDate\" : \"2021-11-19T10:25:10.816Z\"\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:27:29.183090Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3027,6 +2897,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3060,7 +2935,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"2d349c04-7c6f-424f-b948-86d0a61481c7\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"created\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"createdEvent\" : {\n    \"entity\" : {\n      \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n      \"pausePeriods\" : [ ],\n      \"planName\" : \"Test Plan\",\n      \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n      \"buyer\" : {\n        \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n        \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n      },\n      \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n      \"status\" : \"ACTIVE\",\n      \"planDescription\" : \"\",\n      \"type\" : \"ONLINE\",\n      \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n      \"startDate\" : \"2021-11-18T15:01:52.940526Z\",\n      \"updatedDate\" : \"2021-11-18T15:01:52.940526Z\",\n      \"priceDetails\" : {\n        \"planPrice\" : \"0\",\n        \"total\" : \"0\",\n        \"currency\" : \"EUR\",\n        \"subtotal\" : \"0\",\n        \"singlePaymentUnlimited\" : true\n      },\n      \"createdDate\" : \"2021-11-18T15:01:52.940526Z\"\n    }\n  },\n  \"eventTime\" : \"2021-11-18T15:01:53.309863Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"2d349c04-7c6f-424f-b948-86d0a61481c7\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"created\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"createdEvent\" : {\n    \"entity\" : {\n      \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n      \"pausePeriods\" : [ ],\n      \"planName\" : \"Test Plan\",\n      \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n      \"buyer\" : {\n        \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n        \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n      },\n      \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n      \"status\" : \"ACTIVE\",\n      \"planDescription\" : \"\",\n      \"type\" : \"ONLINE\",\n      \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n      \"startDate\" : \"2021-11-18T15:01:52.940526Z\",\n      \"updatedDate\" : \"2021-11-18T15:01:52.940526Z\",\n      \"pricing\" : {\n        \"singlePaymentUnlimited\" : true,\n        \"prices\" : [ {\n          \"duration\" : {\n            \"cycleFrom\" : 1,\n            \"numberOfCycles\" : 1\n          },\n          \"price\" : {\n            \"subtotal\" : \"272.73\",\n            \"discount\" : \"0\",\n            \"tax\" : {\n              \"name\" : \"Tax\",\n              \"includedInPrice\" : true,\n              \"rate\" : \"21\",\n              \"amount\" : \"57.27\"\n            },\n            \"total\" : \"330.00\",\n            \"currency\" : \"EUR\"\n          }\n        } ]\n      },\n      \"planPrice\" : \"330\",\n      \"createdDate\" : \"2021-11-18T15:01:52.940526Z\"\n    }\n  },\n  \"eventTime\" : \"2021-11-18T15:01:53.309863Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3100,6 +2975,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3133,7 +3013,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"64e78c42-59a4-46d7-9e5b-32ca639515b9\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"start_date_changed\",\n  \"entityId\" : \"897394d7-eb6b-4aac-beda-2f9fd6007d8b\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"1c51eacb-46a5-498b-97d2-310f1c7e22cc\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"897394d7-eb6b-4aac-beda-2f9fd6007d8b\",\n        \"buyer\" : {\n          \"memberId\" : \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n          \"contactId\" : \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"UNPAID\",\n        \"status\" : \"DRAFT\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"baaedbd3-7298-4096-ac8a-11186ec16f99\",\n        \"autoRenewCanceled\" : false,\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n        \"startDate\" : \"2022-12-26T13:45:53.129Z\",\n        \"updatedDate\" : \"2021-11-24T12:53:55.485977Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"3\",\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"WEEK\"\n            },\n            \"cycleCount\" : 0\n          },\n          \"total\" : \"3\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"3\"\n        },\n        \"createdDate\" : \"2021-11-24T12:53:40.947Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-24T12:53:55.499075Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"64e78c42-59a4-46d7-9e5b-32ca639515b9\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"start_date_changed\",\n  \"entityId\" : \"897394d7-eb6b-4aac-beda-2f9fd6007d8b\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"1c51eacb-46a5-498b-97d2-310f1c7e22cc\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"897394d7-eb6b-4aac-beda-2f9fd6007d8b\",\n        \"buyer\" : {\n          \"memberId\" : \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n          \"contactId\" : \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"UNPAID\",\n        \"status\" : \"DRAFT\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"baaedbd3-7298-4096-ac8a-11186ec16f99\",\n        \"autoRenewCanceled\" : false,\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n        \"startDate\" : \"2022-12-26T13:45:53.129Z\",\n        \"updatedDate\" : \"2021-11-24T12:53:55.485977Z\",\n        \"pricing\" : {\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"WEEK\"\n            },\n            \"cycleCount\" : 0\n          },\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 1\n            },\n            \"price\" : {\n              \"subtotal\" : \"15.0\",\n              \"coupon\" : {\n                \"code\" : \"FirstHalfOff\",\n                \"amount\" : \"7.5\",\n                \"id\" : \"f841bd4a-a053-43e5-b855-204ea6c06188\"\n              },\n              \"discount\" : \"7.5\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"rate\" : \"21\",\n                \"amount\" : \"1.58\"\n              },\n              \"total\" : \"9.08\",\n              \"currency\" : \"EUR\"\n            }\n          }, {\n            \"duration\" : {\n              \"cycleFrom\" : 2\n            },\n            \"price\" : {\n              \"subtotal\" : \"15.00\",\n              \"discount\" : \"0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"rate\" : \"21\",\n                \"amount\" : \"3.15\"\n              },\n              \"total\" : \"18.15\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"planPrice\" : \"15\",\n        \"createdDate\" : \"2021-11-24T12:53:40.947Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-24T12:53:55.499075Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3173,6 +3053,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3206,7 +3091,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"351700dd-379b-4edb-958e-03ac1068272c\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"canceled\",\n  \"entityId\" : \"6aaf747a-d1cf-49f4-a9bb-b2e9ec7b5bbc\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2021-11-18T13:51:54.085Z\",\n        \"subscriptionId\" : \"ba119827-5621-43ae-aa61-ec99537d40ee\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"6aaf747a-d1cf-49f4-a9bb-b2e9ec7b5bbc\",\n        \"cancellation\" : {\n          \"cause\" : \"OWNER_ACTION\",\n          \"effectiveAt\" : \"IMMEDIATELY\"\n        },\n        \"buyer\" : {\n          \"memberId\" : \"a9811e3f-7282-4ed7-a220-f9115ac37e46\",\n          \"contactId\" : \"a9811e3f-7282-4ed7-a220-f9115ac37e46\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"CANCELED\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T13:47:43.512Z\",\n        \"updatedDate\" : \"2021-11-18T13:51:54.229581Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"0\",\n          \"total\" : \"0\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"0\",\n          \"singlePaymentUnlimited\" : true\n        },\n        \"createdDate\" : \"2021-11-18T13:47:43.512Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-18T13:51:54.349781Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"351700dd-379b-4edb-958e-03ac1068272c\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"canceled\",\n  \"entityId\" : \"6aaf747a-d1cf-49f4-a9bb-b2e9ec7b5bbc\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2021-11-18T13:51:54.085Z\",\n        \"subscriptionId\" : \"ba119827-5621-43ae-aa61-ec99537d40ee\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"6aaf747a-d1cf-49f4-a9bb-b2e9ec7b5bbc\",\n        \"cancellation\" : {\n          \"cause\" : \"OWNER_ACTION\",\n          \"effectiveAt\" : \"IMMEDIATELY\"\n        },\n        \"buyer\" : {\n          \"memberId\" : \"a9811e3f-7282-4ed7-a220-f9115ac37e46\",\n          \"contactId\" : \"a9811e3f-7282-4ed7-a220-f9115ac37e46\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"CANCELED\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T13:47:43.512Z\",\n        \"updatedDate\" : \"2021-11-18T13:51:54.229581Z\",\n        \"pricing\" : {\n          \"singlePaymentUnlimited\" : true,\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 1\n            },\n            \"price\" : {\n              \"subtotal\" : \"272.73\",\n              \"discount\" : \"0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"includedInPrice\" : true,\n                \"rate\" : \"21\",\n                \"amount\" : \"57.27\"\n              },\n              \"total\" : \"330.00\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"planPrice\" : \"330\",\n        \"createdDate\" : \"2021-11-18T13:47:43.512Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-18T13:51:54.349781Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3246,6 +3131,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3279,7 +3169,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"530f91f9-628b-43dc-a319-15bb47d7263c\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"paused\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n        \"pausePeriods\" : [ {\n          \"status\" : \"ACTIVE\",\n          \"pauseDate\" : \"2021-11-19T10:40:46.661Z\"\n        } ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"PAUSED\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T15:01:52.940Z\",\n        \"updatedDate\" : \"2021-11-19T10:40:46.661858Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"0\",\n          \"total\" : \"0\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"0\",\n          \"singlePaymentUnlimited\" : true\n        },\n        \"createdDate\" : \"2021-11-18T15:01:52.940Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:40:46.805912Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"530f91f9-628b-43dc-a319-15bb47d7263c\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"paused\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n        \"pausePeriods\" : [ {\n          \"status\" : \"ACTIVE\",\n          \"pauseDate\" : \"2021-11-19T10:40:46.661Z\"\n        } ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"PAUSED\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T15:01:52.940Z\",\n        \"updatedDate\" : \"2021-11-19T10:40:46.661858Z\",\n        \"pricing\" : {\n          \"singlePaymentUnlimited\" : true,\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 1\n            },\n            \"price\" : {\n              \"subtotal\" : \"272.73\",\n              \"discount\" : \"0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"includedInPrice\" : true,\n                \"rate\" : \"21\",\n                \"amount\" : \"57.27\"\n              },\n              \"total\" : \"330.00\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"planPrice\" : \"330\",\n        \"createdDate\" : \"2021-11-18T15:01:52.940Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:40:46.805912Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3319,6 +3209,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3344,79 +3239,6 @@
       "labels": []
     },
         {
-      "name": "_com_wixpress_membership_v2_orders_OrderMarkedAsPaidDomainEvent",
-      "displayName": "Order Marked As Paid Domain Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"id\" : \"ee99873a-f954-4bea-b432-fb5742d84514\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"marked_as_paid\",\n  \"entityId\" : \"90a1d9ab-0ab7-43c0-9bc1-2b26c548a368\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2022-02-19T11:06:02.739Z\",\n        \"subscriptionId\" : \"5e51fac5-0e7b-4123-88f4-ebd316d52498\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"90a1d9ab-0ab7-43c0-9bc1-2b26c548a368\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"PAID\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"3256209b-a967-4eff-bef4-5c809d6c6978\",\n        \"autoRenewCanceled\" : false,\n        \"type\" : \"OFFLINE\",\n        \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"startDate\" : \"2021-11-19T11:06:02.739Z\",\n        \"updatedDate\" : \"2021-11-19T11:09:51.102454Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"1\",\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"MONTH\"\n            },\n            \"cycleCount\" : 3\n          },\n          \"total\" : \"1\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"1\"\n        },\n        \"createdDate\" : \"2021-11-19T11:06:19.377Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T11:09:51.109621Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
-          "type": "json",
-          "extra": {}
-        }]
-      },
-      "members":       [
-                {
-          "name": "id",
-          "type": "string",
-          "doc": "Unique event ID."
-        },
-                {
-          "name": "entityFqdn",
-          "type": "string",
-          "doc": "Expected `wix.pricing_plans.v2.order`.\nFully Qualified Domain Name."
-        },
-                {
-          "name": "slug",
-          "type": "string",
-          "doc": "Expected `marked_as_paid`.\nEvent name."
-        },
-                {
-          "name": "actionEvent",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderMarkedAsPaidActionEvent",
-          "doc": "Event Info"
-        },
-                {
-          "name": "entityId",
-          "type": "string",
-          "doc": "OrderMarkedAsPaid ID associated with this event."
-        },
-                {
-          "name": "eventTime",
-          "type": "string",
-          "doc": "Event timestamp."
-        },
-                {
-          "name": "triggeredByAnonymizeRequest",
-          "type": "boolean",
-          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_v2_orders_OrderMarkedAsPaidActionEvent",
-      "displayName": "Order Marked As Paid Action Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "body",
-        "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderMarkedAsPaid",
-        "doc": "Event body"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
       "name": "_com_wixpress_membership_v2_orders_OrderResumedDomainEvent",
       "displayName": "Order Resumed Domain Event Object",
       "locations": [],
@@ -3425,7 +3247,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"a5347825-7062-411e-b0be-281c494d9bb6\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"resumed\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n        \"pausePeriods\" : [ {\n          \"status\" : \"ENDED\",\n          \"pauseDate\" : \"2021-11-19T10:40:46.661Z\",\n          \"resumeDate\" : \"2021-11-19T10:40:49.902Z\"\n        } ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T15:01:52.940Z\",\n        \"updatedDate\" : \"2021-11-19T10:40:46.661Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"0\",\n          \"total\" : \"0\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"0\",\n          \"singlePaymentUnlimited\" : true\n        },\n        \"createdDate\" : \"2021-11-18T15:01:52.940Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:40:50.047031Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"a5347825-7062-411e-b0be-281c494d9bb6\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"resumed\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n        \"pausePeriods\" : [ {\n          \"status\" : \"ENDED\",\n          \"pauseDate\" : \"2021-11-19T10:40:46.661Z\",\n          \"resumeDate\" : \"2021-11-19T10:40:49.902Z\"\n        } ],\n        \"planName\" : \"Forever\",\n        \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T15:01:52.940Z\",\n        \"updatedDate\" : \"2021-11-19T10:40:46.661Z\",\n        \"pricing\" : {\n          \"singlePaymentUnlimited\" : true,\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 1\n            },\n            \"price\" : {\n              \"subtotal\" : \"272.73\",\n              \"discount\" : \"0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"includedInPrice\" : true,\n                \"rate\" : \"21\",\n                \"amount\" : \"57.27\"\n              },\n              \"total\" : \"330.00\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"currentCycle\" : {\n          \"index\" : 1,\n          \"startedDate\" : \"2021-11-18T15:01:52.940526Z\"\n        },\n        \"planPrice\" : \"330\",\n        \"createdDate\" : \"2021-11-18T15:01:52.940Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:40:50.047031Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3465,6 +3287,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3490,6 +3317,84 @@
       "labels": []
     },
         {
+      "name": "_com_wixpress_membership_v2_orders_OrderMarkedAsPaidDomainEvent",
+      "displayName": "Order Marked As Paid Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"id\" : \"ee99873a-f954-4bea-b432-fb5742d84514\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"marked_as_paid\",\n  \"entityId\" : \"90a1d9ab-0ab7-43c0-9bc1-2b26c548a368\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2022-02-19T11:06:02.739Z\",\n        \"subscriptionId\" : \"5e51fac5-0e7b-4123-88f4-ebd316d52498\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"90a1d9ab-0ab7-43c0-9bc1-2b26c548a368\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"PAID\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"3256209b-a967-4eff-bef4-5c809d6c6978\",\n        \"autoRenewCanceled\" : false,\n        \"type\" : \"OFFLINE\",\n        \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"startDate\" : \"2021-11-19T11:06:02.739Z\",\n        \"updatedDate\" : \"2021-11-19T11:09:51.102454Z\",\n        \"pricing\" : {\n          \"singlePaymentUnlimited\" : true,\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 1\n            },\n            \"price\" : {\n              \"subtotal\" : \"272.73\",\n              \"discount\" : \"0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"includedInPrice\" : true,\n                \"rate\" : \"21\",\n                \"amount\" : \"57.27\"\n              },\n              \"total\" : \"330.00\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"planPrice\" : \"330\",\n        \"createdDate\" : \"2021-11-19T11:06:19.377Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T11:09:51.109621Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.pricing_plans.v2.order`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `marked_as_paid`.\nEvent name."
+        },
+                {
+          "name": "actionEvent",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderMarkedAsPaidActionEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "OrderMarkedAsPaid ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_OrderMarkedAsPaidActionEvent",
+      "displayName": "Order Marked As Paid Action Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "body",
+        "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderMarkedAsPaid",
+        "doc": "Event body"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_membership_v2_orders_OrderEndDatePostponedDomainEvent",
       "displayName": "Order End Date Postponed Domain Event Object",
       "locations": [],
@@ -3498,7 +3403,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"dabfedb7-0d06-4628-a201-0aee321b45ff\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"end_date_postponed\",\n  \"entityId\" : \"1aaaefc9-d33b-4901-80b7-3d88735e1a8a\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2022-10-31T22:00:00Z\",\n        \"subscriptionId\" : \"1990614e-c9c1-4ae0-aac5-6e47450fba69\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"1aaaefc9-d33b-4901-80b7-3d88735e1a8a\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"PAID\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"915433c9-d3ad-48b1-bbdc-d9b13d8f5085\",\n        \"autoRenewCanceled\" : false,\n        \"type\" : \"OFFLINE\",\n        \"planId\" : \"5ac01bd9-af20-4f2d-8f77-cb73ecd8bd2f\",\n        \"startDate\" : \"2021-10-28T08:22:09.347Z\",\n        \"updatedDate\" : \"2021-11-19T11:03:46.892813Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"15\",\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"MONTH\"\n            },\n            \"cycleCount\" : 3\n          },\n          \"total\" : \"15\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"15\"\n        },\n        \"createdDate\" : \"2021-10-28T08:22:09.347Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T11:03:47.038913Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"dabfedb7-0d06-4628-a201-0aee321b45ff\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"end_date_postponed\",\n  \"entityId\" : \"1aaaefc9-d33b-4901-80b7-3d88735e1a8a\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2022-10-31T22:00:00Z\",\n        \"subscriptionId\" : \"1990614e-c9c1-4ae0-aac5-6e47450fba69\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"1aaaefc9-d33b-4901-80b7-3d88735e1a8a\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"PAID\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"915433c9-d3ad-48b1-bbdc-d9b13d8f5085\",\n        \"autoRenewCanceled\" : false,\n        \"type\" : \"OFFLINE\",\n        \"planId\" : \"5ac01bd9-af20-4f2d-8f77-cb73ecd8bd2f\",\n        \"startDate\" : \"2021-10-28T08:22:09.347Z\",\n        \"updatedDate\" : \"2021-11-19T11:03:46.892813Z\",\n        \"pricing\" : {\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"MONTH\"\n            },\n            \"cycleCount\" : 12\n          },\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 3\n            },\n            \"price\" : {\n              \"subtotal\" : \"100.0\",\n              \"coupon\" : {\n                \"code\" : \"HalfOff\",\n                \"amount\" : \"50.0\",\n                \"id\" : \"00f5600a-dc3c-4067-8c6d-b5552a168aa1\"\n              },\n              \"discount\" : \"50.0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"rate\" : \"21\",\n                \"amount\" : \"10.50\"\n              },\n              \"total\" : \"60.50\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"planPrice\" : \"100\",\n        \"createdDate\" : \"2021-10-28T08:22:09.347Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T11:03:47.038913Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3538,6 +3443,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3571,7 +3481,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"1ca4c4b1-80f6-4436-8bc5-cc6420f75b19\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"purchased\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T15:01:52.940526Z\",\n        \"updatedDate\" : \"2021-11-18T15:01:52.940526Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"0\",\n          \"total\" : \"0\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"0\",\n          \"singlePaymentUnlimited\" : true\n        },\n        \"createdDate\" : \"2021-11-18T15:01:52.940526Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-18T15:01:53.314417Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"1ca4c4b1-80f6-4436-8bc5-cc6420f75b19\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"purchased\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Forever\",\n        \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T15:01:52.940526Z\",\n        \"updatedDate\" : \"2021-11-18T15:01:52.940526Z\",\n        \"pricing\" : {\n          \"singlePaymentUnlimited\" : true,\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 1\n            },\n            \"price\" : {\n              \"subtotal\" : \"272.73\",\n              \"discount\" : \"0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"includedInPrice\" : true,\n                \"rate\" : \"21\",\n                \"amount\" : \"57.27\"\n              },\n              \"total\" : \"330.00\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"currentCycle\" : {\n          \"index\" : 1,\n          \"startedDate\" : \"2021-11-18T15:01:52.940526Z\"\n        },\n        \"planPrice\" : \"330\",\n        \"createdDate\" : \"2021-11-18T15:01:52.940526Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-18T15:01:53.314417Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3611,6 +3521,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3644,7 +3559,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"6ac3128a-916c-4177-b966-df34b40d52e4\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"started\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T15:01:52.940Z\",\n        \"updatedDate\" : \"2021-11-18T15:01:53.028Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"0\",\n          \"total\" : \"0\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"0\",\n          \"singlePaymentUnlimited\" : true\n        },\n        \"createdDate\" : \"2021-11-18T15:01:52.940Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-18T15:01:53.133879Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"6ac3128a-916c-4177-b966-df34b40d52e4\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"started\",\n  \"entityId\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"subscriptionId\" : \"558aad5d-3529-4a89-be79-14e77d15e3c7\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Forever\",\n        \"id\" : \"5f99efdb-5d56-d8c1-9d6c-298230054c63\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"NOT_APPLICABLE\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"a3cc1a92-a92b-43c2-9db8-f64b9391bb7d\",\n        \"startDate\" : \"2021-11-18T15:01:52.940Z\",\n        \"updatedDate\" : \"2021-11-18T15:01:53.028Z\",\n        \"pricing\" : {\n          \"singlePaymentUnlimited\" : true,\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 1\n            },\n            \"price\" : {\n              \"subtotal\" : \"272.73\",\n              \"discount\" : \"0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"includedInPrice\" : true,\n                \"rate\" : \"21\",\n                \"amount\" : \"57.27\"\n              },\n              \"total\" : \"330.00\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"currentCycle\" : {\n          \"index\" : 1,\n          \"startedDate\" : \"2021-11-18T15:01:52.940Z\"\n        },\n        \"planPrice\" : \"330\",\n        \"createdDate\" : \"2021-11-18T15:01:52.940Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-18T15:01:53.133879Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3684,6 +3599,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3709,18 +3629,13 @@
       "labels": []
     },
         {
-      "name": "_com_wixpress_membership_v2_orders_OrderBillingCycleTriggeredDomainEvent",
-      "displayName": "Order Billing Cycle Triggered Domain Event Object",
+      "name": "_com_wixpress_membership_v2_orders_OrderCycleStartedDomainEvent",
+      "displayName": "Order Cycle Started Domain Event Object",
       "locations": [],
       "docs":       {
         "summary": "",
         "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"id\" : \"2fabeb5c-a9a4-4c75-ab0c-7634e317a5b7\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"billing_cycle_triggered\",\n  \"entityId\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2022-02-20T10:25:10.816Z\",\n        \"subscriptionId\" : \"92c27aa1-e037-4a0e-99f4-3a6104d078bf\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"UNPAID\",\n        \"status\" : \"DRAFT\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"289c289a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"autoRenewCanceled\" : false,\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"startDate\" : \"2021-11-19T10:25:10.816Z\",\n        \"updatedDate\" : \"2021-11-19T10:25:10.816Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"1\",\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"MONTH\"\n            },\n            \"cycleCount\" : 3\n          },\n          \"total\" : \"1\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"1\",\n          \"freeTrialDays\" : 1\n        },\n        \"createdDate\" : \"2021-11-19T10:25:10.816Z\"\n      },\n      \"cycleNumber\" : 0,\n      \"transactionId\" : \"0494c99f-6324-4718-95ed-86e9dd7a0c6a\"\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:27:28.810908Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
-          "type": "json",
-          "extra": {}
-        }]
+        "examples": []
       },
       "members":       [
                 {
@@ -3736,17 +3651,17 @@
                 {
           "name": "slug",
           "type": "string",
-          "doc": "Expected `billing_cycle_triggered`.\nEvent name."
+          "doc": "Expected `cycle_started`.\nEvent name."
         },
                 {
           "name": "actionEvent",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderBillingCycleTriggeredActionEvent",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderCycleStartedActionEvent",
           "doc": "Event Info"
         },
                 {
           "name": "entityId",
           "type": "string",
-          "doc": "OrderBillingCycleTriggered ID associated with this event."
+          "doc": "OrderCycleStarted ID associated with this event."
         },
                 {
           "name": "eventTime",
@@ -3757,6 +3672,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3764,8 +3684,8 @@
       "labels": []
     },
         {
-      "name": "_com_wixpress_membership_v2_orders_OrderBillingCycleTriggeredActionEvent",
-      "displayName": "Order Billing Cycle Triggered Action Event Object",
+      "name": "_com_wixpress_membership_v2_orders_OrderCycleStartedActionEvent",
+      "displayName": "Order Cycle Started Action Event Object",
       "locations": [],
       "docs":       {
         "summary": "",
@@ -3774,7 +3694,7 @@
       },
       "members": [      {
         "name": "body",
-        "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderBillingCycleTriggered",
+        "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderCycleStarted",
         "doc": "Event body"
       }],
       "enum": null,
@@ -3790,7 +3710,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"51a05655-54b9-420d-9420-5d6bb43509b2\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"auto_renew_canceled\",\n  \"entityId\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2021-11-20T10:27:28.466Z\",\n        \"subscriptionId\" : \"92c27aa1-e037-4a0e-99f4-3a6104d078bf\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n        \"cancellation\" : {\n          \"cause\" : \"MEMBER_ACTION\",\n          \"effectiveAt\" : \"NEXT_PAYMENT_DATE\"\n        },\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"PENDING\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"289c289a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"autoRenewCanceled\" : true,\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"startDate\" : \"2021-11-19T10:25:10.816Z\",\n        \"updatedDate\" : \"2021-11-19T10:38:58.843372Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"1\",\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"MONTH\"\n            },\n            \"cycleCount\" : 3\n          },\n          \"total\" : \"1\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"1\",\n          \"freeTrialDays\" : 1\n        },\n        \"createdDate\" : \"2021-11-19T10:25:10.816Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:38:58.970492Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"51a05655-54b9-420d-9420-5d6bb43509b2\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"auto_renew_canceled\",\n  \"entityId\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2021-11-20T10:27:28.466Z\",\n        \"subscriptionId\" : \"92c27aa1-e037-4a0e-99f4-3a6104d078bf\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n        \"cancellation\" : {\n          \"cause\" : \"MEMBER_ACTION\",\n          \"effectiveAt\" : \"NEXT_PAYMENT_DATE\"\n        },\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"PENDING\",\n        \"status\" : \"ACTIVE\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"289c289a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"autoRenewCanceled\" : true,\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"startDate\" : \"2021-11-19T10:25:10.816Z\",\n        \"updatedDate\" : \"2021-11-19T10:38:58.843372Z\",\n        \"pricing\" : {\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"MONTH\"\n            },\n            \"cycleCount\" : 0\n          },\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 1\n            },\n            \"price\" : {\n              \"subtotal\" : \"15.0\",\n              \"coupon\" : {\n                \"code\" : \"FirstHalfOff\",\n                \"amount\" : \"7.5\",\n                \"id\" : \"f841bd4a-a053-43e5-b855-204ea6c06188\"\n              },\n              \"discount\" : \"7.5\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"rate\" : \"21\",\n                \"amount\" : \"1.58\"\n              },\n              \"total\" : \"9.08\",\n              \"currency\" : \"EUR\"\n            }\n          }, {\n            \"duration\" : {\n              \"cycleFrom\" : 2\n            },\n            \"price\" : {\n              \"subtotal\" : \"15.00\",\n              \"discount\" : \"0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"rate\" : \"21\",\n                \"amount\" : \"3.15\"\n              },\n              \"total\" : \"18.15\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"currentCycle\" : {\n          \"index\" : 1,\n          \"startedDate\" : \"2021-11-20T10:25:10.816Z\",\n          \"endedDate\" : \"2021-12-20T10:25:10.816Z\"\n        },\n        \"planPrice\" : \"15\",\n        \"freeTrialDays\" : \"1\",\n        \"createdDate\" : \"2021-11-19T10:25:10.816Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-19T10:38:58.970492Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3830,6 +3750,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3863,7 +3788,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"17ee2c77-d40e-4339-ba7f-59cfd015476d\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"ended\",\n  \"entityId\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2021-11-20T10:27:28.466Z\",\n        \"subscriptionId\" : \"92c27aa1-e037-4a0e-99f4-3a6104d078bf\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n        \"cancellation\" : {\n          \"cause\" : \"MEMBER_ACTION\",\n          \"effectiveAt\" : \"NEXT_PAYMENT_DATE\"\n        },\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"PENDING\",\n        \"status\" : \"CANCELED\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"289c289a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"autoRenewCanceled\" : true,\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"startDate\" : \"2021-11-19T10:25:10.816Z\",\n        \"updatedDate\" : \"2021-11-19T10:38:58.843Z\",\n        \"priceDetails\" : {\n          \"planPrice\" : \"1\",\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"MONTH\"\n            },\n            \"cycleCount\" : 3\n          },\n          \"total\" : \"1\",\n          \"currency\" : \"EUR\",\n          \"subtotal\" : \"1\",\n          \"freeTrialDays\" : 1\n        },\n        \"createdDate\" : \"2021-11-19T10:25:10.816Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-20T10:28:02.049392Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
+          "body": ["{\n  \"id\" : \"17ee2c77-d40e-4339-ba7f-59cfd015476d\",\n  \"entityFqdn\" : \"wix.pricing_plans.v2.order\",\n  \"slug\" : \"ended\",\n  \"entityId\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n  \"actionEvent\" : {\n    \"body\" : {\n      \"order\" : {\n        \"endDate\" : \"2021-11-20T10:27:28.466Z\",\n        \"subscriptionId\" : \"92c27aa1-e037-4a0e-99f4-3a6104d078bf\",\n        \"pausePeriods\" : [ ],\n        \"planName\" : \"Test Plan\",\n        \"id\" : \"5aeff997-ecaa-4c1f-9c45-c5f4a511134a\",\n        \"cancellation\" : {\n          \"cause\" : \"MEMBER_ACTION\",\n          \"effectiveAt\" : \"NEXT_PAYMENT_DATE\"\n        },\n        \"buyer\" : {\n          \"memberId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\",\n          \"contactId\" : \"6bb98a18-dc53-4236-ad88-e4ab6b8de60d\"\n        },\n        \"lastPaymentStatus\" : \"PENDING\",\n        \"status\" : \"CANCELED\",\n        \"planDescription\" : \"\",\n        \"wixPayOrderId\" : \"289c289a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"autoRenewCanceled\" : true,\n        \"type\" : \"ONLINE\",\n        \"planId\" : \"289a9a2a-a18a-4ad2-ae14-9ebdbbc2fdcb\",\n        \"startDate\" : \"2021-11-19T10:25:10.816Z\",\n        \"updatedDate\" : \"2021-11-19T10:38:58.843Z\",\n        \"pricing\" : {\n          \"subscription\" : {\n            \"cycleDuration\" : {\n              \"count\" : 1,\n              \"unit\" : \"MONTH\"\n            },\n            \"cycleCount\" : 12\n          },\n          \"prices\" : [ {\n            \"duration\" : {\n              \"cycleFrom\" : 1,\n              \"numberOfCycles\" : 3\n            },\n            \"price\" : {\n              \"subtotal\" : \"100.0\",\n              \"coupon\" : {\n                \"code\" : \"HalfOff\",\n                \"amount\" : \"50.0\",\n                \"id\" : \"00f5600a-dc3c-4067-8c6d-b5552a168aa1\"\n              },\n              \"discount\" : \"50.0\",\n              \"tax\" : {\n                \"name\" : \"Tax\",\n                \"rate\" : \"21\",\n                \"amount\" : \"10.50\"\n              },\n              \"total\" : \"60.50\",\n              \"currency\" : \"EUR\"\n            }\n          } ]\n        },\n        \"planPrice\" : \"100\",\n        \"createdDate\" : \"2021-11-19T10:25:10.816Z\"\n      }\n    }\n  },\n  \"eventTime\" : \"2021-11-20T10:28:02.049392Z\",\n  \"triggeredByAnonymizeRequest\" : false\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -3903,6 +3828,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -3923,379 +3853,6 @@
         "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderEnded",
         "doc": "Event body"
       }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_Period",
-      "displayName": "Period Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "amount",
-          "type": "integer",
-          "doc": ""
-        },
-                {
-          "name": "unit",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_PeriodUnit",
-          "doc": ""
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_Money",
-      "displayName": "Money Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "amount",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "currency",
-          "type": "string",
-          "doc": " ISO 4217 format of the currency i.e. USD\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_Validity",
-      "displayName": "Validity Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "forever",
-          "type": "boolean",
-          "doc": " if true, plan is valid until cancelled\n"
-        },
-                {
-          "name": "period",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_Period",
-          "doc": " plan has an expiration date after n months; Only applicable if forever = false; Do not send this field if forever = true;\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_PlanDetails",
-      "displayName": "Plan Details Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "name",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "description",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "ribbon",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "benefits",
-          "type":           {
-            "name": "array",
-            "typeParams": ["string"]
-          },
-          "doc": ""
-        },
-                {
-          "name": "disclaimer",
-          "type": "string",
-          "doc": ""
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_PaymentOptions",
-      "displayName": "Payment Options Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "price",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_Money",
-          "doc": ""
-        },
-                {
-          "name": "recurring",
-          "type": "boolean",
-          "doc": " false - payment is one time; true - price is deducted from UoU every month,\n"
-        },
-                {
-          "name": "validFor",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_Validity",
-          "doc": ""
-        },
-                {
-          "name": "freeTrialDays",
-          "type": "integer",
-          "doc": " free trial in days\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_backoffice_Plan",
-      "displayName": "Plan Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "id",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "siteId",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "roleId",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "details",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_PlanDetails",
-          "doc": ""
-        },
-                {
-          "name": "paymentOptions",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_PaymentOptions",
-          "doc": ""
-        },
-                {
-          "name": "visible",
-          "type": "boolean",
-          "doc": ""
-        },
-                {
-          "name": "archived",
-          "type": "boolean",
-          "doc": ""
-        },
-                {
-          "name": "dateCreated",
-          "type": "string",
-          "doc": " date when plan was created\n"
-        },
-                {
-          "name": "dateUpdated",
-          "type": "string",
-          "doc": " date when plan was last updated\n"
-        },
-                {
-          "name": "primary",
-          "type": "boolean",
-          "doc": ""
-        },
-                {
-          "name": "hasOrders",
-          "type": "boolean",
-          "doc": ""
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_backoffice_Order",
-      "displayName": "Order Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "id",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "contactName",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "planName",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "price",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_Money",
-          "doc": ""
-        },
-                {
-          "name": "recurring",
-          "type": "boolean",
-          "doc": " Price is deducted every month if true\n"
-        },
-                {
-          "name": "status",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_OrderStatus",
-          "doc": ""
-        },
-                {
-          "name": "paymentStatus",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_PaymentStatus",
-          "doc": ""
-        },
-                {
-          "name": "validUntil",
-          "type": "string",
-          "doc": " expiration date of subscription\n"
-        },
-                {
-          "name": "contactId",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "validFrom",
-          "type": "string",
-          "doc": " start date of subscription\n"
-        },
-                {
-          "name": "planId",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "cashierOrderId",
-          "type": "string",
-          "doc": " only exists for online purchases\n"
-        },
-                {
-          "name": "orderType",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_OrderType",
-          "doc": ""
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_oneapp_Order",
-      "displayName": "Order Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "id",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "planId",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "planName",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "planDescription",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "planPaymentOptions",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_PaymentOptions",
-          "doc": ""
-        },
-                {
-          "name": "status",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_OrderStatus",
-          "doc": ""
-        },
-                {
-          "name": "paymentStatus",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_PaymentStatus",
-          "doc": ""
-        },
-                {
-          "name": "validFrom",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "validUntil",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "cashierOrderId",
-          "type": "string",
-          "doc": " only exists for online purchases\n"
-        },
-                {
-          "name": "orderType",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_OrderType",
-          "doc": ""
-        }
-      ],
       "enum": null,
       "extra": {},
       "labels": []
@@ -5911,7 +5468,7 @@
                 {
           "name": "order",
           "type": "All APIs.Pricing Plans._wix_common_SortOrder",
-          "doc": " Sort order.\n\n Defaults to `ASC`.\n"
+          "doc": " Sort order.\n"
         }
       ],
       "enum": null,
@@ -6555,12 +6112,12 @@
                 {
           "name": "limit",
           "type": "integer",
-          "doc": " The number of items to load.\n Cursor token returned in the query response. To be used on the next query request, but not the first query request.\n"
+          "doc": " Number of items to load.\n"
         },
                 {
           "name": "cursor",
           "type": "string",
-          "doc": " Cursor returned in last query response. Should not be provided on first page request\n"
+          "doc": "\nPointer to the next or previous page in the list of results.\n\nYou can get the relevant cursor token\nfrom the `pagingMetadata` object in the previous call's response.\nNot relevant for the first request.\n"
         }
       ],
       "enum": null,
@@ -6620,12 +6177,12 @@
                 {
           "name": "next",
           "type": "string",
-          "doc": " Cursor pointing to next result page.\n"
+          "doc": " Cursor pointing to next page in the list of results.\n"
         },
                 {
           "name": "prev",
           "type": "string",
-          "doc": " Cursor pointing to previous result page.\n"
+          "doc": " Cursor pointing to previous page in the list of results.\n"
         }
       ],
       "enum": null,
@@ -6810,22 +6367,22 @@
                 {
           "name": "subtotal",
           "type": "string",
-          "doc": " Price before discount and tax as a monetary amount, i.e. 3.99.\n"
+          "doc": " Price before discount and tax.\n"
         },
                 {
           "name": "discount",
           "type": "string",
-          "doc": " Total discount applied to the order as a monetary amount i.e. 8.50.\n"
+          "doc": " Total discount applied.\n"
         },
                 {
           "name": "tax",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Tax",
-          "doc": " Tax applied to the order. Empty means no tax was applied.\n"
+          "doc": " Tax applied.\n"
         },
                 {
           "name": "total",
           "type": "string",
-          "doc": " Price after tax and discount is applied, as a monetary amount, i.e. 4.98. If no tax nor discount was applied, this amount matches subtotal.\n"
+          "doc": " Price after tax and discount is applied.\n"
         },
                 {
           "name": "planPrice",
@@ -6835,7 +6392,7 @@
                 {
           "name": "currency",
           "type": "string",
-          "doc": " Currency applied to the order.   \n"
+          "doc": " Currency code. Must be valid ISO 4217 currency code (e.g., USD).\n"
         },
                 {
           "name": "pricingModel",
@@ -6889,6 +6446,161 @@
       "oneOf": true
     },
         {
+      "name": "_com_wixpress_membership_v2_orders_PricingDetails",
+      "displayName": "Pricing Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "pricingModel",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_PricingDetails_PricingModel",
+          "doc": ""
+        },
+                {
+          "name": "prices",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Pricing Plans._com_wixpress_membership_v2_orders_SpannedPrice"]
+          },
+          "doc": " Prices for different payment cycles. One spanned price can apply to multiple payment cycles.\n",
+          "readOnly": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_PricingDetails_PricingModel",
+      "displayName": "Pricing Model Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "subscription",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_Recurrence",
+          "doc": " Order has recurring payments.\n"
+        },
+                {
+          "name": "singlePaymentForDuration",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_Duration",
+          "doc": " One time payment and the order is valid for a specified duration.\n"
+        },
+                {
+          "name": "singlePaymentUnlimited",
+          "type": "boolean",
+          "doc": " One time payment and the order is valid until it is canceled.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_SpannedPrice",
+      "displayName": "Spanned Price Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "duration",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_PriceDuration",
+          "doc": " Cycle duration for this price.\n"
+        },
+                {
+          "name": "price",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Price",
+          "doc": " Order price.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_PriceDuration",
+      "displayName": "Price Duration Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "cycleFrom",
+          "type": "integer",
+          "doc": " Indicates from which cycle this price starts to apply. Will start from 1.\n"
+        },
+                {
+          "name": "numberOfCycles",
+          "type": "integer",
+          "doc": " Indicates how many cycles this price applies for. If the price applies until the end of the pricing plan, it will be empty.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_Price",
+      "displayName": "Price Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "subtotal",
+          "type": "string",
+          "doc": " Price before discount and tax.\n"
+        },
+                {
+          "name": "coupon",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Coupon",
+          "doc": " Coupon applied to the order. \n"
+        },
+                {
+          "name": "discount",
+          "type": "string",
+          "doc": " Total discount applied to the order.\n"
+        },
+                {
+          "name": "tax",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Tax",
+          "doc": " Tax applied to the order.\n"
+        },
+                {
+          "name": "total",
+          "type": "string",
+          "doc": " Price after tax and discount is applied.\n"
+        },
+                {
+          "name": "currency",
+          "type": "string",
+          "doc": " Currency applied to the order.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_membership_v2_orders_Tax",
       "displayName": "Tax Object",
       "locations": [],
@@ -6901,22 +6613,22 @@
                 {
           "name": "name",
           "type": "string",
-          "doc": " Name of the tax, i.e. VAT.\n"
+          "doc": " Name of the tax. For example, VAT.\n"
         },
                 {
           "name": "includedInPrice",
           "type": "boolean",
-          "doc": " Whether tax is included in the original price. When false, tax is added at checkout.\n"
+          "doc": " Whether or not tax is included in the original price. When false, tax is added at checkout.\n"
         },
                 {
           "name": "rate",
           "type": "string",
-          "doc": " Tax rate in percentage i.e. 24.81%\n"
+          "doc": " Tax rate in percentage (e.g., 24.81%).\n"
         },
                 {
           "name": "amount",
           "type": "string",
-          "doc": " Monetary amount i.e. 0.99.\n"
+          "doc": " Monetary amount. Decimal string with a period as a decimal separator (e.g., 3.99).\n"
         }
       ],
       "enum": null,
@@ -6936,12 +6648,18 @@
                 {
           "name": "code",
           "type": "string",
-          "doc": " Code of the applied coupon, i.e. summerSale2021\n"
+          "doc": " Code of the applied coupon (e.g., summerSale2021).\n"
         },
                 {
           "name": "amount",
           "type": "string",
-          "doc": " Discount of the coupon as a monetary amount, i.e. 2.00.\n"
+          "doc": " Discount of the coupon as a monetary amount (e.g., 10.00).\n"
+        },
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Coupon ID.\n",
+          "readOnly": true
         }
       ],
       "enum": null,
@@ -6996,7 +6714,7 @@
                 {
           "name": "cause",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_CancellationCauseEnum_CancellationCause",
-          "doc": " Cause of the cancellation (i.e. owner, member, payment issues).\n"
+          "doc": " Cause of the cancellation.\n"
         },
                 {
           "name": "effectiveAt",
@@ -7036,15 +6754,45 @@
       "labels": []
     },
         {
+      "name": "_com_wixpress_membership_v2_orders_CurrentCycle",
+      "displayName": "Current Cycle Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Current cycle will be empty when order is cancelled, expired or order start date is in the future\n Current cycle start and end dates take into account free trial days and suspensions\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "index",
+          "type": "integer",
+          "doc": " Index will be 0 when the order is in the free trial period. In other cases, the index starts from 1.\n"
+        },
+                {
+          "name": "startedDate",
+          "type": "string",
+          "doc": " Indicates the start date of the cycle.\n"
+        },
+                {
+          "name": "endedDate",
+          "type": "string",
+          "doc": " Indicates the end date of the cycle. Field can be empty, indicating no end date.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_membership_v2_orders_Order",
       "displayName": "Order Object",
       "locations": [],
       "docs":       {
-        "summary": "",
+        "summary": " An order object includes all of the details related to the purchase of a Pricing Plan.\n",
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"id\" : \"89aa94d7-eb6b-41e8-beda-2f9fd6007d8b\",\n  \"planId\" : \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n  \"subscriptionId\" : \"1c51eacb-46a5-498b-97d2-310f1c7e22cc\",\n  \"wixPayOrderId\" : \"baaedbd3-7298-4096-ac8a-11186ec16f99\",\n  \"buyer\" : {\n    \"memberId\" : \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n    \"contactId\" : \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\"\n  },\n  \"priceDetails\" : {\n    \"subtotal\" : \"3\",\n    \"total\" : \"3\",\n    \"planPrice\" : \"3\",\n    \"currency\" : \"EUR\",\n    \"subscription\" : {\n      \"cycleDuration\" : {\n        \"count\" : 1,\n        \"unit\" : \"WEEK\"\n      },\n      \"cycleCount\" : 0\n    }\n  },\n  \"type\" : \"ONLINE\",\n  \"status\" : \"DRAFT\",\n  \"autoRenewCanceled\" : false,\n  \"lastPaymentStatus\" : \"UNPAID\",\n  \"startDate\" : \"2022-12-26T13:45:53.129Z\",\n  \"pausePeriods\" : [ ],\n  \"planName\" : \"Test Plan\",\n  \"planDescription\" : \"\",\n  \"createdDate\" : \"2021-11-24T12:53:40.947Z\",\n  \"updatedDate\" : \"2021-11-24T12:53:55.485977Z\"\n} "],
+          "body": ["{\n  \"id\" : \"89aa94d7-eb6b-41e8-beda-2f9fd6007d8b\",\n  \"planId\" : \"6d7bdad2-d7cf-4113-a22f-c2a30b43bbfb\",\n  \"subscriptionId\" : \"1c51eacb-46a5-498b-97d2-310f1c7e22cc\",\n  \"wixPayOrderId\" : \"baaedbd3-7298-4096-ac8a-11186ec16f99\",\n  \"buyer\" : {\n    \"memberId\" : \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\",\n    \"contactId\" : \"6ab98a18-dc53-4236-9a9a-e4ab6b8de60d\"\n  },\n  \"pricing\" : {\n    \"subscription\" : {\n      \"cycleDuration\" : {\n        \"count\" : 1,\n        \"unit\" : \"WEEK\"\n      },\n      \"cycleCount\" : 3\n    },\n    \"prices\" : [ {\n      \"duration\" : {\n        \"cycleFrom\" : 1,\n        \"numberOfCycles\" : 1\n      },\n      \"price\" : {\n        \"subtotal\" : \"100.0\",\n        \"coupon\" : {\n          \"code\" : \"FirstHalfOff\",\n          \"amount\" : \"50.0\",\n          \"id\" : \"f841bd3a-a053-43e5-b855-204ea6c06189\"\n        },\n        \"discount\" : \"50.0\",\n        \"tax\" : {\n          \"name\" : \"Tax\",\n          \"rate\" : \"21\",\n          \"amount\" : \"10.50\"\n        },\n        \"total\" : \"60.50\",\n        \"currency\" : \"EUR\"\n      }\n    }, {\n      \"duration\" : {\n        \"cycleFrom\" : 2,\n        \"numberOfCycles\" : 2\n      },\n      \"price\" : {\n        \"subtotal\" : \"100.00\",\n        \"discount\" : \"0\",\n        \"tax\" : {\n          \"name\" : \"Tax\",\n          \"rate\" : \"21\",\n          \"amount\" : \"21.00\"\n        },\n        \"total\" : \"121.00\",\n        \"currency\" : \"EUR\"\n      }\n    } ]\n  },\n  \"type\" : \"ONLINE\",\n  \"status\" : \"ENDED\",\n  \"autoRenewCanceled\" : false,\n  \"lastPaymentStatus\" : \"PAID\",\n  \"startDate\" : \"2022-04-22T11:53:05.567Z\",\n  \"pausePeriods\" : [ ],\n  \"endDate\" : \"2022-04-25T11:53:05.567Z\",\n  \"earliestEndDate\" : \"2022-04-25T11:53:05.567Z\",\n  \"planName\" : \"Test plan\",\n  \"planPrice\" : \"100\",\n  \"createdDate\" : \"2022-04-22T11:53:05.567Z\",\n  \"updatedDate\" : \"2022-04-25T11:54:01.608Z\"\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -7059,61 +6807,68 @@
                 {
           "name": "planId",
           "type": "string",
-          "doc": " ID of the purchased plan.\n",
+          "doc": " Purchased plan ID.\n",
           "readOnly": true
         },
                 {
           "name": "subscriptionId",
           "type": "string",
-          "doc": " Associated subscription ID in the Subscriptions service\n",
+          "doc": " Subscription ID.\n",
           "readOnly": true
         },
                 {
           "name": "wixPayOrderId",
           "type": "string",
-          "doc": " Associated Wix Pay order ID (empty when the order is free).\n",
+          "doc": " Wix Pay order ID.\n\nEmpty when the order is free.\n",
           "readOnly": true
         },
                 {
           "name": "buyer",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Buyer",
-          "doc": " Buyer ID type (currently limited to members only).\n",
+          "doc": " Buyer ID type.\n\nCurrently, Pricing Plan purchases are limited to members only.\n",
           "readOnly": true
         },
                 {
           "name": "priceDetails",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_PriceDetails",
           "doc": " Price details for one payment cycle.\n",
+          "readOnly": true,
+          "deprecated": true
+        },
+                {
+          "name": "pricing",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_PricingDetails",
+          "doc": " Order price and payment schedule.\n",
           "readOnly": true
         },
                 {
           "name": "type",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderTypeEnum_OrderType",
-          "doc": " Purchase type - online or offline.\n",
+          "doc": " Purchase type.\n",
           "readOnly": true
         },
                 {
           "name": "status",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderStatusEnum_OrderStatus",
-          "doc": " Order status:  \n DRAFT - order has not yet been purchased.  \n PENDING - order has been purchased and it's start date is set in the future.  \n ACTIVE - order is active.  \n PAUSED - order was active and then paused. It can be set to resume and return to active status with a new expiration date.  \n ENDED - order has expired and is no longer active.  \n CANCELED - order has been canceled.  \n",
+          "doc": " Order status:\n+ `DRAFT`: Order has not yet been purchased.\n+ `PENDING`: Order has been purchased and its start date is set in the future.\n+ `ACTIVE`: Order is active.\n+ `PAUSED`: Order was active and then paused. It can be set to resume and return to active status with a new expiration date.\n+ `ENDED`: Order has expired and is no longer active.\n+ `CANCELED`: Order has been canceled.\n",
           "readOnly": true
         },
                 {
           "name": "autoRenewCanceled",
           "type": "boolean",
-          "doc": " Whether the next payment date will not be charged, and the order status will become canceled.\n",
+          "doc": " Whether or not the next payment date will be charged and if the order will be canceled.\n",
           "readOnly": true
         },
                 {
           "name": "cancellation",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Cancellation",
-          "doc": " Details about the cancellation. Present only if orderType = CANCELED.\n",
+          "doc": " Details about the cancellation.\n\nOnly present if the status is `CANCELED`.\n",
           "readOnly": true
         },
                 {
           "name": "lastPaymentStatus",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_PaymentStatusEnum_PaymentStatus",
-          "doc": " Status of the last payment for this this order (updated automatically for online orders. Must be updated manually by the site owner for offline orders).\n",
+          "doc": " Status of the last payment for this order.\nThis is updated automatically for online orders. Must be updated manually by the site owner for offline orders.\n",
           "readOnly": true
         },
                 {
@@ -7138,9 +6893,21 @@
           "readOnly": true
         },
                 {
+          "name": "freeTrialDays",
+          "type": "integer",
+          "doc": " Free trial period for the order, in days.\n\nOnly available for recurring plans.\n",
+          "readOnly": true
+        },
+                {
           "name": "earliestEndDate",
           "type": "string",
-          "doc": " Order end date that is calculated by including the original end date and pause periods. This is used as a lower boundary when validating end date postponement.\n",
+          "doc": " Earliest end date is calculated by using the original end date along with any pause periods.\n\nThis is used as a lower boundary when validating end date postponement.\n",
+          "readOnly": true
+        },
+                {
+          "name": "currentCycle",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_CurrentCycle",
+          "doc": " Indicates which payment cycle the order is currently on.\n",
           "readOnly": true
         },
                 {
@@ -7156,15 +6923,21 @@
           "readOnly": true
         },
                 {
+          "name": "planPrice",
+          "type": "string",
+          "doc": " Plan price as it was at the moment of order creation.\n",
+          "readOnly": true
+        },
+                {
           "name": "createdDate",
           "type": "string",
-          "doc": " Date when the order was created (before initiating a payment or any other actions).\n",
+          "doc": " Date when the order was created, before initiating a payment or any other actions.\n",
           "readOnly": true
         },
                 {
           "name": "updatedDate",
           "type": "string",
-          "doc": " Date when the order was last updated (for example, paused).\n",
+          "doc": " Date when the order was last updated.\n",
           "readOnly": true
         }
       ],
@@ -7190,12 +6963,42 @@
                 {
           "name": "startDate",
           "type": "string",
-          "doc": " Date from which the plan is valid. Defaults to current date.\n"
+          "doc": " Start date for the ordered plan.\n\nDefault: Current date\n"
         },
                 {
           "name": "couponCode",
           "type": "string",
-          "doc": " Optional. Coupon code to apply for plan\n"
+          "doc": " Coupon code to apply.\n"
+        },
+                {
+          "name": "onBehalf",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OnBehalf",
+          "doc": " Provided if checkout is initiated on buyer's behalf.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_OnBehalf",
+      "displayName": "On Behalf Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "memberId",
+          "type": "string",
+          "doc": " Member ID.\n"
+        },
+                {
+          "name": "orderMethod",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_OrderMethodEnum_OrderMethod",
+          "doc": " Method by which checkout is initiated on buyer's behalf\n"
         }
       ],
       "enum": null,
@@ -7238,22 +7041,22 @@
                 {
           "name": "memberId",
           "type": "string",
-          "doc": " MemberID.\n"
+          "doc": " Member ID.\n"
         },
                 {
           "name": "startDate",
           "type": "string",
-          "doc": " Date from which the plan is valid. Defaults to current date.\n"
+          "doc": " Start date for the ordered plan.\n\nDefault: Current date\n"
         },
                 {
           "name": "paid",
           "type": "boolean",
-          "doc": " Whether the order is paid. Defaults to false.\n"
+          "doc": " Whether or not the order is paid.\n\nDefault: `false`\n"
         },
                 {
           "name": "couponCode",
           "type": "string",
-          "doc": " Optional. Coupon code to apply for plan\n"
+          "doc": " Coupon code to apply.\n"
         }
       ],
       "enum": null,
@@ -7296,12 +7099,12 @@
                 {
           "name": "startDate",
           "type": "string",
-          "doc": " Date from which the plan will be valid. Defaults to current time.\n"
+          "doc": " Start date for the ordered plan.\n\nDefault: Current date\n"
         },
                 {
           "name": "couponCode",
           "type": "string",
-          "doc": " Optional. Coupon code to apply for plan\n"
+          "doc": " Coupon code to apply.\n"
         }
       ],
       "enum": null,
@@ -7351,17 +7154,17 @@
                 {
           "name": "memberId",
           "type": "string",
-          "doc": " MemberID.\n"
+          "doc": " Member ID.\n"
         },
                 {
           "name": "startDate",
           "type": "string",
-          "doc": " Date from which the plan will be valid. Defaults to current time.\n"
+          "doc": " Start date for the ordered plan.\n\nDefault: Current date\n"
         },
                 {
           "name": "couponCode",
           "type": "string",
-          "doc": " Optional. Coupon code to apply for plan\n"
+          "doc": " Coupon code to apply.\n"
         }
       ],
       "enum": null,
@@ -7381,7 +7184,7 @@
                 {
           "name": "order",
           "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Order",
-          "doc": " Order data. Always present, since purchase limitations are ignored for offline orders.\n"
+          "doc": " Order. Always present, since purchase limitations are ignored for offline orders.\n"
         },
                 {
           "name": "purchaseLimitExceeded",
@@ -7411,7 +7214,7 @@
                 {
           "name": "couponCode",
           "type": "string",
-          "doc": " Optional. Coupon code to apply for plan\n"
+          "doc": " Coupon code to apply.\n"
         }
       ],
       "enum": null,
@@ -7427,11 +7230,21 @@
         "links": [],
         "examples": []
       },
-      "members": [      {
-        "name": "price",
-        "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_PriceDetails",
-        "doc": " Price info including subtotal, tax object with rate, amount, name, and a total\n"
-      }],
+      "members":       [
+                {
+          "name": "price",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_PriceDetails",
+          "doc": " Price info including subtotal, tax object with rate, amount, name, and a total\n"
+        },
+                {
+          "name": "prices",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Pricing Plans._com_wixpress_membership_v2_orders_SpannedPrice"]
+          },
+          "doc": " Prices for different payment cycles. One spanned price can apply to multiple payment cycles.\n"
+        }
+      ],
       "enum": null,
       "extra": {},
       "labels": []
@@ -7497,7 +7310,7 @@
                 {
           "name": "couponCode",
           "type": "string",
-          "doc": " Coupon code to apply\n"
+          "doc": " Coupon code to apply.\n"
         }
       ],
       "enum": null,
@@ -7559,8 +7372,8 @@
       "labels": []
     },
         {
-      "name": "_com_wixpress_membership_v2_orders_OrderBillingCycleTriggered",
-      "displayName": "Order Billing Cycle Triggered Object",
+      "name": "_com_wixpress_membership_v2_orders_OrderCycleStarted",
+      "displayName": "Order Cycle Started Object",
       "locations": [],
       "docs":       {
         "summary": " Emitted at the start of each cycle of a paid recurring order\n",
@@ -7611,7 +7424,7 @@
       "displayName": "Order Auto Renew Canceled Object",
       "locations": [],
       "docs":       {
-        "summary": " Emitted when a recurring order is canceled for next payment cycle\n",
+        "summary": " Emitted when a recurring order is canceled for the next payment cycle\n",
         "links": [],
         "examples": []
       },
@@ -7837,7 +7650,7 @@
       "members": [      {
         "name": "order",
         "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Order",
-        "doc": " Order data.\n"
+        "doc": " Requested order.\n"
       }],
       "enum": null,
       "extra": {},
@@ -8004,6 +7817,101 @@
         "examples": []
       },
       "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_api_ApplicationError",
+      "displayName": "Application Error Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "code",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "description",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "data",
+          "type": "struct",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_BulkActionMetadata",
+      "displayName": "Bulk Action Metadata Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "totalSuccesses",
+          "type": "integer",
+          "doc": " For how many items the requested action was successful \n"
+        },
+                {
+          "name": "totalFailures",
+          "type": "integer",
+          "doc": " For how many items the requested action was not successful \n"
+        },
+                {
+          "name": "undetailedFailures",
+          "type": "integer",
+          "doc": " total number of failures without details because detailed-failure-threshold exceeded\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_ItemMetadata",
+      "displayName": "Item Metadata Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Item id. Should always be provided, unless it's impossible (e.g when failing to create an item)\n"
+        },
+                {
+          "name": "originalIndex",
+          "type": "integer",
+          "doc": " The index of the item within the request array to allow the caller to correlate the request and response items\n"
+        },
+                {
+          "name": "success",
+          "type": "boolean",
+          "doc": " Whether the action requested was successful for this item. When this value is false, error should be populated\n"
+        },
+                {
+          "name": "error",
+          "type": "All APIs.Pricing Plans._wix_api_ApplicationError",
+          "doc": " In case of failure, details about the error\n"
+        }
+      ],
       "enum": null,
       "extra": {},
       "labels": []
@@ -8283,7 +8191,7 @@
                 {
           "name": "endDate",
           "type": "string",
-          "doc": " New expiration date (timestamp). Cannot be sooner than original expiration date.\n"
+          "doc": " New end date. \n\nCannot be earlier than the original end date.\n"
         }
       ],
       "enum": null,
@@ -8435,6 +8343,143 @@
         "examples": []
       },
       "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_BulkPauseOrderRequest",
+      "displayName": "Bulk Pause Order Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "ids",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " List of Order IDs.\n"
+        },
+                {
+          "name": "returnFullEntity",
+          "type": "boolean",
+          "doc": " Set to true to return Order entity in response.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_BulkPauseOrderResponse",
+      "displayName": "Bulk Pause Order Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "results",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Pricing Plans._com_wixpress_membership_v2_orders_BulkOrderResult"]
+          },
+          "doc": ""
+        },
+                {
+          "name": "bulkActionMetadata",
+          "type": "All APIs.Pricing Plans._wix_common_BulkActionMetadata",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_BulkResumeOrderRequest",
+      "displayName": "Bulk Resume Order Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "ids",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " List of Order IDs.\n"
+        },
+                {
+          "name": "returnFullEntity",
+          "type": "boolean",
+          "doc": " Set to true to return Order entity in response.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_BulkResumeOrderResponse",
+      "displayName": "Bulk Resume Order Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "results",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Pricing Plans._com_wixpress_membership_v2_orders_BulkOrderResult"]
+          },
+          "doc": ""
+        },
+                {
+          "name": "bulkActionMetadata",
+          "type": "All APIs.Pricing Plans._wix_common_BulkActionMetadata",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_BulkOrderResult",
+      "displayName": "Bulk Order Result Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "itemMetadata",
+          "type": "All APIs.Pricing Plans._wix_common_ItemMetadata",
+          "doc": ""
+        },
+                {
+          "name": "order",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_orders_Order",
+          "doc": ""
+        }
+      ],
       "enum": null,
       "extra": {},
       "labels": []
@@ -9079,6 +9124,62 @@
       "labels": []
     },
         {
+      "name": "_com_wixpress_membership_v2_plans_BulkArchivePlanRequest",
+      "displayName": "Bulk Archive Plan Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "ids",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " List of Plan IDs.\n"
+        },
+                {
+          "name": "returnFullEntity",
+          "type": "boolean",
+          "doc": " Set to true to return Plan entity in response.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_plans_BulkArchivePlanResponse",
+      "displayName": "Bulk Archive Plan Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "results",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Pricing Plans._com_wixpress_membership_v2_plans_BulkPlanResult"]
+          },
+          "doc": ""
+        },
+                {
+          "name": "bulkActionMetadata",
+          "type": "All APIs.Pricing Plans._wix_common_BulkActionMetadata",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_membership_v2_plans_ArrangePlansRequest",
       "displayName": "Arrange Plans Request Object",
       "locations": [],
@@ -9150,6 +9251,31 @@
       "labels": []
     },
         {
+      "name": "_com_wixpress_membership_v2_plans_BulkPlanResult",
+      "displayName": "Bulk Plan Result Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "itemMetadata",
+          "type": "All APIs.Pricing Plans._wix_common_ItemMetadata",
+          "doc": ""
+        },
+                {
+          "name": "plan",
+          "type": "All APIs.Pricing Plans._com_wixpress_membership_v2_plans_Plan",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_membership_verticals_Plan",
       "displayName": "Plan Object",
       "locations": [],
@@ -9186,118 +9312,6 @@
         }
       ],
       "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_viewer_Plan",
-      "displayName": "Plan Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "id",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "details",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_PlanDetails",
-          "doc": ""
-        },
-                {
-          "name": "paymentOptions",
-          "type": "All APIs.Pricing Plans._com_wixpress_membership_PaymentOptions",
-          "doc": ""
-        },
-                {
-          "name": "primary",
-          "type": "boolean",
-          "doc": ""
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_PeriodUnit",
-      "displayName": "Period Unit Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> MONTH <\/code><\/li><li><code> DAY <\/code><\/li><li><code> WEEK <\/code><\/li><li><code> YEAR <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "MONTH",
-        "DAY",
-        "WEEK",
-        "YEAR"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_OrderStatus",
-      "displayName": "Order Status Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> PENDING <\/code><\/li><li><code> ACTIVE <\/code><\/li><li><code> CANCELED <\/code><\/li><li><code> EXPIRED <\/code><\/li><li><code> PENDING_CANCELLATION <\/code><\/li><li><code> SUSPENDED <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "PENDING",
-        "ACTIVE",
-        "CANCELED",
-        "EXPIRED",
-        "PENDING_CANCELLATION",
-        "SUSPENDED"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_PaymentStatus",
-      "displayName": "Payment Status Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> PAID <\/code><\/li><li><code> REFUNDED <\/code><\/li><li><code> FAILED -  Recurring payment failed\n <\/code><\/li><li><code> UNPAID <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "PAID",
-        "REFUNDED",
-        "FAILED",
-        "UNPAID"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_membership_OrderType",
-      "displayName": "Order Type Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> ORDER_TYPE_UNDEFINED <\/code><\/li><li><code> ONLINE <\/code><\/li><li><code> OFFLINE <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "ORDER_TYPE_UNDEFINED",
-        "ONLINE",
-        "OFFLINE"
-      ],
       "extra": {},
       "labels": []
     },
@@ -9726,6 +9740,23 @@
         "NOT_STARTED",
         "ALREADY_SUSPENDED",
         "OLD_STRIPE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_membership_v2_orders_OrderMethodEnum_OrderMethod",
+      "displayName": "Order Method Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> MOTO -  Mail Order / Telephone Order transaction\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNKNOWN",
+        "MOTO"
       ],
       "extra": {},
       "labels": []
