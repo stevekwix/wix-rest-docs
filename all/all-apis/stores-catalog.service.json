@@ -6149,12 +6149,12 @@
             "name": "array",
             "typeParams": ["string"]
           },
-          "doc": " IDs of products the change applies to.\n"
+          "doc": " IDs of products the adjustment applies to.\n"
         },
                 {
-          "name": "change",
-          "type": "All APIs.Stores Catalog._wix_catalog_api_v1_ChangeValue",
-          "doc": " The property to change.\n"
+          "name": "adjust",
+          "type": "All APIs.Stores Catalog._wix_catalog_api_v1_AdjustValue",
+          "doc": " Numerical property to adjust.\n"
         }
       ],
       "enum": null,
@@ -6205,9 +6205,9 @@
           "doc": " Filter object. Learn more about supported filters [here](https://bo.wix.com/wix-docs/rest/stores/stores-catalog/filter-and-sort).\n"
         },
                 {
-          "name": "change",
-          "type": "All APIs.Stores Catalog._wix_catalog_api_v1_ChangeValue",
-          "doc": " The property to change.\n"
+          "name": "adjust",
+          "type": "All APIs.Stores Catalog._wix_catalog_api_v1_AdjustValue",
+          "doc": " Numerical property to adjust.\n"
         }
       ],
       "enum": null,
@@ -6243,8 +6243,8 @@
       "labels": []
     },
         {
-      "name": "_wix_catalog_api_v1_ChangeValue",
-      "displayName": "Change Value Object",
+      "name": "_wix_catalog_api_v1_AdjustValue",
+      "displayName": "Adjust Value Object",
       "locations": [],
       "docs":       {
         "summary": "",
@@ -6253,7 +6253,7 @@
       },
       "members": [      {
         "name": "value",
-        "type": "All APIs.Stores Catalog._wix_catalog_api_v1_ChangeValue_value",
+        "type": "All APIs.Stores Catalog._wix_catalog_api_v1_AdjustValue_value",
         "doc": ""
       }],
       "enum": null,
@@ -6261,7 +6261,7 @@
       "labels": []
     },
         {
-      "name": "_wix_catalog_api_v1_ChangeValue_value",
+      "name": "_wix_catalog_api_v1_AdjustValue_value",
       "displayName": "value Object",
       "locations": [],
       "docs":       {
@@ -6273,17 +6273,17 @@
                 {
           "name": "price",
           "type": "All APIs.Stores Catalog._wix_catalog_api_v1_PropertyAdjustmentData",
-          "doc": " Change price.\n If variant management is enabled, variants prices will be calculated according to the changed price.\n If variant price is negative after the change, the update will fail.\n"
+          "doc": " Adjust price.\n If variant management is enabled, variants prices will be calculated according to the adjusted price.\n If variant price is negative after the adjustment, the update will fail.\n"
         },
                 {
           "name": "cost",
           "type": "All APIs.Stores Catalog._wix_catalog_api_v1_PropertyAdjustmentData",
-          "doc": " Change cost of goods.\n If variant management is enabled, cost of goods will be changed per variant.\n"
+          "doc": " Adjust cost of goods.\n If variant management is enabled, cost of goods will be adjusted per variant.\n"
         },
                 {
           "name": "weight",
           "type": "All APIs.Stores Catalog._wix_catalog_api_v1_PropertyAdjustmentData",
-          "doc": " Change weight.\n If variant management is enabled, weight will be changed per variant.\n"
+          "doc": " Adjust weight.\n If variant management is enabled, weight will be adjusted per variant.\n"
         }
       ],
       "enum": null,
