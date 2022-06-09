@@ -689,17 +689,20 @@
                 {
           "name": "expiryMonth",
           "type": "integer",
-          "doc": " Month of card expiration\n"
+          "doc": " Month of card expiration\n",
+          "readOnly": true
         },
                 {
           "name": "expiryYear",
           "type": "integer",
-          "doc": " Year of card expiration\n"
+          "doc": " Year of card expiration\n",
+          "readOnly": true
         },
                 {
           "name": "isPinSet",
           "type": "boolean",
-          "doc": " Indicates if PIN was set\n"
+          "doc": " Indicates if PIN was set\n",
+          "readOnly": true
         },
                 {
           "name": "createdDate",
@@ -746,17 +749,22 @@
                 {
           "name": "dateOfBirth",
           "type": "string",
-          "doc": " date of birth\n"
+          "doc": " Date of birth\n"
         },
                 {
           "name": "phone",
           "type": "string",
-          "doc": " phone of cardholder\n"
+          "doc": " Phone of cardholder\n"
         },
                 {
           "name": "email",
           "type": "string",
-          "doc": " email of cardholder\n"
+          "doc": " Email of cardholder\n"
+        },
+                {
+          "name": "printedBusinessName",
+          "type": "string",
+          "doc": " Optional, Use for a second cardholder name, company name, or other data to be printed on a physical card front side\n"
         }
       ],
       "enum": null,
@@ -768,7 +776,7 @@
       "displayName": "Card Private Details Object",
       "locations": [],
       "docs":       {
-        "summary": " private details of Card\n",
+        "summary": " Private details of Card\n",
         "links": [],
         "examples": []
       },
@@ -795,22 +803,22 @@
                 {
           "name": "state",
           "type": "string",
-          "doc": " state code\n"
+          "doc": " State code\n"
         },
                 {
           "name": "city",
           "type": "string",
-          "doc": " city name\n"
+          "doc": " City name\n"
         },
                 {
           "name": "street",
           "type": "string",
-          "doc": " street with house number and apartment number\n"
+          "doc": " Street with house number and apartment number\n"
         },
                 {
           "name": "postalCode",
           "type": "string",
-          "doc": " postal code\n"
+          "doc": " Postal code\n"
         }
       ],
       "enum": null,
@@ -1298,7 +1306,7 @@
       "displayName": "Card Status Object",
       "locations": [],
       "docs":       {
-        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> PENDING_CREATION <\/code><\/li><li><code> NOT_ACTIVATED <\/code><\/li><li><code> ACTIVE <\/code><\/li><li><code> STOLEN <\/code><\/li><li><code> LOST <\/code><\/li><li><code> FROZEN <\/code><\/li><li><code> CLOSED_BY_CUSTOMER <\/code><\/li><li><code> SUSPECTED_FRAUD <\/code><\/li><li><code> CREATION_FAILED <\/code><\/li><li><code> PENDING_FREEZE <\/code><\/li><li><code> PENDING_UNFREEZE <\/code><\/li><li><code> PENDING_CLOSE <\/code><\/li><li><code> PENDING_REPLACEMENT <\/code><\/li>",
+        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> PENDING_CREATION <\/code><\/li><li><code> DIGITALLY_ACTIVE <\/code><\/li><li><code> ACTIVE <\/code><\/li><li><code> STOLEN <\/code><\/li><li><code> LOST <\/code><\/li><li><code> FROZEN <\/code><\/li><li><code> CLOSED_BY_CUSTOMER <\/code><\/li><li><code> SUSPECTED_FRAUD <\/code><\/li><li><code> CREATION_FAILED <\/code><\/li><li><code> PENDING_FREEZE <\/code><\/li><li><code> PENDING_UNFREEZE <\/code><\/li><li><code> PENDING_CLOSE <\/code><\/li><li><code> PENDING_REPLACEMENT <\/code><\/li>",
         "links": [],
         "examples": []
       },
@@ -1306,7 +1314,7 @@
       "enum":       [
         "UNKNOWN",
         "PENDING_CREATION",
-        "NOT_ACTIVATED",
+        "DIGITALLY_ACTIVE",
         "ACTIVE",
         "STOLEN",
         "LOST",
