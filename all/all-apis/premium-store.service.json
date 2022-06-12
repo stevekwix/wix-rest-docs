@@ -1843,7 +1843,7 @@
       "displayName": "Contract Switch Type Object",
       "locations": [],
       "docs":       {
-        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> CREDIT_UNUSED_PERIOD -   unused subscription period is converted into credit deducted from the purchase price\n <\/code><\/li><li><code> EXTEND -   add additional $CYCLE starting at subscription's end date - NOT READY YET\n <\/code><\/li><li><code> FULL_AMOUNT_PERIOD -   switch to new subscription immediately with no refund for unused period.\n <\/code><\/li>",
+        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> CREDIT_UNUSED_PERIOD -   unused subscription period is converted into credit deducted from the purchase price\n <\/code><\/li><li><code> EXTEND -   add additional $CYCLE starting at subscription's end date - NOT READY YET\n <\/code><\/li><li><code> FULL_AMOUNT_PERIOD -   switch to new subscription immediately with no refund for unused period.\n <\/code><\/li><li><code> DOWNGRADE_RENEWAL -   switch to lower subscription (plan or cycle) immediately.\n <\/code><\/li>",
         "links": [],
         "examples": []
       },
@@ -1852,7 +1852,8 @@
         "UNKNOWN",
         "CREDIT_UNUSED_PERIOD",
         "EXTEND",
-        "FULL_AMOUNT_PERIOD"
+        "FULL_AMOUNT_PERIOD",
+        "DOWNGRADE_RENEWAL"
       ],
       "extra": {},
       "labels": []
