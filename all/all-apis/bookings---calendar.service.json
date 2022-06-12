@@ -1967,6 +1967,25 @@
       "labels": []
     },
         {
+      "name": "_com_wix_bookings_common_api_v1_TypeEnum_Type",
+      "displayName": "Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> FIXED <\/code><\/li><li><code> CUSTOM <\/code><\/li><li><code> VARIED <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNKNOWN",
+        "FIXED",
+        "CUSTOM",
+        "VARIED"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_siteproperties_api_v4_DayOfWeek",
       "displayName": "Day Of Week Object",
       "locations": [],
