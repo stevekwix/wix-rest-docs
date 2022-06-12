@@ -241,6 +241,164 @@
       "customLabels": []
     },
         {
+      "name": "Bulk Adjust Product Properties",
+      "methodName": "BulkAdjustProductProperties",
+      "serviceName": "CatalogWriteApi",
+      "tag": "Products",
+      "permissions": [      {
+        "name": "Manage Products",
+        "description": "Request permission to read, create and modify the site's Wix Stores products and inventory."
+      }],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["ids"],
+      "params":       [
+                {
+          "in": "BODY",
+          "name": "ids",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " IDs of products the adjustment applies to.\n",
+          "required": true
+        },
+                {
+          "in": "BODY",
+          "name": "adjust",
+          "type": "All APIs.Stores Catalog._wix_catalog_api_v1_AdjustValue",
+          "doc": " Numerical property to adjust.\n",
+          "required": false
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "BulkAdjustProductProperties",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Stores Catalog._wix_catalog_api_v1_BulkAdjustProductPropertiesResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Adjust property for multiple products.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/stores/v1/bulk/products/adjust-properties",
+        "links": [],
+        "examples": [        {
+          "title": "Adjust the price of 3 products",
+          "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/adjust-product-properties \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"80a584c3-78c1-4e2f-84f8-b8d0bf65b518\",\n      \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"cc30ba06-2b9a-4962-8b34-7a265d495d7e\"\n    ],\n    \"price\": {\n      \"amount\": 5\n    }\n  }'"],
+          "response": ["{\n  \"results\":   [\n    {\"itemMetadata\":     {\n      \"id\": \"80a584c3-78c1-4e2f-84f8-b8d0bf65b518\",\n      \"originalIndex\": 0,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"originalIndex\": 1,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"cc30ba06-2b9a-4962-8b34-7a265d495d7e\",\n      \"originalIndex\": 2,\n      \"success\": true\n    }}\n  ],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 3,\n    \"totalFailures\": 0,\n    \"undetailedFailures\": 0\n  }\n} "],
+          "type": "curl",
+          "extra": {}
+        }],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "BulkAdjustProductPropertiesRequest",
+        "rpcResponseName": "BulkAdjustProductPropertiesResponse",
+        "artifactId": "com.wixpress.ecommerce.wix-ecommerce-catalog-web"
+      },
+      "customLabels": []
+    },
+        {
+      "name": "Bulk Update Products",
+      "methodName": "BulkUpdateProducts",
+      "serviceName": "CatalogWriteApi",
+      "tag": "Products",
+      "permissions": [      {
+        "name": "Manage Products",
+        "description": "Request permission to read, create and modify the site's Wix Stores products and inventory."
+      }],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["ids"],
+      "params":       [
+                {
+          "in": "BODY",
+          "name": "ids",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " IDs of products to update.\n",
+          "required": true
+        },
+                {
+          "in": "BODY",
+          "name": "set",
+          "type": "All APIs.Stores Catalog._wix_catalog_api_v1_SetValue",
+          "doc": " The field to update.\n",
+          "required": false
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "BulkUpdateProducts",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Stores Catalog._wix_catalog_api_v1_BulkUpdateProductsResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Updates a bulk of products.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/stores/v1/bulk/products/update",
+        "links": [],
+        "examples":         [
+                    {
+            "title": "Update the cost of 3 products",
+            "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/update \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"80a584c3-78c1-4e2f-84f8-b8d0bf65b518\",\n      \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"cc30ba06-2b9a-4962-8b34-7a265d495d7e\"\n    ],\n    \"set\": {\n      \"cost\": 2\n    }\n  }'"],
+            "response": ["{\n  \"results\":   [\n    {\"itemMetadata\":     {\n      \"id\": \"80a584c3-78c1-4e2f-84f8-b8d0bf65b518\",\n      \"originalIndex\": 0,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"originalIndex\": 1,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"cc30ba06-2b9a-4962-8b34-7a265d495d7e\",\n      \"originalIndex\": 2,\n      \"success\": true\n    }}\n  ],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 3,\n    \"totalFailures\": 0,\n    \"undetailedFailures\": 0\n  }\n} "],
+            "type": "curl",
+            "extra": {}
+          },
+                    {
+            "title": "Update the price of 5 products",
+            "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/update \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"bb6ddd51-7295-4fc8-8a4f-2521485c738d\",\n      \"c36bbdbe-fbf8-4a43-810e-a0abdffe70ae\",\n      \"2966543c-2b2f-4ca1-862c-6a04736c1063\",\n      \"c9adb138-96f8-4f08-8626-9fef2445c490\",\n      \"4ed1aa2c-c441-4e3f-8e57-a18886bf52bb\"\n    ],\n    \"set\": {\n      \"price\": 10.25\n    }\n  }'"],
+            "response": ["{\n  \"results\":   [\n    {\"itemMetadata\":     {\n      \"id\": \"bb6ddd51-7295-4fc8-8a4f-2521485c738d\",\n      \"originalIndex\": 0,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"c36bbdbe-fbf8-4a43-810e-a0abdffe70ae\",\n      \"originalIndex\": 1,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"2966543c-2b2f-4ca1-862c-6a04736c1063\",\n      \"originalIndex\": 2,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"c9adb138-96f8-4f08-8626-9fef2445c490\",\n      \"originalIndex\": 3,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"4ed1aa2c-c441-4e3f-8e57-a18886bf52bb\",\n      \"originalIndex\": 4,\n      \"success\": true\n    }}\n  ],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 5,\n    \"totalFailures\": 0,\n    \"undetailedFailures\": 0\n  }\n} "],
+            "type": "curl",
+            "extra": {}
+          },
+                    {
+            "title": "Update the ribbon of 1 product",
+            "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/update \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"bb6ddd51-7295-4fc8-8a4f-2521485c738d\"\n    ],\n    \"set\": {\n      \"ribbon\": \"Sale\"\n    }\n  }'"],
+            "response": ["{\n  \"results\": [{\"itemMetadata\":   {\n    \"id\": \"bb6ddd51-7295-4fc8-8a4f-2521485c738d\",\n    \"originalIndex\": 0,\n    \"success\": true\n  }}],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 1,\n    \"totalFailures\": 0,\n    \"undetailedFailures\": 0\n  }\n} "],
+            "type": "curl",
+            "extra": {}
+          },
+                    {
+            "title": "Partially update the weight of 2 products",
+            "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/update \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"bb6ddd51-7295-4fc8-8a4f-2521485c738d\",\n      \"4deb9c8d-7aba-45e1-9d83-bf99b479b5bb\"\n    ],\n    \"set\": {\n      \"weight\": \"2.64\"\n    }\n  }'"],
+            "response": ["{\n  \"results\":   [\n    {\"itemMetadata\":     {\n      \"id\": \"bb6ddd51-7295-4fc8-8a4f-2521485c738d\",\n      \"originalIndex\": 0,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"4deb9c8d-7aba-45e1-9d83-bf99b479b5bb\",\n      \"originalIndex\": 1,\n      \"success\": false,\n      \"error\":       {\n        \"code\": \"PRODUCT_NOT_FOUND\",\n        \"description\": \"Product is not found\"\n      }\n    }}\n  ],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 1,\n    \"totalFailures\": 1,\n    \"undetailedFailures\": 0\n  }\n} "],
+            "type": "curl",
+            "extra": {}
+          },
+                    {
+            "title": "Update the brand of 1 product",
+            "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/update \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"bb6ddd51-7295-4fc8-8a4f-2521485c738d\"\n    ],\n    \"set\": {\n      \"brand\": \"Nice\"\n    }\n  }'"],
+            "response": ["{\n  \"results\": [{\"itemMetadata\":   {\n    \"id\": \"bb6ddd51-7295-4fc8-8a4f-2521485c738d\",\n    \"originalIndex\": 0,\n    \"success\": true\n  }}],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 1,\n    \"totalFailures\": 0,\n    \"undetailedFailures\": 0\n  }\n} "],
+            "type": "curl",
+            "extra": {}
+          }
+        ],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "BulkUpdateProductsRequest",
+        "rpcResponseName": "BulkUpdateProductsResponse",
+        "artifactId": "com.wixpress.ecommerce.wix-ecommerce-catalog-web"
+      },
+      "customLabels": []
+    },
+        {
       "name": "Create Collection",
       "methodName": "CreateCollection",
       "serviceName": "CatalogWriteApi",
