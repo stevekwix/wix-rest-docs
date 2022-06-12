@@ -838,6 +838,71 @@
         "summary": "  Returns a list of services and related information according to the specified query.\n\n  Related information includes:\n  + Pricing plans\n  + Resources\n  + Forms\n  + Schedules\n  + Categories\n  + URLs   \n  + Slugs\n\n The query runs with the following defaults:\n ```JSON\n {\n  \"query\" : {\n             \"paging\" : { \"offset\" : 0, \"limit\": 25}\n     },\n     \"includeDeleted\":false\n   }    \n }\n ```\n\n The following fields and filters are supported in the query:\n\n |FIELD|Supported filters|\n |--|--|\n |`service.id`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`service.info.name`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`service.info.tagLine`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`service.policy.isBookOnlineAllowed`|`$eq`, `$ne`\n |`service.customProperties.tag`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`service.paymentOptions.wixPayOnline`|`$eq`, `$ne`\n |`service.paymentOptions.wixPayInPerson`|`$eq`, `$ne`\n |`service.paymentOptions.wixPaidPlan`|`$eq`, `$ne`\n |`service.paymentOptions.custom`|`$eq`, `$ne`\n |`service.policy.bookingsApprovalPolicy. isBusinessApprovalRequired`|`$eq`, `$ne`\n |`service.schedules.availability. locations.businessLocation.ids`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`category.id`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`category.name`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`slugs.name`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`schedules.tags`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`resources.id`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |paging|Supported. \n |fields|Supported. \n |fieldsets|Not supported.  \n\n\n >**Notes:**  \n > + The following objects in the `query` parameter are not supported for this query:  \n >    - `sort`\n >    - `fieldsets`  \n >\n > + The `businessLocation.businessSchedule` object in the `location` object is not supported.\n\n > **Permissions**  \n > This endpoint requires the Read Bookings - Public Data, the Read Bookings - Including Participants or the Manage Bookings permissions scope\n\n \n",
         "description": [],
         "request": "POST",
+        "url": "https://www.wixapis.com/bookings/v1/catalog/services",
+        "links": [],
+        "examples":         [
+                    {
+            "title": "Query Services Catalog",
+            "body": ["curl --location --request POST 'https://www.wixapis.com/bookings/v1/catalog/services' \\\n--header 'Authorization: RnqhVpkdD9edoH9nyKqxZb5cIsQE5csdWko4K0rtpzQ.eyJpbnN0YW5jZUlkIjoiYzg2NDI2OWYtZGIwMy00NmY2LThlYWYtYWFhZWM4NjBlYzU1IiwiYXBwRGVmSWQiOiIxM2QyMWM2My1iNWVjLTU5MTItODM5Ny1jM2E1ZGRiMjdhOTciLCJtZXRhU2l0ZUlkIjoiYmNiNmY1NTktZGQzNC00YjJhLTg1NzktYThiMWU4NjFiZTdlIiwic2lnbkRhdGUiOiIyMDIxLTAxLTEzVDEyOjQyOjQ5LjMwOFoiLCJ1aWQiOiJjNWMzYjQzMC0zOGY1LTQxMDctOTZlNy1lOWUwMGU1ZGQxM2QiLCJwZXJtaXNzaW9ucyI6Ik9XTkVSIiwidmVuZG9yUHJvZHVjdElkIjoiYm9va2luZ3MiLCJkZW1vTW9kZSI6ZmFsc2UsImJpVG9rZW4iOiI3NGQyZDNjNi0wNjM3LTBkZGMtMGJkNi0wMjFmMjAwMTUyMmIiLCJzaXRlT3duZXJJZCI6ImM1YzNiNDMwLTM4ZjUtNDEwNy05NmU3LWU5ZTAwZTVkZDEzZCIsInNpdGVNZW1iZXJJZCI6ImM1YzNiNDMwLTM4ZjUtNDEwNy05NmU3LWU5ZTAwZTVkZDEzZCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wMS0xM1QxNjo0Mjo0OS4zMDhaIiwibG9naW5BY2NvdW50SWQiOiJjNWMzYjQzMC0zOGY1LTQxMDctOTZlNy1lOWUwMGU1ZGQxM2QifQ' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"query\" : {\n        \"filter\" : {\n            \"category.name\": {\"$contains\":\"Services\"},\n            \"service.paymentOptions.wixPayOnline\" : true\n        }\n    },\n    \"includeDeleted\":false\n}'"],
+            "response": ["{\n  \"services\":   [\n        {\n      \"service\":       {\n        \"id\": \"5bdf7862-e4df-4f97-9923-371347aedb36\",\n        \"info\":         {\n          \"name\": \"Workshop\",\n          \"images\": []\n        },\n        \"policy\":         {\n          \"maxParticipantsPerBooking\": 1,\n          \"bookUpToXMinutesBefore\": 0,\n          \"cancelRescheduleUpToXMinutesBefore\": 0,\n          \"isBookOnlineAllowed\": true,\n          \"isCancelAllowed\": true,\n          \"isRescheduleAllowed\": true,\n          \"futureBookingsPolicy\":           {\n            \"shouldLimit\": false,\n            \"limitXMinutesToTheFuture\": 10080\n          },\n          \"waitingListPolicy\":           {\n            \"isEnabled\": false,\n            \"capacity\": 10,\n            \"timeWindowMinutes\": 10\n          },\n          \"bookingsApprovalPolicy\":           {\n            \"isBusinessApprovalRequired\": false,\n            \"requestsAffectsAvailability\": true\n          }\n        },\n        \"paymentOptions\":         {\n          \"wixPayOnline\": true,\n          \"wixPayInPerson\": false,\n          \"custom\": false,\n          \"wixPaidPlan\": false\n        },\n        \"categoryId\": \"6c4340cc-2eff-4767-816d-3a2fff02656d\",\n        \"bookingFormId\": \"00000000-0000-0000-0000-000000000000\",\n        \"scheduleIds\": [\"29a3bb57-bac3-4cb0-b08e-140c59a6e114\"],\n        \"customProperties\":         {\n          \"uouHidden\": \"false\",\n          \"order\": \"5\"\n        },\n        \"status\": \"CREATED\",\n        \"sortOrder\": 5\n      },\n      \"pricingPlans\": [],\n      \"resources\": [],\n      \"form\":       {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"header\":         {\n          \"description\": \"Tell us a bit about yourself\",\n          \"title\": \"Add Your Info\",\n          \"isDescriptionHidden\": false\n        },\n        \"actionLabels\":         {\n          \"offlinePaymentLabel\": \"Book It\",\n          \"onlinePaymentLabel\": \"Pay Now\",\n          \"bookingRequestApprovalLabel\": \"Request to Book\"\n        },\n        \"name\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000001\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Name\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"email\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000002\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Email\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"phone\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000003\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Phone Number\",\n          \"userConstraints\": {\"required\": false},\n          \"additionalLabels\": []\n        },\n        \"numberOfParticipants\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000007\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Number of Participants\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"address\":         {\n          \"street\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000004\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"Street\",\n            \"userConstraints\": {\"required\": true},\n            \"additionalLabels\": []\n          },\n          \"city\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000005\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"City\",\n            \"userConstraints\": {\"required\": true},\n            \"additionalLabels\": []\n          },\n          \"floorNumber\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000006\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"Apt. / Floor No.\",\n            \"userConstraints\": {\"required\": false},\n            \"additionalLabels\": []\n          },\n          \"state\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000009\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"State\",\n            \"userConstraints\": {\"required\": false},\n            \"additionalLabels\": []\n          }\n        },\n        \"customFields\": [        {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000008\",\n          \"valueType\": \"LONG_TEXT\",\n          \"label\": \"Add Your Message\",\n          \"userConstraints\": {\"required\": false},\n          \"additionalLabels\": []\n        }]\n      },\n      \"schedules\": [      {\n        \"id\": \"29a3bb57-bac3-4cb0-b08e-140c59a6e114\",\n        \"scheduleOwnerId\": \"5bdf7862-e4df-4f97-9923-371347aedb36\",\n        \"firstSessionStart\": \"2020-10-25T12:00:00Z\",\n        \"lastSessionEnd\": \"2020-10-29T13:00:00Z\",\n        \"timeZone\": \"America/Chicago\",\n        \"intervals\": [],\n        \"title\": \"Workshop\",\n        \"tags\": [\"COURSE\"],\n        \"location\": {\"locationType\": \"OWNER_BUSINESS\"},\n        \"capacity\": 12,\n        \"rate\": {\"labeledPriceOptions\": {\"general\":         {\n          \"amount\": \"232\",\n          \"currency\": \"USD\",\n          \"downPayAmount\": \"0\"\n        }}},\n        \"availability\":         {\n          \"start\": \"2020-10-25T11:59:29.427Z\",\n          \"linkedSchedules\": [],\n          \"locations\": [],\n          \"useDefaultLocation\": true\n        },\n        \"totalNumberOfParticipants\": 0,\n        \"participants\": [],\n        \"status\": \"CREATED\",\n        \"version\": 0,\n        \"inheritedFields\": []\n      }],\n      \"category\":       {\n        \"id\": \"6c4340cc-2eff-4767-816d-3a2fff02656d\",\n        \"name\": \"Our Services\",\n        \"customProperties\": {\"order\": \"0\"},\n        \"status\": \"CREATED\",\n        \"sortOrder\": 0\n      },\n      \"urls\":       {\n        \"servicePageUrl\":         {\n          \"base\": \"https://dorga1.wixsite.com\",\n          \"path\": \"/mysite-7/bookings-checkout/workshop\"\n        },\n        \"bookingPageUrl\":         {\n          \"base\": \"https://dorga1.wixsite.com\",\n          \"path\": \"/mysite-7/bookings-checkout/workshop/book\"\n        }\n      },\n      \"slugs\": [      {\n        \"name\": \"workshop\",\n        \"createdAt\": \"2020-10-25T11:59:47.669Z\"\n      }],\n      \"status\": \"ACTIVE\"\n    },\n        {\n      \"service\":       {\n        \"id\": \"9b6e5d14-7929-4d3d-9120-c4f17d9ccd3e\",\n        \"info\":         {\n          \"name\": \"Class with bundle\",\n          \"images\": []\n        },\n        \"policy\":         {\n          \"maxParticipantsPerBooking\": 1,\n          \"bookUpToXMinutesBefore\": 0,\n          \"cancelRescheduleUpToXMinutesBefore\": 0,\n          \"isBookOnlineAllowed\": true,\n          \"isCancelAllowed\": true,\n          \"isRescheduleAllowed\": true,\n          \"futureBookingsPolicy\":           {\n            \"shouldLimit\": false,\n            \"limitXMinutesToTheFuture\": 10080\n          },\n          \"waitingListPolicy\":           {\n            \"isEnabled\": false,\n            \"capacity\": 10,\n            \"timeWindowMinutes\": 10\n          },\n          \"bookingsApprovalPolicy\":           {\n            \"isBusinessApprovalRequired\": false,\n            \"requestsAffectsAvailability\": true\n          }\n        },\n        \"paymentOptions\":         {\n          \"wixPayOnline\": true,\n          \"wixPayInPerson\": false,\n          \"custom\": false,\n          \"wixPaidPlan\": false\n        },\n        \"categoryId\": \"8c668631-7127-4b9f-a0a2-711bf29484bb\",\n        \"bookingFormId\": \"00000000-0000-0000-0000-000000000000\",\n        \"scheduleIds\": [\"3c6367fe-d180-4f35-8e94-090ce51020b1\"],\n        \"customProperties\":         {\n          \"uouHidden\": \"false\",\n          \"order\": \"0\"\n        },\n        \"status\": \"CREATED\",\n        \"sortOrder\": 0\n      },\n      \"pricingPlans\": [],\n      \"resources\": [      {\n        \"id\": \"0fbc94b4-fe4d-48de-a255-5ae16aa2d9a9\",\n        \"name\": \"dor\",\n        \"email\": \"dorgal405@gmail.com\",\n        \"phone\": \"8234789\",\n        \"tags\": [\"staff\"],\n        \"images\": [],\n        \"schedules\": [        {\n          \"id\": \"efd12f41-eeb9-47f1-ad0d-a34eb7cf536a\",\n          \"scheduleOwnerId\": \"0fbc94b4-fe4d-48de-a255-5ae16aa2d9a9\",\n          \"firstSessionStart\": \"2020-10-21T06:00:00Z\",\n          \"timeZone\": \"America/Chicago\",\n          \"intervals\":           [\n                        {\n              \"id\": \"532f9036-f7b0-43ce-80eb-e89341fbfc6c\",\n              \"start\": \"2020-10-20T21:00:00Z\",\n              \"interval\":               {\n                \"daysOfWeek\": \"MON\",\n                \"hourOfDay\": 9,\n                \"minuteOfHour\": 0,\n                \"duration\": 540\n              },\n              \"frequency\": {\"repetition\": 1},\n              \"affectedSchedules\": [],\n              \"intervalType\": \"UNDEFINED\"\n            },\n                        {\n              \"id\": \"b2d8dcc0-d981-4613-a9c0-ca71dc038dfb\",\n              \"start\": \"2020-10-20T21:00:00Z\",\n              \"interval\":               {\n                \"daysOfWeek\": \"TUE\",\n                \"hourOfDay\": 9,\n                \"minuteOfHour\": 0,\n                \"duration\": 540\n              },\n              \"frequency\": {\"repetition\": 1},\n              \"affectedSchedules\": [],\n              \"intervalType\": \"UNDEFINED\"\n            },\n                        {\n              \"id\": \"8af639d3-e72a-4cae-ac9d-0e03af39d7f1\",\n              \"start\": \"2020-10-20T21:00:00Z\",\n              \"interval\":               {\n                \"daysOfWeek\": \"WED\",\n                \"hourOfDay\": 9,\n                \"minuteOfHour\": 0,\n                \"duration\": 540\n              },\n              \"frequency\": {\"repetition\": 1},\n              \"affectedSchedules\": [],\n              \"intervalType\": \"UNDEFINED\"\n            },\n                        {\n              \"id\": \"cf8efbc0-4b6c-4d3e-9536-230904a3728d\",\n              \"start\": \"2020-10-20T21:00:00Z\",\n              \"interval\":               {\n                \"daysOfWeek\": \"THU\",\n                \"hourOfDay\": 10,\n                \"minuteOfHour\": 0,\n                \"duration\": 240\n              },\n              \"frequency\": {\"repetition\": 1},\n              \"affectedSchedules\": [],\n              \"intervalType\": \"UNDEFINED\"\n            },\n                        {\n              \"id\": \"8a14f4b6-f43a-4d92-8be1-1398327f6b62\",\n              \"start\": \"2020-10-20T21:00:00Z\",\n              \"interval\":               {\n                \"daysOfWeek\": \"FRI\",\n                \"hourOfDay\": 9,\n                \"minuteOfHour\": 0,\n                \"duration\": 540\n              },\n              \"frequency\": {\"repetition\": 1},\n              \"affectedSchedules\": [],\n              \"intervalType\": \"UNDEFINED\"\n            },\n                        {\n              \"id\": \"4f0bdc0d-b63a-4932-be2e-3ab8e24d41c3\",\n              \"start\": \"2020-10-20T21:00:00Z\",\n              \"interval\":               {\n                \"daysOfWeek\": \"SAT\",\n                \"hourOfDay\": 9,\n                \"minuteOfHour\": 0,\n                \"duration\": 540\n              },\n              \"frequency\": {\"repetition\": 1},\n              \"affectedSchedules\": [],\n              \"intervalType\": \"UNDEFINED\"\n            }\n          ],\n          \"tags\": [],\n          \"availability\":           {\n            \"start\": \"2020-08-04T21:00:00Z\",\n            \"linkedSchedules\": [],\n            \"locations\": [],\n            \"useDefaultLocation\": true\n          },\n          \"totalNumberOfParticipants\": 0,\n          \"participants\": [],\n          \"status\": \"CREATED\",\n          \"version\": 0,\n          \"inheritedFields\": []\n        }],\n        \"scheduleIds\": [\"efd12f41-eeb9-47f1-ad0d-a34eb7cf536a\"],\n        \"status\": \"UNDEFINED\"\n      }],\n      \"form\":       {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"header\":         {\n          \"description\": \"Tell us a bit about yourself\",\n          \"title\": \"Add Your Info\",\n          \"isDescriptionHidden\": false\n        },\n        \"actionLabels\":         {\n          \"offlinePaymentLabel\": \"Book It\",\n          \"onlinePaymentLabel\": \"Pay Now\",\n          \"bookingRequestApprovalLabel\": \"Request to Book\"\n        },\n        \"name\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000001\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Name\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"email\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000002\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Email\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"phone\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000003\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Phone Number\",\n          \"userConstraints\": {\"required\": false},\n          \"additionalLabels\": []\n        },\n        \"numberOfParticipants\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000007\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Number of Participants\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"address\":         {\n          \"street\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000004\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"Street\",\n            \"userConstraints\": {\"required\": true},\n            \"additionalLabels\": []\n          },\n          \"city\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000005\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"City\",\n            \"userConstraints\": {\"required\": true},\n            \"additionalLabels\": []\n          },\n          \"floorNumber\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000006\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"Apt. / Floor No.\",\n            \"userConstraints\": {\"required\": false},\n            \"additionalLabels\": []\n          },\n          \"state\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000009\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"State\",\n            \"userConstraints\": {\"required\": false},\n            \"additionalLabels\": []\n          }\n        },\n        \"customFields\": [        {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000008\",\n          \"valueType\": \"LONG_TEXT\",\n          \"label\": \"Add Your Message\",\n          \"userConstraints\": {\"required\": false},\n          \"additionalLabels\": []\n        }]\n      },\n      \"schedules\": [      {\n        \"id\": \"3c6367fe-d180-4f35-8e94-090ce51020b1\",\n        \"scheduleOwnerId\": \"9b6e5d14-7929-4d3d-9120-c4f17d9ccd3e\",\n        \"firstSessionStart\": \"2020-11-12T16:00:00Z\",\n        \"timeZone\": \"America/Chicago\",\n        \"intervals\":         [\n                    {\n            \"id\": \"a95c2ded-23f6-4997-b7be-fc9e73ac308f\",\n            \"start\": \"2020-11-12T16:00:00Z\",\n            \"interval\":             {\n              \"daysOfWeek\": \"THU\",\n              \"hourOfDay\": 10,\n              \"minuteOfHour\": 0,\n              \"duration\": 60\n            },\n            \"frequency\": {\"repetition\": 1},\n            \"affectedSchedules\": [            {\n              \"scheduleId\": \"efd12f41-eeb9-47f1-ad0d-a34eb7cf536a\",\n              \"transparency\": \"BUSY\",\n              \"scheduleOwnerId\": \"0fbc94b4-fe4d-48de-a255-5ae16aa2d9a9\"\n            }],\n            \"intervalType\": \"UNDEFINED\"\n          },\n                    {\n            \"id\": \"5b2bcde2-8087-4e98-895b-2bbd1cbc839a\",\n            \"start\": \"2020-11-12T16:00:00Z\",\n            \"interval\":             {\n              \"daysOfWeek\": \"FRI\",\n              \"hourOfDay\": 10,\n              \"minuteOfHour\": 0,\n              \"duration\": 60\n            },\n            \"frequency\": {\"repetition\": 1},\n            \"affectedSchedules\": [            {\n              \"scheduleId\": \"efd12f41-eeb9-47f1-ad0d-a34eb7cf536a\",\n              \"transparency\": \"BUSY\",\n              \"scheduleOwnerId\": \"0fbc94b4-fe4d-48de-a255-5ae16aa2d9a9\"\n            }],\n            \"intervalType\": \"UNDEFINED\"\n          },\n                    {\n            \"id\": \"0009f744-2a11-4884-9ed9-df3da5ba06db\",\n            \"start\": \"2020-11-12T16:00:00Z\",\n            \"interval\":             {\n              \"daysOfWeek\": \"SAT\",\n              \"hourOfDay\": 10,\n              \"minuteOfHour\": 0,\n              \"duration\": 60\n            },\n            \"frequency\": {\"repetition\": 1},\n            \"affectedSchedules\": [            {\n              \"scheduleId\": \"efd12f41-eeb9-47f1-ad0d-a34eb7cf536a\",\n              \"transparency\": \"BUSY\",\n              \"scheduleOwnerId\": \"0fbc94b4-fe4d-48de-a255-5ae16aa2d9a9\"\n            }],\n            \"intervalType\": \"UNDEFINED\"\n          }\n        ],\n        \"title\": \"Class with bundle\",\n        \"tags\": [\"GROUP\"],\n        \"location\": {\"locationType\": \"OWNER_BUSINESS\"},\n        \"capacity\": 50,\n        \"rate\": {\"labeledPriceOptions\":         {\n          \"general\":           {\n            \"amount\": \"123\",\n            \"currency\": \"USD\",\n            \"downPayAmount\": \"0\"\n          },\n          \"bundle\":           {\n            \"amount\": \"0\",\n            \"currency\": \"USD\",\n            \"downPayAmount\": \"0\"\n          }\n        }},\n        \"availability\":         {\n          \"start\": \"2020-11-12T14:12:21.408Z\",\n          \"linkedSchedules\": [],\n          \"locations\": [],\n          \"useDefaultLocation\": true\n        },\n        \"totalNumberOfParticipants\": 0,\n        \"participants\": [],\n        \"status\": \"CREATED\",\n        \"version\": 0,\n        \"inheritedFields\": []\n      }],\n      \"category\":       {\n        \"id\": \"8c668631-7127-4b9f-a0a2-711bf29484bb\",\n        \"name\": \"Category 2\",\n        \"customProperties\": {\"order\": \"1\"},\n        \"status\": \"CREATED\",\n        \"sortOrder\": 1\n      },\n      \"urls\":       {\n        \"servicePageUrl\":         {\n          \"base\": \"https://dorga1.wixsite.com\",\n          \"path\": \"/mysite-7/bookings-checkout/class-with-bundle\"\n        },\n        \"bookingPageUrl\":         {\n          \"base\": \"https://dorga1.wixsite.com\",\n          \"path\": \"/mysite-7/bookings-checkout/class-with-bundle/book\"\n        }\n      },\n      \"slugs\": [      {\n        \"name\": \"class-with-bundle\",\n        \"createdAt\": \"2020-11-12T14:12:45.469Z\"\n      }],\n      \"status\": \"ACTIVE\"\n    },\n        {\n      \"service\":       {\n        \"id\": \"c21bd7e9-f64a-471e-8ae9-06701bca5b41\",\n        \"info\":         {\n          \"name\": \"Online (Manual)\",\n          \"images\": []\n        },\n        \"policy\":         {\n          \"maxParticipantsPerBooking\": 1,\n          \"bookUpToXMinutesBefore\": 0,\n          \"cancelRescheduleUpToXMinutesBefore\": 0,\n          \"isBookOnlineAllowed\": true,\n          \"isCancelAllowed\": true,\n          \"isRescheduleAllowed\": true,\n          \"futureBookingsPolicy\":           {\n            \"shouldLimit\": false,\n            \"limitXMinutesToTheFuture\": 10080\n          },\n          \"waitingListPolicy\":           {\n            \"isEnabled\": false,\n            \"capacity\": 10,\n            \"timeWindowMinutes\": 10\n          },\n          \"bookingsApprovalPolicy\":           {\n            \"isBusinessApprovalRequired\": false,\n            \"requestsAffectsAvailability\": true\n          }\n        },\n        \"paymentOptions\":         {\n          \"wixPayOnline\": true,\n          \"wixPayInPerson\": false,\n          \"custom\": false,\n          \"wixPaidPlan\": false\n        },\n        \"categoryId\": \"6c4340cc-2eff-4767-816d-3a2fff02656d\",\n        \"bookingFormId\": \"00000000-0000-0000-0000-000000000000\",\n        \"scheduleIds\": [\"e3817107-7bac-4c4f-8420-0b44c19b9f0c\"],\n        \"customProperties\":         {\n          \"uouHidden\": \"false\",\n          \"order\": \"3\"\n        },\n        \"status\": \"CREATED\",\n        \"sortOrder\": 3\n      },\n      \"pricingPlans\": [],\n      \"resources\":       [\n                {\n          \"id\": \"0fbc94b4-fe4d-48de-a255-5ae16aa2d9a9\",\n          \"name\": \"dor\",\n          \"email\": \"dorgal405@gmail.com\",\n          \"phone\": \"8234789\",\n          \"tags\": [\"staff\"],\n          \"images\": [],\n          \"schedules\": [          {\n            \"id\": \"efd12f41-eeb9-47f1-ad0d-a34eb7cf536a\",\n            \"scheduleOwnerId\": \"0fbc94b4-fe4d-48de-a255-5ae16aa2d9a9\",\n            \"firstSessionStart\": \"2020-10-21T06:00:00Z\",\n            \"timeZone\": \"America/Chicago\",\n            \"intervals\":             [\n                            {\n                \"id\": \"532f9036-f7b0-43ce-80eb-e89341fbfc6c\",\n                \"start\": \"2020-10-20T21:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"MON\",\n                  \"hourOfDay\": 9,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 540\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"b2d8dcc0-d981-4613-a9c0-ca71dc038dfb\",\n                \"start\": \"2020-10-20T21:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"TUE\",\n                  \"hourOfDay\": 9,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 540\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"8af639d3-e72a-4cae-ac9d-0e03af39d7f1\",\n                \"start\": \"2020-10-20T21:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"WED\",\n                  \"hourOfDay\": 9,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 540\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"cf8efbc0-4b6c-4d3e-9536-230904a3728d\",\n                \"start\": \"2020-10-20T21:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"THU\",\n                  \"hourOfDay\": 10,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 240\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"8a14f4b6-f43a-4d92-8be1-1398327f6b62\",\n                \"start\": \"2020-10-20T21:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"FRI\",\n                  \"hourOfDay\": 9,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 540\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"4f0bdc0d-b63a-4932-be2e-3ab8e24d41c3\",\n                \"start\": \"2020-10-20T21:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"SAT\",\n                  \"hourOfDay\": 9,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 540\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              }\n            ],\n            \"tags\": [],\n            \"availability\":             {\n              \"start\": \"2020-08-04T21:00:00Z\",\n              \"linkedSchedules\": [],\n              \"locations\": [],\n              \"useDefaultLocation\": true\n            },\n            \"totalNumberOfParticipants\": 0,\n            \"participants\": [],\n            \"status\": \"CREATED\",\n            \"version\": 0,\n            \"inheritedFields\": []\n          }],\n          \"scheduleIds\": [\"efd12f41-eeb9-47f1-ad0d-a34eb7cf536a\"],\n          \"status\": \"UNDEFINED\"\n        },\n                {\n          \"id\": \"76570209-101f-409b-af97-b445bdb63125\",\n          \"name\": \"Norah\",\n          \"email\": \"norah@easyMath.com\",\n          \"phone\": \"+1 121 12223 4433\",\n          \"description\": \"Certified Math Teacher \",\n          \"tags\":           [\n            \"staff\",\n            \"defaultStaff\"\n          ],\n          \"images\": [          {\n            \"id\": \"\",\n            \"url\": \"11062b_9c9149d10c46467daf00fb536e135071~mv2.jpg\",\n            \"height\": 4795,\n            \"width\": 3550\n          }],\n          \"schedules\": [          {\n            \"id\": \"7aa23d25-3667-4449-aa16-da58846864b8\",\n            \"scheduleOwnerId\": \"76570209-101f-409b-af97-b445bdb63125\",\n            \"firstSessionStart\": \"2020-10-31T22:00:00Z\",\n            \"timeZone\": \"America/Chicago\",\n            \"intervals\":             [\n                            {\n                \"id\": \"d5a474fe-9460-4c4d-91ea-c5ffe1c529e2\",\n                \"start\": \"2020-10-31T22:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"MON\",\n                  \"hourOfDay\": 0,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 1440\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"6cc4a4bb-6184-4be7-9adb-ade9019bcec9\",\n                \"start\": \"2020-10-31T22:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"TUE\",\n                  \"hourOfDay\": 0,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 1440\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"ab7c3bf6-e7ff-4f47-8262-658b75741a4d\",\n                \"start\": \"2020-10-31T22:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"WED\",\n                  \"hourOfDay\": 0,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 1440\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"a863ed0f-8331-4675-9c40-2479f48f66c5\",\n                \"start\": \"2020-10-31T22:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"THU\",\n                  \"hourOfDay\": 0,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 1440\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"9315e60f-7931-49cb-bba7-ea669c359e33\",\n                \"start\": \"2020-10-31T22:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"FRI\",\n                  \"hourOfDay\": 0,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 1440\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"e83c0aba-2a31-4601-9398-f3ac0e9ffaf7\",\n                \"start\": \"2020-10-31T22:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"SAT\",\n                  \"hourOfDay\": 0,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 1440\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              },\n                            {\n                \"id\": \"1e496325-449a-4d4f-b3ed-93c3ee9f0371\",\n                \"start\": \"2020-10-31T22:00:00Z\",\n                \"interval\":                 {\n                  \"daysOfWeek\": \"SUN\",\n                  \"hourOfDay\": 0,\n                  \"minuteOfHour\": 0,\n                  \"duration\": 1440\n                },\n                \"frequency\": {\"repetition\": 1},\n                \"affectedSchedules\": [],\n                \"intervalType\": \"UNDEFINED\"\n              }\n            ],\n            \"tags\": [],\n            \"availability\":             {\n              \"start\": \"2020-06-10T00:00:00Z\",\n              \"linkedSchedules\": [],\n              \"locations\": [],\n              \"useDefaultLocation\": true\n            },\n            \"totalNumberOfParticipants\": 0,\n            \"participants\": [],\n            \"status\": \"CREATED\",\n            \"version\": 0,\n            \"inheritedFields\": []\n          }],\n          \"scheduleIds\": [\"7aa23d25-3667-4449-aa16-da58846864b8\"],\n          \"status\": \"UNDEFINED\"\n        },\n                {\n          \"id\": \"faaf6cb6-bd97-4f37-a536-16bf9bf3c9c0\",\n          \"name\": \"Staff Member #2\",\n          \"tags\": [\"staff\"],\n          \"images\": [],\n          \"schedules\": [          {\n            \"id\": \"283d5dce-82c7-4b1f-b4b6-725616f6c402\",\n            \"scheduleOwnerId\": \"faaf6cb6-bd97-4f37-a536-16bf9bf3c9c0\",\n            \"timeZone\": \"America/Chicago\",\n            \"intervals\": [],\n            \"tags\": [],\n            \"availability\":             {\n              \"start\": \"2020-06-14T21:00:00Z\",\n              \"linkedSchedules\": [              {\n                \"scheduleId\": \"32c2ff40-3ef9-464d-86e5-17600313f60f\",\n                \"transparency\": \"FREE\",\n                \"scheduleOwnerId\": \"e6b6108c-92bc-462b-937c-dab386909fd2\"\n              }],\n              \"locations\": [],\n              \"useDefaultLocation\": true\n            },\n            \"totalNumberOfParticipants\": 0,\n            \"participants\": [],\n            \"status\": \"CREATED\",\n            \"version\": 0,\n            \"inheritedFields\": []\n          }],\n          \"scheduleIds\": [\"283d5dce-82c7-4b1f-b4b6-725616f6c402\"],\n          \"status\": \"UNDEFINED\"\n        }\n      ],\n      \"form\":       {\n        \"id\": \"00000000-0000-0000-0000-000000000000\",\n        \"header\":         {\n          \"description\": \"Tell us a bit about yourself\",\n          \"title\": \"Add Your Info\",\n          \"isDescriptionHidden\": false\n        },\n        \"actionLabels\":         {\n          \"offlinePaymentLabel\": \"Book It\",\n          \"onlinePaymentLabel\": \"Pay Now\",\n          \"bookingRequestApprovalLabel\": \"Request to Book\"\n        },\n        \"name\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000001\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Name\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"email\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000002\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Email\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"phone\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000003\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Phone Number\",\n          \"userConstraints\": {\"required\": false},\n          \"additionalLabels\": []\n        },\n        \"numberOfParticipants\":         {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000007\",\n          \"valueType\": \"SHORT_TEXT\",\n          \"label\": \"Number of Participants\",\n          \"userConstraints\": {\"required\": true},\n          \"additionalLabels\": []\n        },\n        \"address\":         {\n          \"street\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000004\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"Street\",\n            \"userConstraints\": {\"required\": true},\n            \"additionalLabels\": []\n          },\n          \"city\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000005\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"City\",\n            \"userConstraints\": {\"required\": true},\n            \"additionalLabels\": []\n          },\n          \"floorNumber\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000006\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"Apt. / Floor No.\",\n            \"userConstraints\": {\"required\": false},\n            \"additionalLabels\": []\n          },\n          \"state\":           {\n            \"fieldId\": \"00000000-0000-0000-0000-000000000009\",\n            \"valueType\": \"SHORT_TEXT\",\n            \"label\": \"State\",\n            \"userConstraints\": {\"required\": false},\n            \"additionalLabels\": []\n          }\n        },\n        \"customFields\": [        {\n          \"fieldId\": \"00000000-0000-0000-0000-000000000008\",\n          \"valueType\": \"LONG_TEXT\",\n          \"label\": \"Add Your Message\",\n          \"userConstraints\": {\"required\": false},\n          \"additionalLabels\": []\n        }]\n      },\n      \"schedules\": [      {\n        \"id\": \"e3817107-7bac-4c4f-8420-0b44c19b9f0c\",\n        \"scheduleOwnerId\": \"c21bd7e9-f64a-471e-8ae9-06701bca5b41\",\n        \"firstSessionStart\": \"2020-09-07T08:00:00Z\",\n        \"lastSessionEnd\": \"2020-09-07T09:00:00Z\",\n        \"timeZone\": \"America/Chicago\",\n        \"intervals\": [],\n        \"title\": \"Online (Manual)\",\n        \"tags\": [\"INDIVIDUAL\"],\n        \"location\": {\"locationType\": \"OWNER_BUSINESS\"},\n        \"capacity\": 1,\n        \"rate\": {\"labeledPriceOptions\": {\"general\":         {\n          \"amount\": \"123\",\n          \"currency\": \"USD\",\n          \"downPayAmount\": \"0\"\n        }}},\n        \"availability\":         {\n          \"start\": \"2020-09-02T14:18:03.266Z\",\n          \"linkedSchedules\":           [\n                        {\n              \"scheduleId\": \"efd12f41-eeb9-47f1-ad0d-a34eb7cf536a\",\n              \"transparency\": \"BUSY\",\n              \"scheduleOwnerId\": \"0fbc94b4-fe4d-48de-a255-5ae16aa2d9a9\"\n            },\n                        {\n              \"scheduleId\": \"7aa23d25-3667-4449-aa16-da58846864b8\",\n              \"transparency\": \"BUSY\",\n              \"scheduleOwnerId\": \"76570209-101f-409b-af97-b445bdb63125\"\n            },\n                        {\n              \"scheduleId\": \"283d5dce-82c7-4b1f-b4b6-725616f6c402\",\n              \"transparency\": \"BUSY\",\n              \"scheduleOwnerId\": \"faaf6cb6-bd97-4f37-a536-16bf9bf3c9c0\"\n            }\n          ],\n          \"constraints\":           {\n            \"slotDurations\": [60],\n            \"timeBetweenSlots\": 0\n          },\n          \"locations\": [],\n          \"useDefaultLocation\": true\n        },\n        \"totalNumberOfParticipants\": 0,\n        \"participants\": [],\n        \"status\": \"CREATED\",\n        \"version\": 0,\n        \"inheritedFields\": []\n      }],\n      \"category\":       {\n        \"id\": \"6c4340cc-2eff-4767-816d-3a2fff02656d\",\n        \"name\": \"Our Services\",\n        \"customProperties\": {\"order\": \"0\"},\n        \"status\": \"CREATED\",\n        \"sortOrder\": 0\n      },\n      \"urls\":       {\n        \"servicePageUrl\":         {\n          \"base\": \"https://dorga1.wixsite.com\",\n          \"path\": \"/mysite-7/bookings-checkout/online-manual\"\n        },\n        \"bookingPageUrl\":         {\n          \"base\": \"https://dorga1.wixsite.com\",\n          \"path\": \"/mysite-7/bookings-checkout/online-manual/book\"\n        }\n      },\n      \"slugs\":       [\n                {\n          \"name\": \"online-manual\",\n          \"createdAt\": \"2020-09-02T14:18:51.252Z\"\n        },\n                {\n          \"name\": \"untitled-service-1\",\n          \"createdAt\": \"2020-09-02T14:18:24.415Z\"\n        }\n      ],\n      \"status\": \"ACTIVE\"\n    }\n  ],\n  \"pagingMetadata\":   {\n    \"count\": 3,\n    \"offset\": 0,\n    \"total\": 3\n  },\n  \"responseType\": \"EVENTUALLY_CONSISTENT\"\n} "],
+            "type": "curl",
+            "extra": {"description": "Returns a catalog of services that are payable online and where the category name contains the word \"Services\", not including deleted services."}
+          },
+                    {
+            "title": "Query Services Catalog with Paging and Fields",
+            "body": ["curl --location --request POST 'https://www.wixapis.com/bookings/v1/catalog/services' \\\n--header 'Authorization: RnqhVpkdD9edoH9nyKqxZb5cIsQE5csdWko4K0rtpzQ.eyJpbnN0YW5jZUlkIjoiYzg2NDI2OWYtZGIwMy00NmY2LThlYWYtYWFhZWM4NjBlYzU1IiwiYXBwRGVmSWQiOiIxM2QyMWM2My1iNWVjLTU5MTItODM5Ny1jM2E1ZGRiMjdhOTciLCJtZXRhU2l0ZUlkIjoiYmNiNmY1NTktZGQzNC00YjJhLTg1NzktYThiMWU4NjFiZTdlIiwic2lnbkRhdGUiOiIyMDIxLTAxLTEzVDEyOjQyOjQ5LjMwOFoiLCJ1aWQiOiJjNWMzYjQzMC0zOGY1LTQxMDctOTZlNy1lOWUwMGU1ZGQxM2QiLCJwZXJtaXNzaW9ucyI6Ik9XTkVSIiwidmVuZG9yUHJvZHVjdElkIjoiYm9va2luZ3MiLCJkZW1vTW9kZSI6ZmFsc2UsImJpVG9rZW4iOiI3NGQyZDNjNi0wNjM3LTBkZGMtMGJkNi0wMjFmMjAwMTUyMmIiLCJzaXRlT3duZXJJZCI6ImM1YzNiNDMwLTM4ZjUtNDEwNy05NmU3LWU5ZTAwZTVkZDEzZCIsInNpdGVNZW1iZXJJZCI6ImM1YzNiNDMwLTM4ZjUtNDEwNy05NmU3LWU5ZTAwZTVkZDEzZCIsImV4cGlyYXRpb25EYXRlIjoiMjAyMS0wMS0xM1QxNjo0Mjo0OS4zMDhaIiwibG9naW5BY2NvdW50SWQiOiJjNWMzYjQzMC0zOGY1LTQxMDctOTZlNy1lOWUwMGU1ZGQxM2QifQ' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"query\" : {\n        \"fields\" :[\"service.info.name\",\"category.name\", \"service.status\" ],\n        \"paging\" : { \"offset\" : 2, \"limit\": 2}\n    },\n    \"includeDeleted\":false\n}'"],
+            "response": ["{\n  \"services\":   [\n        {\n      \"service\":       {\n        \"info\":         {\n          \"name\": \"12 Part Meditation Course\",\n          \"images\": []\n        },\n        \"scheduleIds\": [],\n        \"customProperties\": {},\n        \"status\": \"CREATED\"\n      },\n      \"pricingPlans\": [],\n      \"resources\": [],\n      \"schedules\": [],\n      \"category\":       {\n        \"name\": \"Our Services\",\n        \"customProperties\": {},\n        \"status\": \"CREATED\"\n      },\n      \"slugs\": [],\n      \"status\": \"ACTIVE\"\n    },\n        {\n      \"service\":       {\n        \"info\":         {\n          \"name\": \"Yoga Class\",\n          \"images\": []\n        },\n        \"scheduleIds\": [],\n        \"customProperties\": {},\n        \"status\": \"CREATED\"\n      },\n      \"pricingPlans\": [],\n      \"resources\": [],\n      \"schedules\": [],\n      \"category\":       {\n        \"name\": \"Our Services\",\n        \"customProperties\": {},\n        \"status\": \"CREATED\"\n      },\n      \"slugs\": [],\n      \"status\": \"ACTIVE\"\n    }\n  ],\n  \"pagingMetadata\":   {\n    \"count\": 2,\n    \"offset\": 2,\n    \"total\": 6\n  },\n  \"responseType\": \"EVENTUALLY_CONSISTENT\"\n} "],
+            "type": "curl",
+            "extra": {"description": "Returns a catalog of services with a defined set of fields, implementing paging"}
+          }
+        ],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "QueryServicesRequest",
+        "rpcResponseName": "QueryServicesResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Query Service Catalog (Additional Binding 3)",
+      "methodName": "Query",
+      "serviceName": "ServicesCatalog",
+      "tag": "Services",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "params":       [
+                {
+          "in": "BODY",
+          "name": "query",
+          "type": "All APIs.Bookings - Service Catalog._wix_common_QueryV2",
+          "doc": " Default paging - limit: 25, offset: 0\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "includeDeleted",
+          "type": "boolean",
+          "doc": "",
+          "required": false
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "Query",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Bookings - Service Catalog._com_wixpress_bookings_services_catalog_api_v1_service_QueryServicesResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": "  Returns a list of services and related information according to the specified query.\n\n  Related information includes:\n  + Pricing plans\n  + Resources\n  + Forms\n  + Schedules\n  + Categories\n  + URLs   \n  + Slugs\n\n The query runs with the following defaults:\n ```JSON\n {\n  \"query\" : {\n             \"paging\" : { \"offset\" : 0, \"limit\": 25}\n     },\n     \"includeDeleted\":false\n   }    \n }\n ```\n\n The following fields and filters are supported in the query:\n\n |FIELD|Supported filters|\n |--|--|\n |`service.id`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`service.info.name`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`service.info.tagLine`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`service.policy.isBookOnlineAllowed`|`$eq`, `$ne`\n |`service.customProperties.tag`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`service.paymentOptions.wixPayOnline`|`$eq`, `$ne`\n |`service.paymentOptions.wixPayInPerson`|`$eq`, `$ne`\n |`service.paymentOptions.wixPaidPlan`|`$eq`, `$ne`\n |`service.paymentOptions.custom`|`$eq`, `$ne`\n |`service.policy.bookingsApprovalPolicy. isBusinessApprovalRequired`|`$eq`, `$ne`\n |`service.schedules.availability. locations.businessLocation.ids`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`category.id`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`category.name`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`slugs.name`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`schedules.tags`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |`resources.id`|`$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n |paging|Supported. \n |fields|Supported. \n |fieldsets|Not supported.  \n\n\n >**Notes:**  \n > + The following objects in the `query` parameter are not supported for this query:  \n >    - `sort`\n >    - `fieldsets`  \n >\n > + The `businessLocation.businessSchedule` object in the `location` object is not supported.\n\n > **Permissions**  \n > This endpoint requires the Read Bookings - Public Data, the Read Bookings - Including Participants or the Manage Bookings permissions scope\n\n \n",
+        "description": [],
+        "request": "POST",
         "url": "https://www.wixapis.com/bookings/v1/catalog",
         "links": [],
         "examples":         [
@@ -999,12 +1064,12 @@
                 {
           "name": "limit",
           "type": "integer",
-          "doc": " The number of items to load.\n Cursor token returned in the query response. To be used on the next query request, but not the first query request.\n"
+          "doc": " Number of items to load.\n"
         },
                 {
           "name": "cursor",
           "type": "string",
-          "doc": " Cursor returned in last query response. Should not be provided on first page request\n"
+          "doc": "\nPointer to the next or previous page in the list of results.\n\nYou can get the relevant cursor token\nfrom the `pagingMetadata` object in the previous call's response.\nNot relevant for the first request.\n"
         }
       ],
       "enum": null,
@@ -1064,12 +1129,12 @@
                 {
           "name": "next",
           "type": "string",
-          "doc": " Cursor pointing to next result page.\n"
+          "doc": " Cursor pointing to next page in the list of results.\n"
         },
                 {
           "name": "prev",
           "type": "string",
-          "doc": " Cursor pointing to previous result page.\n"
+          "doc": " Cursor pointing to previous page in the list of results.\n"
         }
       ],
       "enum": null,
@@ -1094,7 +1159,7 @@
                 {
           "name": "order",
           "type": "All APIs.Bookings - Service Catalog._wix_common_SortOrder",
-          "doc": " Sort order.\n\n Defaults to `ASC`.\n"
+          "doc": " Sort order.\n"
         }
       ],
       "enum": null,
@@ -1514,7 +1579,8 @@
                 {
           "name": "filename",
           "type": "string",
-          "doc": " Image filename. Optional.\n"
+          "doc": " Image filename. Optional.\n",
+          "readOnly": true
         }
       ],
       "enum": null,
@@ -2471,7 +2537,7 @@
       "displayName": "Business Schedule Object",
       "locations": [],
       "docs":       {
-        "summary": "\nTime periods that this location is open for business. Includes a collection of TimePeriod instances.\nAligned with https://developers.google.com/my-business/reference/rest/v4/accounts.locations#businesshours\nWith a few minor adjustments\n",
+        "summary": "\nBusiness schedule. Array of weekly recurring time periods when the business is open, or a service is available. Limited to 100 time periods.\n",
         "links": [],
         "examples": []
       },
@@ -2482,7 +2548,7 @@
             "name": "array",
             "typeParams": ["All APIs.Bookings - Service Catalog._com_wixpress_siteproperties_api_v4_TimePeriod"]
           },
-          "doc": "\nTimes that this location is open. Each period represents a range of hours when the location is\nopen during the week. Limited to 100 time periods.\n"
+          "doc": "\nWeekly recurring time periods when the business is regularly open, or the service is available.\n"
         },
                 {
           "name": "specialHourPeriod",
@@ -2490,7 +2556,7 @@
             "name": "array",
             "typeParams": ["All APIs.Bookings - Service Catalog._com_wixpress_siteproperties_api_v4_SpecialHourPeriod"]
           },
-          "doc": " Exceptions to the business's regular hours.\n"
+          "doc": " Exceptions to the business's regular hours. The business can be open or closed during the exception.\n"
         }
       ],
       "enum": null,
@@ -2502,7 +2568,7 @@
       "displayName": "Time Period Object",
       "locations": [],
       "docs":       {
-        "summary": "\nA span of time that the business is open,\nstarting on the specified open day/time and closing on the specified close day/time.\nClosing time must occur after the opening time, for example later in the same day, or on a subsequent day.\n",
+        "summary": "\nWeekly recurring time periods when the business is regularly open, or the service is available.\n",
         "links": [],
         "examples": []
       },
@@ -2510,22 +2576,22 @@
                 {
           "name": "openDay",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_siteproperties_api_v4_DayOfWeek",
-          "doc": " Day of the week this period starts on.\n"
+          "doc": " Day of the week the period starts on.\n"
         },
                 {
           "name": "openTime",
           "type": "string",
-          "doc": "\nTime in 24hr ISO 8601 extended format (hh:mm). Valid values are 00:00-24:00, where 24:00 represents\nmidnight at the end of the specified day field.\n"
+          "doc": "\nTime the period starts in 24-hour [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) extended format. Valid values are 00:00-24:00, where 24:00 represents\nmidnight at the end of the specified day.\n"
         },
                 {
           "name": "closeDay",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_siteproperties_api_v4_DayOfWeek",
-          "doc": " Day of the week this period ends on.\n"
+          "doc": " Day of the week the period ends on.\n"
         },
                 {
           "name": "closeTime",
           "type": "string",
-          "doc": "\nTime in 24hr ISO 8601 extended format (hh:mm). Valid values are 00:00-24:00, where 24:00 represents\nmidnight at the end of the specified day field.\n"
+          "doc": "\nTime the period ends in 24-hour [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) extended format. Valid values are 00:00-24:00, where 24:00 represents\nmidnight at the end of the specified day. \n__Note:__ If `openDay` and `closeDay` specify the same day of the week `closeTime` must be later than `openTime`.\n"
         }
       ],
       "enum": null,
@@ -2537,7 +2603,7 @@
       "displayName": "Special Hour Period Object",
       "locations": [],
       "docs":       {
-        "summary": " Set of time periods when a location's operational hours differ from its normal business hours.\n",
+        "summary": " Exception to the business's regular hours. The business can be open or closed during the exception.\n",
         "links": [],
         "examples": []
       },
@@ -2545,22 +2611,22 @@
                 {
           "name": "startDate",
           "type": "string",
-          "doc": " Date and Time in 24hr iso-8601 Coordinated universal time (UTC)\n"
+          "doc": "\nStart date and time of the exception in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format and [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).\n"
         },
                 {
           "name": "endDate",
           "type": "string",
-          "doc": " Date and Time in 24hr iso-8601 Coordinated universal time (UTC)\n"
+          "doc": "\nEnd date and time of the exception in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format and [Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).\n"
         },
                 {
           "name": "isClosed",
           "type": "boolean",
-          "doc": ""
+          "doc": " Whether the business is closed, or the service is not available during the exception. Defaults to `true`.\n"
         },
                 {
           "name": "comment",
           "type": "string",
-          "doc": ""
+          "doc": " Additional info about the exception. For example \"We close earlier on New Year's Eve.\".\n"
         }
       ],
       "enum": null,
@@ -2580,34 +2646,34 @@
                 {
           "name": "id",
           "type": "string",
-          "doc": " ID of the location.\n",
+          "doc": " Location ID.\n",
           "readOnly": true
         },
                 {
           "name": "name",
           "type": "string",
-          "doc": " Display name of the location.\n"
+          "doc": " Location name.\n"
         },
                 {
           "name": "description",
           "type": "string",
-          "doc": " Free text for describing the location.\n"
+          "doc": " Location description.\n"
         },
                 {
           "name": "default",
           "type": "boolean",
-          "doc": "\nWhether this is the default location.\nThere can only be one default location per site. Changes to the default location are made on the **Site Properties** page of the dashboard.\nThe default location can't be deleted. \n<!-- and can be only marked through SetDefaultLocation api -->\n",
+          "doc": "\nWhether this is the default location. There can only be one default location per site. The default location can't be archived.\n",
           "readOnly": true
         },
                 {
           "name": "status",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_locations_LocationStatus",
-          "doc": " Status of the location. Default is `\"ACTIVE\"`\n"
+          "doc": "\nLocation status. Defaults to `ACTIVE`. \n__Note:__ [Archiving a location](https://dev.wix.com/api/rest/business-info/locations/archive-location) \ndoesn't affect the location's status. `INACTIVE` is currently not supported.\n"
         },
                 {
           "name": "locationType",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_locations_LocationType",
-          "doc": " Type of the location.\n"
+          "doc": " Location type. **Note:** Currently not supported.\n"
         },
                 {
           "name": "fax",
@@ -2617,7 +2683,7 @@
                 {
           "name": "timeZone",
           "type": "string",
-          "doc": " Time zone.\n"
+          "doc": " Timezone in `America/New_York` format.\n"
         },
                 {
           "name": "email",
@@ -2632,22 +2698,22 @@
                 {
           "name": "address",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_locations_Address",
-          "doc": " Address\n"
+          "doc": " Address.\n"
         },
                 {
           "name": "businessSchedule",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_siteproperties_api_v4_BusinessSchedule",
-          "doc": "\nRepresents the time periods that this location is open for business. Holds a collection of TimePeriod instances.\nTimePeriod indicates when the location is open. Each period represents a range of hours when the location is\nopen during the week. Limited to 100 time periods. \n\nNot supported by Wix Bookings.\n"
+          "doc": "\nBusiness schedule. Array of weekly recurring time periods when the location is open for business. Limited to 100 time periods.\n\n__Note:__ Not supported by Wix Bookings.\n"
         },
                 {
           "name": "revision",
           "type": "string",
-          "doc": " Location revision, represents the number of changes to the location.\n"
+          "doc": "\nRevision number, which increments by 1 each time the location is updated. \nTo prevent conflicting changes, the existing revision must be used when updating a location.\n"
         },
                 {
           "name": "archived",
           "type": "boolean",
-          "doc": "\nWhether the location is archived.\nArchived locations can't be updated.\n",
+          "doc": "\nWhether the location is archived. Archived locations can't be updated. \n__Note:__ [Archiving a location](https://dev.wix.com/api/rest/business-info/locations/archive-location) \ndoesn't affect its `status`.\n",
           "readOnly": true
         }
       ],
@@ -2668,12 +2734,12 @@
                 {
           "name": "country",
           "type": "string",
-          "doc": "Country code.\n"
+          "doc": " 2-letter country code in an [ISO-3166 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.\n"
         },
                 {
           "name": "subdivision",
           "type": "string",
-          "doc": "Subdivision. Usually state, region, prefecture or province code, according to [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2).\n"
+          "doc": " Code for a subdivision (such as state, prefecture, or province) in [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2) format.\n"
         },
                 {
           "name": "city",
@@ -2683,27 +2749,27 @@
                 {
           "name": "postalCode",
           "type": "string",
-          "doc": " Zip/postal code.\n"
+          "doc": " Postal or zip code.\n"
         },
                 {
           "name": "streetAddress",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_locations_StreetAddress",
-          "doc": " Street name, number, and apartment number.\n"
+          "doc": " Street address. Includes street name, number, and apartment number in separate fields.\n"
         },
                 {
           "name": "formattedAddress",
           "type": "string",
-          "doc": " A string containing the full address of this location.\n"
+          "doc": " Full address of the location.\n"
         },
                 {
           "name": "hint",
           "type": "string",
-          "doc": " Free text to help find the address.\n"
+          "doc": " Extra information that helps finding the location.\n"
         },
                 {
           "name": "geocode",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_locations_AddressLocation",
-          "doc": " Coordinates of the physical address.\n"
+          "doc": " Geographic coordinates of location.\n"
         }
       ],
       "enum": null,
@@ -2715,7 +2781,7 @@
       "displayName": "Street Address Object",
       "locations": [],
       "docs":       {
-        "summary": " Street name, number, and apartment number.\n",
+        "summary": " Street address. Includes street name, number, and apartment number in separate fields.\n",
         "links": [],
         "examples": []
       },
@@ -2723,7 +2789,7 @@
                 {
           "name": "number",
           "type": "string",
-          "doc": " Street number.\n"
+          "doc": "Street number.\n"
         },
                 {
           "name": "name",
@@ -2753,12 +2819,12 @@
                 {
           "name": "latitude",
           "type": "number",
-          "doc": " Address latitude.\n"
+          "doc": " Latitude of the location. Must be between -90 and 90.\n"
         },
                 {
           "name": "longitude",
           "type": "number",
-          "doc": " Address longitude.\n"
+          "doc": " Longitude of the location. Must be between -180 and 180.\n"
         }
       ],
       "enum": null,
@@ -2957,7 +3023,7 @@
                 {
           "name": "locationType",
           "type": "All APIs.Bookings - Service Catalog._com_wix_bookings_common_api_v1_Location_LocationType",
-          "doc": "Location type.\n<!--ONLY:VELO\n One of:\n - `\"OWNER_BUSINESS\"` The business address as set in the site’s general settings.\n - `\"OWNER_CUSTOM\"` The address as set when creating the service.\n - `\"CUSTOM\"` The address set for the individual session.\n<!--END:ONLY:VELO-->\n"
+          "doc": "Location type.\n One of:\n - `\"OWNER_BUSINESS\"` The business address as set in the site’s general settings.\n - `\"OWNER_CUSTOM\"` The address as set when creating the service.\n - `\"CUSTOM\"` The address set for the individual session.\n"
         },
                 {
           "name": "address",
@@ -2968,7 +3034,7 @@
                 {
           "name": "customAddress",
           "type": "All APIs.Bookings - Service Catalog._com_wix_bookings_upstream_wix_common_Address",
-          "doc": "Custom address, used when locationType is `\"OWNER_CUSTOM\"`.\n"
+          "doc": "Custom address, used when locationType is `\"OWNER_CUSTOM\"`. Might be used when locationType is `\"CUSTOM\"` in case the owner sets a custom address for the session which is different from the default.\n"
         },
                 {
           "name": "businessLocation",
@@ -3259,7 +3325,7 @@
                 {
           "name": "id",
           "type": "string",
-          "doc": "Participant ID.\n"
+          "doc": "Participant ID. Currently represents the booking.id.\n"
         },
                 {
           "name": "contactId",
@@ -3374,6 +3440,31 @@
           "name": "accountOwnerId",
           "type": "string",
           "doc": "Account owner id in vc service\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_bookings_schedules_api_v1_Schedule_Version",
+      "displayName": "Version Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "scheduleVersion",
+          "type": "integer",
+          "doc": "Schedule version number, updated each time the schedule is updated.\n"
+        },
+                {
+          "name": "participantsVersion",
+          "type": "integer",
+          "doc": "Participants version number, updated each time the schedule participants are updated.\n"
         }
       ],
       "enum": null,
@@ -3595,7 +3686,7 @@
                 {
           "name": "status",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_bookings_resources_core_api_v1_resource_Resource_ResourceStatus",
-          "doc": " Resource status.\n<!--ONLY:VELO\n One of:\n - `\"CREATED\"` Default status.\n - `\"DELETED\"` The resource was deleted.\n - `\"UPDATED\"` The resource was updated.\n<!--END:ONLY:VELO--> \n",
+          "doc": " Resource status.\n<!--ONLY:VELO\n One of:\n - `\"CREATED\"` Default status.\n - `\"DELETED\"` The resource was deleted.\n - `\"UPDATED\"` The resource was updated.\n<!--END:ONLY:VELO-->\n",
           "readOnly": true
         },
                 {
@@ -3633,6 +3724,36 @@
           "name": "totalCount",
           "type": "integer",
           "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_Money",
+      "displayName": "Money Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Money.\n Default format to use. Sufficiently compliant with majority of standards: w3c, ISO 4217, ISO 20022, ISO 8583:2003.\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "value",
+          "type": "string",
+          "doc": " Monetary amount. Decimal string with a period as a decimal separator (e.g., 3.99). Optionally, a single (-), to indicate that the amount is negative.\n"
+        },
+                {
+          "name": "currency",
+          "type": "string",
+          "doc": " Currency code. Must be valid ISO 4217 currency code (e.g., USD).\n"
+        },
+                {
+          "name": "formattedValue",
+          "type": "string",
+          "doc": " Monetary amount. Decimal string in local format (e.g., 1 000,30). Optionally, a single (-), to indicate that the amount is negative.\n"
         }
       ],
       "enum": null,
@@ -3774,6 +3895,16 @@
           "name": "userDefinedSlug",
           "type": "All APIs.Bookings - Service Catalog._com_wixpress_bookings_services_catalog_api_v1_service_Slug",
           "doc": "User defined Slug of the service. This combined with the URL provides the full path to the service's page and booking page.\n"
+        },
+                {
+          "name": "minPrice",
+          "type": "All APIs.Bookings - Service Catalog._wix_common_Money",
+          "doc": " Service has price starting with this value\n"
+        },
+                {
+          "name": "maxPrice",
+          "type": "All APIs.Bookings - Service Catalog._wix_common_Money",
+          "doc": " Service has price up to this value\n"
         }
       ],
       "enum": null,
@@ -4730,6 +4861,25 @@
       "labels": []
     },
         {
+      "name": "_com_wix_bookings_common_api_v1_TypeEnum_Type",
+      "displayName": "Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> FIXED <\/code><\/li><li><code> CUSTOM <\/code><\/li><li><code> VARIED <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNKNOWN",
+        "FIXED",
+        "CUSTOM",
+        "VARIED"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_siteproperties_api_v4_DayOfWeek",
       "displayName": "Day Of Week Object",
       "locations": [],
@@ -4756,14 +4906,14 @@
       "displayName": "Location Status Object",
       "locations": [],
       "docs":       {
-        "summary": " For future use\n \n Possible values are: <li><code> ACTIVE <\/code><\/li><li><code> IN_ACTIVE <\/code><\/li>",
+        "summary": " For future use\n \n Possible values are: <li><code> ACTIVE <\/code><\/li><li><code> INACTIVE <\/code><\/li>",
         "links": [],
         "examples": []
       },
       "members": [],
       "enum":       [
         "ACTIVE",
-        "IN_ACTIVE"
+        "INACTIVE"
       ],
       "extra": {},
       "labels": []
