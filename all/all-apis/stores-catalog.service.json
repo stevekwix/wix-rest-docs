@@ -287,13 +287,22 @@
         "request": "POST",
         "url": "https://www.wixapis.com/stores/v1/bulk/products/adjust-properties",
         "links": [],
-        "examples": [        {
-          "title": "Adjust the price of 3 products",
-          "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/adjust-product-properties \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"80a584c3-78c1-4e2f-84f8-b8d0bf65b518\",\n      \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"cc30ba06-2b9a-4962-8b34-7a265d495d7e\"\n    ],\n    \"price\": {\n      \"amount\": 5\n    }\n  }'"],
-          "response": ["{\n  \"results\":   [\n    {\"itemMetadata\":     {\n      \"id\": \"80a584c3-78c1-4e2f-84f8-b8d0bf65b518\",\n      \"originalIndex\": 0,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"originalIndex\": 1,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"cc30ba06-2b9a-4962-8b34-7a265d495d7e\",\n      \"originalIndex\": 2,\n      \"success\": true\n    }}\n  ],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 3,\n    \"totalFailures\": 0,\n    \"undetailedFailures\": 0\n  }\n} "],
-          "type": "curl",
-          "extra": {}
-        }],
+        "examples":         [
+                    {
+            "title": "Adjust the price of 3 products by amount",
+            "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/adjust-properties \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"80a584c3-78c1-4e2f-84f8-b8d0bf65b518\",\n      \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"cc30ba06-2b9a-4962-8b34-7a265d495d7e\"\n    ],\n    \"adjust\": {\n      \"price\": {\n        \"amount\": 30\n      }\n    }\n  }'"],
+            "response": ["{\n  \"results\":   [\n    {\"itemMetadata\":     {\n      \"id\": \"80a584c3-78c1-4e2f-84f8-b8d0bf65b518\",\n      \"originalIndex\": 0,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"originalIndex\": 1,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"cc30ba06-2b9a-4962-8b34-7a265d495d7e\",\n      \"originalIndex\": 2,\n      \"success\": true\n    }}\n  ],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 3,\n    \"totalFailures\": 0,\n    \"undetailedFailures\": 0\n  }\n} "],
+            "type": "curl",
+            "extra": {}
+          },
+                    {
+            "title": "Adjust the price of 2 products by percentage",
+            "body": ["curl -X POST \\\n  https://www.wixapis.com/stores/v1/bulk/products/adjust-properties \\\n  -H 'Authorization: <AUTH>'\n  -H 'Content-Type: application/json' \\\n  --data-binary '{\n    \"ids\": [\n      \"bfcafbe6-b671-4ebe-8e3d-49f242cef188\",\n      \"e5419878-8284-4f02-98bb-087e1d8dc781\"\n    ],\n    \"adjust\": {\n      \"price\": {\n        \"percentage\": {\n          \"roundToInt\": false,\n          \"rate\": 200\n        }\n      }\n    }\n  }'"],
+            "response": ["{\n  \"results\":   [\n    {\"itemMetadata\":     {\n      \"id\": \"bfcafbe6-b671-4ebe-8e3d-49f242cef188\",\n      \"originalIndex\": 0,\n      \"success\": true\n    }},\n    {\"itemMetadata\":     {\n      \"id\": \"e5419878-8284-4f02-98bb-087e1d8dc781\",\n      \"originalIndex\": 1,\n      \"success\": true\n    }}\n  ],\n  \"bulkActionMetadata\":   {\n    \"totalSuccesses\": 2,\n    \"totalFailures\": 0,\n    \"undetailedFailures\": 0\n  }\n} "],
+            "type": "curl",
+            "extra": {}
+          }
+        ],
         "extra": {}
       },
       "extra":       {
