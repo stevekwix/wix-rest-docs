@@ -135,7 +135,7 @@
         "examples": [        {
           "title": "",
           "body": ["curl -X GET \\\n https://www.wixapis.com/apps/v1/instance \\\n -H 'Authorization: <AUTH>'"],
-          "response": ["{\n  \"instance\":   {\n    \"appName\": \"MY_SHINY_APP\",\n    \"appVersion\": \"0.0.53\",\n    \"billing\":     {\n      \"billingCycle\": \"MONTHLY\",\n      \"packageName\": \"e8f429d4-0a6a-468f-8044-87f519a53202\",\n      \"source\": \"Wix discount coupon\"\n    },\n    \"instanceId\": \"07864c16-3a6f-4dd2-9973-028705762b2c\",\n    \"isFree\": false,\n    \"permissions\":     [\n      \"WIX_DEVELOPERS.CREATE_CHECKOUT\",\n      \"WIX_DEVELOPERS.MANAGE_APP_INSTANCE\",\n      \"WIX_DEVELOPERS.MANAGE_CHARGE\"\n    ]\n  },\n  \"site\":   {\n    \"locale\": \"he\",\n    \"multilingual\":     {\n      \"isMultiLingual\": false,\n      \"supportedLanguages\": []\n    },\n    \"paymentCurrency\": \"ILS\",\n    \"siteDisplayName\": \"Mysite 34\",\n    \"url\": \"https://doereg11.wixsite.com/mysite-34\",\n    \"description\": \"My awesome site is all about selling stuff\",\n    \"ownerEmail\": \"site-owner@test.com\",\n    \"ownerInfo\":     {\n      \"email\": \"site-owner@test.com\",\n      \"emailStatus\": \"VERIFIED_OPT_IN\"\n    }\n  }\n} "],
+          "response": ["{\n  \"instance\":   {\n    \"appName\": \"MY_SHINY_APP\",\n    \"appVersion\": \"0.0.53\",\n    \"billing\":     {\n      \"billingCycle\": \"MONTHLY\",\n      \"packageName\": \"e8f429d4-0a6a-468f-8044-87f519a53202\",\n      \"source\": \"Wix discount coupon\"\n    },\n    \"instanceId\": \"07864c16-3a6f-4dd2-9973-028705762b2c\",\n    \"isFree\": false,\n    \"permissions\":     [\n      \"WIX_DEVELOPERS.CREATE_CHECKOUT\",\n      \"WIX_DEVELOPERS.MANAGE_APP_INSTANCE\",\n      \"WIX_DEVELOPERS.MANAGE_CHARGE\"\n    ]\n  },\n  \"site\":   {\n    \"locale\": \"he\",\n    \"multilingual\":     {\n      \"isMultiLingual\": false,\n      \"supportedLanguages\": []\n    },\n    \"paymentCurrency\": \"ILS\",\n    \"siteDisplayName\": \"Mysite 34\",\n    \"url\": \"https://doereg11.wixsite.com/mysite-34\",\n    \"description\": \"My awesome site is all about selling stuff\",\n    \"ownerEmail\": \"site-owner@test.com\",\n    \"ownerInfo\":     {\n      \"email\": \"site-owner@test.com\",\n      \"emailStatus\": \"VERIFIED_OPT_IN\"\n    },\n    \"siteId\": \"64fc2d7e-1585-45ef-b1c3-6081185108c1\"\n  }\n} "],
           "type": "curl",
           "extra": {}
         }],
@@ -233,6 +233,44 @@
         "hasRest": true,
         "rpcRequestName": "GetPurchaseHistoryRequest",
         "rpcResponseName": "GetPurchaseHistoryResponse"
+      },
+      "customLabels": []
+    },
+        {
+      "name": "Get Site Payment Methods Status",
+      "methodName": "GetSitePaymentMethodsStatus",
+      "serviceName": "Checkout",
+      "tag": "Billing",
+      "permissions": [      {
+        "name": "Manage Your App",
+        "description": "Request permission to manage basic app activity."
+      }],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "params": [],
+      "ret":       {
+        "type":         {
+          "name": "GetSitePaymentMethodsStatus",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Apps._com_wixpress_market_aim_api_GetSitePaymentMethodsStatusResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": "    The Site Payments Methods Status API is a simple way to check if a site has a payment method setup and can accept payments. It differentiates between 4 different types of payment methods.\n \n",
+        "description": [],
+        "request": "GET",
+        "url": "https://www.wixapis.com/apps/v1/payment-method-status",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "GetSitePaymentMethodsStatusRequest",
+        "rpcResponseName": "GetSitePaymentMethodsStatusResponse"
       },
       "customLabels": [{"id": "maturity-beta"}]
     },
@@ -348,7 +386,7 @@
           "in": "BODY",
           "name": "eventName",
           "type": "All APIs.Apps._com_wixpress_market_aim_api_EventName",
-          "doc": "\n- `APP_DASHBOARD_LOADED` - should be fired when your app's dashboard is loaded by a site owner.\n- `APP_FINISHED_CONFIGURATION` - should be fired when the site owner is completely onboarded and has completed all required configurations for the app to function properly.\n- `APP_UPGRADED` - should be fired when a site owner upgrades the app to a higher plan (when the upgrade and checkout flow is done on the app side and not via Wix).\n- `PRIMARY_ACTION_PERFORMED` - should be fired every time a site owner triggers the primary action in the app (for example, “review written” for a product reviews app).\n- `CHARGE` - should be fired when you charge money from the site owner (for example, new purchases or subscription renewal). Make sure to also send `eventData` and a key of `sum`.\n- `FUNDS_RETURNED` - should be fired when you send money back to a site owner (for example, refunds or chargebacks). Make sure to also send `eventData` and a key of `sum`.\n- `CUSTOM` -  should be fired for any other event which is not supported by the above. Make sure to also send `customEventName`.\n",
+          "doc": "\n- `APP_DASHBOARD_LOADED` - should be fired when your app's dashboard is loaded by a site owner or contributor.\n- `APP_FINISHED_CONFIGURATION` - should be fired when the site owner is completely onboarded and has completed all required configurations for the app to function properly.\n- `APP_UPGRADED` - should be fired when a site owner upgrades the app to a higher plan (when the upgrade and checkout flow is done on the app side and not via Wix).\n- `PRIMARY_ACTION_PERFORMED` - should be fired every time a site owner, contributor or visitor triggers the primary action in the app (for example, “review written” for a product reviews app).\n- `CHARGE` - should be fired when you charge money from the site owner (for example, new purchases or subscription renewal). Make sure to also send `eventData` and a key of `sum`.\n- `FUNDS_RETURNED` - should be fired when you send money back to a site owner (for example, refunds or chargebacks). Make sure to also send `eventData` and a key of `sum`.\n- `CUSTOM` -  should be fired for any other event which is not supported by the above. Make sure to also send `customEventName`.\n- `APP_FINISH_BUSINESS_SETUP` - should be fired when the site owner has completed required business setup.\n",
           "required": false
         },
                 {
@@ -362,7 +400,7 @@
           "in": "BODY",
           "name": "eventData",
           "type": "All APIs.Apps.eventDataMapEntry",
-          "doc": "Set of key-value pairs.\n\nAdditional data about the event.  \nSupported keys: `cycle_name`, `currency`, `sum`, `reason`, `app_plan_id`.  \nYou can submit your own keys as well.  \n- `cycle_name` - should be one of : `monthly`, `yearly`, `2 years`, `one time`.\n- `currency` - ISO 4217 currency code.\n- `sum` - required when eventName = `CHARGE` or `FUNDS_RETURNED`.\n- `reason` - why the event was triggered.\n- `app_plan_id` - plan ID as displayed in the Developers Center (returned as `vendorProductId` in the paid plan purchased webhook).\n",
+          "doc": "Set of key-value pairs.\n\nAdditional data about the event.\nSupported keys: `cycle_name`, `currency`, `sum`, `reason`, `app_plan_id`.\nYou can submit your own keys as well.\n- `cycle_name` - should be one of : `monthly`, `yearly`, `2 years`, `one time`.\n- `currency` - ISO 4217 currency code.\n- `sum` - required when eventName = `CHARGE` or `FUNDS_RETURNED`.\n- `reason` - why the event was triggered.\n- `app_plan_id` - plan ID as displayed in the Developers Center (returned as `vendorProductId` in the paid plan purchased webhook).\n",
           "required": false
         }
       ],
@@ -383,7 +421,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["curl -X POST \\\n https://www.wixapis.com/apps/v1/bi-event \\\n -H 'Authorization: <AUTH>' \\\n -d '{\n       \"eventName\": \"CUSTOM\",\n      \"customEventName\": \"Contact form submitted\",\n      \"eventData\": {\n         \"User name\": \"John Doe\",\n         \"Title\": \"Need help with the app\",\n         \"Description\": \"I've run into a little bit of an issue with my app\"\n      },"],
+          "body": ["curl -X POST \\\n https://www.wixapis.com/apps/v1/bi-event \\\n -H 'Authorization: <AUTH>' \\\n -d '{\n       \"eventName\": \"CUSTOM\",\n      \"customEventName\": \"Contact form submitted\",\n      \"eventData\": {\n         \"User name\": \"John Doe\",\n         \"Title\": \"Need help with the app\",\n         \"Description\": \"I have run into a little bit of an issue with my app\"\n      }'"],
           "response": ["{} "],
           "type": "curl",
           "extra": {}
@@ -586,7 +624,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"instance\" : {\n    \"appName\" : \"MY_SHINY_APP\",\n    \"appVersion\" : \"0.0.53\",\n    \"billing\" : {\n      \"billingCycle\" : \"MONTHLY\",\n      \"packageName\" : \"e8f429d4-0a6a-468f-8044-87f519a53202\"\n    },\n    \"instanceId\" : \"07864c16-3a6f-4dd2-9973-028705762b2c\",\n    \"isFree\" : false,\n    \"permissions\" : [ \"WIX_DEVELOPERS.CREATE_CHECKOUT\", \"WIX_DEVELOPERS.MANAGE_APP_INSTANCE\", \"WIX_DEVELOPERS.MANAGE_CHARGE\" ]\n  },\n  \"site\" : {\n    \"locale\" : \"he\",\n    \"multilingual\" : {\n      \"isMultiLingual\" : false,\n      \"supportedLanguages\" : [ ]\n    },\n    \"paymentCurrency\" : \"ILS\",\n    \"siteDisplayName\" : \"Mysite 34\",\n    \"url\" : \"https://doereg11.wixsite.com/mysite-34\",\n    \"description\" : \"My awesome site is all about selling stuff\"\n  }\n} "],
+          "body": ["{\n  \"instance\" : {\n    \"appName\" : \"MY_SHINY_APP\",\n    \"appVersion\" : \"0.0.53\",\n    \"billing\" : {\n      \"billingCycle\" : \"MONTHLY\",\n      \"packageName\" : \"e8f429d4-0a6a-468f-8044-87f519a53202\"\n    },\n    \"instanceId\" : \"07864c16-3a6f-4dd2-9973-028705762b2c\",\n    \"isFree\" : false,\n    \"permissions\" : [ \"WIX_DEVELOPERS.CREATE_CHECKOUT\", \"WIX_DEVELOPERS.MANAGE_APP_INSTANCE\", \"WIX_DEVELOPERS.MANAGE_CHARGE\" ]\n  },\n  \"site\" : {\n    \"locale\" : \"he\",\n    \"multilingual\" : {\n      \"isMultiLingual\" : false,\n      \"supportedLanguages\" : [ ]\n    },\n    \"paymentCurrency\" : \"ILS\",\n    \"siteDisplayName\" : \"Mysite 34\",\n    \"url\" : \"https://doereg11.wixsite.com/mysite-34\",\n    \"description\" : \"My awesome site is all about selling stuff\",\n    \"siteId\" : \"64fc2d7e-1585-45ef-b1c3-6081185108c1\"\n  }\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -637,6 +675,11 @@
           "name": "originInstanceId",
           "type": "string",
           "doc": " This is the instance ID of a site that is being cloned. All visual settings and app data are duplicated, and the developer should be notified to take actions related to any external functionality that may have been added to the original site.\n"
+        },
+                {
+          "name": "isOriginSiteTemplate",
+          "type": "boolean",
+          "doc": "If the app was installed as a result from cloning a site from a template.\n"
         }
       ],
       "enum": null,
@@ -726,6 +769,11 @@
           "name": "ownerInfo",
           "type": "All APIs.Apps._com_wixpress_market_aim_api_OwnerInfo",
           "doc": " Receiving this information requires the **Read Site Owner Email** permission scope. If the permission has not ben granted, `ownerInfo` is not returned.\n"
+        },
+                {
+          "name": "siteId",
+          "type": "string",
+          "doc": " Unique site identifier.\n"
         }
       ],
       "enum": null,
@@ -847,7 +895,7 @@
       "displayName": "event Data Map Entry Object",
       "locations": [],
       "docs":       {
-        "summary": "Set of key-value pairs.\n\nAdditional data about the event.  \nSupported keys: `cycle_name`, `currency`, `sum`, `reason`, `app_plan_id`.  \nYou can submit your own keys as well.  \n- `cycle_name` - should be one of : `monthly`, `yearly`, `2 years`, `one time`.\n- `currency` - ISO 4217 currency code.\n- `sum` - required when eventName = `CHARGE` or `FUNDS_RETURNED`.\n- `reason` - why the event was triggered.\n- `app_plan_id` - plan ID as displayed in the Developers Center (returned as `vendorProductId` in the paid plan purchased webhook).\n",
+        "summary": "Set of key-value pairs.\n\nAdditional data about the event.\nSupported keys: `cycle_name`, `currency`, `sum`, `reason`, `app_plan_id`.\nYou can submit your own keys as well.\n- `cycle_name` - should be one of : `monthly`, `yearly`, `2 years`, `one time`.\n- `currency` - ISO 4217 currency code.\n- `sum` - required when eventName = `CHARGE` or `FUNDS_RETURNED`.\n- `reason` - why the event was triggered.\n- `app_plan_id` - plan ID as displayed in the Developers Center (returned as `vendorProductId` in the paid plan purchased webhook).\n",
         "links": [],
         "examples": []
       },
@@ -873,7 +921,7 @@
                 {
           "name": "eventName",
           "type": "All APIs.Apps._com_wixpress_market_aim_api_EventName",
-          "doc": "\n- `APP_DASHBOARD_LOADED` - should be fired when your app's dashboard is loaded by a site owner.\n- `APP_FINISHED_CONFIGURATION` - should be fired when the site owner is completely onboarded and has completed all required configurations for the app to function properly.\n- `APP_UPGRADED` - should be fired when a site owner upgrades the app to a higher plan (when the upgrade and checkout flow is done on the app side and not via Wix).\n- `PRIMARY_ACTION_PERFORMED` - should be fired every time a site owner triggers the primary action in the app (for example, “review written” for a product reviews app).\n- `CHARGE` - should be fired when you charge money from the site owner (for example, new purchases or subscription renewal). Make sure to also send `eventData` and a key of `sum`.\n- `FUNDS_RETURNED` - should be fired when you send money back to a site owner (for example, refunds or chargebacks). Make sure to also send `eventData` and a key of `sum`.\n- `CUSTOM` -  should be fired for any other event which is not supported by the above. Make sure to also send `customEventName`.\n"
+          "doc": "\n- `APP_DASHBOARD_LOADED` - should be fired when your app's dashboard is loaded by a site owner or contributor.\n- `APP_FINISHED_CONFIGURATION` - should be fired when the site owner is completely onboarded and has completed all required configurations for the app to function properly.\n- `APP_UPGRADED` - should be fired when a site owner upgrades the app to a higher plan (when the upgrade and checkout flow is done on the app side and not via Wix).\n- `PRIMARY_ACTION_PERFORMED` - should be fired every time a site owner, contributor or visitor triggers the primary action in the app (for example, “review written” for a product reviews app).\n- `CHARGE` - should be fired when you charge money from the site owner (for example, new purchases or subscription renewal). Make sure to also send `eventData` and a key of `sum`.\n- `FUNDS_RETURNED` - should be fired when you send money back to a site owner (for example, refunds or chargebacks). Make sure to also send `eventData` and a key of `sum`.\n- `CUSTOM` -  should be fired for any other event which is not supported by the above. Make sure to also send `customEventName`.\n- `APP_FINISH_BUSINESS_SETUP` - should be fired when the site owner has completed required business setup.\n"
         },
                 {
           "name": "customEventName",
@@ -883,7 +931,7 @@
                 {
           "name": "eventData",
           "type": "All APIs.Apps.eventDataMapEntry",
-          "doc": "Set of key-value pairs.\n\nAdditional data about the event.  \nSupported keys: `cycle_name`, `currency`, `sum`, `reason`, `app_plan_id`.  \nYou can submit your own keys as well.  \n- `cycle_name` - should be one of : `monthly`, `yearly`, `2 years`, `one time`.\n- `currency` - ISO 4217 currency code.\n- `sum` - required when eventName = `CHARGE` or `FUNDS_RETURNED`.\n- `reason` - why the event was triggered.\n- `app_plan_id` - plan ID as displayed in the Developers Center (returned as `vendorProductId` in the paid plan purchased webhook).\n"
+          "doc": "Set of key-value pairs.\n\nAdditional data about the event.\nSupported keys: `cycle_name`, `currency`, `sum`, `reason`, `app_plan_id`.\nYou can submit your own keys as well.\n- `cycle_name` - should be one of : `monthly`, `yearly`, `2 years`, `one time`.\n- `currency` - ISO 4217 currency code.\n- `sum` - required when eventName = `CHARGE` or `FUNDS_RETURNED`.\n- `reason` - why the event was triggered.\n- `app_plan_id` - plan ID as displayed in the Developers Center (returned as `vendorProductId` in the paid plan purchased webhook).\n"
         }
       ],
       "enum": null,
@@ -1035,6 +1083,55 @@
         },
         "doc": ""
       }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_market_aim_api_GetSitePaymentMethodsStatusRequest",
+      "displayName": "Get Site Payment Methods Status Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_market_aim_api_GetSitePaymentMethodsStatusResponse",
+      "displayName": "Get Site Payment Methods Status Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "onlineProviderEnabled",
+          "type": "boolean",
+          "doc": " If there are any online payment providers enabled. This includes things like Wix Payments, Stripe, PayPal, Credit Card providers and more.\n"
+        },
+                {
+          "name": "offlineProviderEnabled",
+          "type": "boolean",
+          "doc": " If there are any offline payment providers enabled. Specifically, if the site accepts cash payments on premises.\n"
+        },
+                {
+          "name": "thirdPartyPosProviderEnable",
+          "type": "boolean",
+          "doc": " If there are any 3rd party POS providers enabled.\n"
+        },
+                {
+          "name": "wixPosProviderEnabled",
+          "type": "boolean",
+          "doc": " If the Wix POS provider is enabled.\n"
+        }
+      ],
       "enum": null,
       "extra": {},
       "labels": []
@@ -1254,7 +1351,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"data\" : \"{\\\"appId\\\":\\\"5bc2062d-010b-448c-a62a-d6bb269c5a4c\\\", \\\"originInstanceId\\\":\\\"07864c16-3a6f-4dd2-9973-028705762b2c\\\"}\",\n  \"instanceId\" : \"3bbcabc7-ebb7-4fc8-8829-13ea0e142123\",\n  \"eventType\" : \"AppInstalled\"\n} "],
+          "body": ["{\n  \"appId\" : \"5bc2062d-010b-448c-a62a-d6bb269c5a4c\",\n  \"originInstanceId\" : \"07864c16-3a6f-4dd2-9973-028705762b2c\"\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -1284,7 +1381,7 @@
         "links": [],
         "examples": [        {
           "title": "",
-          "body": ["{\n  \"data\" : \"{\\\"appId\\\":\\\"5bc2068d-010b-448c-a62a-d6bb269c5a4c\\\"}\",\n  \"instanceId\" : \"8e9d6b70-6eb9-4ab3-a62d-e033063e2f05\",\n  \"eventType\" : \"AppRemoved\"\n} "],
+          "body": ["{\n  \"appId\" : \"5bc2086d-010b-448c-a62a-d6bb269c5a4c\"\n} "],
           "type": "json",
           "extra": {}
         }]
@@ -1495,7 +1592,7 @@
       "displayName": "Event Name Object",
       "locations": [],
       "docs":       {
-        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> APP_DASHBOARD_LOADED <\/code><\/li><li><code> APP_FINISHED_CONFIGURATION <\/code><\/li><li><code> APP_UPGRADED <\/code><\/li><li><code> PRIMARY_ACTION_PERFORMED <\/code><\/li><li><code> CUSTOM <\/code><\/li><li><code> CHARGE <\/code><\/li><li><code> FUNDS_RETURNED <\/code><\/li>",
+        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> APP_DASHBOARD_LOADED <\/code><\/li><li><code> APP_FINISHED_CONFIGURATION <\/code><\/li><li><code> APP_UPGRADED <\/code><\/li><li><code> PRIMARY_ACTION_PERFORMED <\/code><\/li><li><code> CUSTOM <\/code><\/li><li><code> CHARGE <\/code><\/li><li><code> FUNDS_RETURNED <\/code><\/li><li><code> APP_FINISH_BUSINESS_SETUP <\/code><\/li>",
         "links": [],
         "examples": []
       },
@@ -1508,7 +1605,8 @@
         "PRIMARY_ACTION_PERFORMED",
         "CUSTOM",
         "CHARGE",
-        "FUNDS_RETURNED"
+        "FUNDS_RETURNED",
+        "APP_FINISH_BUSINESS_SETUP"
       ],
       "extra": {},
       "labels": []
