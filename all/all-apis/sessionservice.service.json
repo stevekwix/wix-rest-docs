@@ -622,7 +622,7 @@
       "members": [      {
         "name": "id",
         "type": "string",
-        "doc": ""
+        "doc": " The id of the user\n"
       }],
       "enum": null,
       "extra": {},
@@ -669,7 +669,7 @@
                 {
           "name": "userId",
           "type": "All APIs.SessionService._com_wixpress_identification_session_UserId",
-          "doc": ""
+          "doc": " The user to revoke the session for\n"
         }
       ],
       "enum": null,
