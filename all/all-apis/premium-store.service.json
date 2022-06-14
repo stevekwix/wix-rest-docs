@@ -1691,6 +1691,11 @@
           "name": "isBundled",
           "type": "boolean",
           "doc": "  indicates whether the current subscription is a product that was \"bundled\" together with a legacy plan purchase\n"
+        },
+                {
+          "name": "availableCredit",
+          "type": "string",
+          "doc": " indicates the available credit of current subscription\n"
         }
       ],
       "enum": null,
