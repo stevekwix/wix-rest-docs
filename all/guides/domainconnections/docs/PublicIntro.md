@@ -1,4 +1,3 @@
-SortOrder: 1
 # About the Domain Connections API
 
 
