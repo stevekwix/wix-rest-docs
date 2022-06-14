@@ -1,0 +1,5416 @@
+{
+  "name": "Cart",
+  "client_id": "https://github.com/wix-private/ecom/tree/master/server/wix-ecommerce-server/wix-ecommerce-platform-cart#public",
+  "memberOf": "All APIs",
+  "category": "core",
+  "mixes": [],
+  "labels": [],
+  "docs":   {
+    "summary": "Create and manage an eCommerce cart",
+    "description": []
+  },
+  "properties": [],
+  "tags": [  {
+    "name": "Cart",
+    "entity": "_com_wix_ecom_cart_api_v1_Cart",
+    "src": "https://github.com/wix-private/ecom/tree/master/server/wix-ecommerce-server/wix-ecommerce-platform-cart/proto/com/wix/ecom/cart/api/v1/cart.proto"
+  }],
+  "relatedGuides":   [
+        {
+      "path": "../guides/cart/docs/intro.md",
+      "name": "Introduction"
+    },
+        {
+      "path": "../guides/cart/docs/cart_conversion.md",
+      "name": "Cart Object Conversion"
+    }
+  ],
+  "operations":   [
+        {
+      "name": "Add To Cart",
+      "methodName": "AddToCart",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields":       [
+        "id",
+        "lineItems.catalogReference"
+      ],
+      "params":       [
+                {
+          "in": "PATH",
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n",
+          "required": true
+        },
+                {
+          "in": "BODY",
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItem"]
+          },
+          "doc": " Catalog line items.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "customLineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_checkout_api_v1_CustomLineItem"]
+          },
+          "doc": " Custom line items.\n",
+          "required": false
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "AddToCart",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_AddToCartResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Adds [catalog](https://bo.wix.com/wix-docs/rest/ecommerce/catalog-spi/introduction) and/or custom line items to a cart.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{id}/add-to-cart",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "AddToCartRequest",
+        "rpcResponseName": "AddToCartResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Create Cart",
+      "methodName": "CreateCart",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["lineItems.catalogReference"],
+      "params":       [
+                {
+          "in": "BODY",
+          "name": "cartInfo",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+          "doc": " Cart info.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "couponCode",
+          "type": "string",
+          "doc": " Code of an existing coupon to apply to cart. For more information, see [Coupons API](https://dev.wix.com/api/rest/wix-coupons/coupons/introduction).\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "merchantDiscounts",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_MerchantDiscountInput"]
+          },
+          "doc": " Merchant discounts to apply to specific line items or the entire cart.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItem"]
+          },
+          "doc": " Catalog line items.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "customLineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_checkout_api_v1_CustomLineItem"]
+          },
+          "doc": " Custom line items.\n",
+          "required": false
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "CreateCart",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_CreateCartResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Creates a new cart.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/ecom/v1/carts",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "CreateCartRequest",
+        "rpcResponseName": "CreateCartResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Create Checkout From Cart",
+      "methodName": "CreateCheckout",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["id"],
+      "params":       [
+                {
+          "in": "PATH",
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n",
+          "required": true
+        },
+                {
+          "in": "BODY",
+          "name": "channelType",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_ChannelType",
+          "doc": " Sales channel type.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "shippingAddress",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Shipping address. Used for calculating tax and shipping (when applicable).\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "billingAddress",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Billing address. Used for calculating tax if an item is not shippable.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "selectedShippingOption",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_SelectedShippingOption",
+          "doc": " Selected shipping option.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "email",
+          "type": "string",
+          "doc": " Mandatory when setting billing or shipping address and user is not logged in.\n",
+          "required": false
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "CreateCheckout",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_CreateCheckoutResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Creates a checkout from a cart.\n\nIf a checkout was already created from the specified cart, that checkout will be\nupdated (synced) with any new information from the cart.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{id}/create-checkout",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "CreateCheckoutRequest",
+        "rpcResponseName": "CreateCheckoutResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Delete Cart",
+      "methodName": "DeleteCart",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["id"],
+      "params": [      {
+        "in": "PATH",
+        "name": "id",
+        "type": "string",
+        "doc": " Cart ID.\n",
+        "required": true
+      }],
+      "ret":       {
+        "type":         {
+          "name": "DeleteCart",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_DeleteCartResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Deletes a cart.\n \n",
+        "description": [],
+        "request": "DELETE",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{id}",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "DeleteCartRequest",
+        "rpcResponseName": "DeleteCartResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Estimate Totals",
+      "methodName": "EstimateTotals",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's Wix Stores order info."
+      }],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["id"],
+      "params":       [
+                {
+          "in": "PATH",
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n",
+          "required": true
+        },
+                {
+          "in": "BODY",
+          "name": "selectedShippingOption",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_SelectedShippingOption",
+          "doc": " Selected shipping option.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "shippingAddress",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Shipping address. Used for calculating tax and shipping (when applicable).\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "billingAddress",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Billing address. Used for calculating tax if an item is not shippable.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "selectedMemberships",
+          "type": "All APIs.Cart._com_wix_ecom_memberships_spi_v1_host_SelectedMemberships",
+          "doc": " The selected payment options and which line items they apply to\n",
+          "required": false
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "EstimateTotals",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_EstimateTotalsResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Estimates a cart's price totals (including tax), based on a selected carrier service,\n shipping address, and billing information.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{id}/estimate-totals",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "EstimateTotalsRequest",
+        "rpcResponseName": "EstimateTotalsResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Get Cart",
+      "methodName": "GetCart",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's Wix Stores order info."
+      }],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["id"],
+      "params": [      {
+        "in": "PATH",
+        "name": "id",
+        "type": "string",
+        "doc": " Cart ID.\n",
+        "required": true
+      }],
+      "ret":       {
+        "type":         {
+          "name": "GetCart",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_GetCartResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Retrieves a cart.\n \n",
+        "description": [],
+        "request": "GET",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{id}",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "GetCartRequest",
+        "rpcResponseName": "GetCartResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Get Current Cart",
+      "methodName": "GetCurrentCart",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's Wix Stores order info."
+      }],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "params": [],
+      "ret":       {
+        "type":         {
+          "name": "GetCurrentCart",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_GetCurrentCartResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Retrieves the current session's active cart.\n \n",
+        "description": [],
+        "request": "GET",
+        "url": "https://www.wixapis.com/ecom/v1/carts/current",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "GetCurrentCartRequest",
+        "rpcResponseName": "GetCurrentCartResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Remove Coupon",
+      "methodName": "RemoveCoupon",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields": ["id"],
+      "params": [      {
+        "in": "PATH",
+        "name": "id",
+        "type": "string",
+        "doc": " Cart ID.\n",
+        "required": true
+      }],
+      "ret":       {
+        "type":         {
+          "name": "RemoveCoupon",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_RemoveCouponResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Removes the coupon from a cart.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{id}/remove-coupon",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "RemoveCouponRequest",
+        "rpcResponseName": "RemoveCouponResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Remove Line Items",
+      "methodName": "RemoveLineItems",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields":       [
+        "id",
+        "lineItemIds"
+      ],
+      "params":       [
+                {
+          "in": "PATH",
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n",
+          "required": true
+        },
+                {
+          "in": "BODY",
+          "name": "lineItemIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " Line item IDs to remove from cart.\n",
+          "required": true
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "RemoveLineItems",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_RemoveLineItemsResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Removes line items from a cart.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{id}/remove-line-items",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "RemoveLineItemsRequest",
+        "rpcResponseName": "RemoveLineItemsResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Update Cart",
+      "methodName": "UpdateCart",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields":       [
+        "cartInfo.id",
+        "lineItems.catalogReference"
+      ],
+      "params":       [
+                {
+          "in": "PATH",
+          "name": "cartInfo.id",
+          "type": "string",
+          "doc": " Cart ID.\n",
+          "required": true
+        },
+                {
+          "in": "BODY",
+          "name": "cartInfo",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+          "doc": " Cart info.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "couponCode",
+          "type": "string",
+          "doc": " Coupon code. For more information, see [Coupons API](https://dev.wix.com/api/rest/wix-coupons/coupons/introduction).\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "merchantDiscounts",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_MerchantDiscountInput"]
+          },
+          "doc": " Merchant discounts.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItem"]
+          },
+          "doc": " Catalog line items.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "customLineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_checkout_api_v1_CustomLineItem"]
+          },
+          "doc": " Custom line items.\n",
+          "required": false
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "UpdateCart",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_UpdateCartResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Updates a cart's properties.\n \n",
+        "description": [],
+        "request": "PATCH",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{cartInfo.id}",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "UpdateCartRequest",
+        "rpcResponseName": "UpdateCartResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    },
+        {
+      "name": "Update Line Items Quantity",
+      "methodName": "UpdateLineItemsQuantity",
+      "serviceName": "CartService",
+      "tag": "Cart",
+      "permissions": [],
+      "events": [],
+      "labels": [],
+      "nameParams": [],
+      "requiredFields":       [
+        "id",
+        "lineItems"
+      ],
+      "params":       [
+                {
+          "in": "PATH",
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n",
+          "required": true
+        },
+                {
+          "in": "BODY",
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItemQuantityUpdate"]
+          },
+          "doc": " Line item IDs and their new quantity.\n",
+          "required": true
+        }
+      ],
+      "ret":       {
+        "type":         {
+          "name": "UpdateLineItemsQuantity",
+          "statusCode": "200",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_UpdateLineItemsQuantityResponse"]
+        },
+        "doc": ""
+      },
+      "locations": [],
+      "docs":       {
+        "summary": " Updates the quantity of one or more line items on a cart.\n \n",
+        "description": [],
+        "request": "POST",
+        "url": "https://www.wixapis.com/ecom/v1/carts/{id}/update-line-items-quantity",
+        "links": [],
+        "examples": [],
+        "extra": {}
+      },
+      "extra":       {
+        "hasRest": true,
+        "rpcRequestName": "UpdateLineItemsQuantityRequest",
+        "rpcResponseName": "UpdateLineItemsQuantityResponse"
+      },
+      "customLabels": [{"id": "maturity-beta"}]
+    }
+  ],
+  "events":   [
+        {
+      "type": "_com_wix_ecom_cart_api_v1_CartCreatedDomainEvent",
+      "name": "Cart Created Webhook",
+      "docs":       {
+        "summary": "",
+        "src": "https://github.com/wix-private/ecom/tree/master/server/wix-ecommerce-server/wix-ecommerce-platform-cart/proto/com/wix/ecom/cart/api/v1/cart_service.proto"
+      },
+      "topic": "domain_events_wix.ecom.v1.cart",
+      "tag": "Cart",
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's Wix Stores order info."
+      }],
+      "customLabels": [{"id": "maturity-beta"}],
+      "eventType": "wix.ecom.v1.cart_created",
+      "extra": {"isDomainEvent": true}
+    },
+        {
+      "type": "_com_wix_ecom_cart_api_v1_CartUpdatedDomainEvent",
+      "name": "Cart Updated Webhook",
+      "docs":       {
+        "summary": "",
+        "src": "https://github.com/wix-private/ecom/tree/master/server/wix-ecommerce-server/wix-ecommerce-platform-cart/proto/com/wix/ecom/cart/api/v1/cart_service.proto"
+      },
+      "topic": "domain_events_wix.ecom.v1.cart",
+      "tag": "Cart",
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's Wix Stores order info."
+      }],
+      "customLabels": [{"id": "maturity-beta"}],
+      "eventType": "wix.ecom.v1.cart_updated",
+      "extra": {"isDomainEvent": true}
+    },
+        {
+      "type": "_com_wix_ecom_cart_api_v1_CartDeletedDomainEvent",
+      "name": "Cart Deleted Webhook",
+      "docs":       {
+        "summary": "",
+        "src": "https://github.com/wix-private/ecom/tree/master/server/wix-ecommerce-server/wix-ecommerce-platform-cart/proto/com/wix/ecom/cart/api/v1/cart_service.proto"
+      },
+      "topic": "domain_events_wix.ecom.v1.cart",
+      "tag": "Cart",
+      "permissions": [      {
+        "name": "Read Orders",
+        "description": "Request permission to read the site's Wix Stores order info."
+      }],
+      "customLabels": [{"id": "maturity-beta"}],
+      "eventType": "wix.ecom.v1.cart_deleted",
+      "extra": {"isDomainEvent": true}
+    }
+  ],
+  "callbacks": [],
+  "messages":   [
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CartCreatedDomainEvent",
+      "displayName": "Cart Created Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.ecom.v1.cart`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `created`.\nEvent name."
+        },
+                {
+          "name": "createdEvent",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_CartEntityCreatedEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "Cart ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CartEntityCreatedEvent",
+      "displayName": "Cart Entity Created Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "entity",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": "Event body"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CartUpdatedDomainEvent",
+      "displayName": "Cart Updated Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.ecom.v1.cart`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `updated`.\nEvent name."
+        },
+                {
+          "name": "updatedEvent",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_CartEntityUpdatedEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "Cart ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CartEntityUpdatedEvent",
+      "displayName": "Cart Entity Updated Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "currentEntity",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": "Event body"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CartDeletedDomainEvent",
+      "displayName": "Cart Deleted Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.ecom.v1.cart`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `deleted`.\nEvent name."
+        },
+                {
+          "name": "deletedEvent",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_CartEntityDeletedEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "Cart ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CartEntityDeletedEvent",
+      "displayName": "Cart Entity Deleted Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_BuyerInfo",
+      "displayName": "Buyer Info Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "contactId",
+          "type": "string",
+          "doc": " Contact ID. Auto-created if one does not yet exist. For more information, see [Contacts API](https://dev.wix.com/api/rest/contacts/contacts/introduction).\n",
+          "readOnly": true
+        },
+                {
+          "name": "id",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_BuyerInfo_id",
+          "doc": " Visitor, Wix member ID or User\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_BuyerInfo_id",
+      "displayName": "id Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "visitorId",
+          "type": "string",
+          "doc": " Visitor ID - if site visitor is **not** a member.\n"
+        },
+                {
+          "name": "memberId",
+          "type": "string",
+          "doc": " Member ID - if site visitor is a site member.\n"
+        },
+                {
+          "name": "userId",
+          "type": "string",
+          "doc": " User ID - if cart owner is a Wix user.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_CatalogReference",
+      "displayName": "Catalog Reference Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Used for grouping line items and is sent on add to cart\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "catalogItemId",
+          "type": "string",
+          "doc": " ID of the item within its Wix or 3rd-party catalog. For example, `productId` for Wix Stores or `eventId` for Wix Events.\n"
+        },
+                {
+          "name": "appId",
+          "type": "string",
+          "doc": " ID of the catalog app. For example, the Wix Stores `appId`, or the 3rd-party `appId`.\n"
+        },
+                {
+          "name": "options",
+          "type": "struct",
+          "doc": " Additional info in key:value form. For example, `{\"options\":{\"Size\": \"M\", \"Color\": \"Red\"}}` or `{\"variantId\": \"<VARIANT_ID>\"}`.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_PageUrlV2",
+      "displayName": "Page Url V 2 Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "relativePath",
+          "type": "string",
+          "doc": " The path to that page - e.g /product-page/a-product\n"
+        },
+                {
+          "name": "url",
+          "type": "string",
+          "doc": " The URL of that page. e.g https://mysite.com/product-page/a-product\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_Image",
+      "displayName": "Image Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " WixMedia image ID.\n"
+        },
+                {
+          "name": "url",
+          "type": "string",
+          "doc": " Image URL.\n"
+        },
+                {
+          "name": "height",
+          "type": "integer",
+          "doc": " Original image height.\n",
+          "readOnly": true
+        },
+                {
+          "name": "width",
+          "type": "integer",
+          "doc": " Original image width.\n",
+          "readOnly": true
+        },
+                {
+          "name": "altText",
+          "type": "string",
+          "doc": " Image alt text. Optional.\n"
+        },
+                {
+          "name": "filename",
+          "type": "string",
+          "doc": " Image filename. Optional.\n",
+          "readOnly": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+      "displayName": "Multi Currency Price Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "amount",
+          "type": "string",
+          "doc": " Amount.\n"
+        },
+                {
+          "name": "convertedAmount",
+          "type": "string",
+          "doc": " Converted amount.\n",
+          "readOnly": true
+        },
+                {
+          "name": "formattedAmount",
+          "type": "string",
+          "doc": " Amount formatted with currency symbol.\n",
+          "readOnly": true
+        },
+                {
+          "name": "formattedConvertedAmount",
+          "type": "string",
+          "doc": " Converted amount formatted with currency symbol.\n",
+          "readOnly": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_checkout_api_v1_ItemAvailabilityInfo",
+      "displayName": "Item Availability Info Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "status",
+          "type": "All APIs.Cart._com_wix_ecom_checkout_api_v1_ItemAvailabilityInfo_ItemAvailabilityStatus",
+          "doc": " Item availability status.\n + `NOT_FOUND` - Item does not exist\n + `NOT_AVAILABLE` - Not in stock\n + `PARTIALLY_AVAILABLE` - Available quantity is less than requested\n"
+        },
+                {
+          "name": "quantityAvailable",
+          "type": "integer",
+          "doc": " Quantity available.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_coupons_api_v2_Scope_Group",
+      "displayName": "Group Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Coupon scope's group (e.g., product or collection in Wix Stores). See [valid scope values](https://dev.wix.com/api/rest/coupons/coupons/valid-scope-values).\n"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": " Item ID (when the coupon scope is limited to just one item).\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_coupons_api_v2_Scope",
+      "displayName": "Scope Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "namespace",
+          "type": "string",
+          "doc": " Scope namespace (Wix Stores, Wix Bookings, Wix Events)\n"
+        },
+                {
+          "name": "group",
+          "type": "All APIs.Cart._wix_coupons_api_v2_Scope_Group",
+          "doc": " Coupon scope's applied group (e.g., event or ticket in Wix Events)\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_DescriptionLine",
+      "displayName": "Description Line Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "name",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_DescriptionLineName",
+          "doc": " Description line name.\n"
+        },
+                {
+          "name": "value",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_DescriptionLine_value",
+          "doc": ""
+        },
+                {
+          "name": "descriptionLineValue",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_DescriptionLine_descriptionLineValue",
+          "doc": "deprecated, use `value` instead\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_DescriptionLine_value",
+      "displayName": "value Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "plainText",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_PlainTextValue",
+          "doc": " Description line plain text value.\n"
+        },
+                {
+          "name": "colorInfo",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_Color",
+          "doc": " Description line color value.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_DescriptionLine_descriptionLineValue",
+      "displayName": "description Line Value Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_DescriptionLineName",
+      "displayName": "Description Line Name Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " Optional - Description line name in site's default language.\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Optional - Translated description line item according to buyer language. Defaults to `original` when not provided.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_PlainTextValue",
+      "displayName": "Plain Text Value Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " Optional - Description line plain text value in site's default language.\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Optional - Translated description line plain text value according to buyer language. Defaults to `original` when not provided.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_Color",
+      "displayName": "Color Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " Optional - Description line color name in site's default language.\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Optional - Translated description line color name according to buyer language. Defaults to `original` when not provided.\n"
+        },
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Optional - HEX or RGB color code for display.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_ProductName",
+      "displayName": "Product Name Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " **Required** - Original product name (in site's default language).\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Optional - Translated product name according to buyer language. Defaults to `original` when not provided.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_PhysicalProperties",
+      "displayName": "Physical Properties Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "weight",
+          "type": "number",
+          "doc": " Line item weight. Measurement unit (KG or LB) is taken from `order.weightUnit`.\n"
+        },
+                {
+          "name": "sku",
+          "type": "string",
+          "doc": " Stock-keeping unit. Learn more about [SKUs](https://www.wix.com/encyclopedia/definition/stock-keeping-unit-sku).\n"
+        },
+                {
+          "name": "shippable",
+          "type": "boolean",
+          "doc": " Whether this line item is shippable.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_ItemType",
+      "displayName": "Item Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "itemTypeData",
+        "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_ItemType_itemTypeData",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_ItemType_itemTypeData",
+      "displayName": "item Type Data Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "preset",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_ItemType_ItemType",
+          "doc": " Preset item type.\n"
+        },
+                {
+          "name": "custom",
+          "type": "string",
+          "doc": " Custom item type.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_SubscriptionOptionInfo",
+      "displayName": "Subscription Option Info Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "subscriptionSettings",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_SubscriptionSettings",
+          "doc": " Subscription option settings.\n"
+        },
+                {
+          "name": "title",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_Title",
+          "doc": " Subscription option title.\n"
+        },
+                {
+          "name": "description",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_Description",
+          "doc": " Subscription option description.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_SubscriptionSettings",
+      "displayName": "Subscription Settings Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "frequency",
+          "type": "All APIs.Cart._wix_payment_api_pay_v2_SubscriptionFrequency",
+          "doc": " Frequency of recurring payment.\n"
+        },
+                {
+          "name": "autoRenewal",
+          "type": "boolean",
+          "doc": " Whether subscription is renewed automatically at the end of each period.\n"
+        },
+                {
+          "name": "billingCycles",
+          "type": "integer",
+          "doc": " Number of billing cycles before subscription ends. Ignored if `autoRenewal: true`.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_Title",
+      "displayName": "Title Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " Subscription option name.\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Translated subscription option name.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_Description",
+      "displayName": "Description Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " Subscription option description.\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Translated subscription option name.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_SecuredMedia",
+      "displayName": "Secured Media Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Media ID in media manager.\n"
+        },
+                {
+          "name": "fileName",
+          "type": "string",
+          "doc": " Original file name.\n"
+        },
+                {
+          "name": "fileType",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_SecuredMedia_FileType",
+          "doc": " File type.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_ServiceProperties",
+      "displayName": "Service Properties Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "scheduledDate",
+          "type": "string",
+          "doc": " Optional - The date and time for which the service is supposed to be provided. e.g the time of the class\n"
+        },
+                {
+          "name": "numberOfParticipants",
+          "type": "integer",
+          "doc": " Optional - The number of people participating in this service. e.g the number of people attending the class or the number of people for a hotel room\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_PriceDescription",
+      "displayName": "Price Description Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " **Required** - Original price description (in site's default language).\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Optional - Translated product name according to buyer language. Defaults to `original` when not provided.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_LineItem",
+      "displayName": "Line Item Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Line item ID.\n"
+        },
+                {
+          "name": "quantity",
+          "type": "integer",
+          "doc": " Item quantity.\n"
+        },
+                {
+          "name": "catalogReference",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_CatalogReference",
+          "doc": " Catalog and item reference info. See [Catalog SPI](https://bo.wix.com/wix-docs/rest/ecommerce/catalog-spi/introduction) for more details.\n Empty in the case of a custom line item.\n"
+        },
+                {
+          "name": "productName",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_ProductName",
+          "doc": " Item name.\n + Stores - `product.name`\n + Bookings - `service.info.name`\n + Events - `ticket.name`\n",
+          "readOnly": true
+        },
+                {
+          "name": "url",
+          "type": "All APIs.Cart._wix_common_PageUrlV2",
+          "doc": " URL to item page on the site.\n",
+          "readOnly": true
+        },
+                {
+          "name": "price",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Item price **after** catalog-defined discount and line item discounts.\n",
+          "readOnly": true
+        },
+                {
+          "name": "fullPrice",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Item price **before** catalog-defined discount. Defaults to `price` when not provided.\n",
+          "readOnly": true
+        },
+                {
+          "name": "priceBeforeDiscounts",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Item price **before** line item discounts and **after** catalog-defined discount. Defaults to `price` when not provided.\n",
+          "readOnly": true
+        },
+                {
+          "name": "descriptionLines",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_DescriptionLine"]
+          },
+          "doc": " Line item description lines. Used for display purposes for the cart, checkout and order.\n",
+          "readOnly": true
+        },
+                {
+          "name": "image",
+          "type": "All APIs.Cart._wix_common_Image",
+          "doc": " Line item image details.\n",
+          "readOnly": true
+        },
+                {
+          "name": "availability",
+          "type": "All APIs.Cart._com_wix_ecom_checkout_api_v1_ItemAvailabilityInfo",
+          "doc": " Item availability details.\n",
+          "readOnly": true
+        },
+                {
+          "name": "physicalProperties",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_PhysicalProperties",
+          "doc": " Physical properties of the item. When relevant, contains information such as SKU, item weight, and shippability.\n",
+          "readOnly": true
+        },
+                {
+          "name": "itemType",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_ItemType",
+          "doc": " Item type. Either a preset type or custom.\n",
+          "readOnly": true
+        },
+                {
+          "name": "paymentOption",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_PaymentOptionType",
+          "doc": " Type of selected payment option for current item. Defaults to `FULL_PAYMENT_ONLINE`.\n + `FULL_PAYMENT_ONLINE` - The entire payment for this item happens as part of the checkout.\n + `FULL_PAYMENT_OFFLINE` - The entire payment for this item happens after the checkout. For example, when using cash, cheque, or other offline payment methods.\n + `MEMBERSHIP` - Payment for this item is done by charging a membership. When this option is used, `lineItem.price.amount` will be 0.\n",
+          "readOnly": true
+        },
+                {
+          "name": "serviceProperties",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_ServiceProperties",
+          "doc": " Service properties. When relevant, this contains information such as date and number of participants.\n",
+          "readOnly": true
+        },
+                {
+          "name": "rootCatalogItemId",
+          "type": "string",
+          "doc": " In cases where `catalogReference.catalogItemId` is NOT the actual catalog item ID, this field will return the true item's ID.\n + For example, for Wix Bookings, `catalogReference.catalogItemId` is the booking ID. Therefore this value is set to the service ID.\n + In most cased, this field is the name as `catalogReference.catalogItemId`.\n + Used in membership validation.\n",
+          "readOnly": true
+        },
+                {
+          "name": "priceDescription",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_PriceDescription",
+          "doc": " Additional description for the price. For example, when price is 0 but additional details about the actual price are needed - \"Starts at $67\".\n",
+          "readOnly": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CartDiscount",
+      "displayName": "Cart Discount Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "DiscountSource",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_CartDiscount_DiscountSource",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CartDiscount_DiscountSource",
+      "displayName": "Discount Source Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "coupon",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Coupon",
+          "doc": " Coupon details.\n"
+        },
+                {
+          "name": "merchantDiscount",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_MerchantDiscount",
+          "doc": " Merchant discount.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_MerchantDiscount",
+      "displayName": "Merchant Discount Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "amount",
+        "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+        "doc": " Discount value.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_Coupon",
+      "displayName": "Coupon Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Coupon ID.\n"
+        },
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Coupon code.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_Cart",
+      "displayName": "Cart Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"id\" : \"3c64a206-7260-469c-97c5-3b6ec4c12da4\",\n  \"line_items\" : [ {\n    \"id\" : \"00000000-0000-0000-0000-000000000001\",\n    \"quantity\" : 2,\n    \"catalog_reference\" : {\n      \"catalog_item_id\" : \"13ca60a6-7d10-c67d-aa87-62f03a1efdca\",\n      \"app_id\" : \"1380b703-ce81-ff05-f115-39571d94dfcd\",\n      \"options\" : null\n    },\n    \"product_name\" : {\n      \"original\" : \"Collectors Official 2018-2019 Shirt\",\n      \"translated\" : \"Collectors Official 2018-2019 Shirt\"\n    },\n    \"url\" : {\n      \"relative_path\" : \"/product-page/collectors-official-2018-2019-shirt\",\n      \"url\" : \"https://example.wixsite.com\"\n    },\n    \"price\" : {\n      \"amount\" : \"5\",\n      \"converted_amount\" : \"5\",\n      \"formatted_amount\" : \"$5.00\",\n      \"formatted_converted_amount\" : \"$5.00\"\n    },\n    \"full_price\" : {\n      \"amount\" : \"5\",\n      \"converted_amount\" : \"5\",\n      \"formatted_amount\" : \"$5.00\",\n      \"formatted_converted_amount\" : \"$5.00\"\n    },\n    \"description_lines\" : [ {\n      \"name\" : {\n        \"original\" : \"Who is your favorite player?\",\n        \"translated\" : \"Who is your favorite player?\"\n      },\n      \"line_type\" : \"PLAIN_TEXT\",\n      \"plain_text_value\" : {\n        \"original\" : \"\",\n        \"translated\" : \"\"\n      },\n      \"plain_text\" : {\n        \"original\" : \"\",\n        \"translated\" : \"\"\n      }\n    } ],\n    \"image\" : {\n      \"id\" : \"b241a2_849b5ec705e64b6da4342dd83e9c5f27~mv2_d_2128_1416_s_2.png\",\n      \"height\" : 1416,\n      \"width\" : 2128,\n      \"alt_text\" : null\n    },\n    \"availability\" : {\n      \"status\" : \"AVAILABLE\",\n      \"quantity_available\" : 7\n    },\n    \"physical_properties\" : {\n      \"weight\" : null,\n      \"sku\" : \"\",\n      \"shippable\" : true\n    },\n    \"coupon_scopes\" : [ {\n      \"namespace\" : \"stores\",\n      \"group\" : {\n        \"name\" : \"collection\",\n        \"entity_id\" : \"3fe3c3e2-7b90-2cd5-80f3-47dd06c0de00\"\n      }\n    }, {\n      \"namespace\" : \"stores\",\n      \"group\" : {\n        \"name\" : \"product\",\n        \"entity_id\" : \"13ca60a6-7d10-c67d-aa87-62f03a1efdca\"\n      }\n    } ],\n    \"item_type\" : {\n      \"preset\" : \"PHYSICAL\"\n    },\n    \"subscription_option_info\" : null\n  } ],\n  \"buyer_note\" : \"a note by the buyer\",\n  \"buyer_info\" : {\n    \"contact_id\" : \"bfecfcab-22c9-48b9-8713-579100df3e5a\",\n    \"member_id\" : \"b241a23c-4bc5-4cc9-a9d2-03efee0ccc7d\"\n  },\n  \"currency\" : \"USD\",\n  \"conversion_currency\" : \"USD\",\n  \"buyer_language\" : \"en\",\n  \"site_language\" : \"en\",\n  \"tax_included_in_prices\" : true,\n  \"applied_discounts\" : [ {\n    \"discount_type\" : \"GLOBAL\",\n    \"line_item_ids\" : [ ],\n    \"coupon\" : {\n      \"id\" : \"490aac30-b26e-4b3a-900a-06118ff9f62c\",\n      \"code\" : \"SummerSale\",\n      \"amount\" : {\n        \"amount\" : \"1\",\n        \"converted_amount\" : \"1\",\n        \"formatted_amount\" : \"$1.00\",\n        \"formatted_converted_amount\" : \"$1.00\"\n      },\n      \"name\" : \"SummerSale\",\n      \"coupon_type\" : \"MoneyOff\"\n    }\n  } ],\n  \"weight_unit\" : \"LB\",\n  \"subtotal\" : {\n    \"amount\" : \"10\",\n    \"converted_amount\" : \"10\",\n    \"formatted_amount\" : \"$10.00\",\n    \"formatted_converted_amount\" : \"$10.00\"\n  },\n  \"checkout_id\" : \"780aac30-b26e-4b3a-888a-06118ff9f62r\"\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n"
+        },
+                {
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItem"]
+          },
+          "doc": " Line items.\n",
+          "readOnly": true
+        },
+                {
+          "name": "buyerNote",
+          "type": "string",
+          "doc": " Buyer note.\n"
+        },
+                {
+          "name": "buyerInfo",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_BuyerInfo",
+          "doc": " Buyer information.\n",
+          "readOnly": true
+        },
+                {
+          "name": "currency",
+          "type": "string",
+          "doc": " Currency used for pricing.\n",
+          "readOnly": true
+        },
+                {
+          "name": "conversionCurrency",
+          "type": "string",
+          "doc": " All the converted prices are presented in this currency.\n",
+          "readOnly": true
+        },
+                {
+          "name": "buyerLanguage",
+          "type": "string",
+          "doc": " Language to be used when communicating with the buyer.\n For a site that supports multiple languages, this is the language the buyer selected (otherwise this defaults to the site language).\n",
+          "readOnly": true
+        },
+                {
+          "name": "siteLanguage",
+          "type": "string",
+          "doc": " Site language in which original values are shown.\n",
+          "readOnly": true
+        },
+                {
+          "name": "taxIncludedInPrices",
+          "type": "boolean",
+          "doc": " Whether tax is included in line item prices.\n",
+          "readOnly": true
+        },
+                {
+          "name": "weightUnit",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_WeightUnit",
+          "doc": " Weight measurement unit - defaults to site's weight unit.\n",
+          "readOnly": true
+        },
+                {
+          "name": "checkoutId",
+          "type": "string",
+          "doc": " ID of the checkout related to this cart.\n",
+          "readOnly": true
+        },
+                {
+          "name": "appliedDiscounts",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_CartDiscount"]
+          },
+          "doc": " Cart discounts.\n",
+          "readOnly": true
+        },
+                {
+          "name": "createdDate",
+          "type": "string",
+          "doc": " Date and time the Cart was created.\n",
+          "readOnly": true
+        },
+                {
+          "name": "updatedDate",
+          "type": "string",
+          "doc": " Date and time the Cart was updated.\n",
+          "readOnly": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_Address",
+      "displayName": "Address Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "country",
+          "type": "string",
+          "doc": " Country code.\n"
+        },
+                {
+          "name": "subdivision",
+          "type": "string",
+          "doc": " Subdivision. Usually a state, region, prefecture, or province code, according to [ISO 3166-2](https://en.wikipedia.org/wiki/ISO_3166-2).\n"
+        },
+                {
+          "name": "city",
+          "type": "string",
+          "doc": " City name.\n"
+        },
+                {
+          "name": "postalCode",
+          "type": "string",
+          "doc": " Zip/postal code.\n"
+        },
+                {
+          "name": "street",
+          "type": "All APIs.Cart._wix_common_Address_street",
+          "doc": ""
+        },
+                {
+          "name": "addressLine2",
+          "type": "string",
+          "doc": " Free text providing more detailed address info. Usually contains Apt, Suite, and Floor.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_Address_street",
+      "displayName": "street Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "streetAddress",
+          "type": "All APIs.Cart._wix_common_StreetAddress",
+          "doc": " Street name and number.\n"
+        },
+                {
+          "name": "addressLine",
+          "type": "string",
+          "doc": " Main address line, usually street and number as free text.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_wix_common_Subdivision",
+      "displayName": "Subdivision Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Short subdivision code.\n"
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Subdivision full name.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_StreetAddress",
+      "displayName": "Street Address Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "number",
+          "type": "string",
+          "doc": " Street number.\n"
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Street name.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_FullAddressContactDetails",
+      "displayName": "Full Address Contact Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "Full contact details for an address\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "firstName",
+          "type": "string",
+          "doc": " Contact first name\n"
+        },
+                {
+          "name": "lastName",
+          "type": "string",
+          "doc": " Contact last name\n"
+        },
+                {
+          "name": "phone",
+          "type": "string",
+          "doc": " Contact phone number\n"
+        },
+                {
+          "name": "company",
+          "type": "string",
+          "doc": " Contact's company\n"
+        },
+                {
+          "name": "email",
+          "type": "string",
+          "doc": " Email associated with the address\n"
+        },
+                {
+          "name": "vatId",
+          "type": "All APIs.Cart._wix_common_VatId",
+          "doc": " tax info (Currently usable only in Brazil)\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_VatId",
+      "displayName": "Vat Id Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Customer's tax ID\n"
+        },
+                {
+          "name": "type",
+          "type": "All APIs.Cart._wix_common_VatType",
+          "doc": " tax type\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_AddressLocation",
+      "displayName": "Address Location Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "latitude",
+          "type": "number",
+          "doc": " Address latitude.\n"
+        },
+                {
+          "name": "longitude",
+          "type": "number",
+          "doc": " Address longitude.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_platform_common_api_Address",
+      "displayName": "Address Object",
+      "locations": [],
+      "docs":       {
+        "summary": "Physical address\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "country",
+          "type": "string",
+          "doc": " Two-letter country code in [ISO-3166 alpha-2](https://www.iso.org/obp/ui/#search/code/) format.\n"
+        },
+                {
+          "name": "subdivision",
+          "type": "string",
+          "doc": " Code for a subdivision (such as state, prefecture, or province) in [ISO 3166-2](https://www.iso.org/standard/72483.html) format.\n"
+        },
+                {
+          "name": "city",
+          "type": "string",
+          "doc": " City name.\n"
+        },
+                {
+          "name": "postalCode",
+          "type": "string",
+          "doc": " Postal or zip code.\n"
+        },
+                {
+          "name": "streetAddress",
+          "type": "All APIs.Cart._wix_common_StreetAddress",
+          "doc": " Street address object, with number, name, and apartment number in separate fields.\n"
+        },
+                {
+          "name": "addressLine",
+          "type": "string",
+          "doc": " Main address line (usually street name and number).\n"
+        },
+                {
+          "name": "addressLine2",
+          "type": "string",
+          "doc": " Free text providing more detailed address info. Usually contains apt, suite, floor.\n"
+        },
+                {
+          "name": "countryFullname",
+          "type": "string",
+          "doc": " Country's full name.",
+          "readOnly": true
+        },
+                {
+          "name": "subdivisionFullname",
+          "type": "string",
+          "doc": " Subdivision full-name.",
+          "readOnly": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_google_protobuf_FieldMask",
+      "displayName": "Field Mask Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "paths",
+        "type":         {
+          "name": "array",
+          "typeParams": ["string"]
+        },
+        "doc": " The set of field mask paths.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_google_protobuf_Empty",
+      "displayName": "Empty Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_checkout_api_v1_CustomLineItem",
+      "displayName": "Custom Line Item Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "quantity",
+          "type": "integer",
+          "doc": " Custom line item quantity.\n"
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Custom line item name.\n"
+        },
+                {
+          "name": "price",
+          "type": "string",
+          "doc": " Custom line item price.\n"
+        },
+                {
+          "name": "descriptionLines",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_DescriptionLine"]
+          },
+          "doc": " Custom line item description lines. Used for display purposes for the cart, checkout and order.\n"
+        },
+                {
+          "name": "media",
+          "type": "All APIs.Cart._wix_common_Image",
+          "doc": " Custom line item's media.\n"
+        },
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Custom line item ID - auto-generated if not provided.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_memberships_spi_v1_MembershipPaymentCredits",
+      "displayName": "Membership Payment Credits Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "total",
+          "type": "integer",
+          "doc": " How much credit this membership has in total\n"
+        },
+                {
+          "name": "remaining",
+          "type": "integer",
+          "doc": " How much credit remained for this membership\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_memberships_spi_v1_MembershipName",
+      "displayName": "Membership Name Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " The name of this membership\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Optional - Translated name of this membership. Defaults to `original` when not provided.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_memberships_spi_v1_host_Membership",
+      "displayName": "Membership Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " The id of this membership\n"
+        },
+                {
+          "name": "appId",
+          "type": "string",
+          "doc": " ID of the application providing this payment option\n"
+        },
+                {
+          "name": "name",
+          "type": "All APIs.Cart._com_wix_ecom_memberships_spi_v1_MembershipName",
+          "doc": " The name of this membership\n"
+        },
+                {
+          "name": "lineItemIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " Line items ids which are \"paid\" by this membership\n"
+        },
+                {
+          "name": "credits",
+          "type": "All APIs.Cart._com_wix_ecom_memberships_spi_v1_MembershipPaymentCredits",
+          "doc": " Optional - For a membership that has limited credits, information about credit usage\n"
+        },
+                {
+          "name": "expirationDate",
+          "type": "string",
+          "doc": " Optional - The membership expiry date\n"
+        },
+                {
+          "name": "additionalData",
+          "type": "struct",
+          "doc": " Additional data about this membership\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_memberships_spi_v1_host_InvalidMembership",
+      "displayName": "Invalid Membership Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "membership",
+          "type": "All APIs.Cart._com_wix_ecom_memberships_spi_v1_host_Membership",
+          "doc": " The membership\n"
+        },
+                {
+          "name": "reason",
+          "type": "string",
+          "doc": " Reason why this membership is invalid and cannot be used\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_memberships_spi_v1_host_SelectedMemberships",
+      "displayName": "Selected Memberships Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "memberships",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_memberships_spi_v1_host_SelectedMembership"]
+        },
+        "doc": " Selected memberships\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_memberships_spi_v1_host_SelectedMembership",
+      "displayName": "Selected Membership Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " The membership id\n"
+        },
+                {
+          "name": "appId",
+          "type": "string",
+          "doc": " ID of the application providing this payment option\n"
+        },
+                {
+          "name": "lineItemIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " IDs of the line items this membership applies to.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_PriceSummary",
+      "displayName": "Price Summary Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "subtotal",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Subtotal of all line items, before discounts and before tax.\n"
+        },
+                {
+          "name": "shipping",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Total shipping price, before discounts and before tax.\n"
+        },
+                {
+          "name": "tax",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Total tax.\n"
+        },
+                {
+          "name": "discount",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Total calculated discount value.\n"
+        },
+                {
+          "name": "total",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Total price after discounts, gift cards, and tax.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "tracingMapEntry",
+      "displayName": "tracing Map Entry Object",
+      "locations": [],
+      "docs":       {
+        "summary": "Set of key-value pairs. deprecated in API's - to enable migration from rendering arbitrary tracing to rest response\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "key:value",
+        "type": "string",
+        "doc": "`key` of type string, `value` of type string"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "deprecated": true
+    },
+        {
+      "name": "_wix_api_Details",
+      "displayName": "Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "kind",
+          "type": "All APIs.Cart._wix_api_Details_kind",
+          "doc": ""
+        },
+                {
+          "name": "tracing",
+          "type": "All APIs.Cart.tracingMapEntry",
+          "doc": "Set of key-value pairs. deprecated in API's - to enable migration from rendering arbitrary tracing to rest response\n",
+          "deprecated": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_api_Details_kind",
+      "displayName": "kind Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "applicationError",
+          "type": "All APIs.Cart._wix_api_ApplicationError",
+          "doc": ""
+        },
+                {
+          "name": "validationError",
+          "type": "All APIs.Cart._wix_api_ValidationError",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_wix_api_ApplicationError",
+      "displayName": "Application Error Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "code",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "description",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "data",
+          "type": "struct",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_api_ValidationError_FieldViolation",
+      "displayName": "Field Violation Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "field",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "description",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "violatedRule",
+          "type": "All APIs.Cart._wix_api_ValidationError_RuleType",
+          "doc": ""
+        },
+                {
+          "name": "ruleName",
+          "type": "string",
+          "doc": " applicable when violated_rule=OTHER\n"
+        },
+                {
+          "name": "data",
+          "type": "struct",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_api_ValidationError",
+      "displayName": "Validation Error Object",
+      "locations": [],
+      "docs":       {
+        "summary": "*\nexample result:\n{\n\"fieldViolations\": [\n{\n\"field\": \"fieldA\",\n\"description\": \"invalid music note. supported notes: [do,re,mi,fa,sol,la,ti]\",\n\"violatedRule\": \"OTHER\",\n\"ruleName\": \"INVALID_NOTE\",\n\"data\": {\n\"value\": \"FI\"\n}\n},\n{\n\"field\": \"fieldB\",\n\"description\": \"field value out of range. supported range: [0-20]\",\n\"violatedRule\": \"MAX\",\n\"data\": {\n\"threshold\": 20\n}\n},\n{\n\"field\": \"fieldC\",\n\"description\": \"invalid phone number. provide a valid phone number of size: [7-12], supported characters: [0-9, +, -, (, )]\",\n\"violatedRule\": \"FORMAT\",\n\"data\": {\n\"type\": \"PHONE\"\n}\n}\n]\n}\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "fieldViolations",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Cart._wix_api_ValidationError_FieldViolation"]
+        },
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_CarrierError",
+      "displayName": "Carrier Error Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "carrierId",
+          "type": "string",
+          "doc": " Carrier ID.\n"
+        },
+                {
+          "name": "error",
+          "type": "All APIs.Cart._wix_api_Details",
+          "doc": " Error details.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_CarrierErrors",
+      "displayName": "Carrier Errors Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "errors",
+        "type":         {
+          "name": "array",
+          "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_CarrierError"]
+        },
+        "doc": " Carrier errors.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_CalculationErrors",
+      "displayName": "Calculation Errors Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "shippingCalculationError",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_CalculationErrors_ShippingCalculationError",
+          "doc": ""
+        },
+                {
+          "name": "taxCalculationError",
+          "type": "All APIs.Cart._wix_api_Details",
+          "doc": " Tax calculation error.\n"
+        },
+                {
+          "name": "couponCalculationError",
+          "type": "All APIs.Cart._wix_api_Details",
+          "doc": " Coupon calculation error.\n"
+        },
+                {
+          "name": "giftCardCalculationError",
+          "type": "All APIs.Cart._wix_api_Details",
+          "doc": " Gift card calculation error.\n"
+        },
+                {
+          "name": "orderValidationErrors",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._wix_api_ApplicationError"]
+          },
+          "doc": " Order validation errors.\n"
+        },
+                {
+          "name": "membershipError",
+          "type": "All APIs.Cart._wix_api_Details",
+          "doc": " Membership payment methods calculation errors\n For example, will indicate that a line item that must be paid with membership payment doesn't have one or selected memberships are invalid\n"
+        },
+                {
+          "name": "discountsCalculationError",
+          "type": "All APIs.Cart._wix_api_Details",
+          "doc": " Discount Rule calculation error.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_CalculationErrors_ShippingCalculationError",
+      "displayName": "Shipping Calculation Error Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "generalShippingCalculationError",
+          "type": "All APIs.Cart._wix_api_Details",
+          "doc": " General shipping calculation error.\n"
+        },
+                {
+          "name": "carrierErrors",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_CarrierErrors",
+          "doc": " Carrier errors.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecom_tax_api_TaxCalculationDetails",
+      "displayName": "Tax Calculation Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "rateType",
+          "type": "All APIs.Cart._com_wix_ecom_tax_api_RateType",
+          "doc": "rate calculation type\n"
+        },
+                {
+          "name": "CalculationDetails",
+          "type": "All APIs.Cart._com_wix_ecom_tax_api_TaxCalculationDetails_CalculationDetails",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_tax_api_TaxCalculationDetails_CalculationDetails",
+      "displayName": "Calculation Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "manualRateReason",
+          "type": "All APIs.Cart._com_wix_ecom_tax_api_ManualCalculationReason",
+          "doc": "reason for the manual calculation being used\n"
+        },
+                {
+          "name": "autoTaxFallbackDetails",
+          "type": "All APIs.Cart._com_wix_ecom_tax_api_AutoTaxFallbackCalculationDetails",
+          "doc": "details of the fallback rate calculation\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecom_tax_api_AutoTaxFallbackCalculationDetails",
+      "displayName": "Auto Tax Fallback Calculation Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "fallbackReason",
+          "type": "All APIs.Cart._com_wix_ecom_tax_api_AutoTaxFallbackCalculationDetails_FallbackReason",
+          "doc": "reason for fallback\n"
+        },
+                {
+          "name": "error",
+          "type": "All APIs.Cart._wix_api_ApplicationError",
+          "doc": "invalid request (i.e. address), timeout, internal error, license error, and others will be encoded here\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_TaxSummary",
+      "displayName": "Tax Summary Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "taxableAmount",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Amount for which tax is calculated, added from line items.\n",
+          "readOnly": true
+        },
+                {
+          "name": "totalTax",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Calculated tax, added from line items.\n",
+          "readOnly": true
+        },
+                {
+          "name": "calculationDetails",
+          "type": "All APIs.Cart._com_wix_ecom_tax_api_TaxCalculationDetails",
+          "doc": " Tax calculator that was active when the order was created.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_ItemTaxFullDetails",
+      "displayName": "Item Tax Full Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "taxableAmount",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Amount for which tax is calculated.\n"
+        },
+                {
+          "name": "taxRate",
+          "type": "string",
+          "doc": " Tax rate %, as a decimal point between 0 and 1.\n"
+        },
+                {
+          "name": "totalTax",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Calculated tax, based on `taxable_amount` and `tax_rate`.\n"
+        },
+                {
+          "name": "rateBreakdown",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_TaxRateBreakdown"]
+          },
+          "doc": " If breakdown exists, the sum of rates in the breakdown must equal `tax_rate`.\n",
+          "readOnly": true
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_TaxRateBreakdown",
+      "displayName": "Tax Rate Breakdown Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Type of tax against which the calculation was performed.\n"
+        },
+                {
+          "name": "rate",
+          "type": "string",
+          "doc": " Rate at which this tax detail was calculated.\n"
+        },
+                {
+          "name": "tax",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Amount of tax for this tax detail.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_ShippingPrice",
+      "displayName": "Shipping Price Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "price",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Shipping price.\n"
+        },
+                {
+          "name": "otherCharges",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_OtherCharge"]
+          },
+          "doc": " Other costs such as insurance, handling & packaging for fragile items, etc.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_OtherCharge",
+      "displayName": "Other Charge Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "type",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_ChargeType",
+          "doc": " Type of additional cost.\n"
+        },
+                {
+          "name": "price",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Price of added cost.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_SelectedCarrierServiceOption",
+      "displayName": "Selected Carrier Service Option Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Unique identifier of selected option. For example, \"usps_std_overnight\".\n"
+        },
+                {
+          "name": "title",
+          "type": "string",
+          "doc": " Title of the option, such as USPS Standard Overnight Delivery (in the requested locale).\n For example, \"Standard\" or \"First-Class Package International\".\n",
+          "readOnly": true
+        },
+                {
+          "name": "logistics",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_DeliveryLogistics",
+          "doc": " Delivery logistics.\n",
+          "readOnly": true
+        },
+                {
+          "name": "cost",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_SelectedCarrierServiceOptionPrices",
+          "doc": " Shipping costs.\n",
+          "readOnly": true
+        },
+                {
+          "name": "requestedShippingOption",
+          "type": "boolean",
+          "doc": " Were we able to find the requested shipping option, or otherwise we fallback to the default one (the first)\n",
+          "readOnly": true
+        },
+                {
+          "name": "otherCharges",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_SelectedCarrierServiceOptionOtherCharge"]
+          },
+          "doc": " Other charges\n"
+        },
+                {
+          "name": "carrierId",
+          "type": "string",
+          "doc": " This carrier's unique ID\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_SelectedCarrierServiceOptionPrices",
+      "displayName": "Selected Carrier Service Option Prices Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "totalPriceAfterTax",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Total shipping price, after discount and after tax.\n"
+        },
+                {
+          "name": "totalPriceBeforeTax",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Totals shipping price after discount and before tax.\n"
+        },
+                {
+          "name": "taxDetails",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_ItemTaxFullDetails",
+          "doc": " Tax details.\n"
+        },
+                {
+          "name": "totalDiscount",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Shipping discount before tax.\n"
+        },
+                {
+          "name": "price",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Shipping price before discount and before tax.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_SelectedCarrierServiceOptionOtherCharge",
+      "displayName": "Selected Carrier Service Option Other Charge Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "type",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_ChargeType",
+          "doc": " Type of additional cost.\n"
+        },
+                {
+          "name": "details",
+          "type": "string",
+          "doc": " Details of the charge, such as 'Full Coverage Insurance of up to 80% of value of shipment'.\n"
+        },
+                {
+          "name": "cost",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_SelectedCarrierServiceOptionPrices",
+          "doc": " Price of added charge.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_ShippingOption",
+      "displayName": "Shipping Option Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Unique code of provided shipping option like \"usps_std_overnight\".\n For legacy calculators this would be the UUID of the option.\n"
+        },
+                {
+          "name": "title",
+          "type": "string",
+          "doc": " Title of the option, such as USPS Standard Overnight Delivery (in the requested locale).\n For example, \"Standard\" or \"First-Class Package International\".\n"
+        },
+                {
+          "name": "logistics",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_DeliveryLogistics",
+          "doc": " Delivery logistics.\n"
+        },
+                {
+          "name": "cost",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_ShippingPrice",
+          "doc": " Sipping price information.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_PickupDetails",
+      "displayName": "Pickup Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "address",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Pickup address.\n"
+        },
+                {
+          "name": "businessLocation",
+          "type": "boolean",
+          "doc": " Whether the pickup address is that of a business - this may effect tax calculation.\n",
+          "deprecated": true
+        },
+                {
+          "name": "pickupMethod",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_PickupDetails_PickupMethod",
+          "doc": " Pickup method\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_DeliveryLogistics",
+      "displayName": "Delivery Logistics Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "deliveryTime",
+          "type": "string",
+          "doc": " Expected delivery time, in free text. For example, \"3-5 business days\".\n"
+        },
+                {
+          "name": "instructions",
+          "type": "string",
+          "doc": " Instructions for caller, e.g for pickup: \"Please deliver during opening hours, and please don't park in disabled parking spot\".\n"
+        },
+                {
+          "name": "pickupDetails",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_PickupDetails",
+          "doc": " Pickup details.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_ShippingInformation",
+      "displayName": "Shipping Information Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "region",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_ShippingRegion",
+          "doc": " Shipping region.\n"
+        },
+                {
+          "name": "selectedCarrierServiceOption",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_SelectedCarrierServiceOption",
+          "doc": " Selected shipping option.\n"
+        },
+                {
+          "name": "carrierServiceOptions",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_CarrierServiceOption"]
+          },
+          "doc": " All shipping options.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_ShippingRegion",
+      "displayName": "Shipping Region Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Shipping region ID.\n",
+          "readOnly": true
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Shipping region name.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_SelectedShippingOption",
+      "displayName": "Selected Shipping Option Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "carrierId",
+          "type": "string",
+          "doc": " Carrier ID.\n"
+        },
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Selected shipping option code. For example, \"usps_std_overnight\".\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_CarrierServiceOption",
+      "displayName": "Carrier Service Option Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "carrierId",
+          "type": "string",
+          "doc": " Carrier ID.\n"
+        },
+                {
+          "name": "shippingOptions",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_ShippingOption"]
+          },
+          "doc": " Shipping options offered by this carrier for this request.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_GiftCard",
+      "displayName": "Gift Card Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Gift Card ID.\n"
+        },
+                {
+          "name": "obfuscatedCode",
+          "type": "string",
+          "doc": " Gift card obfuscated code.\n"
+        },
+                {
+          "name": "amount",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Gift card value.\n"
+        },
+                {
+          "name": "appId",
+          "type": "string",
+          "doc": " App ID of the gift card provider.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_Coupon",
+      "displayName": "Coupon Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Coupon\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Coupon ID.\n"
+        },
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Coupon code.\n"
+        },
+                {
+          "name": "amount",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Coupon value.\n"
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Coupon name.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_DiscountRule",
+      "displayName": "Discount Rule Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Discount rule ID\n"
+        },
+                {
+          "name": "name",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_DiscountRuleName",
+          "doc": " Discount rule name\n"
+        },
+                {
+          "name": "amount",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Discount value.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_DiscountRuleName",
+      "displayName": "Discount Rule Name Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "original",
+          "type": "string",
+          "doc": " Original discount rule name (in site's default language).\n"
+        },
+                {
+          "name": "translated",
+          "type": "string",
+          "doc": " Translated discount rule name according to buyer language. Defaults to `original` when not provided.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_AppliedDiscount",
+      "displayName": "Applied Discount Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "discountType",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_AppliedDiscount_DiscountType",
+          "doc": " Discount type.\n"
+        },
+                {
+          "name": "lineItemIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " IDs of line items the discount applies to.\n"
+        },
+                {
+          "name": "DiscountSource",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_AppliedDiscount_DiscountSource",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_AppliedDiscount_DiscountSource",
+      "displayName": "Discount Source Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "coupon",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_Coupon",
+          "doc": " Coupon details.\n"
+        },
+                {
+          "name": "merchantDiscount",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_MerchantDiscount",
+          "doc": " Merchant discount.\n"
+        },
+                {
+          "name": "discountRule",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_DiscountRule",
+          "doc": " Discount rule\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_MerchantDiscount",
+      "displayName": "Merchant Discount Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "amount",
+        "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+        "doc": " Discount value.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_LineItemPricesData",
+      "displayName": "Line Item Prices Data Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "totalPriceAfterTax",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Total price after discounts and after tax.\n"
+        },
+                {
+          "name": "totalPriceBeforeTax",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Total price after discounts, before tax.\n"
+        },
+                {
+          "name": "taxDetails",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_ItemTaxFullDetails",
+          "doc": " Tax details.\n"
+        },
+                {
+          "name": "totalDiscount",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Total discount for all line items.\n"
+        },
+                {
+          "name": "price",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Catalog price after catalog discount.\n"
+        },
+                {
+          "name": "priceBeforeDiscounts",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_MultiCurrencyPrice",
+          "doc": " Item price **before** line item discounts and **after** catalog-defined discount. Defaults to `price` when not provided.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_MerchantDiscountInput",
+      "displayName": "Merchant Discount Input Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "amount",
+          "type": "string",
+          "doc": " Discount amount.\n"
+        },
+                {
+          "name": "lineItemIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " IDs of line items the discount applies to.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_MembershipOptions",
+      "displayName": "Membership Options Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "eligibleMemberships",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_memberships_spi_v1_host_Membership"]
+          },
+          "doc": " List of payment options that can be used\n"
+        },
+                {
+          "name": "invalidMemberships",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_memberships_spi_v1_host_InvalidMembership"]
+          },
+          "doc": " List of payment options that are owned by the member, but cannot be used due to reason provided\n"
+        },
+                {
+          "name": "selectedMemberships",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_memberships_spi_v1_host_SelectedMembership"]
+          },
+          "doc": " The selected payment options and which line items they apply to\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_CalculatedLineItem",
+      "displayName": "Calculated Line Item Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "lineItemId",
+          "type": "string",
+          "doc": " Line item ID.\n"
+        },
+                {
+          "name": "pricesBreakdown",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_LineItemPricesData",
+          "doc": " Price breakdown for this line item.\n"
+        },
+                {
+          "name": "paymentOption",
+          "type": "All APIs.Cart._com_wix_ecommerce_catalog_spi_api_v1_PaymentOptionType",
+          "doc": " Type of selected payment option for current item\n FULL_PAYMENT_ONLINE - The entire payment for this item will happen as part of the checkout\n FULL_PAYMENT_OFFLINE - The entire payment for this item will happen after the checkout\n MEMBERSHIP - This item cannot be paid via monetary payment options, only via non monetary option such membership. When this option is used, price must be set to 0\n DEPOSIT_ONLINE -  Partial payment of the given item will happen as part of the checkout. Amount to be paid is defined by deposit_amount field.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_Totals",
+      "displayName": "Totals Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "subtotal",
+          "type": "number",
+          "doc": " Subtotal of all line items, before tax\n"
+        },
+                {
+          "name": "shipping",
+          "type": "number",
+          "doc": " Total shipping price, including tax\n"
+        },
+                {
+          "name": "tax",
+          "type": "number",
+          "doc": " Total tax\n"
+        },
+                {
+          "name": "discount",
+          "type": "number",
+          "doc": " Total calculated discount value, according to order.discount\n"
+        },
+                {
+          "name": "total",
+          "type": "number",
+          "doc": " Total price\n"
+        },
+                {
+          "name": "weight",
+          "type": "number",
+          "doc": " Total items weight\n"
+        },
+                {
+          "name": "quantity",
+          "type": "integer",
+          "doc": " Total line items quantity\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_BuyerInfo",
+      "displayName": "Buyer Info Object",
+      "locations": [],
+      "docs":       {
+        "summary": " This might expand and add additional data\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Customer details\n"
+        },
+                {
+          "name": "identityType",
+          "type": "All APIs.Cart._wix_cart_api_v1_BuyerInfo_IdentityType",
+          "doc": " Customer's relationship to the website\n"
+        },
+                {
+          "name": "email",
+          "type": "string",
+          "doc": " Customer's email address\n"
+        },
+                {
+          "name": "phone",
+          "type": "string",
+          "doc": " Customer's phone number\n"
+        },
+                {
+          "name": "firstName",
+          "type": "string",
+          "doc": " Customer's first name\n"
+        },
+                {
+          "name": "lastName",
+          "type": "string",
+          "doc": " Customer's last name\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_Currency",
+      "displayName": "Currency Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Currency code\n"
+        },
+                {
+          "name": "symbol",
+          "type": "string",
+          "doc": " Currency symbol\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_AppliedCoupon",
+      "displayName": "Applied Coupon Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "couponId",
+          "type": "string",
+          "doc": " Coupon internal ID\n"
+        },
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Coupon name\n"
+        },
+                {
+          "name": "code",
+          "type": "string",
+          "doc": " Coupon code\n"
+        },
+                {
+          "name": "discountValue",
+          "type": "string",
+          "doc": " Discount value\n"
+        },
+                {
+          "name": "convertedDiscountValue",
+          "type": "string",
+          "doc": " Converted discount value\n"
+        },
+                {
+          "name": "couponType",
+          "type": "string",
+          "doc": " Type (e.g., moneyOff, percentOff)\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_CartAddress",
+      "displayName": "Cart Address Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "address",
+          "type": "All APIs.Cart._wix_common_Address",
+          "doc": "Address\n"
+        },
+                {
+          "name": "contactDetails",
+          "type": "All APIs.Cart._wix_common_FullAddressContactDetails",
+          "doc": "Contact details\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_ShippingInfo",
+      "displayName": "Shipping Info Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "shippingRuleDetails",
+          "type": "All APIs.Cart._wix_cart_api_v1_ShippingRuleDetails",
+          "doc": " Selected shipping rule details\n"
+        },
+                {
+          "name": "details",
+          "type": "All APIs.Cart._wix_cart_api_v1_ShippingInfo_details",
+          "doc": " Shipment/Pickup details\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_ShippingInfo_details",
+      "displayName": "details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "pickupDetails",
+          "type": "All APIs.Cart._wix_cart_api_v1_PickupDetails",
+          "doc": " Pickup details when this object describes pickup\n"
+        },
+                {
+          "name": "shippingAddress",
+          "type": "All APIs.Cart._wix_cart_api_v1_CartAddress",
+          "doc": " Shipment details when this object describes shipment\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_wix_cart_api_v1_ShippingRuleDetails",
+      "displayName": "Shipping Rule Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "ruleId",
+          "type": "string",
+          "doc": " Selected shipping rule ID\n"
+        },
+                {
+          "name": "optionId",
+          "type": "string",
+          "doc": " Selected option ID\n"
+        },
+                {
+          "name": "deliveryOption",
+          "type": "string",
+          "doc": " Rule title (as provided by the store owner)\n"
+        },
+                {
+          "name": "estimatedDeliveryTime",
+          "type": "string",
+          "doc": " Shipping option delivery time\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_PickupDetails",
+      "displayName": "Pickup Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "pickupAddress",
+          "type": "All APIs.Cart._wix_common_Address",
+          "doc": " Pickup address\n"
+        },
+                {
+          "name": "buyerDetails",
+          "type": "All APIs.Cart._wix_cart_api_v1_BuyerDetails",
+          "doc": " Customer details\n"
+        },
+                {
+          "name": "pickupInstructions",
+          "type": "string",
+          "doc": " Store owner's pickup instructions\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_BuyerDetails",
+      "displayName": "Buyer Details Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "firstName",
+          "type": "string",
+          "doc": " Customer's first name\n"
+        },
+                {
+          "name": "lastName",
+          "type": "string",
+          "doc": " Customer's last name\n"
+        },
+                {
+          "name": "email",
+          "type": "string",
+          "doc": " Email address\n"
+        },
+                {
+          "name": "phone",
+          "type": "string",
+          "doc": " Phone number\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_CartCompletedEvent",
+      "displayName": "Cart Completed Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "This webhook is triggered when a customer has completed their checkout. In most cases, an order will be created immediately and an Order Event webhook will also be triggered. In some cases, the payment provider may list the order as \"pending\" - and the order will not be created until the payment is listed as \"approved.\"\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "cartId",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "completedTime",
+          "type": "string",
+          "doc": " Time the cart was created\n",
+          "readOnly": true
+        },
+                {
+          "name": "buyerInfo",
+          "type": "All APIs.Cart._wix_cart_api_v1_BuyerInfo",
+          "doc": " Customer's Wix ID\n"
+        },
+                {
+          "name": "weightUnit",
+          "type": "All APIs.Cart._wix_cart_api_v1_WeightUnit",
+          "doc": " Weight unit used in this store\n"
+        },
+                {
+          "name": "buyerNote",
+          "type": "string",
+          "doc": " Message from the customer\n"
+        },
+                {
+          "name": "billingAddress",
+          "type": "All APIs.Cart._wix_cart_api_v1_CartAddress",
+          "doc": " Customer's billing address\n"
+        },
+                {
+          "name": "currency",
+          "type": "All APIs.Cart._wix_cart_api_v1_Currency",
+          "doc": " Currency used for pricing in this store\n"
+        },
+                {
+          "name": "appliedCoupon",
+          "type": "All APIs.Cart._wix_cart_api_v1_AppliedCoupon",
+          "doc": " Coupon applied to this cart\n"
+        },
+                {
+          "name": "totals",
+          "type": "All APIs.Cart._wix_cart_api_v1_Totals",
+          "doc": " Totals for order's line items\n"
+        },
+                {
+          "name": "shippingInfo",
+          "type": "All APIs.Cart._wix_cart_api_v1_ShippingInfo",
+          "doc": " Cart shipping information\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_domainevents_EntityCreatedEvent",
+      "displayName": "Entity Created Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "entityAsJson",
+        "type": "string",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_domainevents_EntityUpdatedEvent",
+      "displayName": "Entity Updated Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "currentEntityAsJson",
+        "type": "string",
+        "doc": " Since platformized APIs only expose PATCH and not PUT we can't assume that the fields sent from the client are the actual diff.\n This means that to generate a list of changed fields (as opposed to sent fields) one needs to traverse both objects.\n We don't want to impose this on all developers and so we leave this traversal to the notification recipients which need it.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_domainevents_EntityDeletedEvent",
+      "displayName": "Entity Deleted Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_domainevents_ActionEvent",
+      "displayName": "Action Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "bodyAsJson",
+        "type": "string",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_domainevents_ExtendedFieldsUpdatedEvent",
+      "displayName": "Extended Fields Updated Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "currentEntityAsJson",
+        "type": "string",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_domainevents_DomainEvent",
+      "displayName": "Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " random GUID so clients can tell if event was already handled\n"
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": " Assumes actions are also always typed to an entity_type\n Example: wix.stores.catalog.product, wix.bookings.session, wix.payments.transaction\n"
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": " This is top level to ease client code dipatching of messages (switch on entity_fqdn+slug)\n This is although the created/updated/deleted notion is duplication of the oneof types\n Example: created/updated/deleted/started/completed/email_opened\n"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": " Assuming that all messages including Actions have id\n Example: The id of the specific order, the id of a specific campaign\n"
+        },
+                {
+          "name": "body",
+          "type": "All APIs.Cart._wix_common_domainevents_DomainEvent_body",
+          "doc": ""
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": " The time of the event. Useful if there was a delay in dipatching\n"
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": " A field that should be set if this event was triggered by an anonymize request.\n For example you must set it to true when sending an event as a result of a GDPR right to be forgotten request.\n NOTE: This field is not relevant for `EntityCreatedEvent` but is located here for better ergonomics of consumers.\n"
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": " If present, indicates the action that triggered the event.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_domainevents_DomainEvent_body",
+      "displayName": "body Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "createdEvent",
+          "type": "All APIs.Cart._wix_common_domainevents_EntityCreatedEvent",
+          "doc": ""
+        },
+                {
+          "name": "updatedEvent",
+          "type": "All APIs.Cart._wix_common_domainevents_EntityUpdatedEvent",
+          "doc": ""
+        },
+                {
+          "name": "deletedEvent",
+          "type": "All APIs.Cart._wix_common_domainevents_EntityDeletedEvent",
+          "doc": ""
+        },
+                {
+          "name": "actionEvent",
+          "type": "All APIs.Cart._wix_common_domainevents_ActionEvent",
+          "doc": ""
+        },
+                {
+          "name": "extendedFieldsUpdatedEvent",
+          "type": "All APIs.Cart._wix_common_domainevents_ExtendedFieldsUpdatedEvent",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CreateCartRequest",
+      "displayName": "Create Cart Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "cartInfo",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+          "doc": " Cart info.\n"
+        },
+                {
+          "name": "couponCode",
+          "type": "string",
+          "doc": " Code of an existing coupon to apply to cart. For more information, see [Coupons API](https://dev.wix.com/api/rest/wix-coupons/coupons/introduction).\n"
+        },
+                {
+          "name": "merchantDiscounts",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_MerchantDiscountInput"]
+          },
+          "doc": " Merchant discounts to apply to specific line items or the entire cart.\n"
+        },
+                {
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItem"]
+          },
+          "doc": " Catalog line items.\n"
+        },
+                {
+          "name": "customLineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_checkout_api_v1_CustomLineItem"]
+          },
+          "doc": " Custom line items.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_UpdateCartRequest",
+      "displayName": "Update Cart Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "cartInfo",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+          "doc": " Cart info.\n"
+        },
+                {
+          "name": "couponCode",
+          "type": "string",
+          "doc": " Coupon code. For more information, see [Coupons API](https://dev.wix.com/api/rest/wix-coupons/coupons/introduction).\n"
+        },
+                {
+          "name": "merchantDiscounts",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_MerchantDiscountInput"]
+          },
+          "doc": " Merchant discounts.\n"
+        },
+                {
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItem"]
+          },
+          "doc": " Catalog line items.\n"
+        },
+                {
+          "name": "customLineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_checkout_api_v1_CustomLineItem"]
+          },
+          "doc": " Custom line items.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CreateCartResponse",
+      "displayName": "Create Cart Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " Cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_UpdateCartResponse",
+      "displayName": "Update Cart Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " Updated Cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_GetCartRequest",
+      "displayName": "Get Cart Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": " Cart ID.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_GetCartResponse",
+      "displayName": "Get Cart Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " The requested cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_GetCartByCheckoutIdRequest",
+      "displayName": "Get Cart By Checkout Id Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": " Checkout ID.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_GetCartByCheckoutIdResponse",
+      "displayName": "Get Cart By Checkout Id Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " The requested cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_GetCurrentCartRequest",
+      "displayName": "Get Current Cart Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_GetCurrentCartResponse",
+      "displayName": "Get Current Cart Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " Current session's active cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_AddToCartRequest",
+      "displayName": "Add To Cart Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n"
+        },
+                {
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItem"]
+          },
+          "doc": " Catalog line items.\n"
+        },
+                {
+          "name": "customLineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_checkout_api_v1_CustomLineItem"]
+          },
+          "doc": " Custom line items.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_AddToCartResponse",
+      "displayName": "Add To Cart Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " Updated cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_RemoveLineItemsRequest",
+      "displayName": "Remove Line Items Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n"
+        },
+                {
+          "name": "lineItemIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " Line item IDs to remove from cart.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_RemoveLineItemsResponse",
+      "displayName": "Remove Line Items Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " Updated cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CreateCheckoutRequest",
+      "displayName": "Create Checkout Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n"
+        },
+                {
+          "name": "channelType",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_ChannelType",
+          "doc": " Sales channel type.\n"
+        },
+                {
+          "name": "shippingAddress",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Shipping address. Used for calculating tax and shipping (when applicable).\n"
+        },
+                {
+          "name": "billingAddress",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Billing address. Used for calculating tax if an item is not shippable.\n"
+        },
+                {
+          "name": "selectedShippingOption",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_SelectedShippingOption",
+          "doc": " Selected shipping option.\n"
+        },
+                {
+          "name": "email",
+          "type": "string",
+          "doc": " Mandatory when setting billing or shipping address and user is not logged in.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_CreateCheckoutResponse",
+      "displayName": "Create Checkout Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "checkoutId",
+        "type": "string",
+        "doc": " New checkout ID.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_RemoveCouponRequest",
+      "displayName": "Remove Coupon Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": " Cart ID.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_RemoveCouponResponse",
+      "displayName": "Remove Coupon Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " Updated cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_UpdateLineItemsQuantityRequest",
+      "displayName": "Update Line Items Quantity Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n"
+        },
+                {
+          "name": "lineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_cart_api_v1_LineItemQuantityUpdate"]
+          },
+          "doc": " Line item IDs and their new quantity.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_LineItemQuantityUpdate",
+      "displayName": "Line Item Quantity Update Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Line item ID.\n"
+        },
+                {
+          "name": "quantity",
+          "type": "integer",
+          "doc": " New quantity.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_UpdateLineItemsQuantityResponse",
+      "displayName": "Update Line Items Quantity Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+        "doc": " Updated cart.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_EstimateTotalsRequest",
+      "displayName": "Estimate Totals Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID.\n"
+        },
+                {
+          "name": "selectedShippingOption",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_SelectedShippingOption",
+          "doc": " Selected shipping option.\n"
+        },
+                {
+          "name": "shippingAddress",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Shipping address. Used for calculating tax and shipping (when applicable).\n"
+        },
+                {
+          "name": "billingAddress",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_Address",
+          "doc": " Billing address. Used for calculating tax if an item is not shippable.\n"
+        },
+                {
+          "name": "selectedMemberships",
+          "type": "All APIs.Cart._com_wix_ecom_memberships_spi_v1_host_SelectedMemberships",
+          "doc": " The selected payment options and which line items they apply to\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_EstimateTotalsResponse",
+      "displayName": "Estimate Totals Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "cart",
+          "type": "All APIs.Cart._com_wix_ecom_cart_api_v1_Cart",
+          "doc": " Cart.\n"
+        },
+                {
+          "name": "calculatedLineItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_CalculatedLineItem"]
+          },
+          "doc": " Calculated line items.\n"
+        },
+                {
+          "name": "priceSummary",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_PriceSummary",
+          "doc": " Price summary.\n"
+        },
+                {
+          "name": "giftCard",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_GiftCard",
+          "doc": " Applied gift card.\n"
+        },
+                {
+          "name": "taxSummary",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_TaxSummary",
+          "doc": " Tax summary.\n"
+        },
+                {
+          "name": "shippingInfo",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_ShippingInformation",
+          "doc": " Shipping information.\n"
+        },
+                {
+          "name": "appliedDiscounts",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Cart._com_wix_ecom_totals_calculator_v1_AppliedDiscount"]
+          },
+          "doc": " Applied discounts.\n"
+        },
+                {
+          "name": "calculationErrors",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_CalculationErrors",
+          "doc": " Calculation errors.\n"
+        },
+                {
+          "name": "weightUnit",
+          "type": "All APIs.Cart._com_wix_ecommerce_platform_common_api_WeightUnit",
+          "doc": " Weight measurement unit - defaults to site's weight unit.\n"
+        },
+                {
+          "name": "currency",
+          "type": "string",
+          "doc": " Currency used for pricing in this store.\n"
+        },
+                {
+          "name": "payNow",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_PriceSummary",
+          "doc": " Minimal amount to pay in order to place the order\n",
+          "readOnly": true
+        },
+                {
+          "name": "payLater",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_PriceSummary",
+          "doc": " Remaining amount so that the order will be fully payed\n",
+          "readOnly": true
+        },
+                {
+          "name": "membershipOptions",
+          "type": "All APIs.Cart._com_wix_ecom_totals_calculator_v1_MembershipOptions",
+          "doc": " Information about valid and invalid memberships, and which ones are selected for usage\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_DeleteCartRequest",
+      "displayName": "Delete Cart Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "id",
+        "type": "string",
+        "doc": " Cart ID.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_cart_api_v1_DeleteCartResponse",
+      "displayName": "Delete Cart Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_checkout_api_v1_ItemAvailabilityInfo_ItemAvailabilityStatus",
+      "displayName": "Item Availability Status Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> AVAILABLE <\/code><\/li><li><code> NOT_FOUND <\/code><\/li><li><code> NOT_AVAILABLE -  Not in stock\n <\/code><\/li><li><code> PARTIALLY_AVAILABLE -  Available quantity is less than requested\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "AVAILABLE",
+        "NOT_FOUND",
+        "NOT_AVAILABLE",
+        "PARTIALLY_AVAILABLE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_DescriptionLine_DescriptionLineType",
+      "displayName": "Description Line Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNRECOGNISED <\/code><\/li><li><code> PLAIN_TEXT <\/code><\/li><li><code> COLOR <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNRECOGNISED",
+        "PLAIN_TEXT",
+        "COLOR"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_ItemType_ItemType",
+      "displayName": "Item Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNRECOGNISED <\/code><\/li><li><code> PHYSICAL <\/code><\/li><li><code> DIGITAL <\/code><\/li><li><code> GIFT_CARD <\/code><\/li><li><code> SERVICE <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNRECOGNISED",
+        "PHYSICAL",
+        "DIGITAL",
+        "GIFT_CARD",
+        "SERVICE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_SubscriptionFrequency",
+      "displayName": "Subscription Frequency Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Frequency unit of recurring payment\n \n Possible values are: <li><code> UNDEFINED <\/code><\/li><li><code> DAY <\/code><\/li><li><code> WEEK <\/code><\/li><li><code> MONTH <\/code><\/li><li><code> YEAR <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNDEFINED",
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_SecuredMedia_FileType",
+      "displayName": "File Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNSPECIFIED <\/code><\/li><li><code> SECURE_PICTURE <\/code><\/li><li><code> SECURE_VIDEO <\/code><\/li><li><code> SECURE_DOCUMENT <\/code><\/li><li><code> SECURE_MUSIC <\/code><\/li><li><code> SECURE_ARCHIVE <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNSPECIFIED",
+        "SECURE_PICTURE",
+        "SECURE_VIDEO",
+        "SECURE_DOCUMENT",
+        "SECURE_MUSIC",
+        "SECURE_ARCHIVE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_catalog_spi_api_v1_PaymentOptionType",
+      "displayName": "Payment Option Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Type of selected payment option for catalog item\n \n Possible values are: <li><code> FULL_PAYMENT_ONLINE -  The entire payment for given item will happen as part of the checkout\n <\/code><\/li><li><code> FULL_PAYMENT_OFFLINE -  The entire payment for given item will happen after the checkout\n <\/code><\/li><li><code> MEMBERSHIP -  Given item cannot be paid via monetary payment options, only via membership. When this option is used, price will always be 0\n <\/code><\/li><li><code> DEPOSIT_ONLINE -  Partial payment for the given item to be paid upfront during the checkout.\n Amount to be paid is defined by deposit_amount field on per-item basis.\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "FULL_PAYMENT_ONLINE",
+        "FULL_PAYMENT_OFFLINE",
+        "MEMBERSHIP",
+        "DEPOSIT_ONLINE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_platform_common_api_WeightUnit",
+      "displayName": "Weight Unit Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNSPECIFIED_WEIGHT_UNIT -  Weight unit can't be classified, due to an error\n <\/code><\/li><li><code> KG -  Kilograms\n <\/code><\/li><li><code> LB -  Pounds\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNSPECIFIED_WEIGHT_UNIT",
+        "KG",
+        "LB"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_VatType",
+      "displayName": "Vat Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " tax info types\n \n Possible values are: <li><code> UNSPECIFIED <\/code><\/li><li><code> CPF -  CPF - for individual tax payers\n <\/code><\/li><li><code> CNPJ -  CNPJ - for corporations\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNSPECIFIED",
+        "CPF",
+        "CNPJ"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_Subdivision_SubdivisionType",
+      "displayName": "Subdivision Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNKNOWN_SUBDIVISION_TYPE <\/code><\/li><li><code> ADMINISTRATIVE_AREA_LEVEL_1 -  State\n <\/code><\/li><li><code> ADMINISTRATIVE_AREA_LEVEL_2 -  County\n <\/code><\/li><li><code> ADMINISTRATIVE_AREA_LEVEL_3 -  City/town\n <\/code><\/li><li><code> ADMINISTRATIVE_AREA_LEVEL_4 -  Neighborhood/quarter\n <\/code><\/li><li><code> ADMINISTRATIVE_AREA_LEVEL_5 -  Street/block\n <\/code><\/li><li><code> COUNTRY -  ADMINISTRATIVE_AREA_LEVEL_0. Indicates the national political entity, and is typically the highest order type returned by the Geocoder.\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNKNOWN_SUBDIVISION_TYPE",
+        "ADMINISTRATIVE_AREA_LEVEL_1",
+        "ADMINISTRATIVE_AREA_LEVEL_2",
+        "ADMINISTRATIVE_AREA_LEVEL_3",
+        "ADMINISTRATIVE_AREA_LEVEL_4",
+        "ADMINISTRATIVE_AREA_LEVEL_5",
+        "COUNTRY"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_api_ValidationError_RuleType",
+      "displayName": "Rule Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> VALIDATION <\/code><\/li><li><code> OTHER <\/code><\/li><li><code> MAX <\/code><\/li><li><code> MIN <\/code><\/li><li><code> MAX_LENGTH <\/code><\/li><li><code> MIN_LENGTH <\/code><\/li><li><code> MAX_SIZE <\/code><\/li><li><code> MIN_SIZE <\/code><\/li><li><code> FORMAT <\/code><\/li><li><code> DECIMAL_LTE <\/code><\/li><li><code> DECIMAL_GTE <\/code><\/li><li><code> DECIMAL_LT <\/code><\/li><li><code> DECIMAL_GT <\/code><\/li><li><code> DECIMAL_MAX_SCALE <\/code><\/li><li><code> INVALID_ENUM_VALUE <\/code><\/li><li><code> REQUIRED_FIELD <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "VALIDATION",
+        "OTHER",
+        "MAX",
+        "MIN",
+        "MAX_LENGTH",
+        "MIN_LENGTH",
+        "MAX_SIZE",
+        "MIN_SIZE",
+        "FORMAT",
+        "DECIMAL_LTE",
+        "DECIMAL_GTE",
+        "DECIMAL_LT",
+        "DECIMAL_GT",
+        "DECIMAL_MAX_SCALE",
+        "INVALID_ENUM_VALUE",
+        "REQUIRED_FIELD"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_tax_api_ManualCalculationReason",
+      "displayName": "Manual Calculation Reason Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> GLOBAL_SETTING_TO_MANUAL - user set calculator in Business Manager to be Manual\n <\/code><\/li><li><code> REGION_SETTING_TO_MANUAL - specific region is on manual even though Global setting is Auto-tax\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "GLOBAL_SETTING_TO_MANUAL",
+        "REGION_SETTING_TO_MANUAL"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_tax_api_RateType",
+      "displayName": "Rate Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> NO_TAX_COLLECTED - no tax being collected for this request due to location of purchase\n <\/code><\/li><li><code> MANUAL_RATE - manual rate used for calculation\n <\/code><\/li><li><code> AUTO_RATE - autotax rate used for calculation\n <\/code><\/li><li><code> FALLBACK_RATE - fallback rate used for calculation\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "NO_TAX_COLLECTED",
+        "MANUAL_RATE",
+        "AUTO_RATE",
+        "FALLBACK_RATE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_tax_api_AutoTaxFallbackCalculationDetails_FallbackReason",
+      "displayName": "Fallback Reason Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> AUTO_TAX_FAILED - auto-tax failed to be calculated\n <\/code><\/li><li><code> AUTO_TAX_DEACTIVATED - auto-tax was temporarily deactivated on a system-level\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "AUTO_TAX_FAILED",
+        "AUTO_TAX_DEACTIVATED"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_ChargeType",
+      "displayName": "Charge Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> HANDLING_FEE <\/code><\/li><li><code> INSURANCE <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "HANDLING_FEE",
+        "INSURANCE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_PickupDetails_PickupMethod",
+      "displayName": "Pickup Method Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNKNOWN_METHOD <\/code><\/li><li><code> STORE_PICKUP <\/code><\/li><li><code> PICKUP_POINT <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNKNOWN_METHOD",
+        "STORE_PICKUP",
+        "PICKUP_POINT"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_totals_calculator_v1_AppliedDiscount_DiscountType",
+      "displayName": "Discount Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> GLOBAL <\/code><\/li><li><code> SPECIFIC_ITEMS <\/code><\/li><li><code> SHIPPING <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "GLOBAL",
+        "SPECIFIC_ITEMS",
+        "SHIPPING"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecommerce_platform_common_api_ChannelType",
+      "displayName": "Channel Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNSPECIFIED <\/code><\/li><li><code> WEB <\/code><\/li><li><code> POS <\/code><\/li><li><code> EBAY <\/code><\/li><li><code> AMAZON <\/code><\/li><li><code> OTHER_PLATFORM <\/code><\/li><li><code> WIX_APP_STORE <\/code><\/li><li><code> WIX_INVOICES <\/code><\/li><li><code> BACKOFFICE_MERCHANT <\/code><\/li><li><code> WISH <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNSPECIFIED",
+        "WEB",
+        "POS",
+        "EBAY",
+        "AMAZON",
+        "OTHER_PLATFORM",
+        "WIX_APP_STORE",
+        "WIX_INVOICES",
+        "BACKOFFICE_MERCHANT",
+        "WISH"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_BuyerInfo_IdentityType",
+      "displayName": "Identity Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> ADMIN -  Customer is the site owner\n <\/code><\/li><li><code> MEMBER -  Customer is logged in\n <\/code><\/li><li><code> VISITOR -  Customer is not logged in\n <\/code><\/li><li><code> CONTACT -  Contact was created for the customer\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "ADMIN",
+        "MEMBER",
+        "VISITOR",
+        "CONTACT"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_WeightUnit",
+      "displayName": "Weight Unit Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNSPECIFIED_WEIGHT_UNIT -  Weight unit can't be classified, due to an error\n <\/code><\/li><li><code> KG -  Kilograms\n <\/code><\/li><li><code> LB -  Pounds\n <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNSPECIFIED_WEIGHT_UNIT",
+        "KG",
+        "LB"
+      ],
+      "extra": {},
+      "labels": []
+    }
+  ],
+  "extra": {"artifactId": "com.wixpress.ecom.cart"}
+}
