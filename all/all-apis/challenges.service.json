@@ -1379,6 +1379,12 @@
           "name": "updatedAt",
           "type": "string",
           "doc": ""
+        },
+                {
+          "name": "sectionId",
+          "type": "string",
+          "doc": "",
+          "readOnly": true
         }
       ],
       "enum": null,
