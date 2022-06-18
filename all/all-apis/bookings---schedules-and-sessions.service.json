@@ -5931,5 +5931,5 @@
       "labels": []
     }
   ],
-  "extra": {}
+  "extra": {"artifactId": "com.wixpress.bookings.schedule-server"}
 }
