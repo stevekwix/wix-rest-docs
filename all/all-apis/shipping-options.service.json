@@ -2147,5 +2147,5 @@
       "labels": []
     }
   ],
-  "extra": {}
+  "extra": {"artifactId": "serverless.get-rates"}
 }
