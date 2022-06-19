@@ -27,14 +27,6 @@
       "tag": "Carts",
       "permissions":       [
                 {
-          "name": "Manage Stores - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Stores data, including products, orders and currencies. This permission scope contains all of the Stores permissions."
-        },
-                {
-          "name": "Read Stores - all read permissions",
-          "description": "Request permission to read the site's Wix Stores data, including products and orders. This permission scope contains all of the read Stores permissions."
-        },
-                {
           "name": "Manage Orders",
           "description": "Request permission to read, create and modify the site's Wix Stores orders."
         },
@@ -91,14 +83,6 @@
       "serviceName": "Carts",
       "tag": "Carts",
       "permissions":       [
-                {
-          "name": "Manage Stores - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Stores data, including products, orders and currencies. This permission scope contains all of the Stores permissions."
-        },
-                {
-          "name": "Read Stores - all read permissions",
-          "description": "Request permission to read the site's Wix Stores data, including products and orders. This permission scope contains all of the read Stores permissions."
-        },
                 {
           "name": "Manage Orders",
           "description": "Request permission to read, create and modify the site's Wix Stores orders."
@@ -163,14 +147,6 @@
       "tag": "Carts",
       "permissions":       [
                 {
-          "name": "Manage Stores - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Stores data, including products, orders and currencies. This permission scope contains all of the Stores permissions."
-        },
-                {
-          "name": "Read Stores - all read permissions",
-          "description": "Request permission to read the site's Wix Stores data, including products and orders. This permission scope contains all of the read Stores permissions."
-        },
-                {
           "name": "Manage Orders",
           "description": "Request permission to read, create and modify the site's Wix Stores orders."
         },
@@ -191,14 +167,6 @@
       "topic": "wixStores-cart-completed",
       "tag": "Carts",
       "permissions":       [
-                {
-          "name": "Manage Stores - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Stores data, including products, orders and currencies. This permission scope contains all of the Stores permissions."
-        },
-                {
-          "name": "Read Stores - all read permissions",
-          "description": "Request permission to read the site's Wix Stores data, including products and orders. This permission scope contains all of the read Stores permissions."
-        },
                 {
           "name": "Manage Orders",
           "description": "Request permission to read, create and modify the site's Wix Stores orders."
@@ -512,22 +480,22 @@
                 {
           "name": "firstName",
           "type": "string",
-          "doc": ""
+          "doc": " Contact first name\n"
         },
                 {
           "name": "lastName",
           "type": "string",
-          "doc": ""
+          "doc": " Contact last name\n"
         },
                 {
           "name": "phone",
           "type": "string",
-          "doc": ""
+          "doc": " Contact phone number\n"
         },
                 {
           "name": "company",
           "type": "string",
-          "doc": ""
+          "doc": " Contact's company\n"
         },
                 {
           "name": "email",
@@ -1234,13 +1202,13 @@
                 {
           "name": "countryFullname",
           "type": "string",
-          "doc": " Country's full name.\n",
+          "doc": " Country's full name.",
           "readOnly": true
         },
                 {
           "name": "subdivisionFullname",
           "type": "string",
-          "doc": " Subdivision full-name.\n",
+          "doc": " Subdivision full-name.",
           "readOnly": true
         }
       ],
@@ -1486,6 +1454,87 @@
       "labels": []
     },
         {
+      "name": "_wix_cart_api_v1_AddCustomItemsRequest",
+      "displayName": "Add Custom Items Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Cart ID\n"
+        },
+                {
+          "name": "customItems",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Stores Carts._wix_cart_api_v1_CustomItem"]
+          },
+          "doc": "Custom Items\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_CustomItem",
+      "displayName": "Custom Item Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "name",
+          "type": "string",
+          "doc": " Name\n"
+        },
+                {
+          "name": "amount",
+          "type": "string",
+          "doc": " Amount\n"
+        },
+                {
+          "name": "quantity",
+          "type": "integer",
+          "doc": " Quantity\n"
+        },
+                {
+          "name": "note",
+          "type": "string",
+          "doc": " Note\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_cart_api_v1_AddCustomItemsResponse",
+      "displayName": "Add Custom Items Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "cart",
+        "type": "All APIs.Stores Carts._wix_cart_api_v1_Cart",
+        "doc": ""
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_wix_cart_api_v1_GetDestinationCompletenessRequest",
       "displayName": "Get Destination Completeness Request Object",
       "locations": [],
@@ -1655,5 +1704,5 @@
       "labels": []
     }
   ],
-  "extra": {"artifactId": "com.wixpress.ecommerce.wix-ecommerce-cart-services-web"}
+  "extra": {"artifactId": "com.wixpress.ecommerce.wix-ecommerce-carts-proxy"}
 }
