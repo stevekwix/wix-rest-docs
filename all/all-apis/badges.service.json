@@ -25,7 +25,10 @@
       "methodName": "AssignBadge",
       "serviceName": "BadgesServiceV3",
       "tag": "Badge",
-      "permissions": [],
+      "permissions": [      {
+        "name": "Manage Badges",
+        "description": "Request permission to manage the site's member badges."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -255,7 +258,10 @@
       "methodName": "GetMemberCountsPerBadge",
       "serviceName": "BadgesServiceV3",
       "tag": "Badge",
-      "permissions": [],
+      "permissions": [      {
+        "name": "Read Badges",
+        "description": "Request permission to read the site's member badges."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
