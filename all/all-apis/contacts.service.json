@@ -91,16 +91,10 @@
       "methodName": "BulkDeleteContacts",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -156,16 +150,10 @@
       "methodName": "BulkLabelAndUnlabelContacts",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -241,16 +229,10 @@
       "methodName": "BulkUpdateContacts",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -321,16 +303,10 @@
       "methodName": "CreateContact",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -387,16 +363,10 @@
       "methodName": "DeleteContact",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -444,16 +414,10 @@
       "methodName": "GetBulkJob",
       "serviceName": "ContactsBulkService",
       "tag": "Bulk Jobs",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -524,24 +488,10 @@
       "methodName": "GetContact",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -627,16 +577,10 @@
       "methodName": "LabelContact",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -699,16 +643,10 @@
       "methodName": "ListBulkJobs",
       "serviceName": "ContactsBulkService",
       "tag": "Bulk Jobs",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -749,24 +687,10 @@
       "methodName": "ListContacts",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -879,24 +803,10 @@
       "methodName": "ListFacets",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -968,24 +878,10 @@
       "methodName": "QueryContacts",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1057,24 +953,10 @@
       "methodName": "QueryFacets",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1137,16 +1019,10 @@
       "methodName": "UnlabelContact",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1209,16 +1085,10 @@
       "methodName": "UpdateContact",
       "serviceName": "ContactsServiceV4",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Manage Contacts",
+        "description": "Request permission to read, create and modify the site's contact info."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -1308,24 +1178,10 @@
       },
       "topic": "crm-contacts-events",
       "tag": "Contacts v1 (Deprecated)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "customLabels": []
     },
         {
@@ -1337,24 +1193,10 @@
       },
       "topic": "crm-contacts-events",
       "tag": "Contacts v1 (Deprecated)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "customLabels": []
     },
         {
@@ -1366,24 +1208,10 @@
       },
       "topic": "crm-contacts-events",
       "tag": "Contacts v1 (Deprecated)",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "customLabels": []
     },
         {
@@ -1395,24 +1223,10 @@
       },
       "topic": "domain_events_wix.contacts.v4.contact",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "customLabels": [],
       "eventType": "wix.contacts.v4.contact_deleted",
       "extra": {"isDomainEvent": true}
@@ -1426,24 +1240,10 @@
       },
       "topic": "domain_events_wix.contacts.v4.contact",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "customLabels": [],
       "eventType": "wix.contacts.v4.contact_updated",
       "extra": {"isDomainEvent": true}
@@ -1457,24 +1257,10 @@
       },
       "topic": "domain_events_wix.contacts.v4.contact",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.contacts.v4.contact_merged",
       "extra": {"isDomainEvent": true}
@@ -1488,24 +1274,10 @@
       },
       "topic": "domain_events_wix.contacts.v4.contact",
       "tag": "Contacts v4",
-      "permissions":       [
-                {
-          "name": "Manage Members and Contacts - all permissions",
-          "description": "Request permission to read, create and modify the site's Wix Contacts and Members data, including labels, extended fields and form submissions. This permission scope contains all of the Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Read Members and Contacts - all read permissions",
-          "description": "Request permission to read the site's Wix Contacts and Members data, including form submissions. This permission scope contains all of the read Contacts, Members and CRM permissions."
-        },
-                {
-          "name": "Manage Contacts",
-          "description": "Request permission to read, create and modify the site's contact info."
-        },
-                {
-          "name": "Read Contacts",
-          "description": "Request permission to read the site's contact info."
-        }
-      ],
+      "permissions": [      {
+        "name": "Read Contacts",
+        "description": "Request permission to read the site's contact info."
+      }],
       "customLabels": [],
       "eventType": "wix.contacts.v4.contact_created",
       "extra": {"isDomainEvent": true}
@@ -1670,6 +1442,79 @@
       "labels": []
     },
         {
+      "name": "_com_wixpress_contacts_core_api_v4_events_ContactAddedToSegmentDomainEvent",
+      "displayName": "Contact Added To Segment Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.contacts.v4.contact`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `segment_added`.\nEvent name."
+        },
+                {
+          "name": "actionEvent",
+          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_events_ContactAddedToSegmentActionEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "ContactAddedToSegment ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_events_ContactAddedToSegmentActionEvent",
+      "displayName": "Contact Added To Segment Action Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "bodyAsJson",
+        "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_events_ContactAddedToSegment",
+        "doc": "Event body as a stringified JSON"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_contacts_core_api_v4_ContactDeletedDomainEvent",
       "displayName": "Contact Deleted Domain Event Object",
       "locations": [],
@@ -1739,6 +1584,79 @@
         "examples": []
       },
       "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_events_ContactRemovedFromSegmentDomainEvent",
+      "displayName": "Contact Removed From Segment Domain Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": "Unique event ID."
+        },
+                {
+          "name": "entityFqdn",
+          "type": "string",
+          "doc": "Expected `wix.contacts.v4.contact`.\nFully Qualified Domain Name."
+        },
+                {
+          "name": "slug",
+          "type": "string",
+          "doc": "Expected `segment_removed`.\nEvent name."
+        },
+                {
+          "name": "actionEvent",
+          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_events_ContactRemovedFromSegmentActionEvent",
+          "doc": "Event Info"
+        },
+                {
+          "name": "entityId",
+          "type": "string",
+          "doc": "ContactRemovedFromSegment ID associated with this event."
+        },
+                {
+          "name": "eventTime",
+          "type": "string",
+          "doc": "Event timestamp."
+        },
+                {
+          "name": "triggeredByAnonymizeRequest",
+          "type": "boolean",
+          "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_events_ContactRemovedFromSegmentActionEvent",
+      "displayName": "Contact Removed From Segment Action Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "bodyAsJson",
+        "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_events_ContactRemovedFromSegment",
+        "doc": "Event body as a stringified JSON"
+      }],
       "enum": null,
       "extra": {},
       "labels": []
@@ -2806,6 +2724,27 @@
       "labels": []
     },
         {
+      "name": "_com_wixpress_contacts_core_api_v4_SegmentsWrapper",
+      "displayName": "Segments Wrapper Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "items",
+        "type":         {
+          "name": "array",
+          "typeParams": ["string"]
+        },
+        "doc": "\nList of Contact segment IDs\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_common_Paging",
       "displayName": "Paging Object",
       "locations": [],
@@ -2956,6 +2895,31 @@
       "labels": []
     },
         {
+      "name": "_wix_common_Sorting",
+      "displayName": "Sorting Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "fieldName",
+          "type": "string",
+          "doc": " Name of the field to sort by.\n"
+        },
+                {
+          "name": "order",
+          "type": "All APIs.Contacts._wix_common_SortOrder",
+          "doc": " Sort order.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_common_Sorting",
       "displayName": "Sorting Object",
       "locations": [],
@@ -3069,14 +3033,6 @@
           "doc": " Predefined sets of fields to return.\n\n Defaults to `FULL`.\n Ignored if left empty when `fields` is used in the request.\n\n For more information,\n see [Contact Fieldsets](https://dev.wix.com/api/rest/contacts/contacts/fieldsets-and-projected-fields#contacts_contacts_fieldsets-and-projected-fields_contact-fieldsets).\n"
         },
                 {
-          "name": "aggregations",
-          "type":           {
-            "name": "array",
-            "typeParams": ["All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation"]
-          },
-          "doc": "Currently ignored\nAggregations | Faceted search: refers to a way to explore large amounts of data by displaying summaries about various partitions of the data and later allowing to narrow the navigation to a specific partition.\n"
-        },
-                {
           "name": "search",
           "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_SearchDetails",
           "doc": "free text to match in searchable fields\n"
@@ -3100,18 +3056,11 @@
         "links": [],
         "examples": []
       },
-      "members":       [
-                {
-          "name": "paging",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_common_Paging",
-          "doc": "Pointer to page of results using offset. Can not be used together with 'cursorPaging'\n"
-        },
-                {
-          "name": "cursorPaging",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_common_CursorPaging",
-          "doc": "Cursor pointing to page of results. Can't be used together with 'paging'. 'cursorPaging.cursor' can not be used together with 'filter' or 'sort'\n"
-        }
-      ],
+      "members": [      {
+        "name": "cursorPaging",
+        "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_common_CursorPaging",
+        "doc": "Cursor pointing to page of results. 'cursorPaging.cursor' can not be used together with 'filter' or 'sort'\n"
+      }],
       "enum": null,
       "extra": {},
       "labels": [],
@@ -3130,7 +3079,7 @@
                 {
           "name": "mode",
           "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_SearchDetails_Mode",
-          "doc": " boolean search mode\n"
+          "doc": " boolean search mode. Default is `OR`\n"
         },
                 {
           "name": "expression",
@@ -3143,7 +3092,7 @@
             "name": "array",
             "typeParams": ["string"]
           },
-          "doc": " fields to search in. if empty - server will search in own default fields\n"
+          "doc": " fields to search in. if empty - server will search in own default fieldsDefault searchable fields:\n\n  - `info.name.first`\n  - `info.name.last`\n  - `info.emails.email`\n  - `info.phones.phone`\n"
         },
                 {
           "name": "fuzzy",
@@ -3154,166 +3103,6 @@
       "enum": null,
       "extra": {},
       "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_RangeAggregation_RangeBucket",
-      "displayName": "Range Bucket Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "from",
-          "type": "integer",
-          "doc": " Inclusive lower bound of the range. Required if to is not given.\n"
-        },
-                {
-          "name": "to",
-          "type": "integer",
-          "doc": " Exclusive upper bound of the range. Required if from is not given.\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_RangeAggregation",
-      "displayName": "Range Aggregation Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "buckets",
-        "type":         {
-          "name": "array",
-          "typeParams": ["All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_RangeAggregation_RangeBucket"]
-        },
-        "doc": ""
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_ValueAggregation",
-      "displayName": "Value Aggregation Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "sortType",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_ValueAggregation_SortType",
-          "doc": ""
-        },
-                {
-          "name": "sortDirection",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_ValueAggregation_SortDirection",
-          "doc": ""
-        },
-                {
-          "name": "limit",
-          "type": "integer",
-          "doc": " How many aggregations would you like to return? Can be between 1 and 250. 10 is the default.\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_ScalarAggregation",
-      "displayName": "Scalar Aggregation Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "type",
-        "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_ScalarType",
-        "doc": ""
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation",
-      "displayName": "Aggregation Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "name",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "type",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_AggregationType",
-          "doc": ""
-        },
-                {
-          "name": "fieldPath",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "kind",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_kind",
-          "doc": ""
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_kind",
-      "displayName": "kind Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "value",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_ValueAggregation",
-          "doc": ""
-        },
-                {
-          "name": "range",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_RangeAggregation",
-          "doc": ""
-        },
-                {
-          "name": "scalar",
-          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_ScalarAggregation",
-          "doc": ""
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": [],
-      "oneOf": true
     },
         {
       "name": "_com_wixpress_contacts_core_api_v1_Contact",
@@ -3607,31 +3396,6 @@
         "type": "string",
         "doc": " ID of deleted Contact\n"
       }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_common_Sorting",
-      "displayName": "Sorting Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "fieldName",
-          "type": "string",
-          "doc": " Name of the field to sort by.\n"
-        },
-                {
-          "name": "order",
-          "type": "All APIs.Contacts._wix_common_SortOrder",
-          "doc": " Sort order.\n"
-        }
-      ],
       "enum": null,
       "extra": {},
       "labels": []
@@ -4039,6 +3803,221 @@
         },
         "doc": " The set of field mask paths.\n"
       }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_api_ApplicationError",
+      "displayName": "Application Error Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "code",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "description",
+          "type": "string",
+          "doc": ""
+        },
+                {
+          "name": "data",
+          "type": "struct",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_BulkActionMetadata",
+      "displayName": "Bulk Action Metadata Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "totalSuccesses",
+          "type": "integer",
+          "doc": " For how many items the requested action was successful \n"
+        },
+                {
+          "name": "totalFailures",
+          "type": "integer",
+          "doc": " For how many items the requested action was not successful \n"
+        },
+                {
+          "name": "undetailedFailures",
+          "type": "integer",
+          "doc": " total number of failures without details because detailed-failure-threshold exceeded\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_ItemMetadata",
+      "displayName": "Item Metadata Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "id",
+          "type": "string",
+          "doc": " Item id. Should always be provided, unless it's impossible (e.g when failing to create an item)\n"
+        },
+                {
+          "name": "originalIndex",
+          "type": "integer",
+          "doc": " The index of the item within the request array to allow the caller to correlate the request and response items\n"
+        },
+                {
+          "name": "success",
+          "type": "boolean",
+          "doc": " Whether the action requested was successful for this item. When this value is false, error should be populated\n"
+        },
+                {
+          "name": "error",
+          "type": "All APIs.Contacts._wix_api_ApplicationError",
+          "doc": " In case of failure, details about the error\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_BulkAddSegmentToContactsRequest",
+      "displayName": "Bulk Add Segment To Contacts Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segmentId",
+          "type": "string",
+          "doc": " Segment id\n"
+        },
+                {
+          "name": "contactIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " List of Contact ids\n"
+        },
+                {
+          "name": "existsSegmentIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " List of existing segment ids\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_BulkAddSegmentToContactsResponse",
+      "displayName": "Bulk Add Segment To Contacts Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "results",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Contacts._wix_common_ItemMetadata"]
+          },
+          "doc": " List of action results\n"
+        },
+                {
+          "name": "bulkActionMetadata",
+          "type": "All APIs.Contacts._wix_common_BulkActionMetadata",
+          "doc": " Metadata on the bulk action\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_BulkRemoveSegmentFromContactsRequest",
+      "displayName": "Bulk Remove Segment From Contacts Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segmentId",
+          "type": "string",
+          "doc": " Segment id\n"
+        },
+                {
+          "name": "contactIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " List of Contact ids\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_BulkRemoveSegmentFromContactsResponse",
+      "displayName": "Bulk Remove Segment From Contacts Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "results",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Contacts._wix_common_ItemMetadata"]
+          },
+          "doc": " List of action results\n"
+        },
+                {
+          "name": "bulkActionMetadata",
+          "type": "All APIs.Contacts._wix_common_BulkActionMetadata",
+          "doc": " Metadata on the bulk action\n"
+        }
+      ],
       "enum": null,
       "extra": {},
       "labels": []
@@ -5258,7 +5237,7 @@
       "members": [      {
         "name": "search",
         "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_upstream_wix_query_Search",
-        "doc": ""
+        "doc": "Search object. Encapsulates filter, sorting, paging and other details\n"
       }],
       "enum": null,
       "extra": {},
@@ -5349,6 +5328,56 @@
           "name": "targetContact",
           "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_Contact",
           "doc": " Updated target contact.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_events_ContactAddedToSegment",
+      "displayName": "Contact Added To Segment Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segmentId",
+          "type": "string",
+          "doc": " Id of the segment to which the contact was added\n"
+        },
+                {
+          "name": "contact",
+          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_Contact",
+          "doc": " The contact that was added\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_contacts_core_api_v4_events_ContactRemovedFromSegment",
+      "displayName": "Contact Removed From Segment Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "segmentId",
+          "type": "string",
+          "doc": " Id of the segment from which the contact was removed\n"
+        },
+                {
+          "name": "contact",
+          "type": "All APIs.Contacts._com_wixpress_contacts_core_api_v4_Contact",
+          "doc": " The contact that was removed\n"
         }
       ],
       "enum": null,
@@ -5582,6 +5611,23 @@
       "labels": []
     },
         {
+      "name": "_wix_common_SortOrder",
+      "displayName": "Sort Order Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> ASC <\/code><\/li><li><code> DESC <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "ASC",
+        "DESC"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_common_SortOrder",
       "displayName": "Sort Order Object",
       "locations": [],
@@ -5618,46 +5664,6 @@
       "labels": []
     },
         {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_AggregationType",
-      "displayName": "Aggregation Type Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> UNKNOWN_AGGREGATION_TYPE <\/code><\/li><li><code> VALUE <\/code><\/li><li><code> RANGE <\/code><\/li><li><code> SCALAR <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "UNKNOWN_AGGREGATION_TYPE",
-        "VALUE",
-        "RANGE",
-        "SCALAR"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_ScalarType",
-      "displayName": "Scalar Type Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> UNKNOWN_SCALAR_TYPE <\/code><\/li><li><code> COUNT_DISTINCT <\/code><\/li><li><code> MIN <\/code><\/li><li><code> MAX <\/code><\/li><li><code> SUM <\/code><\/li><li><code> AVG <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "UNKNOWN_SCALAR_TYPE",
-        "COUNT_DISTINCT",
-        "MIN",
-        "MAX",
-        "SUM",
-        "AVG"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
       "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_SearchDetails_Mode",
       "displayName": "Mode Object",
       "locations": [],
@@ -5670,40 +5676,6 @@
       "enum":       [
         "OR",
         "AND"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_ValueAggregation_SortType",
-      "displayName": "Sort Type Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> COUNT <\/code><\/li><li><code> VALUE <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "COUNT",
-        "VALUE"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_com_wixpress_contacts_core_api_v4_upstream_wix_query_Aggregation_ValueAggregation_SortDirection",
-      "displayName": "Sort Direction Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> DESC <\/code><\/li><li><code> ASC <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "DESC",
-        "ASC"
       ],
       "extra": {},
       "labels": []
@@ -5787,23 +5759,6 @@
         "APP",
         "SITE_MEMBERS",
         "MANUAL"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_common_SortOrder",
-      "displayName": "Sort Order Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> ASC <\/code><\/li><li><code> DESC <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "ASC",
-        "DESC"
       ],
       "extra": {},
       "labels": []
