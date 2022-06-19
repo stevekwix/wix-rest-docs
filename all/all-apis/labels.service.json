@@ -506,10 +506,7 @@
       },
       "topic": "domain_events_wix.contacts.v4.label",
       "tag": "Contact Labels Service (v4)",
-      "permissions": [      {
-        "name": "Manage Contact Labels",
-        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
-      }],
+      "permissions": [],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.contacts.v4.label_created",
       "extra": {"isDomainEvent": true}
