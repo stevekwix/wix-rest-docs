@@ -605,7 +605,10 @@
       "methodName": "ListCategories",
       "serviceName": "CategoryService",
       "tag": "Category",
-      "permissions": [],
+      "permissions": [      {
+        "name": "Read Blog",
+        "description": "Request permission to read blog posts and category data."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
