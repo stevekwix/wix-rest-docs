@@ -52,54 +52,6 @@
   ],
   "operations":   [
         {
-      "name": "Bulk Get Post Metrics",
-      "methodName": "BulkGetPostMetrics",
-      "serviceName": "PostService",
-      "tag": "Post",
-      "permissions": [      {
-        "name": "Read Blog",
-        "description": "Request permission to read blog posts and category data."
-      }],
-      "events": [],
-      "labels": [],
-      "nameParams": [],
-      "requiredFields": ["postIds"],
-      "params": [      {
-        "in": "BODY",
-        "name": "postIds",
-        "type":         {
-          "name": "array",
-          "typeParams": ["string"]
-        },
-        "doc": " Post IDs.\n",
-        "required": true
-      }],
-      "ret":       {
-        "type":         {
-          "name": "BulkGetPostMetrics",
-          "statusCode": "200",
-          "typeParams": ["All APIs.Blog._com_wixpress_npm_communities_platformized_blog_v3_BulkGetPostMetricsResponse"]
-        },
-        "doc": ""
-      },
-      "locations": [],
-      "docs":       {
-        "summary": " Retrieves a specified posts metrics.\n \n",
-        "description": [],
-        "request": "POST",
-        "url": "https://www.wixapis.com/blog/v3/posts/metrics",
-        "links": [],
-        "examples": [],
-        "extra": {}
-      },
-      "extra":       {
-        "hasRest": true,
-        "rpcRequestName": "BulkGetPostMetricsRequest",
-        "rpcResponseName": "BulkGetPostMetricsResponse"
-      },
-      "customLabels": []
-    },
-        {
       "name": "Get Category",
       "methodName": "GetCategory",
       "serviceName": "CategoryService",
@@ -267,7 +219,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Retrieves a post with the provided ID.\n \n",
+        "summary": " Gets a post by the specified ID. \n \n",
         "description": [],
         "request": "GET",
         "url": "https://www.wixapis.com/blog/v3/posts/{postId}",
@@ -330,7 +282,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Retrieves a post with the provided slug.\n \n",
+        "summary": " Gets a post by the specified slug.\n \n",
         "description": [],
         "request": "GET",
         "url": "https://www.wixapis.com/blog/v3/posts/slugs/{slug=**}",
@@ -381,7 +333,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Retrieves a specified post's metrics.\n \n",
+        "summary": " Gets a specified post's metrics.\n \n",
         "description": [],
         "request": "GET",
         "url": "https://www.wixapis.com/blog/v3/posts/{postId}/metrics",
@@ -614,7 +566,7 @@
         "in": "QUERY",
         "name": "language",
         "type": "string",
-        "doc": " Language filter\n",
+        "doc": " Language filter.\n",
         "required": false
       }],
       "ret":       {
@@ -627,7 +579,7 @@
       },
       "locations": [],
       "docs":       {
-        "summary": " Retrieves the amount of published posts for the requested blog.\n \n",
+        "summary": " Gets the total amount of published posts of the blog.\n \n",
         "description": [],
         "request": "GET",
         "url": "https://www.wixapis.com/blog/v2/stats/posts/total",
@@ -653,10 +605,7 @@
       "methodName": "ListCategories",
       "serviceName": "CategoryService",
       "tag": "Category",
-      "permissions": [      {
-        "name": "Read Blog",
-        "description": "Request permission to read blog posts and category data."
-      }],
+      "permissions": [],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -904,6 +853,13 @@
           },
           "doc": " List of category fields to be included in the response.\n",
           "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "query",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_PlatformQuery",
+          "doc": " Query options.\n",
+          "required": false
         }
       ],
       "ret":       {
@@ -1070,6 +1026,13 @@
           },
           "doc": " List of post fields to be included in the response. Note: `COUNTERS` is deprecated, use `METRICS` instead.\n",
           "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "query",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_PlatformQuery",
+          "doc": " Query options.\n",
+          "required": false
         }
       ],
       "ret":       {
@@ -1148,6 +1111,13 @@
             "typeParams": ["All APIs.Blog._com_wixpress_npm_communities_platformized_blog_TagField_Field"]
           },
           "doc": " List of tag fields to be included in the response.\n",
+          "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "query",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_tag_PlatformQuery",
+          "doc": " Query options.\n",
           "required": false
         }
       ],
@@ -1228,6 +1198,13 @@
           },
           "doc": " List of tag fields to be included in the response.\n",
           "required": false
+        },
+                {
+          "in": "BODY",
+          "name": "query",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_tag_PlatformQuery",
+          "doc": " Query options.\n",
+          "required": false
         }
       ],
       "ret":       {
@@ -1284,7 +1261,7 @@
       "type": "_com_wixpress_npm_communities_platformized_blog_v3_CategoryUpdatedDomainEvent",
       "name": "Category Updated Webhook",
       "docs":       {
-        "summary": " Triggered when a category is updated.\n",
+        "summary": " Triggered when a tag is updated.\n",
         "src": "https://github.com/wix-private/blog-node/tree/master/blog-node/packages/platformized-proto/v3/category-service.proto"
       },
       "topic": "domain_events_wix.blog.v3.category",
@@ -1301,7 +1278,7 @@
       "type": "_com_wixpress_npm_communities_platformized_blog_v3_CategoryDeletedDomainEvent",
       "name": "Category Deleted Webhook",
       "docs":       {
-        "summary": " Triggered when a category is deleted.\n",
+        "summary": "",
         "src": "https://github.com/wix-private/blog-node/tree/master/blog-node/packages/platformized-proto/v3/category-service.proto"
       },
       "topic": "domain_events_wix.blog.v3.category",
@@ -1437,7 +1414,7 @@
       "type": "_com_wixpress_npm_communities_platformized_blog_TagDeletedDomainEvent",
       "name": "Tag Deleted Webhook",
       "docs":       {
-        "summary": " Triggered when a tag is deleted.\n",
+        "summary": "",
         "src": "https://github.com/wix-private/blog-node/tree/master/blog-node/packages/platformized-proto/tag.proto"
       },
       "topic": "domain_events_wix.blog.v3.tag",
@@ -2550,6 +2527,289 @@
       "labels": []
     },
         {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_tag_CursorPaging",
+      "displayName": "Cursor Paging Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "limit",
+          "type": "integer",
+          "doc": " Number of items to load.\n"
+        },
+                {
+          "name": "cursor",
+          "type": "string",
+          "doc": "\nPointer to the next or previous page in the list of results.\n\nYou can get the relevant cursor token\nfrom the `pagingMetadata` object in the previous call's response.\nNot relevant for the first request.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_common_Sorting",
+      "displayName": "Sorting Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "fieldName",
+          "type": "string",
+          "doc": " Name of the field to sort by.\n"
+        },
+                {
+          "name": "order",
+          "type": "All APIs.Blog._wix_common_SortOrder",
+          "doc": " Sort order.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_tag_PlatformQuery",
+      "displayName": "Platform Query Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "filter",
+          "type": "struct",
+          "doc": "Filter object in the following format:\n`\"filter\" : {\n              \"fieldName1\": \"value1\",\n              \"fieldName2\":{\"$operator\":\"value2\"}\n  }`\nExample of operators: `$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n"
+        },
+                {
+          "name": "sort",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Blog._wix_common_Sorting"]
+          },
+          "doc": "Sort object in the following format:\n`[{\"fieldName\":\"sortField1\",\"order\":\"ASC\"},{\"fieldName\":\"sortField2\",\"order\":\"DESC\"}]`\n"
+        },
+                {
+          "name": "pagingMethod",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_tag_PlatformQuery_pagingMethod",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_tag_PlatformQuery_pagingMethod",
+      "displayName": "paging Method Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "paging",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_tag_Paging",
+          "doc": "Paging options to limit and skip the number of items.\n"
+        },
+                {
+          "name": "cursorPaging",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_tag_CursorPaging",
+          "doc": "Cursor token pointing to a page of results. Not used in the first request. Following requests use the cursor token and not `filter` or `sort`."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_wix_common_Paging",
+      "displayName": "Paging Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "limit",
+          "type": "integer",
+          "doc": " Number of items to load.\n"
+        },
+                {
+          "name": "offset",
+          "type": "integer",
+          "doc": " Number of items to skip in the current sort order.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_wix_common_CursorPaging",
+      "displayName": "Cursor Paging Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "limit",
+          "type": "integer",
+          "doc": " Number of items to load.\n"
+        },
+                {
+          "name": "cursor",
+          "type": "string",
+          "doc": "\nPointer to the next or previous page in the list of results.\n\nYou can get the relevant cursor token\nfrom the `pagingMetadata` object in the previous call's response.\nNot relevant for the first request.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_wix_common_PagingMetadataV2",
+      "displayName": "Paging Metadata V 2 Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "count",
+          "type": "integer",
+          "doc": " Number of items returned in the response.\n"
+        },
+                {
+          "name": "offset",
+          "type": "integer",
+          "doc": " Offset that was requested.\n"
+        },
+                {
+          "name": "total",
+          "type": "integer",
+          "doc": " Total number of items that match the query. Returned if offset paging is used and the `tooManyToCount` flag is not set.\n"
+        },
+                {
+          "name": "tooManyToCount",
+          "type": "boolean",
+          "doc": " Flag that indicates the server failed to calculate the `total` field.\n"
+        },
+                {
+          "name": "cursors",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_Cursors",
+          "doc": " Cursors to navigate through the result pages using `next` and `prev`. Returned if cursor paging is used.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_wix_common_Cursors",
+      "displayName": "Cursors Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "next",
+          "type": "string",
+          "doc": " Cursor pointing to next page in the list of results.\n"
+        },
+                {
+          "name": "prev",
+          "type": "string",
+          "doc": " Cursor pointing to previous page in the list of results.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_wix_common_PlatformQuery",
+      "displayName": "Platform Query Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "filter",
+          "type": "struct",
+          "doc": "Filter object in the following format:\n`\"filter\" : {\n              \"fieldName1\": \"value1\",\n              \"fieldName2\":{\"$operator\":\"value2\"}\n  }`\nExample of operators: `$eq`, `$ne`, `$lt`, `$lte`, `$gt`, `$gte`, `$in`, `$hasSome`, `$hasAll`, `$startsWith`, `$contains`\n"
+        },
+                {
+          "name": "sort",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Blog._wix_common_Sorting"]
+          },
+          "doc": "Sort object in the following format:\n`[{\"fieldName\":\"sortField1\",\"order\":\"ASC\"},{\"fieldName\":\"sortField2\",\"order\":\"DESC\"}]`\n"
+        },
+                {
+          "name": "pagingMethod",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_PlatformQuery_pagingMethod",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_upstream_wix_common_PlatformQuery_pagingMethod",
+      "displayName": "paging Method Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "paging",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_Paging",
+          "doc": "Paging options to limit and skip the number of items.\n"
+        },
+                {
+          "name": "cursorPaging",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_CursorPaging",
+          "doc": "Cursor token pointing to a page of results. Not used in the first request. Following requests use the cursor token and not `filter` or `sort`."
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
+    },
+        {
       "name": "_com_wixpress_npm_communities_platformized_blog_BlogPaging",
       "displayName": "Blog Paging Object",
       "locations": [],
@@ -2973,7 +3233,7 @@
       "members": [      {
         "name": "language",
         "type": "string",
-        "doc": " Language filter\n"
+        "doc": " Language filter.\n"
       }],
       "enum": null,
       "extra": {},
@@ -3034,31 +3294,6 @@
           "name": "path",
           "type": "string",
           "doc": " The path to that page - e.g /product-page/a-product\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_common_Sorting",
-      "displayName": "Sorting Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "fieldName",
-          "type": "string",
-          "doc": " Name of the field to sort by.\n"
-        },
-                {
-          "name": "order",
-          "type": "All APIs.Blog._wix_common_SortOrder",
-          "doc": " Sort order.\n"
         }
       ],
       "enum": null,
@@ -3610,6 +3845,11 @@
             "typeParams": ["All APIs.Blog._com_wixpress_npm_communities_platformized_blog_TagField_Field"]
           },
           "doc": " List of tag fields to be included in the response.\n"
+        },
+                {
+          "name": "query",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_tag_PlatformQuery",
+          "doc": " Query options.\n"
         }
       ],
       "enum": null,
@@ -3655,6 +3895,11 @@
                 {
           "name": "metaData",
           "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_blog_MetaData",
+          "doc": " Details on the paged set of results returned.\n"
+        },
+                {
+          "name": "pagingMetadata",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_PagingMetadataV2",
           "doc": " Details on the paged set of results returned.\n"
         }
       ],
@@ -7032,27 +7277,27 @@
                 {
           "name": "submittedBy",
           "type": "string",
-          "doc": " Member Id of person submitting the post to moderation\n"
+          "doc": " Member Id of the person submitting the post to moderation.\n"
         },
                 {
           "name": "submittedDate",
           "type": "string",
-          "doc": " Date of post submission to moderation\n"
+          "doc": " Date of post submission to moderation.\n"
         },
                 {
           "name": "status",
           "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_blog_v3_ModerationStatus_Status",
-          "doc": " Status indicating whether submission was approved or rejected by moderator\n"
+          "doc": " Status indicating whether the submission was approved or rejected by the moderator.\n"
         },
                 {
           "name": "moderatedBy",
           "type": "string",
-          "doc": " Member Id of person who approved or rejected the post\n"
+          "doc": " Member Id of the person who approved or rejected the post.\n"
         },
                 {
           "name": "moderationDate",
           "type": "string",
-          "doc": " Date of post approval or rejection from moderation\n"
+          "doc": " Date of post approval or rejection from moderation.\n"
         }
       ],
       "enum": null,
@@ -7113,7 +7358,7 @@
                 {
           "name": "excerpt",
           "type": "string",
-          "doc": " Post excerpt.\n Can be selected by site owner or extracted from the content text's first characters.\n"
+          "doc": " Post excerpt.\n Can be selected by the site owner or extracted from the content text's first characters.\n"
         },
                 {
           "name": "contentText",
@@ -7158,7 +7403,7 @@
             "name": "array",
             "typeParams": ["string"]
           },
-          "doc": " IDs of categories this post belongs to.\n"
+          "doc": " Category IDs of the post.\n"
         },
                 {
           "name": "coverMedia",
@@ -7176,7 +7421,7 @@
             "name": "array",
             "typeParams": ["string"]
           },
-          "doc": " Hashtags in the post's content text.\n",
+          "doc": " Hashtags in the post's plain content text.\n",
           "readOnly": true
         },
                 {
@@ -7192,7 +7437,7 @@
                 {
           "name": "heroImage",
           "type": "All APIs.Blog._wix_common_Image",
-          "doc": " Hero image placed at the top of the blog page.\n"
+          "doc": " Image placed at the top of the blog page.\n"
         },
                 {
           "name": "tagIds",
@@ -7204,22 +7449,12 @@
           "readOnly": true
         },
                 {
-          "name": "pricingPlans",
-          "type":           {
-            "name": "array",
-            "typeParams": ["string"]
-          },
-          "doc": " IDs of the pricing plans. Deprecated on '2020-10-02' please use pricing_plan_ids instead\n",
-          "readOnly": true,
-          "deprecated": true
-        },
-                {
           "name": "relatedPostIds",
           "type":           {
             "name": "array",
             "typeParams": ["string"]
           },
-          "doc": " IDs of posts that are related to this post.\n",
+          "doc": " IDs of posts related to the post.\n",
           "readOnly": true
         },
                 {
@@ -7228,7 +7463,7 @@
             "name": "array",
             "typeParams": ["string"]
           },
-          "doc": " Pricing plans IDs.\n",
+          "doc": " Pricing plan IDs.\n",
           "readOnly": true
         },
                 {
@@ -7258,9 +7493,15 @@
           "doc": " Post owner's contact ID.\n"
         },
                 {
+          "name": "richContent",
+          "type": "All APIs.Blog._wix_rich_content_v1_RichContent",
+          "doc": " Post rich content\n",
+          "readOnly": true
+        },
+                {
           "name": "moderationDetails",
           "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_blog_v3_ModerationDetails",
-          "doc": " Details about post moderation. Relevant only to posts submitted by guest writers.\n",
+          "doc": " Post moderation details. Only relevant to posts submitted by guest writers.\n",
           "readOnly": true
         }
       ],
@@ -7361,6 +7602,11 @@
           "name": "slug",
           "type": "string",
           "doc": " Category slug. For example, 'category-slug'.\n"
+        },
+                {
+          "name": "seoData",
+          "type": "All APIs.Blog._com_wixpress_advanced_seo_SeoSchema",
+          "doc": " SEO data.\n"
         }
       ],
       "enum": null,
@@ -7690,6 +7936,11 @@
             "typeParams": ["All APIs.Blog._com_wixpress_npm_communities_platformized_blog_v3_CategoryField_Field"]
           },
           "doc": " List of category fields to be included in the response.\n"
+        },
+                {
+          "name": "query",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_PlatformQuery",
+          "doc": " Query options.\n"
         }
       ],
       "enum": null,
@@ -7717,7 +7968,12 @@
                 {
           "name": "metaData",
           "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_blog_MetaData",
-          "doc": " // Details on the paged set of results returned.\n"
+          "doc": " Details on the paged set of results returned.\n"
+        },
+                {
+          "name": "pagingMetadata",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_PagingMetadataV2",
+          "doc": " Details on the paged set of results returned.\n"
         }
       ],
       "enum": null,
@@ -8184,6 +8440,14 @@
           "name": "paging",
           "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_blog_BlogPaging",
           "doc": " Pagination options.\n"
+        },
+                {
+          "name": "fieldsToInclude",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Blog._com_wixpress_npm_communities_platformized_blog_v3_DraftPostField_Field"]
+          },
+          "doc": " List of draft post fields to be included in the response.\n"
         }
       ],
       "enum": null,
@@ -8315,6 +8579,14 @@
           "name": "paging",
           "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_blog_BlogPaging",
           "doc": " Pagination options.\n"
+        },
+                {
+          "name": "fieldsToInclude",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Blog._com_wixpress_npm_communities_platformized_blog_v3_DraftPostField_Field"]
+          },
+          "doc": " List of draft post fields to be included in the response\n"
         }
       ],
       "enum": null,
@@ -8480,6 +8752,62 @@
           "name": "metaData",
           "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_blog_MetaData",
           "doc": " Details on the paged set of results returned.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_blog_v3_BulkDeleteDraftPostsRequest",
+      "displayName": "Bulk Delete Draft Posts Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "postIds",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " Post IDs\n"
+        },
+                {
+          "name": "permanent",
+          "type": "boolean",
+          "doc": " Should delete bypassing the trash-bin\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_platformized_blog_v3_BulkDeleteDraftPostsResponse",
+      "displayName": "Bulk Delete Draft Posts Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "results",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Blog._com_wixpress_npm_communities_platformized_blog_v3_BulkDraftPostResult"]
+          },
+          "doc": " Bulk action results\n"
+        },
+                {
+          "name": "bulkActionMetadata",
+          "type": "All APIs.Blog._wix_common_BulkActionMetadata",
+          "doc": " Bulk action metadata\n"
         }
       ],
       "enum": null,
@@ -8811,6 +9139,11 @@
             "typeParams": ["All APIs.Blog._com_wixpress_npm_communities_platformized_blog_v3_PostField_Field"]
           },
           "doc": " List of post fields to be included in the response. Note: `COUNTERS` is deprecated, use `METRICS` instead.\n"
+        },
+                {
+          "name": "query",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_PlatformQuery",
+          "doc": " Query options.\n"
         }
       ],
       "enum": null,
@@ -8838,6 +9171,11 @@
                 {
           "name": "metaData",
           "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_blog_MetaData",
+          "doc": " Details on the paged set of results returned.\n"
+        },
+                {
+          "name": "pagingMetadata",
+          "type": "All APIs.Blog._com_wixpress_npm_communities_platformized_upstream_wix_common_PagingMetadataV2",
           "doc": " Details on the paged set of results returned.\n"
         }
       ],
@@ -9131,6 +9469,23 @@
       "labels": []
     },
         {
+      "name": "_wix_common_SortOrder",
+      "displayName": "Sort Order Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> ASC <\/code><\/li><li><code> DESC <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "ASC",
+        "DESC"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_npm_communities_platformized_blog_QueryPublicationsCountStatsRequest_Order",
       "displayName": "Order Object",
       "locations": [],
@@ -9162,23 +9517,6 @@
         "UNKNOWN",
         "OLDEST",
         "NEWEST"
-      ],
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_common_SortOrder",
-      "displayName": "Sort Order Object",
-      "locations": [],
-      "docs":       {
-        "summary": " \n Possible values are: <li><code> ASC <\/code><\/li><li><code> DESC <\/code><\/li>",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum":       [
-        "ASC",
-        "DESC"
       ],
       "extra": {},
       "labels": []
@@ -9966,5 +10304,5 @@
       "labels": []
     }
   ],
-  "extra": {"artifactId": "com.wixpress.npm.communities-blog-node-api"}
+  "extra": {"artifactId": "com.wixpress.npm.communities-blog-node-api-kafka-consumers"}
 }
