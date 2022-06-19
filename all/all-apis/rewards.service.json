@@ -115,8 +115,8 @@
       "serviceName": "LoyaltyRewards",
       "tag": "Rewards",
       "permissions": [      {
-        "name": "Devcenter Manage Loyalty",
-        "description": "can manage loyalty programs"
+        "name": "Read Loyalty",
+        "description": "Request permission to read the site's installed Wix Loyalty Program, including program and accounts."
       }],
       "events": [],
       "labels": [],
@@ -160,8 +160,8 @@
       "serviceName": "LoyaltyRewards",
       "tag": "Rewards",
       "permissions": [      {
-        "name": "Devcenter Manage Loyalty",
-        "description": "can manage loyalty programs"
+        "name": "Read Loyalty",
+        "description": "Request permission to read the site's installed Wix Loyalty Program, including program and accounts."
       }],
       "events": [],
       "labels": [],
@@ -270,8 +270,8 @@
       "topic": "domain_events_wix.loyalty.v1.reward",
       "tag": "Rewards",
       "permissions": [      {
-        "name": "Devcenter Manage Loyalty",
-        "description": "can manage loyalty programs"
+        "name": "Read Loyalty",
+        "description": "Request permission to read the site's installed Wix Loyalty Program, including program and accounts."
       }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.loyalty.v1.reward_deleted",
@@ -284,8 +284,8 @@
       "topic": "domain_events_wix.loyalty.v1.reward",
       "tag": "Rewards",
       "permissions": [      {
-        "name": "Devcenter Manage Loyalty",
-        "description": "can manage loyalty programs"
+        "name": "Read Loyalty",
+        "description": "Request permission to read the site's installed Wix Loyalty Program, including program and accounts."
       }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.loyalty.v1.reward_updated",
@@ -298,8 +298,8 @@
       "topic": "domain_events_wix.loyalty.v1.reward",
       "tag": "Rewards",
       "permissions": [      {
-        "name": "Devcenter Manage Loyalty",
-        "description": "can manage loyalty programs"
+        "name": "Read Loyalty",
+        "description": "Request permission to read the site's installed Wix Loyalty Program, including program and accounts."
       }],
       "customLabels": [{"id": "maturity-beta"}],
       "eventType": "wix.loyalty.v1.reward_created",
@@ -711,24 +711,6 @@
       "labels": []
     },
         {
-      "name": "changedNamespacesMapEntry",
-      "displayName": "changed Namespaces Map Entry Object",
-      "locations": [],
-      "docs":       {
-        "summary": "Set of key-value pairs. Changes per namespaces\n",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "key:value",
-        "type": "All APIs.Rewards._wix_common_domainevents_ChangedNamespace",
-        "doc": "`key` of type string, `value` of type object"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
       "name": "_wix_common_domainevents_ExtendedFieldsUpdatedEvent",
       "displayName": "Extended Fields Updated Event Object",
       "locations": [],
@@ -737,46 +719,11 @@
         "links": [],
         "examples": []
       },
-      "members":       [
-                {
-          "name": "currentEntityAsJson",
-          "type": "string",
-          "doc": ""
-        },
-                {
-          "name": "changedNamespaces",
-          "type": "All APIs.Rewards.changedNamespacesMapEntry",
-          "doc": "Set of key-value pairs. Changes per namespaces\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_common_domainevents_ChangedNamespace",
-      "displayName": "Changed Namespace Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "fields",
-          "type":           {
-            "name": "array",
-            "typeParams": ["string"]
-          },
-          "doc": " List of changed field paths\n"
-        },
-                {
-          "name": "hasMoreChanges",
-          "type": "boolean",
-          "doc": " Indicates that more fields changed, this indicator goes along with _has_more_data.\n These other fields are not visible to you in current_entity_as_json\n"
-        }
-      ],
+      "members": [      {
+        "name": "currentEntityAsJson",
+        "type": "string",
+        "doc": ""
+      }],
       "enum": null,
       "extra": {},
       "labels": []
