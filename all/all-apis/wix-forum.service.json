@@ -32,12 +32,12 @@
   ],
   "relatedGuides":   [
         {
-      "path": "../guides/wix-forum/docs/filterAndSort.md",
-      "name": "Filter and Sort"
-    },
-        {
       "path": "../guides/wix-forum/docs/intro.md",
       "name": "Introduction"
+    },
+        {
+      "path": "../guides/wix-forum/docs/filterAndSort.md",
+      "name": "Filter and Sort"
     }
   ],
   "operations":   [
@@ -511,14 +511,14 @@
         "summary": " A new post was created.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_created",
+      "eventType": "wix.forum.v1.post_created",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -528,14 +528,14 @@
         "summary": " An existing post was updated.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_updated",
+      "eventType": "wix.forum.v1.post_updated",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -545,14 +545,14 @@
         "summary": " An existing post was removed.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_deleted",
+      "eventType": "wix.forum.v1.post_deleted",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -562,14 +562,14 @@
         "summary": " An existing post was moved to a different category.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_moved",
+      "eventType": "wix.forum.v1.post_moved",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -579,14 +579,14 @@
         "summary": " An existing post was liked.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_liked",
+      "eventType": "wix.forum.v1.post_liked",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -596,14 +596,14 @@
         "summary": " An existing post was unliked.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_unliked",
+      "eventType": "wix.forum.v1.post_unliked",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -613,14 +613,14 @@
         "summary": " An existing post was pinned to the top of the post list.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_pinned",
+      "eventType": "wix.forum.v1.post_pinned",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -630,14 +630,14 @@
         "summary": " An existing post was unpinned from the top of the post list.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_unpinned",
+      "eventType": "wix.forum.v1.post_unpinned",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -647,14 +647,14 @@
         "summary": " An existing post was closed for further comments.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_closed",
+      "eventType": "wix.forum.v1.post_closed",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -664,14 +664,14 @@
         "summary": " An existing post was opened for further comments.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_opened",
+      "eventType": "wix.forum.v1.post_opened",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -681,14 +681,14 @@
         "summary": " An existing post was reported as inappropriate.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/communities/communities-forum-proto/com/wixpress/npm/communities/forum/api/post_management_service.proto"
       },
-      "topic": "domain_events_wix.forum.post",
+      "topic": "domain_events_wix.forum.v1.post",
       "tag": "Post",
       "permissions": [      {
         "name": "Read Forums",
         "description": "Request permission to read all Wix Forum posts and category data."
       }],
       "customLabels": [{"id": "maturity-beta"}],
-      "eventType": "wix.forum.post_reported",
+      "eventType": "wix.forum.v1.post_reported",
       "extra": {"isDomainEvent": true}
     }
   ],
@@ -743,6 +743,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -816,6 +821,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -889,6 +899,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -932,7 +947,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -958,6 +973,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1005,7 +1025,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1031,6 +1051,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1078,7 +1103,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1104,6 +1129,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1147,7 +1177,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1173,6 +1203,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1220,7 +1255,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1246,6 +1281,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1293,7 +1333,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1319,6 +1359,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1366,7 +1411,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1392,6 +1437,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1439,7 +1489,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1465,6 +1515,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1512,7 +1567,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1538,6 +1593,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1585,7 +1645,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1611,6 +1671,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1658,7 +1723,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.forum.post`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.forum.v1.post`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -1684,6 +1749,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1752,6 +1822,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1820,6 +1895,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1888,6 +1968,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -1952,6 +2037,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2020,6 +2110,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2088,6 +2183,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2161,6 +2261,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2234,6 +2339,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2302,6 +2412,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2370,6 +2485,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2443,6 +2563,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2511,6 +2636,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -2600,7 +2730,8 @@
                 {
           "name": "filename",
           "type": "string",
-          "doc": " Image filename. Optional.\n"
+          "doc": " Image filename. Optional.\n",
+          "readOnly": true
         }
       ],
       "enum": null,
@@ -2628,7 +2759,14 @@
             "name": "array",
             "typeParams": ["All APIs.Wix Forum._wix_common_VideoResolution"]
           },
-          "doc": " Available resolutions for the video, starting with the optimal resolution.\n"
+          "doc": " Available resolutions for the video, starting with the optimal resolution.\n",
+          "readOnly": true
+        },
+                {
+          "name": "filename",
+          "type": "string",
+          "doc": " Video filename. Optional.\n",
+          "readOnly": true
         }
       ],
       "enum": null,
@@ -2653,19 +2791,12 @@
                 {
           "name": "height",
           "type": "integer",
-          "doc": " Video height.\n",
-          "readOnly": true
+          "doc": " Video height.\n"
         },
                 {
           "name": "width",
           "type": "integer",
-          "doc": " Video width.\n",
-          "readOnly": true
-        },
-                {
-          "name": "poster",
-          "type": "All APIs.Wix Forum._wix_common_Image",
-          "doc": " Video thumbnail.\n"
+          "doc": " Video width.\n"
         },
                 {
           "name": "format",
@@ -3038,6 +3169,30 @@
           "name": "score",
           "type": "integer",
           "doc": " Score of comment\n",
+          "readOnly": true
+        },
+                {
+          "name": "marked",
+          "type": "boolean",
+          "doc": " Whether comment is marked.\n",
+          "readOnly": true
+        },
+                {
+          "name": "mentions",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " Ids of members mentioned in comment content\n",
+          "readOnly": true
+        },
+                {
+          "name": "images",
+          "type":           {
+            "name": "array",
+            "typeParams": ["All APIs.Wix Forum._wix_common_Image"]
+          },
+          "doc": " Images from comment content.\n",
           "readOnly": true
         }
       ],
@@ -3531,6 +3686,70 @@
       "labels": []
     },
         {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkCategoryReadRequest",
+      "displayName": "Mark Category Read Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "categoryId",
+        "type": "string",
+        "doc": " ID of the read category.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkCategoryReadResponse",
+      "displayName": "Mark Category Read Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkAllPostsAsReadRequest",
+      "displayName": "Mark All Posts As Read Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "categoryId",
+        "type": "string",
+        "doc": " ID of the read posts category.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkAllPostsAsReadResponse",
+      "displayName": "Mark All Posts As Read Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
       "name": "_com_wixpress_npm_communities_forum_api_CategorySlugRequest",
       "displayName": "Category Slug Request Object",
       "locations": [],
@@ -3807,9 +4026,12 @@
           "doc": " Comment ID\n"
         },
                 {
-          "name": "includeRawContent",
-          "type": "boolean",
-          "doc": " Flag used to include raw content in response\n"
+          "name": "fieldsets",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": " Supported values: URL, CONTENT\n"
         }
       ],
       "enum": null,
@@ -3868,7 +4090,7 @@
             "name": "array",
             "typeParams": ["string"]
           },
-          "doc": " Supported values: URL\n"
+          "doc": " Supported values: URL, CONTENT\n"
         }
       ],
       "enum": null,
@@ -4455,6 +4677,14 @@
           "name": "bestAnswerCommentId",
           "type": "string",
           "doc": ""
+        },
+                {
+          "name": "markedComments",
+          "type":           {
+            "name": "array",
+            "typeParams": ["string"]
+          },
+          "doc": ""
         }
       ],
       "enum": null,
@@ -4485,6 +4715,137 @@
           "doc": " Array of extra post fields to be added in the response.\n"
         }
       ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_ViewPostRequest",
+      "displayName": "View Post Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "postId",
+        "type": "string",
+        "doc": " ID of the read post.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_ViewPostResponse",
+      "displayName": "View Post Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkPostReadRequest",
+      "displayName": "Mark Post Read Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "postId",
+        "type": "string",
+        "doc": " ID of the read post.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkPostReadResponse",
+      "displayName": "Mark Post Read Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkPostsSeenRequest",
+      "displayName": "Mark Posts Seen Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "postsIds",
+        "type":         {
+          "name": "array",
+          "typeParams": ["string"]
+        },
+        "doc": " IDs of the seen posts.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkPostsSeenResponse",
+      "displayName": "Mark Posts Seen Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkPostUnreadRequest",
+      "displayName": "Mark Post Unread Request Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "postId",
+        "type": "string",
+        "doc": " ID of the unread post.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forum_api_MarkPostUnreadResponse",
+      "displayName": "Mark Post Unread Response Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
       "enum": null,
       "extra": {},
       "labels": []
@@ -5157,6 +5518,11 @@
           "name": "commentingType",
           "type": "All APIs.Wix Forum._com_wixpress_npm_communities_forumapi_CommentingType",
           "doc": ""
+        },
+                {
+          "name": "commentMark",
+          "type": "All APIs.Wix Forum._com_wixpress_npm_communities_forumapi_CommentMark",
+          "doc": ""
         }
       ],
       "enum": null,
@@ -5216,6 +5582,31 @@
                 {
           "name": "opacity",
           "type": "number",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forumapi_CommentMark",
+      "displayName": "Comment Mark Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "type",
+          "type": "All APIs.Wix Forum._com_wixpress_npm_communities_forumapi_CommentMark_Type",
+          "doc": ""
+        },
+                {
+          "name": "customLabel",
+          "type": "string",
           "doc": ""
         }
       ],
@@ -5384,6 +5775,11 @@
           "name": "commentingType",
           "type": "All APIs.Wix Forum._com_wixpress_npm_communities_forumapi_CommentingType",
           "doc": ""
+        },
+                {
+          "name": "memberActivities",
+          "type": "All APIs.Wix Forum._com_wixpress_npm_communities_forumapi_MemberActivities",
+          "doc": ""
         }
       ],
       "enum": null,
@@ -5418,6 +5814,36 @@
                 {
           "name": "activityDate",
           "type": "string",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forumapi_MemberActivities",
+      "displayName": "Member Activities Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "read",
+          "type": "boolean",
+          "doc": ""
+        },
+                {
+          "name": "new",
+          "type": "boolean",
+          "doc": ""
+        },
+                {
+          "name": "lastActivityBeforeMemberCreated",
+          "type": "boolean",
           "doc": ""
         }
       ],
@@ -5737,6 +6163,27 @@
         "UNKNOWN",
         "REACTION",
         "VOTE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_npm_communities_forumapi_CommentMark_Type",
+      "displayName": "Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": " \n Possible values are: <li><code> UNKNOWN <\/code><\/li><li><code> BEST_ANSWER <\/code><\/li><li><code> FEATURED <\/code><\/li><li><code> PINNED <\/code><\/li><li><code> SOLVED <\/code><\/li><li><code> CUSTOM <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNKNOWN",
+        "BEST_ANSWER",
+        "FEATURED",
+        "PINNED",
+        "SOLVED",
+        "CUSTOM"
       ],
       "extra": {},
       "labels": []
