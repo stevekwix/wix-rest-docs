@@ -94,7 +94,10 @@
       "methodName": "FindOrCreateLabel",
       "serviceName": "ContactLabelsServiceV4",
       "tag": "Contact Labels Service (v4)",
-      "permissions": [],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
@@ -151,7 +154,10 @@
       "methodName": "GetLabel",
       "serviceName": "ContactLabelsServiceV4",
       "tag": "Contact Labels Service (v4)",
-      "permissions": [],
+      "permissions": [      {
+        "name": "Manage Contact Labels",
+        "description": "Request permission to read and modify labels available in the site contact list and saved to site contacts."
+      }],
       "events": [],
       "labels": [],
       "nameParams": [],
