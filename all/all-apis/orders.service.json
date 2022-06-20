@@ -2728,6 +2728,41 @@
           "name": "subscriptionOptionDescription",
           "type": "string",
           "doc": " Subscription option description. For example, `\"1kg of selected coffee, once a month\"`.\n"
+        },
+                {
+          "name": "subscriptionSettings",
+          "type": "All APIs.Orders._com_wix_ecom_orders_v1_SubscriptionSettings",
+          "doc": " Subscription detailed information.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wix_ecom_orders_v1_SubscriptionSettings",
+      "displayName": "Subscription Settings Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "frequency",
+          "type": "All APIs.Orders._wix_payment_api_pay_v2_SubscriptionFrequency",
+          "doc": " Frequency of recurring payment.\n"
+        },
+                {
+          "name": "autoRenewal",
+          "type": "boolean",
+          "doc": " Whether subscription is renewed automatically at the end of each period.\n"
+        },
+                {
+          "name": "billingCycles",
+          "type": "integer",
+          "doc": " Number of billing cycles before subscription ends. Ignored if `autoRenewal: true`.\n"
         }
       ],
       "enum": null,
@@ -5820,6 +5855,26 @@
         "DIGITAL",
         "GIFT_CARD",
         "SERVICE"
+      ],
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_payment_api_pay_v2_SubscriptionFrequency",
+      "displayName": "Subscription Frequency Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Frequency unit of recurring payment\n \n Possible values are: <li><code> UNDEFINED <\/code><\/li><li><code> DAY <\/code><\/li><li><code> WEEK <\/code><\/li><li><code> MONTH <\/code><\/li><li><code> YEAR <\/code><\/li>",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum":       [
+        "UNDEFINED",
+        "DAY",
+        "WEEK",
+        "MONTH",
+        "YEAR"
       ],
       "extra": {},
       "labels": []
