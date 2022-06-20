@@ -2378,330 +2378,6 @@
       "labels": []
     },
         {
-      "name": "_wix_emailmarketing_api_v1_CampaignPublishedEvent",
-      "displayName": "Campaign Published Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\",\n  \"landingPageUrl\" : \"https://www.example.com/so/SHORTCODE\",\n  \"mailingListSizeEstimate\" : 0\n} "],
-          "type": "json",
-          "extra": {}
-        }]
-      },
-      "members":       [
-                {
-          "name": "campaignId",
-          "type": "string",
-          "doc": " ID of the campaign that was published.\n"
-        },
-                {
-          "name": "landingPageUrl",
-          "type": "string",
-          "doc": " Campaign landing page URL.\n"
-        },
-                {
-          "name": "mailingListSizeEstimate",
-          "type": "integer",
-          "doc": " Estimation of recipient list size (optional).\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_CampaignArchivedEvent",
-      "displayName": "Campaign Archived Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": " Sent when status of the campaign is changed from \"Active\" to \"Archived\"\n",
-        "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
-          "type": "json",
-          "extra": {}
-        }]
-      },
-      "members": [      {
-        "name": "campaignId",
-        "type": "string",
-        "doc": " ID of the campaign that was archived.\n"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_CampaignUnarchivedEvent",
-      "displayName": "Campaign Unarchived Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": " Sent when status of the campaign is changed from \"Archived\" to \"Active\"\n",
-        "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
-          "type": "json",
-          "extra": {}
-        }]
-      },
-      "members": [      {
-        "name": "campaignId",
-        "type": "string",
-        "doc": " ID of the campaign whose status was changed to active.\n"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_CampaignRejectedEvent",
-      "displayName": "Campaign Rejected Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
-          "type": "json",
-          "extra": {}
-        }]
-      },
-      "members": [      {
-        "name": "campaignId",
-        "type": "string",
-        "doc": " ID of the campaign that was rejected.\n"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_CampaignTerminatedEvent",
-      "displayName": "Campaign Terminated Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
-          "type": "json",
-          "extra": {}
-        }]
-      },
-      "members": [      {
-        "name": "campaignId",
-        "type": "string",
-        "doc": " ID of the campaign that was terminated.\n"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_CampaignDistributedEvent",
-      "displayName": "Campaign Distributed Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": [        {
-          "title": "",
-          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
-          "type": "json",
-          "extra": {}
-        }]
-      },
-      "members": [      {
-        "name": "campaignId",
-        "type": "string",
-        "doc": " ID of the campaign that was distributed.\n"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_EmailEvent_Send",
-      "displayName": "Send Object",
-      "locations": [],
-      "docs":       {
-        "summary": " Triggered when email is sent to the recipient.\n",
-        "links": [],
-        "examples": []
-      },
-      "members": [],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_EmailEvent_Open",
-      "displayName": "Open Object",
-      "locations": [],
-      "docs":       {
-        "summary": " Triggered when the email is opened by the recipient.\n",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "userAgent",
-        "type": "string",
-        "doc": " The browser user agent of the recipient.\n"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_EmailEvent_Click",
-      "displayName": "Click Object",
-      "locations": [],
-      "docs":       {
-        "summary": " Triggered when the recipient clicks on an url inside of the email.\n",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "url",
-          "type": "string",
-          "doc": " The clicked url.\n"
-        },
-                {
-          "name": "userAgent",
-          "type": "string",
-          "doc": " The browser user agent of the recipient.\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_EmailEvent_SoftBounce",
-      "displayName": "Soft Bounce Object",
-      "locations": [],
-      "docs":       {
-        "summary": " Triggered when the email is bounced softly.\n",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "reason",
-        "type": "string",
-        "doc": " Additional bounce information.\n"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_EmailEvent_HardBounce",
-      "displayName": "Hard Bounce Object",
-      "locations": [],
-      "docs":       {
-        "summary": " Triggered when the email bounces.\n",
-        "links": [],
-        "examples": []
-      },
-      "members": [      {
-        "name": "reason",
-        "type": "string",
-        "doc": " Additional bounce information.\n"
-      }],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_EmailEvent",
-      "displayName": "Email Event Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "campaignId",
-          "type": "string",
-          "doc": " ID of the associated campaign.\n"
-        },
-                {
-          "name": "contactId",
-          "type": "string",
-          "doc": " ID of the the recipient contact.\n"
-        },
-                {
-          "name": "recipientEmailAddress",
-          "type": "string",
-          "doc": " The email address of the recipient.\n"
-        },
-                {
-          "name": "timestamp",
-          "type": "string",
-          "doc": " The timestamp when the event was first recorded.\n"
-        },
-                {
-          "name": "eventType",
-          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_EventType",
-          "doc": " The type of the email event.\n"
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": []
-    },
-        {
-      "name": "_wix_emailmarketing_api_v1_EmailEvent_EventType",
-      "displayName": "Event Type Object",
-      "locations": [],
-      "docs":       {
-        "summary": "",
-        "links": [],
-        "examples": []
-      },
-      "members":       [
-                {
-          "name": "send",
-          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_Send",
-          "doc": ""
-        },
-                {
-          "name": "click",
-          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_Click",
-          "doc": ""
-        },
-                {
-          "name": "open",
-          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_Open",
-          "doc": ""
-        },
-                {
-          "name": "softBounce",
-          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_SoftBounce",
-          "doc": ""
-        },
-                {
-          "name": "hardBounce",
-          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_HardBounce",
-          "doc": ""
-        }
-      ],
-      "enum": null,
-      "extra": {},
-      "labels": [],
-      "oneOf": true
-    },
-        {
       "name": "_wix_common_Money",
       "displayName": "Money Object",
       "locations": [],
@@ -3908,6 +3584,330 @@
       "enum": null,
       "extra": {},
       "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_CampaignPublishedEvent",
+      "displayName": "Campaign Published Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\",\n  \"landingPageUrl\" : \"https://www.example.com/so/SHORTCODE\",\n  \"mailingListSizeEstimate\" : 0\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members":       [
+                {
+          "name": "campaignId",
+          "type": "string",
+          "doc": " ID of the campaign that was published.\n"
+        },
+                {
+          "name": "landingPageUrl",
+          "type": "string",
+          "doc": " Campaign landing page URL.\n"
+        },
+                {
+          "name": "mailingListSizeEstimate",
+          "type": "integer",
+          "doc": " Estimation of recipient list size (optional).\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_CampaignArchivedEvent",
+      "displayName": "Campaign Archived Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Sent when status of the campaign is changed from \"Active\" to \"Archived\"\n",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members": [      {
+        "name": "campaignId",
+        "type": "string",
+        "doc": " ID of the campaign that was archived.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_CampaignUnarchivedEvent",
+      "displayName": "Campaign Unarchived Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Sent when status of the campaign is changed from \"Archived\" to \"Active\"\n",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members": [      {
+        "name": "campaignId",
+        "type": "string",
+        "doc": " ID of the campaign whose status was changed to active.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_CampaignRejectedEvent",
+      "displayName": "Campaign Rejected Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members": [      {
+        "name": "campaignId",
+        "type": "string",
+        "doc": " ID of the campaign that was rejected.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_CampaignTerminatedEvent",
+      "displayName": "Campaign Terminated Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members": [      {
+        "name": "campaignId",
+        "type": "string",
+        "doc": " ID of the campaign that was terminated.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_CampaignDistributedEvent",
+      "displayName": "Campaign Distributed Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"campaignId\" : \"c9b491f8-bad0-4d0d-8a1c-c90055d31553\"\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members": [      {
+        "name": "campaignId",
+        "type": "string",
+        "doc": " ID of the campaign that was distributed.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_EmailEvent_Send",
+      "displayName": "Send Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Triggered when email is sent to the recipient.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_EmailEvent_Open",
+      "displayName": "Open Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Triggered when the email is opened by the recipient.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "userAgent",
+        "type": "string",
+        "doc": " The browser user agent of the recipient.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_EmailEvent_Click",
+      "displayName": "Click Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Triggered when the recipient clicks on an url inside of the email.\n",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "url",
+          "type": "string",
+          "doc": " The clicked url.\n"
+        },
+                {
+          "name": "userAgent",
+          "type": "string",
+          "doc": " The browser user agent of the recipient.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_EmailEvent_SoftBounce",
+      "displayName": "Soft Bounce Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Triggered when the email is bounced softly.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "reason",
+        "type": "string",
+        "doc": " Additional bounce information.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_EmailEvent_HardBounce",
+      "displayName": "Hard Bounce Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Triggered when the email bounces.\n",
+        "links": [],
+        "examples": []
+      },
+      "members": [      {
+        "name": "reason",
+        "type": "string",
+        "doc": " Additional bounce information.\n"
+      }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_EmailEvent",
+      "displayName": "Email Event Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "campaignId",
+          "type": "string",
+          "doc": " ID of the associated campaign.\n"
+        },
+                {
+          "name": "contactId",
+          "type": "string",
+          "doc": " ID of the the recipient contact.\n"
+        },
+                {
+          "name": "recipientEmailAddress",
+          "type": "string",
+          "doc": " The email address of the recipient.\n"
+        },
+                {
+          "name": "timestamp",
+          "type": "string",
+          "doc": " The timestamp when the event was first recorded.\n"
+        },
+                {
+          "name": "eventType",
+          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_EventType",
+          "doc": " The type of the email event.\n"
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_wix_emailmarketing_api_v1_EmailEvent_EventType",
+      "displayName": "Event Type Object",
+      "locations": [],
+      "docs":       {
+        "summary": "",
+        "links": [],
+        "examples": []
+      },
+      "members":       [
+                {
+          "name": "send",
+          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_Send",
+          "doc": ""
+        },
+                {
+          "name": "click",
+          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_Click",
+          "doc": ""
+        },
+                {
+          "name": "open",
+          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_Open",
+          "doc": ""
+        },
+                {
+          "name": "softBounce",
+          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_SoftBounce",
+          "doc": ""
+        },
+                {
+          "name": "hardBounce",
+          "type": "All APIs.Email Marketing._wix_emailmarketing_api_v1_EmailEvent_HardBounce",
+          "doc": ""
+        }
+      ],
+      "enum": null,
+      "extra": {},
+      "labels": [],
+      "oneOf": true
     },
         {
       "name": "_wix_emailmarketing_api_v1_SenderDetails",
