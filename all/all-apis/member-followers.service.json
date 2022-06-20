@@ -17,12 +17,12 @@
   }],
   "relatedGuides":   [
         {
-      "path": "../guides/member-followers/docs/use-cases.md",
-      "name": "Use Cases"
-    },
-        {
       "path": "../guides/member-followers/docs/README.md",
       "name": "Introduction"
+    },
+        {
+      "path": "../guides/member-followers/docs/use-cases.md",
+      "name": "Use Cases"
     },
         {
       "path": "../guides/member-followers/docs/following-and-blocking.md",
@@ -239,14 +239,14 @@
         "summary": " Triggered when a member follows another member.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/members-area/members-follow-api/src/main/proto/com/wixpress/members/follow/v2/member-followers-service.proto"
       },
-      "topic": "domain_events_wix.members.follow",
+      "topic": "domain_events_wix.members.v2.follow",
       "tag": "Followers",
       "permissions": [      {
         "name": "Read Member Connections",
         "description": "Request permission to read any site member's connections."
       }],
       "customLabels": [{"id": "maturity-alpha"}],
-      "eventType": "wix.members.follow_member_followed",
+      "eventType": "wix.members.v2.follow_member_followed",
       "extra": {"isDomainEvent": true}
     },
         {
@@ -256,14 +256,14 @@
         "summary": " Triggered when a member unfollows another member.\n",
         "src": "https://github.com/wix-private/app-market/tree/master/members-area/members-follow-api/src/main/proto/com/wixpress/members/follow/v2/member-followers-service.proto"
       },
-      "topic": "domain_events_wix.members.follow",
+      "topic": "domain_events_wix.members.v2.follow",
       "tag": "Followers",
       "permissions": [      {
         "name": "Read Member Connections",
         "description": "Request permission to read any site member's connections."
       }],
       "customLabels": [{"id": "maturity-alpha"}],
-      "eventType": "wix.members.follow_member_unfollowed",
+      "eventType": "wix.members.v2.follow_member_unfollowed",
       "extra": {"isDomainEvent": true}
     }
   ],
@@ -292,7 +292,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.members.follow`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.members.v2.follow`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -318,6 +318,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -365,7 +370,7 @@
                 {
           "name": "entityFqdn",
           "type": "string",
-          "doc": "Expected `wix.members.follow`.\nFully Qualified Domain Name."
+          "doc": "Expected `wix.members.v2.follow`.\nFully Qualified Domain Name."
         },
                 {
           "name": "slug",
@@ -391,6 +396,11 @@
           "name": "triggeredByAnonymizeRequest",
           "type": "boolean",
           "doc": "Whether this event was triggered as a result of a privacy regulation application (e.g., GDPR)."
+        },
+                {
+          "name": "originatedFrom",
+          "type": "string",
+          "doc": "If present, indicates the action that triggered the event."
         }
       ],
       "enum": null,
@@ -411,6 +421,25 @@
         "type": "All APIs.Member Followers._com_wixpress_members_follow_v2_MemberUnfollowed",
         "doc": "Event body"
       }],
+      "enum": null,
+      "extra": {},
+      "labels": []
+    },
+        {
+      "name": "_com_wixpress_members_follow_Follower",
+      "displayName": "Follower Object",
+      "locations": [],
+      "docs":       {
+        "summary": " Fake FQDN\n Service will soon be replaces by v2 of the service, so does not make sense to refactor this service to support fqdn\n",
+        "links": [],
+        "examples": [        {
+          "title": "",
+          "body": ["{\n  \"memberId\" : \"e411fe13-9794-42b6-ad62-72c9917f1bac\",\n  \"affectedMemberId\" : \"9374ed3f-c6c2-4d7d-86f6-4208f70568da\"\n} "],
+          "type": "json",
+          "extra": {}
+        }]
+      },
+      "members": [],
       "enum": null,
       "extra": {},
       "labels": []
